@@ -35,42 +35,44 @@
 
       <!-- ===== Main Content Start ===== -->
       <main>
-        <div class="mx-auto max-w-screen-2xl  p-4 md:p-6 2xl:p-10">
+        <div class="mx-auto max-w-screen-2xl  p-4 md:p-6 2xl:p-10" id="app">
           <!-- Inform Zone Start -->
           <div class="rounded-sm mb-5.5 border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
             <div class="border-b border-stroke py-4 px-7 dark:border-strokedark">
               <h3 class="font-medium text-black dark:text-white">Device Information</h3>
             </div>
-            <div class="p-7">
+            <div class="p-7 ">
               <form action="#" class="grid md:grid-cols-3 gap-2">
-                <div class="mb-5.5">
+                <div class="mb-5.5"> <!-- ===== Name Input ===== -->
                   <label class="mb-3 block text-sm font-medium text-black dark:text-white"
                     for="Username">Device Name</label>
-                  <input
-                    class="w-full rounded border border-stroke bg-gray py-3 px-4.5 font-medium text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
-                    type="text" name="name" id="name" placeholder="R1"/>
+                  <input 
+                  class="w-full rounded border border-stroke bg-gray py-3 px-4.5 font-medium text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
+                    type="text" v-model="newText.name" placeholder="Enter Device Name" required>
                 </div>
-                <div class="mb-5.5">
+                <div class="mb-5.5"> <!-- ===== IP Input ===== -->
                   <label class="mb-3 block text-sm font-medium text-black dark:text-white"
                     for="Username">IP Address</label>
-                  <input
+                  <input 
                     class="w-full rounded border border-stroke bg-gray py-3 px-4.5 font-medium text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
-                    type="text" name="ip" id="ip" placeholder="x.x.x.x"/>
+                    type="text" v-model="newText.ip" placeholder="Enter IP address" required>
                 </div>
-                <div class="mb-5.5">
+                <div class="mb-5.5"> <!-- ===== Select Type ===== -->
                   <label class="mb-3 block text-sm font-medium text-black dark:text-white"
                     for="Username">Device Type</label>
-                  <select class="relative z-20 w-full appearance-none rounded border border-stroke bg-gray py-3 px-4.5 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input">
-                  <option value="">Router</option>
-                  <option value="">Switch</option>
+                  <select 
+                    class="relative z-20 w-full appearance-none rounded border border-stroke bg-gray py-3 px-4.5 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input"
+                    v-model="newText.type" required>
+                    <option value="" disabled selected>Select Type</option>
+                    <option value="Router">Router</option>
+                    <option value="Switch">Switch</option>
                   </select>
-
                 </div>
               </form>
               <div class="flex justify-center items-center">
                 <button
                   class="flex justify-center rounded bg-meta-3 py-2 px-6 font-medium text-gray hover:bg-opacity-90"
-                  type="submit">
+                  type="submit" @click="createNewElement">
                   + Add Device
                 </button>
               </div>
@@ -80,18 +82,19 @@
           
           <!-- Card Zone Start-->
           <div id="device_deck" class="grid grid-cols-1 gap-4 md:grid-cols-4 md:gap-6 xl:grid-cols-4 2xl:gap-7.5 overflow-scroll max-h-100">
+            <!-- Repeat Card Start -->
+            <card v-for="(text, index) in texts" :key="index" :name="text.name" :ip="text.ip" :type="text.type"></card>
+            <!-- Repear Card End -->
+
             <!-- Card Router Start -->
-            <div
-              class="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark">
-              <div class="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4">
-                <img src="https://cdn-icons-png.flaticon.com/512/5238/5238804.png">
-              </div>
+            <div class="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark">
               <div class="mt-4 flex justify-between items-center">
                 <div>
-                  <h4 class="text-title-md font-bold text-black dark:text-white">
+                  <h2 class="text-title-md font-bold text-black dark:text-white">
                     R12
-                  </h4>
-                  <!-- <span class="text-sm font-medium">192.168.10.1</span> -->
+                  </h2>
+                  <span class="text-sm font-medium">192.167.61.1</span><br>
+                  <span class="text-sm font-medium">Router</span>
                 </div>
                 <button class="flex justify-center rounded bg-danger py-2 px-6 font-medium text-gray hover:bg-opacity-90" type="submit">
                   Remove
@@ -101,17 +104,14 @@
             <!-- Card Router End -->
 
             <!-- Card Switch Start -->
-            <div
-              class="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark">
-              <div class="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4">
-                <img src="https://www.iconbunny.com/icons/media/catalog/product/cache/2/thumbnail/600x/1b89f2fc96fc819c2a7e15c7e545e8a9/7/7/77.1-network-switch-ii-icon-iconbunny.jpg">
-              </div>
+            <div class="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark">
               <div class="mt-4 flex justify-between items-center">
                 <div>
                   <h4 class="text-title-md font-bold text-black dark:text-white">
                     S1
                   </h4>
-                  <!-- <span class="text-sm font-medium">Total views</span> -->
+                  <span class="text-sm font-medium">192.167.61.2</span><br>
+                  <span class="text-sm font-medium">Switch</span>
                 </div>
                 <button class="flex justify-center rounded bg-danger py-2 px-6 font-medium text-gray hover:bg-opacity-90" type="submit">
                   Remove
@@ -119,252 +119,9 @@
               </div>
             </div>
             <!-- Card Switch End -->
-
-            <!-- Card Router Start -->
-            <div
-              class="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark">
-              <div class="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4">
-                <img src="https://cdn-icons-png.flaticon.com/512/5238/5238804.png">
-              </div>
-              <div class="mt-4 flex justify-between items-center">
-                <div>
-                  <h4 class="text-title-md font-bold text-black dark:text-white">
-                    R12
-                  </h4>
-                  <!-- <span class="text-sm font-medium">192.168.10.1</span> -->
-                </div>
-                <button class="flex justify-center rounded bg-danger py-2 px-6 font-medium text-gray hover:bg-opacity-90" type="submit">
-                  Remove
-                </button>
-              </div>
-            </div>
-            <!-- Card Router End -->
-
-            <!-- Card Switch Start -->
-            <div
-              class="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark">
-              <div class="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4">
-                <img src="https://www.iconbunny.com/icons/media/catalog/product/cache/2/thumbnail/600x/1b89f2fc96fc819c2a7e15c7e545e8a9/7/7/77.1-network-switch-ii-icon-iconbunny.jpg">
-              </div>
-              <div class="mt-4 flex justify-between items-center">
-                <div>
-                  <h4 class="text-title-md font-bold text-black dark:text-white">
-                    S1
-                  </h4>
-                  <!-- <span class="text-sm font-medium">Total views</span> -->
-                </div>
-                <button class="flex justify-center rounded bg-danger py-2 px-6 font-medium text-gray hover:bg-opacity-90" type="submit">
-                  Remove
-                </button>
-              </div>
-            </div>
-            <!-- Card Switch End -->
-
-            <!-- Card Router Start -->
-            <div
-            class="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark">
-            <div class="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4">
-              <img src="https://cdn-icons-png.flaticon.com/512/5238/5238804.png">
-            </div>
-            <div class="mt-4 flex justify-between items-center">
-              <div>
-                <h4 class="text-title-md font-bold text-black dark:text-white">
-                  R12
-                </h4>
-                <!-- <span class="text-sm font-medium">192.168.10.1</span> -->
-              </div>
-              <button class="flex justify-center rounded bg-danger py-2 px-6 font-medium text-gray hover:bg-opacity-90" type="submit">
-                Remove
-              </button>
-            </div>
-            </div>
-            <!-- Card Router End -->
-
-            <!-- Card Switch Start -->
-            <div
-            class="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark">
-            <div class="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4">
-              <img src="https://www.iconbunny.com/icons/media/catalog/product/cache/2/thumbnail/600x/1b89f2fc96fc819c2a7e15c7e545e8a9/7/7/77.1-network-switch-ii-icon-iconbunny.jpg">
-            </div>
-            <div class="mt-4 flex justify-between items-center">
-              <div>
-                <h4 class="text-title-md font-bold text-black dark:text-white">
-                  S1
-                </h4>
-                <!-- <span class="text-sm font-medium">Total views</span> -->
-              </div>
-              <button class="flex justify-center rounded bg-danger py-2 px-6 font-medium text-gray hover:bg-opacity-90" type="submit">
-                Remove
-              </button>
-            </div>
-            </div>
-            <!-- Card Switch End -->
-
-            <!-- Card Router Start -->
-            <div
-            class="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark">
-            <div class="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4">
-            <img src="https://cdn-icons-png.flaticon.com/512/5238/5238804.png">
-            </div>
-            <div class="mt-4 flex justify-between items-center">
-            <div>
-              <h4 class="text-title-md font-bold text-black dark:text-white">
-                R12
-              </h4>
-              <!-- <span class="text-sm font-medium">192.168.10.1</span> -->
-            </div>
-            <button class="flex justify-center rounded bg-danger py-2 px-6 font-medium text-gray hover:bg-opacity-90" type="submit">
-              Remove
-            </button>
-            </div>
-            </div>
-            <!-- Card Router End -->
-
-            <!-- Card Switch Start -->
-            <div
-            class="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark">
-            <div class="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4">
-            <img src="https://www.iconbunny.com/icons/media/catalog/product/cache/2/thumbnail/600x/1b89f2fc96fc819c2a7e15c7e545e8a9/7/7/77.1-network-switch-ii-icon-iconbunny.jpg">
-            </div>
-            <div class="mt-4 flex justify-between items-center">
-            <div>
-              <h4 class="text-title-md font-bold text-black dark:text-white">
-                S1
-              </h4>
-              <!-- <span class="text-sm font-medium">Total views</span> -->
-            </div>
-            <button class="flex justify-center rounded bg-danger py-2 px-6 font-medium text-gray hover:bg-opacity-90" type="submit">
-              Remove
-            </button>
-            </div>
-            </div>
-            <!-- Card Switch End -->
-
-            <!-- Card Router Start -->
-            <div
-            class="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark">
-            <div class="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4">
-            <img src="https://cdn-icons-png.flaticon.com/512/5238/5238804.png">
-            </div>
-            <div class="mt-4 flex justify-between items-center">
-            <div>
-              <h4 class="text-title-md font-bold text-black dark:text-white">
-                R12
-              </h4>
-              <!-- <span class="text-sm font-medium">192.168.10.1</span> -->
-            </div>
-            <button class="flex justify-center rounded bg-danger py-2 px-6 font-medium text-gray hover:bg-opacity-90" type="submit">
-              Remove
-            </button>
-            </div>
-            </div>
-            <!-- Card Router End -->
-
-            <!-- Card Switch Start -->
-            <div
-            class="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark">
-            <div class="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4">
-            <img src="https://www.iconbunny.com/icons/media/catalog/product/cache/2/thumbnail/600x/1b89f2fc96fc819c2a7e15c7e545e8a9/7/7/77.1-network-switch-ii-icon-iconbunny.jpg">
-            </div>
-            <div class="mt-4 flex justify-between items-center">
-            <div>
-              <h4 class="text-title-md font-bold text-black dark:text-white">
-                S1
-              </h4>
-              <!-- <span class="text-sm font-medium">Total views</span> -->
-            </div>
-            <button class="flex justify-center rounded bg-danger py-2 px-6 font-medium text-gray hover:bg-opacity-90" type="submit">
-              Remove
-            </button>
-            </div>
-            </div>
-            <!-- Card Switch End -->
-
-            <!-- Card Router Start -->
-            <div
-            class="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark">
-            <div class="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4">
-            <img src="https://cdn-icons-png.flaticon.com/512/5238/5238804.png">
-            </div>
-            <div class="mt-4 flex justify-between items-center">
-            <div>
-              <h4 class="text-title-md font-bold text-black dark:text-white">
-                R12
-              </h4>
-              <!-- <span class="text-sm font-medium">192.168.10.1</span> -->
-            </div>
-            <button class="flex justify-center rounded bg-danger py-2 px-6 font-medium text-gray hover:bg-opacity-90" type="submit">
-              Remove
-            </button>
-            </div>
-            </div>
-            <!-- Card Router End -->
-
-            <!-- Card Switch Start -->
-            <div
-            class="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark">
-            <div class="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4">
-            <img src="https://www.iconbunny.com/icons/media/catalog/product/cache/2/thumbnail/600x/1b89f2fc96fc819c2a7e15c7e545e8a9/7/7/77.1-network-switch-ii-icon-iconbunny.jpg">
-            </div>
-            <div class="mt-4 flex justify-between items-center">
-            <div>
-              <h4 class="text-title-md font-bold text-black dark:text-white">
-                S1
-              </h4>
-              <!-- <span class="text-sm font-medium">Total views</span> -->
-            </div>
-            <button class="flex justify-center rounded bg-danger py-2 px-6 font-medium text-gray hover:bg-opacity-90" type="submit">
-              Remove
-            </button>
-            </div>
-            </div>
-            <!-- Card Switch End -->
-
-            <!-- Card Router Start -->
-            <div
-            class="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark">
-            <div class="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4">
-            <img src="https://cdn-icons-png.flaticon.com/512/5238/5238804.png">
-            </div>
-            <div class="mt-4 flex justify-between items-center">
-            <div>
-              <h4 class="text-title-md font-bold text-black dark:text-white">
-                R12
-              </h4>
-              <!-- <span class="text-sm font-medium">192.168.10.1</span> -->
-            </div>
-            <button class="flex justify-center rounded bg-danger py-2 px-6 font-medium text-gray hover:bg-opacity-90" type="submit">
-              Remove
-            </button>
-            </div>
-            </div>
-            <!-- Card Router End -->
-
-            <!-- Card Switch Start -->
-            <div
-            class="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark">
-            <div class="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4">
-            <img src="https://www.iconbunny.com/icons/media/catalog/product/cache/2/thumbnail/600x/1b89f2fc96fc819c2a7e15c7e545e8a9/7/7/77.1-network-switch-ii-icon-iconbunny.jpg">
-            </div>
-            <div class="mt-4 flex justify-between items-center">
-            <div>
-              <h4 class="text-title-md font-bold text-black dark:text-white">
-                S1
-              </h4>
-              <!-- <span class="text-sm font-medium">Total views</span> -->
-            </div>
-            <button class="flex justify-center rounded bg-danger py-2 px-6 font-medium text-gray hover:bg-opacity-90" type="submit">
-              Remove
-            </button>
-            </div>
-            </div>
-            <!-- Card Switch End -->
-  
   
           </div>
             <!-- Test Zone End-->
-
-        
 
         </div>
       </main>
@@ -373,6 +130,44 @@
     <!-- ===== Content Area End ===== -->
   </div>
   <!-- ===== Page Wrapper End ===== -->
+  <script>
+    Vue.component('card', { 
+      props: ['name', 'ip', 'type'],
+      template: 
+      `
+      <div class="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark">
+        <div class="mt-4 flex justify-between items-center">
+          <div>
+            <h2 class="text-title-md font-bold text-black dark:text-white">
+              {{ name }}
+            </h2>
+            <span class="text-sm font-medium">{{ ip }}</span><br>
+            <span class="text-sm font-medium">{{ type }}</span>
+          </div>
+          <button class="flex justify-center rounded bg-danger py-2 px-6 font-medium text-gray hover:bg-opacity-90" type="submit">
+            Remove
+          </button>
+        </div>
+      </div>
+      `
+    });
+
+    new Vue({
+      el: '#app',
+      data: {
+        newText: {},
+        texts: [],
+      },
+      methods: {
+        createNewElement() {
+          if (this.newText.name !== "" && this.newText.ip !== "" && this.newText.type !== "") {
+            this.texts.push(this.newText);
+            this.newText = {};
+          }
+        }
+      }
+    });
+  </script>
 </body>
 
 </html>

@@ -46,7 +46,3 @@ document.addEventListener("DOMContentLoaded", () => {
   chart04();
   map01();
 });
-
-function addDevice(name, type, ip){
-
-}
