@@ -5,16 +5,12 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>
-    eCommerce Dashboard | TailAdmin - Tailwind CSS Admin Dashboard Template
-  </title>
+  <title>eCommerce Dashboard | TailAdmin - Tailwind CSS Admin Dashboard Template</title>
   <script src="https://unpkg.com/vue@2.6.14/dist/vue.js"></script>
 </head>
 
-<body
-  x-data="{ page: 'ecommerce', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
-  x-init="
-         darkMode = JSON.parse(localStorage.getItem('darkMode'));
+<body x-data="{ page: 'ecommerce', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
+  x-init="darkMode = JSON.parse(localStorage.getItem('darkMode'));
          $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
   :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}">
   <!-- ===== Preloader Start ===== -->
@@ -43,25 +39,22 @@
             </div>
             <div class="p-7 ">
               <form action="#" class="grid md:grid-cols-3 gap-2">
-                <div class="mb-5.5"> <!-- ===== Name Input ===== -->
-                  <label class="mb-3 block text-sm font-medium text-black dark:text-white"
-                    for="Username">Device Name</label>
-                  <input 
-                  class="w-full rounded border border-stroke bg-gray py-3 px-4.5 font-medium text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
+                <div class="mb-5.5">
+                  <!-- ===== Name Input ===== -->
+                  <label class="mb-3 block text-sm font-medium text-black dark:text-white" for="Username">Device Name</label>
+                  <input class="w-full rounded border border-stroke bg-gray py-3 px-4.5 font-medium text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
                     type="text" v-model="newText.name" placeholder="Enter Device Name" required>
                 </div>
-                <div class="mb-5.5"> <!-- ===== IP Input ===== -->
-                  <label class="mb-3 block text-sm font-medium text-black dark:text-white"
-                    for="Username">IP Address</label>
-                  <input 
-                    class="w-full rounded border border-stroke bg-gray py-3 px-4.5 font-medium text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
+                <div class="mb-5.5">
+                  <!-- ===== IP Input ===== -->
+                  <label class="mb-3 block text-sm font-medium text-black dark:text-white" for="Username">IP Address</label>
+                  <input class="w-full rounded border border-stroke bg-gray py-3 px-4.5 font-medium text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
                     type="text" v-model="newText.ip" placeholder="Enter IP address" required>
                 </div>
-                <div class="mb-5.5"> <!-- ===== Select Type ===== -->
-                  <label class="mb-3 block text-sm font-medium text-black dark:text-white"
-                    for="Username">Device Type</label>
-                  <select 
-                    class="relative z-20 w-full appearance-none rounded border border-stroke bg-gray py-3 px-4.5 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input"
+                <div class="mb-5.5">
+                  <!-- ===== Select Type ===== -->
+                  <label class="mb-3 block text-sm font-medium text-black dark:text-white" for="Username">Device Type</label>
+                  <select class="relative z-20 w-full appearance-none rounded border border-stroke bg-gray py-3 px-4.5 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input"
                     v-model="newText.type" required>
                     <option value="" disabled selected>Select Type</option>
                     <option value="Router">Router</option>
@@ -70,59 +63,18 @@
                 </div>
               </form>
               <div class="flex justify-center items-center">
-                <button
-                  class="flex justify-center rounded bg-meta-3 py-2 px-6 font-medium text-gray hover:bg-opacity-90"
-                  type="submit" @click="createNewElement">
-                  + Add Device
-                </button>
+                <button class="flex justify-center rounded bg-meta-3 py-2 px-6 font-medium text-gray hover:bg-opacity-90" type="submit" @click="createNewElement">+ Add Device</button>
               </div>
             </div>
           </div>
           <!-- Inform Zone End -->
-          
+
           <!-- Card Zone Start-->
           <div id="device_deck" class="grid grid-cols-1 gap-4 md:grid-cols-4 md:gap-6 xl:grid-cols-4 2xl:gap-7.5 overflow-scroll max-h-100">
-            <!-- Repeat Card Start -->
-            <card v-for="(text, index) in texts" :key="index" :name="text.name" :ip="text.ip" :type="text.type"></card>
-            <!-- Repear Card End -->
-
-            <!-- Card Router Start -->
-            <div class="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark">
-              <div class="mt-4 flex justify-between items-center">
-                <div>
-                  <h2 class="text-title-md font-bold text-black dark:text-white">
-                    R12
-                  </h2>
-                  <span class="text-sm font-medium">192.167.61.1</span><br>
-                  <span class="text-sm font-medium">Router</span>
-                </div>
-                <button class="flex justify-center rounded bg-danger py-2 px-6 font-medium text-gray hover:bg-opacity-90" type="submit">
-                  Remove
-                </button>
-              </div>
-            </div>
-            <!-- Card Router End -->
-
-            <!-- Card Switch Start -->
-            <div class="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark">
-              <div class="mt-4 flex justify-between items-center">
-                <div>
-                  <h4 class="text-title-md font-bold text-black dark:text-white">
-                    S1
-                  </h4>
-                  <span class="text-sm font-medium">192.167.61.2</span><br>
-                  <span class="text-sm font-medium">Switch</span>
-                </div>
-                <button class="flex justify-center rounded bg-danger py-2 px-6 font-medium text-gray hover:bg-opacity-90" type="submit">
-                  Remove
-                </button>
-              </div>
-            </div>
-            <!-- Card Switch End -->
-  
+            <card v-for="(text, index) in texts" :key="index" :index="index" :name="text.name" :ip="text.ip" :type="text.type" @delete="deleteElement"></card>
           </div>
-            <!-- Test Zone End-->
-
+          
+          <!-- Card Zone End-->
         </div>
       </main>
       <!-- ===== Main Content End ===== -->
@@ -130,44 +82,59 @@
     <!-- ===== Content Area End ===== -->
   </div>
   <!-- ===== Page Wrapper End ===== -->
-  <script>
-    Vue.component('card', { 
-      props: ['name', 'ip', 'type'],
-      template: 
-      `
-      <div class="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark">
-        <div class="mt-4 flex justify-between items-center">
-          <div>
-            <h2 class="text-title-md font-bold text-black dark:text-white">
-              {{ name }}
-            </h2>
-            <span class="text-sm font-medium">{{ ip }}</span><br>
-            <span class="text-sm font-medium">{{ type }}</span>
-          </div>
-          <button class="flex justify-center rounded bg-danger py-2 px-6 font-medium text-gray hover:bg-opacity-90" type="submit">
-            Remove
-          </button>
-        </div>
-      </div>
-      `
-    });
 
+  <script>
+    Vue.component('card', {
+      props: ['index', 'name', 'ip', 'type'],
+      template: `
+        <div class="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark">
+          <div class="mt-4 flex justify-between items-center">
+            <div>
+              <h2 class="text-title-md font-bold text-black dark:text-white">
+                {{ name }}
+              </h2>
+              <span class="text-sm font-medium">{{ ip }}</span><br>
+              <span class="text-sm font-medium">{{ type }}</span>
+            </div>
+            <button @click="deleteElement" class="flex justify-center rounded bg-danger py-2 px-6 font-medium text-gray hover:bg-opacity-90" type="submit">Remove</button>
+          </div>
+        </div>
+      `,
+      methods: {
+        deleteElement() {
+          this.$emit('delete', this.index);
+        }
+      }
+    });
+  
     new Vue({
       el: '#app',
       data: {
         newText: {},
-        texts: [],
+        texts: [
+          {
+            name: 'R1',
+            ip: '1.1.1.1',
+            type: 'Router'
+          }
+        ],
       },
       methods: {
         createNewElement() {
-          if (this.newText.name !== "" && this.newText.ip !== "" && this.newText.type !== "") {
+          console.log('here', Object.keys(this.newText).length)
+          if (Object.keys(this.newText).length == 3) {
+            console.log('dafuq y im here :', this.newText.name)
             this.texts.push(this.newText);
             this.newText = {};
           }
+        },
+        deleteElement(index) {
+          this.texts.splice(index, 1);
         }
       }
     });
   </script>
+  
 </body>
 
 </html>
