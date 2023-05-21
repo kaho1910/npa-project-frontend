@@ -64,33 +64,53 @@ for (var i = 0; i < interfaceButtonRouter.length; i++) {
     interfaceButtonRouter[i].addEventListener('click', interfaceButtonRouterClick);
 }
 
+var methodIpSelect = document.getElementById("methodip");
+var ipInput = document.getElementById("ip");
+var subnetInput = document.getElementById("ipsubnet");
+
+methodIpSelect.addEventListener("change", function() {
+    if (methodIpSelect.value === "dhcp") {
+        ipInput.disabled = true;
+        subnetInput.disabled = true;
+    } else {
+        ipInput.disabled = false;
+        subnetInput.disabled = false;
+    }
+});
+
 function interfaceButtonRouterClick(event) {
     var test = event.target.dataset.interface; // Get the interface value
 
     // Get the corresponding interface details from the dictionary
     var interfaceDetails = {
-        "G0/0": { status: "on", method: "Static", ip: "192.18.1.1", subnet: '255.255.255.0', description: "test" },
-        "G0/1": { status: "on", method: "DHCP", ip: "192.18.1.2", subnet: '255.255.255.0', description: "2" },
-        "G0/2": { status: "on", method: "Static", ip: "192.18.1.3", subnet: '255.255.255.0', description: "3" },
-        "G0/3": { status: "on", method: "Static", ip: "192.18.1.4", subnet: '255.255.255.0', description: "4" },
-        "G0/4": { status: "on", method: "DHCP", ip: "192.18.1.5", subnet: '255.255.255.0', description: "5" },
-        "G0/5": { status: "off", method: "Static", ip: "192.18.1.6", subnet: '255.255.255.0', description: "test" },
+        "G0/0": { status: "on", method: "static", ip: "192.18.1.1", ipsubnet: '255.255.240.0', description: "test" },
+        "G0/1": { status: "on", method: "dhcp", ip: "192.18.1.2", ipsubnet: '255.255.255.0', description: "2" },
+        "G0/2": { status: "on", method: "static", ip: "192.18.1.3", ipsubnet: '255.255.255.0', description: "3" },
+        "G0/3": { status: "on", method: "static", ip: "192.18.1.4", ipsubnet: '255.255.192.0', description: "4" },
+        "G0/4": { status: "on", method: "dhcp", ip: "192.18.1.5", ipsubnet: '255.255.255.0', description: "5" },
+        "G0/5": { status: "off", method: "static", ip: "192.18.1.6", ipsubnet: '255.255.255.128', description: "test" },
         // Add more interface details here
     };
 
     // Update the input fields with the interface details
     document.getElementById('ip').value = interfaceDetails[test].ip;
-    document.getElementById('subnet').value = interfaceDetails[test].subnet;
+    document.getElementById('ipsubnet').value = interfaceDetails[test].ipsubnet;
     document.getElementById('description').value = interfaceDetails[test].description;
     document.getElementById('methodip').value = interfaceDetails[test].method;
     document.getElementById('interfaceRouter').textContent = test;
 
     var checkbox = document.getElementById('statusRouter');
-
     if (interfaceDetails[test].status === "on") {
         checkbox.checked = true; // Set the checkbox to checked
     } else {
         checkbox.checked = false; // Set the checkbox to unchecked
+    }
+    if (interfaceDetails[test].method === "dhcp") {
+        ipInput.disabled = true;
+        subnetInput.disabled = true;
+    } else {
+        ipInput.disabled = false;
+        subnetInput.disabled = false;
     }
 }
 var staticRouteArray = [
@@ -311,3 +331,16 @@ function populataDhcpPoolTable() {
         tableDhcpPoolTable.appendChild(row);
     });
 }
+var methodIpSelect = document.getElementById("methodip");
+var ipInput = document.getElementById("ip");
+var subnetInput = document.getElementById("ipsubnet");
+
+methodIpSelect.addEventListener("change", function() {
+    if (methodIpSelect.value === "dhcp") {
+        ipInput.disabled = true;
+        subnetInput.disabled = true;
+    } else {
+        ipInput.disabled = false;
+        subnetInput.disabled = false;
+    }
+});

@@ -48,35 +48,68 @@ for (var i = 0; i < interfaceButtonSwitch.length; i++) {
     interfaceButtonSwitch[i].addEventListener('click', interfaceButtonSwitchClick);
 }
 
+var methodIpSelect = document.getElementById("methodip");
+var ipInput = document.getElementById("ip");
+var subnetInput = document.getElementById("ipsubnet");
+
+methodIpSelect.addEventListener("change", function() {
+    if (methodIpSelect.value === "dhcp") {
+        ipInput.disabled = true;
+        subnetInput.disabled = true;
+    } else {
+        ipInput.disabled = false;
+        subnetInput.disabled = false;
+    }
+});
+
 function interfaceButtonSwitchClick(event) {
     var test = event.target.dataset.interface; // Get the interface value
 
     // Get the corresponding interface details from the dictionary
     var interfaceDetails = {
-        "G0/0": { status: "on", method: "Static", ip: "192.18.1.1", subnet: '255.255.255.0', description: "test" },
-        "G0/1": { status: "on", method: "DHCP", ip: "192.18.1.2", subnet: '255.255.255.0', description: "2" },
-        "G0/2": { status: "on", method: "Static", ip: "192.18.1.3", subnet: '255.255.255.0', description: "3" },
-        "G0/3": { status: "on", method: "Static", ip: "192.18.1.4", subnet: '255.255.255.0', description: "4" },
-        "G0/4": { status: "on", method: "DHCP", ip: "192.18.1.5", subnet: '255.255.255.0', description: "5" },
-        "G0/5": { status: "off", method: "Static", ip: "192.18.1.6", subnet: '255.255.255.0', description: "test" },
+        "G0/0": { status: "on", method: "static", ip: "192.18.1.1", ipsubnet: '255.255.240.0', description: "test" },
+        "G0/1": { status: "on", method: "dhcp", ip: "192.18.1.2", ipsubnet: '255.255.255.0', description: "2" },
+        "G0/2": { status: "on", method: "static", ip: "192.18.1.3", ipsubnet: '255.255.255.0', description: "3" },
+        "G0/3": { status: "on", method: "static", ip: "192.18.1.4", ipsubnet: '255.255.192.0', description: "4" },
+        "G0/4": { status: "on", method: "dhcp", ip: "192.18.1.5", ipsubnet: '255.255.255.0', description: "5" },
+        "G0/5": { status: "off", method: "static", ip: "192.18.1.6", ipsubnet: '255.255.255.128', description: "test" },
         // Add more interface details here
     };
 
     // Update the input fields with the interface details
     document.getElementById('ip').value = interfaceDetails[test].ip;
-    document.getElementById('subnet').value = interfaceDetails[test].subnet;
+    document.getElementById('ipsubnet').value = interfaceDetails[test].ipsubnet;
     document.getElementById('description').value = interfaceDetails[test].description;
     document.getElementById('methodip').value = interfaceDetails[test].method;
     document.getElementById('interfaceSwitch').textContent = test;
 
     var checkbox = document.getElementById('statusSwitch');
-
     if (interfaceDetails[test].status === "on") {
         checkbox.checked = true; // Set the checkbox to checked
     } else {
         checkbox.checked = false; // Set the checkbox to unchecked
     }
+    if (interfaceDetails[test].method === "dhcp") {
+        ipInput.disabled = true;
+        subnetInput.disabled = true;
+    } else {
+        ipInput.disabled = false;
+        subnetInput.disabled = false;
+    }
 }
+var methodIpSelect = document.getElementById("methodip");
+var ipInput = document.getElementById("ip");
+var subnetInput = document.getElementById("ipsubnet");
+
+methodIpSelect.addEventListener("change", function() {
+    if (methodIpSelect.value === "dhcp") {
+        ipInput.disabled = true;
+        subnetInput.disabled = true;
+    } else {
+        ipInput.disabled = false;
+        subnetInput.disabled = false;
+    }
+});
 
 var vlanArray = [
     { vlanid: "10", vlanname: "Management", vlandescription: "For Manage Devices" },
@@ -116,7 +149,7 @@ function populateVlanTable() {
 }
 
 var stpArray = [
-    { statusStp: "off", stpmode: "MSTP", stppriority: "1", hellotime: "10", maxage: "30", forwardtime: "15", lpguard: "on" },
+    { statusStp: "on", stpmode: "pvst", stppriority: "1", hellotime: "10", maxage: "30", forwardtime: "15", lpguard: "on" },
 ];
 
 function stpFormClick() {
@@ -125,6 +158,8 @@ function stpFormClick() {
         document.getElementById('maxage').value = stpArray.maxage;
         document.getElementById('forwardtime').value = stpArray.forwardtime;
         document.getElementById('stppriority').value = stpArray.stppriority;
+        document.getElementById('stpmode').value = stpArray.stpmode;
+
 
         var statusStp = document.getElementById('statusStp');
         if (stpArray.statusStp === "on") {
@@ -186,3 +221,23 @@ function populateSwitchportTable() {
         tableSwitchport.appendChild(row);
     });
 }
+
+var swportmode = document.getElementById("swportmode");
+var swporttrunknative = document.getElementById("swporttrunknative");
+var swportallowednative = document.getElementById("swportallowednative");
+var swportaccess = document.getElementById("swportaccess");
+
+swportmode.addEventListener("change", function() {
+    if (swportmode.value === "Trunk") {
+        swportaccess.disabled = true;
+        swporttrunknative.disabled = false;
+        swportallowednative.disabled = false;
+    } else {
+        swportaccess.disabled = false;
+        swporttrunknative.disabled = true;
+        swportallowednative.disabled = true;
+    }
+    swportaccess.value = "";
+    swporttrunknative.value = "";
+    swportallowednative.value = "";
+});
