@@ -2,292 +2,594 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Calendar | TailAdmin - Tailwind CSS Admin Dashboard Template</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile | TailAdmin - Tailwind CSS Admin Dashboard Template</title>
 </head>
 
-<body
-  x-data="{ page: 'calendar', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
-  x-init="
+<body x-data="{ page: 'profile', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }" x-init="
           darkMode = JSON.parse(localStorage.getItem('darkMode'));
-          $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
-  :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}">
-  <!-- ===== Preloader Start ===== -->
-  <include src="./partials/preloader.html"></include>
-  <!-- ===== Preloader End ===== -->
+          $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))" :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}">
+    <!-- ===== Preloader Start ===== -->
+    <include src="./partials/preloader.html"></include>
+    <!-- ===== Preloader End ===== -->
 
-  <!-- ===== Page Wrapper Start ===== -->
-  <div class="flex h-screen overflow-hidden">
-    <!-- ===== Sidebar Start ===== -->
-    <include src="./partials/sidebar.html"></include>
-    <!-- ===== Sidebar End ===== -->
+    <!-- ===== Page Wrapper Start ===== -->
+    <div class="flex h-screen overflow-hidden">
+        <!-- ===== Sidebar Start ===== -->
+        <include src="./partials/sidebar.html"></include>
+        <!-- ===== Sidebar End ===== -->
 
-    <!-- ===== Content Area Start ===== -->
-    <div class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
-      <!-- ===== Header Start ===== -->
-      <include src="./partials/header.html" />
-      <!-- ===== Header End ===== -->
+        <!-- ===== Content Area Start ===== -->
+        <div class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
+            <!-- ===== Header Start ===== -->
+            <include src="./partials/header.html" />
+            <!-- ===== Header End ===== -->
 
-      <!-- ===== Main Content Start ===== -->
-      <main>
-        <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
-          <div class="mx-auto max-w-7xl">
-            <!-- Breadcrumb Start -->
-            <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <h2 class="text-title-md2 font-bold text-black dark:text-white">
-                Calendar
-              </h2>
+            <!-- ===== Main Content Start ===== -->
+            <main>
+                <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+                    <div class="mx-auto max-w-242.5">
+                        <!-- Breadcrumb Start -->
+                        <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                            <h2 class="text-title-md2 font-bold text-black dark:text-white">
+                                Switch Name
+                            </h2>
 
-              <nav>
-                <ol class="flex items-center gap-2">
-                  <li><a class="font-medium" href="index.html">Dashboard /</a></li>
-                  <li class="text-primary">Calendar</li>
-                </ol>
-              </nav>
-            </div>
-            <!-- Breadcrumb End -->
-
-            <!-- ====== Calendar Section Start -->
-            <div
-              class="w-full max-w-full rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
-              <table class="w-full">
-                <thead>
-                  <tr class="grid grid-cols-7 rounded-t-sm bg-primary text-white">
-                    <th
-                      class="flex h-15 items-center justify-center rounded-tl-sm p-1 text-xs font-semibold sm:text-base xl:p-5">
-                      <span class="hidden lg:block"> Sunday </span>
-                      <span class="block lg:hidden"> Sun </span>
-                    </th>
-                    <th class="flex h-15 items-center justify-center p-1 text-xs font-semibold sm:text-base xl:p-5">
-                      <span class="hidden lg:block"> Monday </span>
-                      <span class="block lg:hidden"> Mon </span>
-                    </th>
-                    <th class="flex h-15 items-center justify-center p-1 text-xs font-semibold sm:text-base xl:p-5">
-                      <span class="hidden lg:block"> Tuesday </span>
-                      <span class="block lg:hidden"> Tue </span>
-                    </th>
-                    <th class="flex h-15 items-center justify-center p-1 text-xs font-semibold sm:text-base xl:p-5">
-                      <span class="hidden lg:block"> Wednesday </span>
-                      <span class="block lg:hidden"> Wed </span>
-                    </th>
-                    <th class="flex h-15 items-center justify-center p-1 text-xs font-semibold sm:text-base xl:p-5">
-                      <span class="hidden lg:block"> Thursday </span>
-                      <span class="block lg:hidden"> Thur </span>
-                    </th>
-                    <th class="flex h-15 items-center justify-center p-1 text-xs font-semibold sm:text-base xl:p-5">
-                      <span class="hidden lg:block"> Friday </span>
-                      <span class="block lg:hidden"> Fri </span>
-                    </th>
-                    <th
-                      class="flex h-15 items-center justify-center rounded-tr-sm p-1 text-xs font-semibold sm:text-base xl:p-5">
-                      <span class="hidden lg:block"> Saturday </span>
-                      <span class="block lg:hidden"> Sat </span>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <!-- Line 1 -->
-                  <tr class="grid grid-cols-7">
-                    <td
-                      class="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray dark:border-strokedark dark:hover:bg-meta-4 md:h-25 md:p-6 xl:h-31">
-                      <span class="font-medium text-black dark:text-white">1</span>
-                      <div class="group h-16 w-full flex-grow cursor-pointer py-1 md:h-30">
-                        <span class="group-hover:text-primary md:hidden">
-                          More
-                        </span>
-                        <div
-                          class="event invisible absolute left-2 z-99 mb-1 flex w-[200%] flex-col rounded-sm border-l-[3px] border-primary bg-gray px-3 py-1 text-left opacity-0 group-hover:visible group-hover:opacity-100 dark:bg-meta-4 md:visible md:w-[190%] md:opacity-100">
-                          <span class="event-name text-sm font-semibold text-black dark:text-white">
-                            Redesign Website
-                          </span>
-                          <span class="time text-sm font-medium text-black dark:text-white">
-                            1 Dec - 2 Dec
-                          </span>
+                            <nav>
+                                <ol class="flex items-center gap-2">
+                                    <li>
+                                        <a class="font-medium" href="index.html">Dashboard /</a>
+                                    </li>
+                                    <li class="text-primary">Profile</li>
+                                </ol>
+                            </nav>
                         </div>
-                      </div>
-                    </td>
-                    <td
-                      class="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray dark:border-strokedark dark:hover:bg-meta-4 md:h-25 md:p-6 xl:h-31">
-                      <span class="font-medium text-black dark:text-white">2</span>
-                    </td>
-                    <td
-                      class="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray dark:border-strokedark dark:hover:bg-meta-4 md:h-25 md:p-6 xl:h-31">
-                      <span class="font-medium text-black dark:text-white">3</span>
-                    </td>
-                    <td
-                      class="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray dark:border-strokedark dark:hover:bg-meta-4 md:h-25 md:p-6 xl:h-31">
-                      <span class="font-medium text-black dark:text-white">4</span>
-                    </td>
-                    <td
-                      class="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray dark:border-strokedark dark:hover:bg-meta-4 md:h-25 md:p-6 xl:h-31">
-                      <span class="font-medium text-black dark:text-white">5</span>
-                    </td>
-                    <td
-                      class="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray dark:border-strokedark dark:hover:bg-meta-4 md:h-25 md:p-6 xl:h-31">
-                      <span class="font-medium text-black dark:text-white">6</span>
-                    </td>
-                    <td
-                      class="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray dark:border-strokedark dark:hover:bg-meta-4 md:h-25 md:p-6 xl:h-31">
-                      <span class="font-medium text-black dark:text-white">7</span>
-                    </td>
-                  </tr>
-                  <!-- Line 1 -->
-                  <!-- Line 2 -->
-                  <tr class="grid grid-cols-7">
-                    <td
-                      class="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray dark:border-strokedark dark:hover:bg-meta-4 md:h-25 md:p-6 xl:h-31">
-                      <span class="font-medium text-black dark:text-white">8</span>
-                    </td>
-                    <td
-                      class="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray dark:border-strokedark dark:hover:bg-meta-4 md:h-25 md:p-6 xl:h-31">
-                      <span class="font-medium text-black dark:text-white">9</span>
-                    </td>
-                    <td
-                      class="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray dark:border-strokedark dark:hover:bg-meta-4 md:h-25 md:p-6 xl:h-31">
-                      <span class="font-medium text-black dark:text-white">10</span>
-                    </td>
-                    <td
-                      class="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray dark:border-strokedark dark:hover:bg-meta-4 md:h-25 md:p-6 xl:h-31">
-                      <span class="font-medium text-black dark:text-white">11</span>
-                    </td>
-                    <td
-                      class="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray dark:border-strokedark dark:hover:bg-meta-4 md:h-25 md:p-6 xl:h-31">
-                      <span class="font-medium text-black dark:text-white">12</span>
-                    </td>
-                    <td
-                      class="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray dark:border-strokedark dark:hover:bg-meta-4 md:h-25 md:p-6 xl:h-31">
-                      <span class="font-medium text-black dark:text-white">13</span>
-                    </td>
-                    <td
-                      class="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray dark:border-strokedark dark:hover:bg-meta-4 md:h-25 md:p-6 xl:h-31">
-                      <span class="font-medium text-black dark:text-white">14</span>
-                    </td>
-                  </tr>
-                  <!-- Line 2 -->
-                  <!-- Line 3 -->
-                  <tr class="grid grid-cols-7">
-                    <td
-                      class="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray dark:border-strokedark dark:hover:bg-meta-4 md:h-25 md:p-6 xl:h-31">
-                      <span class="font-medium text-black dark:text-white">15</span>
-                    </td>
-                    <td
-                      class="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray dark:border-strokedark dark:hover:bg-meta-4 md:h-25 md:p-6 xl:h-31">
-                      <span class="font-medium text-black dark:text-white">16</span>
-                    </td>
-                    <td
-                      class="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray dark:border-strokedark dark:hover:bg-meta-4 md:h-25 md:p-6 xl:h-31">
-                      <span class="font-medium text-black dark:text-white">17</span>
-                    </td>
-                    <td
-                      class="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray dark:border-strokedark dark:hover:bg-meta-4 md:h-25 md:p-6 xl:h-31">
-                      <span class="font-medium text-black dark:text-white">18</span>
-                    </td>
-                    <td
-                      class="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray dark:border-strokedark dark:hover:bg-meta-4 md:h-25 md:p-6 xl:h-31">
-                      <span class="font-medium text-black dark:text-white">19</span>
-                    </td>
-                    <td
-                      class="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray dark:border-strokedark dark:hover:bg-meta-4 md:h-25 md:p-6 xl:h-31">
-                      <span class="font-medium text-black dark:text-white">20</span>
-                    </td>
-                    <td
-                      class="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray dark:border-strokedark dark:hover:bg-meta-4 md:h-25 md:p-6 xl:h-31">
-                      <span class="font-medium text-black dark:text-white">21</span>
-                    </td>
-                  </tr>
-                  <!-- Line 3 -->
-                  <!-- Line 4 -->
-                  <tr class="grid grid-cols-7">
-                    <td
-                      class="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray dark:border-strokedark dark:hover:bg-meta-4 md:h-25 md:p-6 xl:h-31">
-                      <span class="font-medium text-black dark:text-white">22</span>
-                    </td>
-                    <td
-                      class="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray dark:border-strokedark dark:hover:bg-meta-4 md:h-25 md:p-6 xl:h-31">
-                      <span class="font-medium text-black dark:text-white">23</span>
-                    </td>
-                    <td
-                      class="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray dark:border-strokedark dark:hover:bg-meta-4 md:h-25 md:p-6 xl:h-31">
-                      <span class="font-medium text-black dark:text-white">24</span>
-                    </td>
-                    <td
-                      class="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray dark:border-strokedark dark:hover:bg-meta-4 md:h-25 md:p-6 xl:h-31">
-                      <span class="font-medium text-black dark:text-white">25</span>
-                      <div class="group h-16 w-full flex-grow cursor-pointer py-1 md:h-30">
-                        <span class="group-hover:text-primary md:hidden">
-                          More
-                        </span>
-                        <div
-                          class="event invisible absolute left-2 z-99 mb-1 flex w-[300%] flex-col rounded-sm border-l-[3px] border-primary bg-gray px-3 py-1 text-left opacity-0 group-hover:visible group-hover:opacity-100 dark:bg-meta-4 md:visible md:w-[290%] md:opacity-100">
-                          <span class="event-name text-sm font-semibold text-black dark:text-white">
-                            App Design
-                          </span>
-                          <span class="time text-sm font-medium text-black dark:text-white">
-                            25 Dec - 27 Dec
-                          </span>
+                        <!-- Breadcrumb End -->
+
+                        <!-- ====== Profile Section Start -->
+                        <div class="overflow-hidden rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+                            <div class="relative z-20 h-35 md:h-65">
+                                <img src="./images/cover/cover-01.png" alt="profile cover" class="h-full w-full rounded-tl-sm rounded-tr-sm object-cover object-center" />
+                                <div class="absolute bottom-1 right-1 z-10 xsm:bottom-4 xsm:right-4">
+                                    <label for="cover" class="flex cursor-pointer items-center justify-center gap-2 rounded bg-primary px-2 py-1 text-sm font-medium text-white hover:bg-opacity-80 xsm:px-4">
+                    <input type="file" name="cover" id="cover" class="sr-only" />
+                    <span>
+                      <svg class="fill-current" width="14" height="14" viewBox="0 0 14 14" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M4.76464 1.42638C4.87283 1.2641 5.05496 1.16663 5.25 1.16663H8.75C8.94504 1.16663 9.12717 1.2641 9.23536 1.42638L10.2289 2.91663H12.25C12.7141 2.91663 13.1592 3.101 13.4874 3.42919C13.8156 3.75738 14 4.2025 14 4.66663V11.0833C14 11.5474 13.8156 11.9925 13.4874 12.3207C13.1592 12.6489 12.7141 12.8333 12.25 12.8333H1.75C1.28587 12.8333 0.840752 12.6489 0.512563 12.3207C0.184375 11.9925 0 11.5474 0 11.0833V4.66663C0 4.2025 0.184374 3.75738 0.512563 3.42919C0.840752 3.101 1.28587 2.91663 1.75 2.91663H3.77114L4.76464 1.42638ZM5.56219 2.33329L4.5687 3.82353C4.46051 3.98582 4.27837 4.08329 4.08333 4.08329H1.75C1.59529 4.08329 1.44692 4.14475 1.33752 4.25415C1.22812 4.36354 1.16667 4.51192 1.16667 4.66663V11.0833C1.16667 11.238 1.22812 11.3864 1.33752 11.4958C1.44692 11.6052 1.59529 11.6666 1.75 11.6666H12.25C12.4047 11.6666 12.5531 11.6052 12.6625 11.4958C12.7719 11.3864 12.8333 11.238 12.8333 11.0833V4.66663C12.8333 4.51192 12.7719 4.36354 12.6625 4.25415C12.5531 4.14475 12.4047 4.08329 12.25 4.08329H9.91667C9.72163 4.08329 9.53949 3.98582 9.4313 3.82353L8.43781 2.33329H5.56219Z"
+                          fill="white" />
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M6.99992 5.83329C6.03342 5.83329 5.24992 6.61679 5.24992 7.58329C5.24992 8.54979 6.03342 9.33329 6.99992 9.33329C7.96642 9.33329 8.74992 8.54979 8.74992 7.58329C8.74992 6.61679 7.96642 5.83329 6.99992 5.83329ZM4.08325 7.58329C4.08325 5.97246 5.38909 4.66663 6.99992 4.66663C8.61075 4.66663 9.91659 5.97246 9.91659 7.58329C9.91659 9.19412 8.61075 10.5 6.99992 10.5C5.38909 10.5 4.08325 9.19412 4.08325 7.58329Z"
+                          fill="white" />
+                      </svg>
+                    </span>
+                    <span>Edit</span>
+                  </label>
+                                </div>
+                            </div>
+                            <div class="px-4 pb-6 text-center lg:pb-8 xl:pb-11.5">
+                                <div class="relative z-30 mx-auto -mt-22 h-30 w-full max-w-30 rounded-full bg-white/20 p-1 backdrop-blur sm:h-44 sm:max-w-44 sm:p-3">
+                                    <div class="relative drop-shadow-2">
+                                        <img src="./images/devices/switch.png" alt="profile" />
+                                        <label for="profile" class="absolute bottom-0 right-0 flex h-8.5 w-8.5 cursor-pointer items-center justify-center rounded-full bg-primary text-white hover:bg-opacity-90 sm:bottom-2 sm:right-2">
+                      <svg class="fill-current" width="14" height="14" viewBox="0 0 14 14" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M4.76464 1.42638C4.87283 1.2641 5.05496 1.16663 5.25 1.16663H8.75C8.94504 1.16663 9.12717 1.2641 9.23536 1.42638L10.2289 2.91663H12.25C12.7141 2.91663 13.1592 3.101 13.4874 3.42919C13.8156 3.75738 14 4.2025 14 4.66663V11.0833C14 11.5474 13.8156 11.9925 13.4874 12.3207C13.1592 12.6489 12.7141 12.8333 12.25 12.8333H1.75C1.28587 12.8333 0.840752 12.6489 0.512563 12.3207C0.184375 11.9925 0 11.5474 0 11.0833V4.66663C0 4.2025 0.184374 3.75738 0.512563 3.42919C0.840752 3.101 1.28587 2.91663 1.75 2.91663H3.77114L4.76464 1.42638ZM5.56219 2.33329L4.5687 3.82353C4.46051 3.98582 4.27837 4.08329 4.08333 4.08329H1.75C1.59529 4.08329 1.44692 4.14475 1.33752 4.25415C1.22812 4.36354 1.16667 4.51192 1.16667 4.66663V11.0833C1.16667 11.238 1.22812 11.3864 1.33752 11.4958C1.44692 11.6052 1.59529 11.6666 1.75 11.6666H12.25C12.4047 11.6666 12.5531 11.6052 12.6625 11.4958C12.7719 11.3864 12.8333 11.238 12.8333 11.0833V4.66663C12.8333 4.51192 12.7719 4.36354 12.6625 4.25415C12.5531 4.14475 12.4047 4.08329 12.25 4.08329H9.91667C9.72163 4.08329 9.53949 3.98582 9.4313 3.82353L8.43781 2.33329H5.56219Z"
+                          fill="" />
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M7.00004 5.83329C6.03354 5.83329 5.25004 6.61679 5.25004 7.58329C5.25004 8.54979 6.03354 9.33329 7.00004 9.33329C7.96654 9.33329 8.75004 8.54979 8.75004 7.58329C8.75004 6.61679 7.96654 5.83329 7.00004 5.83329ZM4.08337 7.58329C4.08337 5.97246 5.38921 4.66663 7.00004 4.66663C8.61087 4.66663 9.91671 5.97246 9.91671 7.58329C9.91671 9.19412 8.61087 10.5 7.00004 10.5C5.38921 10.5 4.08337 9.19412 4.08337 7.58329Z"
+                          fill="" />
+                      </svg>
+                      <input type="file" name="profile" id="profile" class="sr-only" />
+                    </label>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <div class="grid grid-cols-6 gap-4">
+                                        <button id="interfaceSwitchButton" type="button" class="hover:bg-primary-600 focus:bg-primary-600 active:bg-primary-700 inline-block rounded bg-primary px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]">
+                      Interface
+                    </button>
+                                        <button id="vlanButton" type="button" class="hover:bg-primary-600 focus:bg-primary-600 active:bg-primary-700 inline-block rounded bg-primary px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]">
+                      VLAN
+                    </button>
+                                        <button id="stpButton" type="button" class="hover:bg-primary-600 focus:bg-primary-600 active:bg-primary-700 inline-block rounded bg-primary px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]">
+                      STP
+                    </button>
+                                        <button id="swportButton" type="button" class="hover:bg-primary-600 focus:bg-primary-600 active:bg-primary-700 inline-block rounded bg-primary px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]">
+                      Switchport
+                    </button>
+
+                                    </div>
+                                    <div id="interfaceSwitchForm" class="grid h-96 grid-cols-3 gap-4" style="display: none">
+                                        <div class="... block">
+                                            <button type="button" data-interface="G0/0" class="interfaceButtonSwitch hover:bg-primary-600 focus:bg-primary-600 active:bg-primary-700 block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]">
+                        Interface G0/0
+                      </button>
+                                            <button type="button" data-interface="G0/1" class="interfaceButtonSwitch hover:bg-primary-600 focus:bg-primary-600 active:bg-primary-700 block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]">
+                        Interface G0/1
+                      </button>
+                                            <button type="button" data-interface="G0/2" class="interfaceButtonSwitch hover:bg-primary-600 focus:bg-primary-600 active:bg-primary-700 block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]">
+                        Interface G0/2
+                      </button>
+                                            <button type="button" data-interface="G0/3" class="interfaceButtonSwitch hover:bg-primary-600 focus:bg-primary-600 active:bg-primary-700 block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]">
+                        Interface G0/3
+                      </button>
+                                            <button type="button" data-interface="G0/4" class="interfaceButtonSwitch hover:bg-primary-600 focus:bg-primary-600 active:bg-primary-700 block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]">
+                        Interface G0/4
+                      </button>
+                                            <button type="button" data-interface="G0/5" class="interfaceButtonSwitch hover:bg-primary-600 focus:bg-primary-600 active:bg-primary-700 block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]">
+                        Interface G0/5
+                      </button>
+                                        </div>
+                                        <div class="... col-span-2">
+                                            <div class="mt-10">
+                                                <div class="grid grid-cols-3 gap-6">
+                                                    <div class="col-span-3 mt-6">
+                                                        <h1 id="interfaceSwitch"></h1>
+                                                        <form action="#" method="POST">
+                                                            <div class="overflow-hidden shadow sm:rounded-md">
+                                                                <div class="bg-white px-4 py-5">
+                                                                    <div class="grid grid-cols-6 gap-6">
+                                                                        <div class="col-span-1">
+                                                                            <label class="inline-block pl-[0.15rem] hover:cursor-pointer" for="statusSwitch">Off</label>
+                                                                            <input class="bg-neutral-300 after:bg-neutral-100 dark:bg-neutral-600 dark:after:bg-neutral-400 mr-2 mt-[0.3rem] h-3.5 w-8 appearance-none rounded-[0.4375rem] before:pointer-events-none before:absolute before:h-3.5 before:w-3.5 before:rounded-full before:bg-transparent before:content-[''] after:absolute after:z-[2] after:-mt-[0.1875rem] after:h-5 after:w-5 after:rounded-full after:border-none after:shadow-[0_0px_3px_0_rgb(0_0_0_/_7%),_0_2px_2px_0_rgb(0_0_0_/_4%)] after:transition-[background-color_0.2s,transform_0.2s] after:content-[''] checked:bg-primary checked:after:absolute checked:after:z-[2] checked:after:-mt-[3px] checked:after:ml-[1.0625rem] checked:after:h-5 checked:after:w-5 checked:after:rounded-full checked:after:border-none checked:after:bg-primary checked:after:shadow-[0_3px_1px_-2px_rgba(0,0,0,0.2),_0_2px_2px_0_rgba(0,0,0,0.14),_0_1px_5px_0_rgba(0,0,0,0.12)] checked:after:transition-[background-color_0.2s,transform_0.2s] checked:after:content-[''] hover:cursor-pointer focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[3px_-1px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-5 focus:after:w-5 focus:after:rounded-full focus:after:content-[''] checked:focus:border-primary checked:focus:bg-primary checked:focus:before:ml-[1.0625rem] checked:focus:before:scale-100 checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:checked:bg-primary dark:checked:after:bg-primary dark:focus:before:shadow-[3px_-1px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca]"
+                                                                                type="checkbox" role="switch" name="statusSwitch" id="statusSwitch" />
+                                                                            <label class="inline-block pl-[0.15rem] hover:cursor-pointer" for="status">On</label>
+                                                                        </div>
+                                                                        <div class="col-span-1">
+                                                                            <label for="methodip" class="text-gray-700 block text-sm font-medium">
+                                                                              Method IP</label>
+                                                                            <input type="text" name="methodip" id="methodip" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                        </div>
+                                                                        <div class="col-span-2">
+                                                                            <label for="ip" class="text-gray-700 block text-sm font-medium">IP Address</label>
+                                                                            <input type="text" name="ip" id="ip" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                        </div>
+
+                                                                        <div class="col-span-2">
+                                                                            <label for="subnet" class="text-gray-700 block text-sm font-medium">Subnet</label>
+                                                                            <input type="text" name="subnet" id="subnet" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                        </div>
+
+                                                                        <div class="col-span-6">
+                                                                            <label for="description" class="text-gray-700 block text-sm font-medium">Description</label>
+                                                                            <input type="text" name="description" id="description" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="bg-gray-50 px-4 py-3 text-right">
+                                                                    <button type="submit" class="hover:bg-success-600 focus:bg-success-600 active:bg-success-700 inline-block rounded bg-success px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
+                                    Success
+                                  </button>
+
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="vlanForm" class="grid h-96 grid-cols-3 gap-4" style="display: none">
+                                        <div class="... col-span-3">
+                                            <div class="mt-10">
+                                                <div class="grid grid-cols-3 gap-6">
+                                                    <div class="col-span-3 mt-6">
+                                                        <h1>VLAN</h1>
+                                                        <form action="#" method="POST">
+                                                            <div class="overflow-hidden shadow sm:rounded-md">
+                                                                <div class="bg-white px-4 py-5">
+                                                                    <div class="grid grid-cols-6 gap-6">
+                                                                        <div class="col-span-2">
+                                                                            <label for="vlanid" class="text-gray-700 block text-sm font-medium">VLAN
+                                        ID</label>
+                                                                            <input type="text" name="vlanid" id="vlanid" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                        </div>
+                                                                        <div class="col-span-2">
+                                                                            <label for="vlanname" class="text-gray-700 block text-sm font-medium">VLAN
+                                        Name</label>
+                                                                            <input type="text" name="vlanname" id="vlanname" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                        </div>
+                                                                        <div class="col-span-2">
+                                                                            <label for="vlandescription" class="text-gray-700 block text-sm font-medium">
+                                        Description</label>
+                                                                            <input type="text" name="vlandescription" id="vlandescription" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                        </div>
+
+                                                                        <div class="bg-gray-50 col-start-6 px-4 py-3 text-right">
+                                                                            <button type="submit" class="hover:bg-success-600 focus:bg-success-600 active:bg-success-700 inline-block rounded bg-success px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
+                                        Success
+                                      </button>
+
+                                                                        </div>
+
+                                                                        <div class="relative col-span-6 overflow-x-auto shadow-md">
+                                                                            <table class="text-gray-500 dark:text-gray-400 w-full text-left text-sm">
+                                                                                <thead class="text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400 text-xs uppercase">
+                                                                                    <tr>
+                                                                                        <th scope="col" class="px-6 py-3">
+                                                                                            VLAN ID
+                                                                                        </th>
+                                                                                        <th scope="col" class="px-6 py-3">
+                                                                                            VLAN Name
+                                                                                        </th>
+                                                                                        <th scope="col" class="px-6 py-3">
+                                                                                            Description
+                                                                                        </th>
+
+                                                                                        <th scope="col" class="px-6 py-3">
+                                                                                            <span class="sr-only">Action</span>
+                                                                                        </th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody id="tableVlan">
+                                                                                    <tr class="dark:bg-gray-800 dark:border-gray-700 border-b bg-white">
+
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="stpForm" class="grid h-96 grid-cols-3 gap-4" style="display: none">
+                                        <div class="... col-span-3">
+                                            <div class="mt-10">
+                                                <div class="grid grid-cols-3 gap-6">
+                                                    <div class="col-span-3 mt-6">
+                                                        <h1>Spaning Tree Protocol</h1>
+                                                        <form action="#" method="POST">
+                                                            <div class="overflow-hidden shadow sm:rounded-md">
+                                                                <div class="bg-white px-4 py-5">
+                                                                    <div class="grid grid-cols-6 gap-6">
+                                                                        <div class="col-span-2">
+                                                                            <label class="inline-block pl-[0.15rem] hover:cursor-pointer" for="statusStp">Status Off</label>
+                                                                            <input class="bg-neutral-300 after:bg-neutral-100 dark:bg-neutral-600 dark:after:bg-neutral-400 mr-2 mt-[0.3rem] h-3.5 w-8 appearance-none rounded-[0.4375rem] before:pointer-events-none before:absolute before:h-3.5 before:w-3.5 before:rounded-full before:bg-transparent before:content-[''] after:absolute after:z-[2] after:-mt-[0.1875rem] after:h-5 after:w-5 after:rounded-full after:border-none after:shadow-[0_0px_3px_0_rgb(0_0_0_/_7%),_0_2px_2px_0_rgb(0_0_0_/_4%)] after:transition-[background-color_0.2s,transform_0.2s] after:content-[''] checked:bg-primary checked:after:absolute checked:after:z-[2] checked:after:-mt-[3px] checked:after:ml-[1.0625rem] checked:after:h-5 checked:after:w-5 checked:after:rounded-full checked:after:border-none checked:after:bg-primary checked:after:shadow-[0_3px_1px_-2px_rgba(0,0,0,0.2),_0_2px_2px_0_rgba(0,0,0,0.14),_0_1px_5px_0_rgba(0,0,0,0.12)] checked:after:transition-[background-color_0.2s,transform_0.2s] checked:after:content-[''] hover:cursor-pointer focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[3px_-1px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-5 focus:after:w-5 focus:after:rounded-full focus:after:content-[''] checked:focus:border-primary checked:focus:bg-primary checked:focus:before:ml-[1.0625rem] checked:focus:before:scale-100 checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:checked:bg-primary dark:checked:after:bg-primary dark:focus:before:shadow-[3px_-1px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca]"
+                                                                                type="checkbox" role="switch" name="statusStp" id="statusStp" />
+                                                                            <label class="inline-block pl-[0.15rem] hover:cursor-pointer" for="statusStp">On</label>
+                                                                        </div>
+                                                                        <div class="col-span-1">
+                                                                            <label for="stpmode" class="text-gray-700 block text-sm font-medium">STP Mode
+                                        </label>
+                                                                            <input type="text" name="stpmode" id="stpmode" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                        </div>
+                                                                        <div class="col-span-1">
+                                                                            <label for="stppriority" class="text-gray-700 block text-sm font-medium">STP
+                                        Priority</label>
+                                                                            <input type="text" name="stppriority" id="stppriority" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                        </div>
+                                                                        <div class="col-span-1">
+                                                                            <label for="hellotime" class="text-gray-700 block text-sm font-medium">Hello-Time</label>
+                                                                            <input type="text" name="hellotime" id="hellotime" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                        </div>
+                                                                        <div class="col-span-1">
+                                                                            <label for="maxage" class="text-gray-700 block text-sm font-medium">Max-Age
+                                        card</label>
+                                                                            <input type="text" name="maxage" id="maxage" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                        </div>
+                                                                        <div class="col-span-1">
+                                                                            <label for="forwardtime" class="text-gray-700 block text-sm font-medium">Forward-Time
+                                        card</label>
+                                                                            <input type="text" name="forwardtime" id="forwardtime" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                        </div>
+                                                                        <div class="col-span-2">
+                                                                            <label class="inline-block pl-[0.15rem] hover:cursor-pointer" for="lpguard">Loopback-Guard Off</label>
+                                                                            <input class="bg-neutral-300 after:bg-neutral-100 dark:bg-neutral-600 dark:after:bg-neutral-400 mr-2 mt-[0.3rem] h-3.5 w-8 appearance-none rounded-[0.4375rem] before:pointer-events-none before:absolute before:h-3.5 before:w-3.5 before:rounded-full before:bg-transparent before:content-[''] after:absolute after:z-[2] after:-mt-[0.1875rem] after:h-5 after:w-5 after:rounded-full after:border-none after:shadow-[0_0px_3px_0_rgb(0_0_0_/_7%),_0_2px_2px_0_rgb(0_0_0_/_4%)] after:transition-[background-color_0.2s,transform_0.2s] after:content-[''] checked:bg-primary checked:after:absolute checked:after:z-[2] checked:after:-mt-[3px] checked:after:ml-[1.0625rem] checked:after:h-5 checked:after:w-5 checked:after:rounded-full checked:after:border-none checked:after:bg-primary checked:after:shadow-[0_3px_1px_-2px_rgba(0,0,0,0.2),_0_2px_2px_0_rgba(0,0,0,0.14),_0_1px_5px_0_rgba(0,0,0,0.12)] checked:after:transition-[background-color_0.2s,transform_0.2s] checked:after:content-[''] hover:cursor-pointer focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[3px_-1px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-5 focus:after:w-5 focus:after:rounded-full focus:after:content-[''] checked:focus:border-primary checked:focus:bg-primary checked:focus:before:ml-[1.0625rem] checked:focus:before:scale-100 checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:checked:bg-primary dark:checked:after:bg-primary dark:focus:before:shadow-[3px_-1px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca]"
+                                                                                type="checkbox" role="switch" name="lpguard" id="lpguard" />
+                                                                            <label class="inline-block pl-[0.15rem] hover:cursor-pointer" for="lpguard">On</label>
+                                                                        </div>
+                                                                        <div class="bg-gray-50 col-start-6 px-4 py-3 text-right">
+                                                                            <button type="submit" class="hover:bg-success-600 focus:bg-success-600 active:bg-success-700 inline-block rounded bg-success px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
+                                        Success
+                                      </button>
+
+                                                                        </div>
+
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="swportForm" class="grid h-96 grid-cols-3 gap-4 overflow-auto" style="display: none">
+                                        <div class="... col-span-3">
+                                            <div class="mt-10">
+                                                <div class="grid grid-cols-3 gap-6">
+                                                    <div class="col-span-3 mt-6">
+                                                        <h1>Switchport</h1>
+                                                        <form action="#" method="POST">
+                                                            <div class="overflow-hidden shadow sm:rounded-md">
+                                                                <div class="bg-white px-4 py-5">
+                                                                    <div class="grid grid-cols-6 gap-6">
+                                                                        <div class="col-span-1">
+                                                                            <label for="swportinterface" class="text-gray-700 block text-sm font-medium">Switchport Interface
+                                        Number</label>
+                                                                            <input type="text" name="swportinterface" id="swportinterface" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                        </div>
+                                                                        <div class="col-span-1">
+                                                                            <label for="swportmode" class="text-gray-700 block text-sm font-medium">Switchport
+                                        Mode</label>
+                                                                            <input type="text" name="swportmode" id="swportmode" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                        </div>
+                                                                        <div class="col-span-1">
+                                                                            <label for="swporttrunknative" class="text-gray-700 block text-sm font-medium">Switchport Trunk Native
+                                        VLAN</label>
+                                                                            <input type="text" name="swporttrunknative" id="swporttrunknative" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                        </div>
+                                                                        <div class="col-span-1">
+                                                                            <label for="swportallowednative" class="text-gray-700 block text-sm font-medium">Switchport Trunk Allowed
+                                        VLAN</label>
+                                                                            <input type="text" name="swportallowednative" id="swportallowednative" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                        </div>
+                                                                        <div class="col-span-1">
+                                                                            <label for="swportaccess" class="text-gray-700 block text-sm font-medium">Switchport Access VLAN
+                                        </label>
+                                                                            <input type="text" name="swportaccess" id="swportaccess" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                        </div>
+
+                                                                        <div class="bg-gray-50 col-start-6 px-4 py-3 text-right">
+                                                                            <button type="submit" class="hover:bg-success-600 focus:bg-success-600 active:bg-success-700 inline-block rounded bg-success px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
+                                        Success
+                                      </button>
+
+                                                                        </div>
+
+                                                                        <div class="relative col-span-6 overflow-x-auto shadow-md">
+                                                                            <table class="text-gray-500 dark:text-gray-400 w-full text-left text-sm">
+                                                                                <thead class="text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400 text-xs uppercase">
+                                                                                    <tr>
+                                                                                        <th scope="col" class="px-6 py-3">
+                                                                                            Switchport Interface Number
+                                                                                        </th>
+                                                                                        <th scope="col" class="px-6 py-3">
+                                                                                            Switchport Mode
+                                                                                        </th>
+                                                                                        <th scope="col" class="px-6 py-3">
+                                                                                            Switchport Trunk Native VLAN
+                                                                                        </th>
+                                                                                        <th scope="col" class="px-6 py-3">
+                                                                                            Switchport Trunk Allowed VLAN
+                                                                                        </th>
+                                                                                        <th scope="col" class="px-6 py-3">
+                                                                                            Switchport Access VLAN
+                                                                                        </th>
+
+                                                                                        <th scope="col" class="px-6 py-3">
+                                                                                            <span class="sr-only">Action</span>
+                                                                                        </th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody id="tableSwitchport">
+                                                                                    <tr class="dark:bg-gray-800 dark:border-gray-700 border-b bg-white">
+
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="... col-span-3">
+                                            <div class="mt-10">
+                                                <div class="grid grid-cols-3 gap-6">
+                                                    <div class="col-span-3 mt-6">
+                                                        <h1>Apply interface</h1>
+                                                        <form action="#" method="POST">
+                                                            <div class="overflow-hidden shadow sm:rounded-md">
+                                                                <div class="bg-white px-4 py-5">
+                                                                    <div class="grid grid-cols-6 gap-6">
+                                                                        <div class="col-span-1">
+                                                                            <label for="aclpolicy" class="text-gray-700 block text-sm font-medium">ACL
+                                        Policy</label>
+                                                                            <input type="text" name="aclpolicy" id="aclpolicy" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                        </div>
+                                                                        <div class="col-span-1">
+                                                                            <label for="applyinterface" class="text-gray-700 block text-sm font-medium">Interface</label>
+                                                                            <input type="text" name="applyinterface" id="applyinterface" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                        </div>
+                                                                        <div class="col-span-1">
+                                                                            <label for="inout" class="text-gray-700 block text-sm font-medium">In/Out</label>
+                                                                            <input type="text" name="inout" id="inout" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                        </div>
+
+                                                                        <div class="bg-gray-50 col-start-6 px-4 py-3 text-right">
+                                                                            <button type="submit" class="hover:bg-success-600 focus:bg-success-600 active:bg-success-700 inline-block rounded bg-success px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
+                                        Success
+                                      </button>
+
+                                                                        </div>
+
+                                                                        <div class="relative col-span-6 overflow-x-auto shadow-md">
+                                                                            <table class="text-gray-500 dark:text-gray-400 w-full text-left text-sm">
+                                                                                <thead class="text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400 text-xs uppercase">
+                                                                                    <tr>
+                                                                                        <th scope="col" class="px-6 py-3">
+                                                                                            ACL Policy
+                                                                                        </th>
+                                                                                        <th scope="col" class="px-6 py-3">
+                                                                                            Interface
+                                                                                        </th>
+                                                                                        <th scope="col" class="px-6 py-3">
+                                                                                            In/Out
+                                                                                        </th>
+
+                                                                                        <th scope="col" class="px-6 py-3">
+                                                                                            <span class="sr-only">Action</span>
+                                                                                        </th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <tr class="dark:bg-gray-800 dark:border-gray-700 border-b bg-white">
+                                                                                        <th scope="row" class="text-gray-900 whitespace-nowrap px-6 py-4 font-medium dark:text-white">
+                                                                                            1
+                                                                                        </th>
+                                                                                        <td class="px-6 py-4">
+                                                                                            1
+                                                                                        </td>
+                                                                                        <td class="px-6 py-4">
+                                                                                            1
+                                                                                        </td>
+
+
+                                                                                        <td class="px-6 py-4 text-right">
+                                                                                            <a href="#" class="text-blue-600 dark:text-blue-500 font-medium hover:underline">Remove</a>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="ntpForm" class="grid h-96 grid-cols-3 gap-4" style="display: none">
+                                        <div class="... col-span-3">c</div>
+                                    </div>
+                                    <div id="dhcpForm" class="grid h-96 grid-cols-3 gap-4" style="display: none">
+                                        <div class="... col-span-3">
+                                            <div class="mt-10">
+                                                <div class="grid grid-cols-3 gap-6">
+                                                    <div class="col-span-3 mt-6">
+                                                        <h1>DHCP</h1>
+                                                        <form action="#" method="POST">
+                                                            <div class="overflow-hidden shadow sm:rounded-md">
+                                                                <div class="bg-white px-4 py-5">
+                                                                    <div class="grid grid-cols-6 gap-6">
+                                                                        <div class="col-span-2">
+                                                                            <label for="poolname" class="text-gray-700 block text-sm font-medium">Pool
+                                        name</label>
+                                                                            <input type="text" name="poolname" id="poolname" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                        </div>
+                                                                        <div class="col-span-2">
+                                                                            <label for="dhcpnetwork" class="text-gray-700 block text-sm font-medium">DHCP
+                                        Network</label>
+                                                                            <input type="text" name="dhcpnetwork" id="dhcpnetwork" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                        </div>
+                                                                        <div class="col-span-2">
+                                                                            <label for="dhcpsubnet" class="text-gray-700 block text-sm font-medium">DHCP
+                                        Subnet Mask</label>
+                                                                            <input type="text" name="dhcpsubnet" id="dhcpsubnet" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                        </div>
+                                                                        <div class="col-span-1">
+                                                                            <label for="exclfrom" class="text-gray-700 block text-sm font-medium">Exclude-address From</label>
+                                                                            <input type="text" name="exclfrom" id="exclfrom" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                        </div>
+                                                                        <div class="col-span-1">
+                                                                            <label for="exclto" class="text-gray-700 block text-sm font-medium">Exclude-address To</label>
+                                                                            <input type="text" name="exclto" id="exclto" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                        </div>
+                                                                        <div class="col-span-1">
+                                                                            <label for="dhcpdfgwip" class="text-gray-700 block text-sm font-medium">Default
+                                        gateway’s IP address</label>
+                                                                            <input type="text" name="dhcpdfgwip" id="dhcpdfgwip" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                        </div>
+                                                                        <div class="col-span-1">
+                                                                            <label for="dhcpdnsipad" class="text-gray-700 block text-sm font-medium">DNS
+                                        server’s IP address</label>
+                                                                            <input type="text" name="dhcpdnsipad" id="dhcpdnsipad" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                        </div>
+                                                                        <div class="bg-gray-50 col-start-6 px-4 py-3 text-right">
+                                                                            <button type="submit" class="hover:bg-success-600 focus:bg-success-600 active:bg-success-700 inline-block rounded bg-success px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
+                                        Success
+                                      </button>
+
+                                                                        </div>
+
+                                                                        <div class="relative col-span-6 overflow-x-auto shadow-md">
+                                                                            <table class="text-gray-500 dark:text-gray-400 w-full text-left text-sm">
+                                                                                <thead class="text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400 text-xs uppercase">
+                                                                                    <tr>
+                                                                                        <th scope="col" class="px-6 py-3">
+                                                                                            Pool Name
+                                                                                        </th>
+                                                                                        <th scope="col" class="px-6 py-3">
+                                                                                            DHCP Network
+                                                                                        </th>
+                                                                                        <th scope="col" class="px-6 py-3">
+                                                                                            Exclude-address
+                                                                                        </th>
+                                                                                        <th scope="col" class="px-6 py-3">
+                                                                                            Default gateway’s IP address
+                                                                                        </th>
+                                                                                        <th scope="col" class="px-6 py-3">
+                                                                                            DNS server’s IP address
+                                                                                        </th>
+                                                                                        <th scope="col" class="px-6 py-3">
+                                                                                            <span class="sr-only">Action</span>
+                                                                                        </th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <tr class="dark:bg-gray-800 dark:border-gray-700 border-b bg-white">
+                                                                                        <th scope="row" class="text-gray-900 whitespace-nowrap px-6 py-4 font-medium dark:text-white">
+                                                                                            1
+                                                                                        </th>
+                                                                                        <td class="px-6 py-4">
+                                                                                            1
+                                                                                        </td>
+                                                                                        <td class="px-6 py-4">
+                                                                                            192.168.1.1
+                                                                                        </td>
+                                                                                        <td class="px-6 py-4">
+                                                                                            0.0.0.255
+                                                                                        </td>
+                                                                                        <td class="px-6 py-4">
+                                                                                            0.0.0.255
+                                                                                        </td>
+
+                                                                                        <td class="px-6 py-4 text-right">
+                                                                                            <a href="#" class="text-blue-600 dark:text-blue-500 font-medium hover:underline">Remove</a>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                      </div>
-                    </td>
-                    <td
-                      class="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray dark:border-strokedark dark:hover:bg-meta-4 md:h-25 md:p-6 xl:h-31">
-                      <span class="font-medium text-black dark:text-white">26</span>
-                    </td>
-                    <td
-                      class="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray dark:border-strokedark dark:hover:bg-meta-4 md:h-25 md:p-6 xl:h-31">
-                      <span class="font-medium text-black dark:text-white">27</span>
-                    </td>
-                    <td
-                      class="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray dark:border-strokedark dark:hover:bg-meta-4 md:h-25 md:p-6 xl:h-31">
-                      <span class="font-medium text-black dark:text-white">28</span>
-                    </td>
-                  </tr>
-                  <!-- Line 4 -->
-                  <!-- Line 5 -->
-                  <tr class="grid grid-cols-7">
-                    <td
-                      class="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray dark:border-strokedark dark:hover:bg-meta-4 md:h-25 md:p-6 xl:h-31">
-                      <span class="font-medium text-black dark:text-white">29</span>
-                    </td>
-                    <td
-                      class="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray dark:border-strokedark dark:hover:bg-meta-4 md:h-25 md:p-6 xl:h-31">
-                      <span class="font-medium text-black dark:text-white">30</span>
-                    </td>
-                    <td
-                      class="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray dark:border-strokedark dark:hover:bg-meta-4 md:h-25 md:p-6 xl:h-31">
-                      <span class="font-medium text-black dark:text-white">31</span>
-                    </td>
-                    <td
-                      class="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray dark:border-strokedark dark:hover:bg-meta-4 md:h-25 md:p-6 xl:h-31">
-                      <span class="font-medium text-black dark:text-white">1</span>
-                    </td>
-                    <td
-                      class="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray dark:border-strokedark dark:hover:bg-meta-4 md:h-25 md:p-6 xl:h-31">
-                      <span class="font-medium text-black dark:text-white">2</span>
-                    </td>
-                    <td
-                      class="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray dark:border-strokedark dark:hover:bg-meta-4 md:h-25 md:p-6 xl:h-31">
-                      <span class="font-medium text-black dark:text-white">3</span>
-                    </td>
-                    <td
-                      class="ease relative h-20 cursor-pointer border border-stroke p-2 transition duration-500 hover:bg-gray dark:border-strokedark dark:hover:bg-meta-4 md:h-25 md:p-6 xl:h-31">
-                      <span class="font-medium text-black dark:text-white">4</span>
-                    </td>
-                  </tr>
-                  <!-- Line 5 -->
-                </tbody>
-              </table>
-            </div>
-            <!-- ====== Calendar Section End -->
-          </div>
+                        <!-- ====== Profile Section End -->
+                    </div>
+                </div>
+            </main>
+            <!-- ===== Main Content End ===== -->
         </div>
-      </main>
-      <!-- ===== Main Content End ===== -->
+        <!-- ===== Content Area End ===== -->
     </div>
-    <!-- ===== Content Area End ===== -->
-  </div>
-  <!-- ===== Page Wrapper End ===== -->
+    <!-- ===== Page Wrapper End ===== -->
+    <script src="scriptSwitch.js"></script>
 </body>
 
 </html>
