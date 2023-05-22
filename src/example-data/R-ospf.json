@@ -1,0 +1,30 @@
+{
+  "instance": {
+    "1": {
+      "areas": {
+        "0.0.0.0": {
+          "interfaces": {
+            "GigabitEthernet0/1": {
+              "cost": 1,
+              "ip_address": "172.16.2.254/24",
+              "nbrs_count": 0,
+              "nbrs_full": 0,
+              "state": "DR"
+            }
+          }
+        },
+        "0.0.0.10": {
+          "interfaces": {
+            "GigabitEthernet0/2": {
+              "cost": 1,
+              "ip_address": "10.0.0.1/24",
+              "nbrs_count": 0,
+              "nbrs_full": 0,
+              "state": "DR"
+            }
+          }
+        }
+      }
+    }
+  }
+}
