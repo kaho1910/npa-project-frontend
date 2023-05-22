@@ -219,6 +219,42 @@ function interfaceButtonSwitchClick(event) {
         subnetInput.disabled = true;
     }
 }
+var ipInput = document.getElementById("ip");
+var ipLabel = document.getElementById("ipLabel");
+
+ipInput.addEventListener("input", function() {
+    var ipAddress = ipInput.value;
+
+    // Regular expression to match the IP address format
+    var ipRegex = /^(\d{1,3}\.){3}\d{1,3}$/;
+
+    // Check if the input matches the IP address format
+    if (ipRegex.test(ipAddress)) {
+        var octets = ipAddress.split(".");
+        var isValid = octets.every(function(octet) {
+            // Convert each octet to a number and check if it falls within the valid range (0-255)
+            var num = parseInt(octet);
+            return num >= 0 && num <= 255;
+        });
+
+        if (isValid) {
+            // Input is valid
+            ipLabel.textContent = "Valid IP address format";
+            ipLabel.classList.remove("text-danger");
+            ipLabel.classList.add("text-success");
+        } else {
+            // Input is invalid
+            ipLabel.textContent = "Invalid IP address format";
+            ipLabel.classList.remove("text-success");
+            ipLabel.classList.add("text-danger");
+        }
+    } else {
+        // Input is invalid
+        ipLabel.textContent = "Invalid IP address format";
+        ipLabel.classList.remove("text-success");
+        ipLabel.classList.add("text-danger");
+    }
+});
 
 
 
@@ -490,6 +526,78 @@ function populateAclApplyInterfaceTable() {
         tableApplyPolicyAcl.appendChild(row);
     });
 }
+var aclsourceInput = document.getElementById("aclsource");
+var aclsourceLabel = document.getElementById("aclsourceLabel");
+
+aclsourceInput.addEventListener("input", function() {
+    var aclsource = aclsourceInput.value;
+
+    // Regular expression to match the IP address format
+    var ipRegex = /^(\d{1,3}\.){3}\d{1,3}$/;
+
+    // Check if the input matches the IP address format
+    if (ipRegex.test(aclsource)) {
+        var octets = aclsource.split(".");
+        var isValid = octets.every(function(octet) {
+            // Convert each octet to a number and check if it falls within the valid range (0-255)
+            var num = parseInt(octet);
+            return num >= 0 && num <= 255;
+        });
+
+        if (isValid) {
+            // Input is valid
+            aclsourceLabel.textContent = "Valid IP address format";
+            aclsourceLabel.classList.remove("text-danger");
+            aclsourceLabel.classList.add("text-success");
+        } else {
+            // Input is invalid
+            aclsourceLabel.textContent = "Invalid IP address format";
+            aclsourceLabel.classList.remove("text-success");
+            aclsourceLabel.classList.add("text-danger");
+        }
+    } else {
+        // Input is invalid
+        aclsourceLabel.textContent = "Invalid IP address format";
+        aclsourceLabel.classList.remove("text-success");
+        aclsourceLabel.classList.add("text-danger");
+    }
+});
+var acldestinationInput = document.getElementById("acldestination");
+var acldestinationLabel = document.getElementById("acldestinationLabel");
+
+acldestinationInput.addEventListener("input", function() {
+    var acldestination = acldestinationInput.value;
+
+    // Regular expression to match the IP address format
+    var ipRegex = /^(\d{1,3}\.){3}\d{1,3}$/;
+
+    // Check if the input matches the IP address format
+    if (ipRegex.test(acldestination)) {
+        var octets = acldestination.split(".");
+        var isValid = octets.every(function(octet) {
+            // Convert each octet to a number and check if it falls within the valid range (0-255)
+            var num = parseInt(octet);
+            return num >= 0 && num <= 255;
+        });
+
+        if (isValid) {
+            // Input is valid
+            acldestinationLabel.textContent = "Valid IP address format";
+            acldestinationLabel.classList.remove("text-danger");
+            acldestinationLabel.classList.add("text-success");
+        } else {
+            // Input is invalid
+            acldestinationLabel.textContent = "Invalid IP address format";
+            acldestinationLabel.classList.remove("text-success");
+            acldestinationLabel.classList.add("text-danger");
+        }
+    } else {
+        // Input is invalid
+        acldestinationLabel.textContent = "Invalid IP address format";
+        acldestinationLabel.classList.remove("text-success");
+        acldestinationLabel.classList.add("text-danger");
+    }
+});
 
 // Dynamic Device Name Zone
 
