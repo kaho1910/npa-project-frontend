@@ -1,0 +1,467 @@
+{
+  "100": {
+    "aces": {
+      "10": {
+        "actions": {
+          "forwarding": "permit",
+          "logging": "log-syslog"
+        },
+        "matches": {
+          "l3": {
+            "ipv4": {
+              "destination_network": {
+                "any": {
+                  "destination_network": "any"
+                }
+              },
+              "protocol": "ipv4",
+              "source_network": {
+                "any": {
+                  "source_network": "any"
+                }
+              }
+            }
+          },
+          "l4": {
+            "ipv4": {
+              "established": false
+            }
+          }
+        },
+        "name": "10"
+      }
+    },
+    "acl_type": "extended",
+    "name": "100",
+    "type": "ipv4-acl-type"
+  },
+  "CISCO-CWA-URL-REDIRECT-ACL": {
+    "aces": {
+      "100": {
+        "actions": {
+          "forwarding": "deny",
+          "logging": "log-none"
+        },
+        "matches": {
+          "l3": {
+            "ipv4": {
+              "destination_network": {
+                "any": {
+                  "destination_network": "any"
+                }
+              },
+              "protocol": "udp",
+              "source_network": {
+                "any": {
+                  "source_network": "any"
+                }
+              }
+            }
+          },
+          "l4": {
+            "udp": {
+              "destination_port": {
+                "operator": {
+                  "operator": "eq",
+                  "port": 53
+                }
+              },
+              "established": false
+            }
+          }
+        },
+        "name": "100"
+      },
+      "101": {
+        "actions": {
+          "forwarding": "deny",
+          "logging": "log-none"
+        },
+        "matches": {
+          "l3": {
+            "ipv4": {
+              "destination_network": {
+                "any": {
+                  "destination_network": "any"
+                }
+              },
+              "protocol": "tcp",
+              "source_network": {
+                "any": {
+                  "source_network": "any"
+                }
+              }
+            }
+          },
+          "l4": {
+            "tcp": {
+              "destination_port": {
+                "operator": {
+                  "operator": "eq",
+                  "port": 53
+                }
+              },
+              "established": false
+            }
+          }
+        },
+        "name": "101"
+      },
+      "102": {
+        "actions": {
+          "forwarding": "deny",
+          "logging": "log-none"
+        },
+        "matches": {
+          "l3": {
+            "ipv4": {
+              "destination_network": {
+                "any": {
+                  "destination_network": "any"
+                }
+              },
+              "protocol": "udp",
+              "source_network": {
+                "any": {
+                  "source_network": "any"
+                }
+              }
+            }
+          },
+          "l4": {
+            "udp": {
+              "established": false,
+              "source_port": {
+                "operator": {
+                  "operator": "eq",
+                  "port": "bootps"
+                }
+              }
+            }
+          }
+        },
+        "name": "102"
+      },
+      "103": {
+        "actions": {
+          "forwarding": "deny",
+          "logging": "log-none"
+        },
+        "matches": {
+          "l3": {
+            "ipv4": {
+              "destination_network": {
+                "any": {
+                  "destination_network": "any"
+                }
+              },
+              "protocol": "udp",
+              "source_network": {
+                "any": {
+                  "source_network": "any"
+                }
+              }
+            }
+          },
+          "l4": {
+            "udp": {
+              "destination_port": {
+                "operator": {
+                  "operator": "eq",
+                  "port": 68
+                }
+              },
+              "established": false
+            }
+          }
+        },
+        "name": "103"
+      },
+      "104": {
+        "actions": {
+          "forwarding": "deny",
+          "logging": "log-none"
+        },
+        "matches": {
+          "l3": {
+            "ipv4": {
+              "destination_network": {
+                "any": {
+                  "destination_network": "any"
+                }
+              },
+              "protocol": "udp",
+              "source_network": {
+                "any": {
+                  "source_network": "any"
+                }
+              }
+            }
+          },
+          "l4": {
+            "udp": {
+              "established": false,
+              "source_port": {
+                "operator": {
+                  "operator": "eq",
+                  "port": "bootpc"
+                }
+              }
+            }
+          }
+        },
+        "name": "104"
+      },
+      "105": {
+        "actions": {
+          "forwarding": "permit",
+          "logging": "log-none"
+        },
+        "matches": {
+          "l3": {
+            "ipv4": {
+              "destination_network": {
+                "any": {
+                  "destination_network": "any"
+                }
+              },
+              "protocol": "tcp",
+              "source_network": {
+                "any": {
+                  "source_network": "any"
+                }
+              }
+            }
+          },
+          "l4": {
+            "tcp": {
+              "destination_port": {
+                "operator": {
+                  "operator": "eq",
+                  "port": 80
+                }
+              },
+              "established": false
+            }
+          }
+        },
+        "name": "105"
+      }
+    },
+    "acl_type": "extended",
+    "name": "CISCO-CWA-URL-REDIRECT-ACL",
+    "type": "ipv4-acl-type"
+  },
+  "preauth_ipv4_acl": {
+    "aces": {
+      "10": {
+        "actions": {
+          "forwarding": "permit",
+          "logging": "log-none"
+        },
+        "matches": {
+          "l3": {
+            "ipv4": {
+              "destination_network": {
+                "any": {
+                  "destination_network": "any"
+                }
+              },
+              "protocol": "udp",
+              "source_network": {
+                "any": {
+                  "source_network": "any"
+                }
+              }
+            }
+          },
+          "l4": {
+            "udp": {
+              "destination_port": {
+                "operator": {
+                  "operator": "eq",
+                  "port": 53
+                }
+              },
+              "established": false
+            }
+          }
+        },
+        "name": "10"
+      },
+      "20": {
+        "actions": {
+          "forwarding": "permit",
+          "logging": "log-none"
+        },
+        "matches": {
+          "l3": {
+            "ipv4": {
+              "destination_network": {
+                "any": {
+                  "destination_network": "any"
+                }
+              },
+              "protocol": "tcp",
+              "source_network": {
+                "any": {
+                  "source_network": "any"
+                }
+              }
+            }
+          },
+          "l4": {
+            "tcp": {
+              "destination_port": {
+                "operator": {
+                  "operator": "eq",
+                  "port": 53
+                }
+              },
+              "established": false
+            }
+          }
+        },
+        "name": "20"
+      },
+      "30": {
+        "actions": {
+          "forwarding": "permit",
+          "logging": "log-none"
+        },
+        "matches": {
+          "l3": {
+            "ipv4": {
+              "destination_network": {
+                "any": {
+                  "destination_network": "any"
+                }
+              },
+              "protocol": "udp",
+              "source_network": {
+                "any": {
+                  "source_network": "any"
+                }
+              }
+            }
+          },
+          "l4": {
+            "udp": {
+              "established": false,
+              "source_port": {
+                "operator": {
+                  "operator": "eq",
+                  "port": "bootps"
+                }
+              }
+            }
+          }
+        },
+        "name": "30"
+      },
+      "40": {
+        "actions": {
+          "forwarding": "permit",
+          "logging": "log-none"
+        },
+        "matches": {
+          "l3": {
+            "ipv4": {
+              "destination_network": {
+                "any": {
+                  "destination_network": "any"
+                }
+              },
+              "protocol": "udp",
+              "source_network": {
+                "any": {
+                  "source_network": "any"
+                }
+              }
+            }
+          },
+          "l4": {
+            "udp": {
+              "destination_port": {
+                "operator": {
+                  "operator": "eq",
+                  "port": 68
+                }
+              },
+              "established": false
+            }
+          }
+        },
+        "name": "40"
+      },
+      "50": {
+        "actions": {
+          "forwarding": "permit",
+          "logging": "log-none"
+        },
+        "matches": {
+          "l3": {
+            "ipv4": {
+              "destination_network": {
+                "any": {
+                  "destination_network": "any"
+                }
+              },
+              "protocol": "udp",
+              "source_network": {
+                "any": {
+                  "source_network": "any"
+                }
+              }
+            }
+          },
+          "l4": {
+            "udp": {
+              "established": false,
+              "source_port": {
+                "operator": {
+                  "operator": "eq",
+                  "port": "bootpc"
+                }
+              }
+            }
+          }
+        },
+        "name": "50"
+      },
+      "60": {
+        "actions": {
+          "forwarding": "deny",
+          "logging": "log-none"
+        },
+        "matches": {
+          "l3": {
+            "ipv4": {
+              "destination_network": {
+                "any": {
+                  "destination_network": "any"
+                }
+              },
+              "protocol": "ipv4",
+              "source_network": {
+                "any": {
+                  "source_network": "any"
+                }
+              }
+            }
+          },
+          "l4": {
+            "ipv4": {
+              "established": false
+            }
+          }
+        },
+        "name": "60"
+      }
+    },
+    "acl_type": "extended",
+    "name": "preauth_ipv4_acl",
+    "per_user": true,
+    "type": "ipv4-acl-type"
+  }
+}
