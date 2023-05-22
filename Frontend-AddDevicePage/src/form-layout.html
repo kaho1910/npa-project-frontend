@@ -2,114 +2,109 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>
-    Form Layout | TailAdmin - Tailwind CSS Admin Dashboard Template
-  </title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        Form Layout | TailAdmin - Tailwind CSS Admin Dashboard Template
+    </title>
 </head>
 
-<body
-  x-data="{ page: 'formLayout', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
-  x-init="
+<body x-data="{ page: 'formLayout', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }" x-init="
           darkMode = JSON.parse(localStorage.getItem('darkMode'));
-          $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
-  :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}">
-  <!-- ===== Preloader Start ===== -->
-  <include src="./partials/preloader.html"></include>
-  <!-- ===== Preloader End ===== -->
+          $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))" :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}">
+    <!-- ===== Preloader Start ===== -->
+    <include src="./partials/preloader.html"></include>
+    <!-- ===== Preloader End ===== -->
 
-  <!-- ===== Page Wrapper Start ===== -->
-  <div class="flex h-screen overflow-hidden">
-    <!-- ===== Sidebar Start ===== -->
-    <include src="./partials/sidebar.html"></include>
-    <!-- ===== Sidebar End ===== -->
+    <!-- ===== Page Wrapper Start ===== -->
+    <div class="flex h-screen overflow-hidden">
+        <!-- ===== Sidebar Start ===== -->
+        <include src="./partials/sidebar.html"></include>
+        <!-- ===== Sidebar End ===== -->
 
-    <!-- ===== Content Area Start ===== -->
-    <div class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
-      <!-- ===== Header Start ===== -->
-      <include src="./partials/header.html" />
-      <!-- ===== Header End ===== -->
+        <!-- ===== Content Area Start ===== -->
+        <div class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
+            <!-- ===== Header Start ===== -->
+            <include src="./partials/header.html" />
+            <!-- ===== Header End ===== -->
 
-      <!-- ===== Main Content Start ===== -->
-      <main>
-        <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
-          <!-- Breadcrumb Start -->
-          <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <h2 class="text-title-md2 font-bold text-black dark:text-white">
-              Form Layout
-            </h2>
+            <!-- ===== Main Content Start ===== -->
+            <main>
+                <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+                    <!-- Breadcrumb Start -->
+                    <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                        <h2 class="text-title-md2 font-bold text-black dark:text-white">
+                            Form Layout
+                        </h2>
 
-            <nav>
-              <ol class="flex items-center gap-2">
-                <li><a class="font-medium" href="index.html">Dashboard /</a></li>
-                <li class="font-medium text-primary">Form Layout</li>
-              </ol>
-            </nav>
-          </div>
-          <!-- Breadcrumb End -->
+                        <nav>
+                            <ol class="flex items-center gap-2">
+                                <li><a class="font-medium" href="index.html">Dashboard /</a></li>
+                                <li class="font-medium text-primary">Form Layout</li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <!-- Breadcrumb End -->
 
-          <!-- ====== Form Layout Section Start -->
-          <div class="grid grid-cols-1 gap-9 sm:grid-cols-2">
-            <div class="flex flex-col gap-9">
-              <!-- Contact Form -->
-              <div
-                class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
-                <div class="border-b border-stroke py-4 px-6.5 dark:border-strokedark">
-                  <h3 class="font-semibold text-black dark:text-white">
-                    Contact Form
-                  </h3>
-                </div>
-                <form action="#">
-                  <div class="p-6.5">
-                    <div class="mb-4.5 flex flex-col gap-6 xl:flex-row">
-                      <div class="w-full xl:w-1/2">
-                        <label class="mb-2.5 block text-black dark:text-white">
+                    <!-- ====== Form Layout Section Start -->
+                    <div class="grid grid-cols-1 gap-9 sm:grid-cols-2">
+                        <div class="flex flex-col gap-9">
+                            <!-- Contact Form -->
+                            <div class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+                                <div class="border-b border-stroke py-4 px-6.5 dark:border-strokedark">
+                                    <h3 class="font-semibold text-black dark:text-white">
+                                        Contact Form
+                                    </h3>
+                                </div>
+                                <form action="#">
+                                    <div class="p-6.5">
+                                        <div class="mb-4.5 flex flex-col gap-6 xl:flex-row">
+                                            <div class="w-full xl:w-1/2">
+                                                <label class="mb-2.5 block text-black dark:text-white">
                           First name
                         </label>
-                        <input type="text" placeholder="Enter your first name"
-                          class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" />
-                      </div>
+                                                <input type="text" placeholder="Enter your first name" class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                                                />
+                                            </div>
 
-                      <div class="w-full xl:w-1/2">
-                        <label class="mb-2.5 block text-black dark:text-white">
+                                            <div class="w-full xl:w-1/2">
+                                                <label class="mb-2.5 block text-black dark:text-white">
                           Last name
                         </label>
-                        <input type="text" placeholder="Enter your last name"
-                          class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" />
-                      </div>
-                    </div>
+                                                <input type="text" placeholder="Enter your last name" class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                                                />
+                                            </div>
+                                        </div>
 
-                    <div class="mb-4.5">
-                      <label class="mb-2.5 block text-black dark:text-white">
+                                        <div class="mb-4.5">
+                                            <label class="mb-2.5 block text-black dark:text-white">
                         Email <span class="text-meta-1">*</span>
                       </label>
-                      <input type="email" placeholder="Enter your email address"
-                        class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" />
-                    </div>
+                                            <input type="email" placeholder="Enter your email address" class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                                            />
+                                        </div>
 
-                    <div class="mb-4.5">
-                      <label class="mb-2.5 block text-black dark:text-white">
+                                        <div class="mb-4.5">
+                                            <label class="mb-2.5 block text-black dark:text-white">
                         Subject
                       </label>
-                      <input type="text" placeholder="Select subject"
-                        class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" />
-                    </div>
+                                            <input type="text" placeholder="Select subject" class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                                            />
+                                        </div>
 
-                    <div class="mb-4.5">
-                      <label class="mb-2.5 block text-black dark:text-white">
+                                        <div class="mb-4.5">
+                                            <label class="mb-2.5 block text-black dark:text-white">
                         Subject
                       </label>
-                      <div class="relative z-20 bg-transparent dark:bg-form-input">
-                        <select
-                          class="relative z-20 w-full appearance-none rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary">
+                                            <div class="relative z-20 bg-transparent dark:bg-form-input">
+                                                <select class="relative z-20 w-full appearance-none rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary">
                           <option value="">Type your subject</option>
                           <option value="">USA</option>
                           <option value="">UK</option>
                           <option value="">Canada</option>
                         </select>
-                        <span class="absolute top-1/2 right-4 z-30 -translate-y-1/2">
+                                                <span class="absolute top-1/2 right-4 z-30 -translate-y-1/2">
                           <svg class="fill-current" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <g opacity="0.8">
@@ -119,54 +114,52 @@
                             </g>
                           </svg>
                         </span>
-                      </div>
-                    </div>
+                                            </div>
+                                        </div>
 
-                    <div class="mb-6">
-                      <label class="mb-2.5 block text-black dark:text-white">
+                                        <div class="mb-6">
+                                            <label class="mb-2.5 block text-black dark:text-white">
                         Message
                       </label>
-                      <textarea rows="6" placeholder="Type your message"
-                        class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"></textarea>
-                    </div>
+                                            <textarea rows="6" placeholder="Type your message" class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"></textarea>
+                                        </div>
 
-                    <button class="flex w-full justify-center rounded bg-primary p-3 font-medium text-gray">
+                                        <button class="flex w-full justify-center rounded bg-primary p-3 font-medium text-gray">
                       Send Message
                     </button>
-                  </div>
-                </form>
-              </div>
-            </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
 
-            <div class="flex flex-col gap-9">
-              <!-- Sign In Form -->
-              <div
-                class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
-                <div class="border-b border-stroke py-4 px-6.5 dark:border-strokedark">
-                  <h3 class="font-semibold text-black dark:text-white">
-                    Sign In Form
-                  </h3>
-                </div>
-                <form action="#">
-                  <div class="p-6.5">
-                    <div class="mb-4.5">
-                      <label class="mb-2.5 block text-black dark:text-white">
+                        <div class="flex flex-col gap-9">
+                            <!-- Sign In Form -->
+                            <div class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+                                <div class="border-b border-stroke py-4 px-6.5 dark:border-strokedark">
+                                    <h3 class="font-semibold text-black dark:text-white">
+                                        Sign In Form
+                                    </h3>
+                                </div>
+                                <form action="#">
+                                    <div class="p-6.5">
+                                        <div class="mb-4.5">
+                                            <label class="mb-2.5 block text-black dark:text-white">
                         Email
                       </label>
-                      <input type="email" placeholder="Enter your email address"
-                        class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" />
-                    </div>
+                                            <input type="email" placeholder="Enter your email address" class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                                            />
+                                        </div>
 
-                    <div>
-                      <label class="mb-2.5 block text-black dark:text-white">
+                                        <div>
+                                            <label class="mb-2.5 block text-black dark:text-white">
                         Password
                       </label>
-                      <input type="password" placeholder="Enter password"
-                        class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" />
-                    </div>
+                                            <input type="password" placeholder="Enter password" class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                                            />
+                                        </div>
 
-                    <div class="mt-5 mb-5.5 flex items-center justify-between">
-                      <label for="formCheckbox" class="flex cursor-pointer">
+                                        <div class="mt-5 mb-5.5 flex items-center justify-between">
+                                            <label for="formCheckbox" class="flex cursor-pointer">
                         <div class="relative pt-0.5">
                           <input type="checkbox" id="formCheckbox" class="taskCheckbox sr-only" />
                           <div
@@ -184,74 +177,73 @@
                         <p>Remember me</p>
                       </label>
 
-                      <a href="#" class="text-sm text-primary">Forget password?</a>
-                    </div>
+                                            <a href="#" class="text-sm text-primary">Forget password?</a>
+                                        </div>
 
-                    <button class="flex w-full justify-center rounded bg-primary p-3 font-medium text-gray">
+                                        <button class="flex w-full justify-center rounded bg-primary p-3 font-medium text-gray">
                       Sign In
                     </button>
-                  </div>
-                </form>
-              </div>
+                                    </div>
+                                </form>
+                            </div>
 
-              <!-- Sign Up Form -->
-              <div
-                class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
-                <div class="border-b border-stroke py-4 px-6.5 dark:border-strokedark">
-                  <h3 class="font-semibold text-black dark:text-white">
-                    Sign Up Form
-                  </h3>
-                </div>
-                <form action="#">
-                  <div class="p-6.5">
-                    <div class="mb-4.5">
-                      <label class="mb-2.5 block text-black dark:text-white">
+                            <!-- Sign Up Form -->
+                            <div class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+                                <div class="border-b border-stroke py-4 px-6.5 dark:border-strokedark">
+                                    <h3 class="font-semibold text-black dark:text-white">
+                                        Sign Up Form
+                                    </h3>
+                                </div>
+                                <form action="#">
+                                    <div class="p-6.5">
+                                        <div class="mb-4.5">
+                                            <label class="mb-2.5 block text-black dark:text-white">
                         Name
                       </label>
-                      <input type="text" placeholder="Enter your full name"
-                        class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" />
-                    </div>
+                                            <input type="text" placeholder="Enter your full name" class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                                            />
+                                        </div>
 
-                    <div class="mb-4.5">
-                      <label class="mb-2.5 block text-black dark:text-white">
+                                        <div class="mb-4.5">
+                                            <label class="mb-2.5 block text-black dark:text-white">
                         Email
                       </label>
-                      <input type="email" placeholder="Enter your email address"
-                        class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" />
-                    </div>
+                                            <input type="email" placeholder="Enter your email address" class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                                            />
+                                        </div>
 
-                    <div class="mb-4.5">
-                      <label class="mb-2.5 block text-black dark:text-white">
+                                        <div class="mb-4.5">
+                                            <label class="mb-2.5 block text-black dark:text-white">
                         Password
                       </label>
-                      <input type="password" placeholder="Enter password"
-                        class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" />
-                    </div>
+                                            <input type="password" placeholder="Enter password" class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                                            />
+                                        </div>
 
-                    <div class="mb-5.5">
-                      <label class="mb-2.5 block text-black dark:text-white">
+                                        <div class="mb-5.5">
+                                            <label class="mb-2.5 block text-black dark:text-white">
                         Re-type Password
                       </label>
-                      <input type="password" placeholder="Re-enter password"
-                        class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" />
-                    </div>
+                                            <input type="password" placeholder="Re-enter password" class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                                            />
+                                        </div>
 
-                    <button class="flex w-full justify-center rounded bg-primary p-3 font-medium text-gray">
+                                        <button class="flex w-full justify-center rounded bg-primary p-3 font-medium text-gray">
                       Sign Up
                     </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-          <!-- ====== Form Layout Section End -->
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ====== Form Layout Section End -->
+                </div>
+            </main>
+            <!-- ===== Main Content End ===== -->
         </div>
-      </main>
-      <!-- ===== Main Content End ===== -->
+        <!-- ===== Content Area End ===== -->
     </div>
-    <!-- ===== Content Area End ===== -->
-  </div>
-  <!-- ===== Page Wrapper End ===== -->
+    <!-- ===== Page Wrapper End ===== -->
 </body>
 
 </html>
