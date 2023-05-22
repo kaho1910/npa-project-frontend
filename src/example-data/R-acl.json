@@ -1,0 +1,236 @@
+{
+  "100": {
+    "aces": {
+      "10": {
+        "actions": {
+          "forwarding": "permit",
+          "logging": "log-none"
+        },
+        "matches": {
+          "l3": {
+            "ipv4": {
+              "destination_network": {
+                "any": {
+                  "destination_network": "any"
+                }
+              },
+              "protocol": "ipv4",
+              "source_network": {
+                "any": {
+                  "source_network": "any"
+                }
+              }
+            }
+          },
+          "l4": {
+            "ipv4": {
+              "established": false
+            }
+          }
+        },
+        "name": "10"
+      }
+    },
+    "acl_type": "extended",
+    "name": "100",
+    "type": "ipv4-acl-type"
+  },
+  "topo1": {
+    "aces": {
+      "10": {
+        "actions": {
+          "forwarding": "permit",
+          "logging": "log-syslog"
+        },
+        "matches": {
+          "l3": {
+            "ipv4": {
+              "destination_network": {
+                "172.16.1.0 0.0.0.255": {
+                  "destination_network": "172.16.1.0 0.0.0.255"
+                }
+              },
+              "protocol": "ipv4",
+              "source_network": {
+                "10.0.0.0 0.0.0.255": {
+                  "source_network": "10.0.0.0 0.0.0.255"
+                }
+              }
+            }
+          },
+          "l4": {
+            "ipv4": {
+              "established": false
+            }
+          }
+        },
+        "name": "10"
+      },
+      "20": {
+        "actions": {
+          "forwarding": "permit",
+          "logging": "log-syslog"
+        },
+        "matches": {
+          "l3": {
+            "ipv4": {
+              "destination_network": {
+                "172.16.1.0 0.0.0.255": {
+                  "destination_network": "172.16.1.0 0.0.0.255"
+                }
+              },
+              "protocol": "ipv4",
+              "source_network": {
+                "host 172.16.1.254": {
+                  "source_network": "host 172.16.1.254"
+                }
+              }
+            }
+          },
+          "l4": {
+            "ipv4": {
+              "established": false
+            }
+          }
+        },
+        "name": "20"
+      }
+    },
+    "acl_type": "extended",
+    "name": "topo1",
+    "type": "ipv4-acl-type"
+  },
+  "topo2": {
+    "aces": {
+      "10": {
+        "actions": {
+          "forwarding": "permit",
+          "logging": "log-syslog"
+        },
+        "matches": {
+          "l3": {
+            "ipv4": {
+              "destination_network": {
+                "172.16.2.0 0.0.0.255": {
+                  "destination_network": "172.16.2.0 0.0.0.255"
+                }
+              },
+              "protocol": "ipv4",
+              "source_network": {
+                "10.0.0.0 0.0.0.255": {
+                  "source_network": "10.0.0.0 0.0.0.255"
+                }
+              }
+            }
+          },
+          "l4": {
+            "ipv4": {
+              "established": false
+            }
+          }
+        },
+        "name": "10"
+      },
+      "20": {
+        "actions": {
+          "forwarding": "permit",
+          "logging": "log-syslog"
+        },
+        "matches": {
+          "l3": {
+            "ipv4": {
+              "destination_network": {
+                "172.16.2.0 0.0.0.255": {
+                  "destination_network": "172.16.2.0 0.0.0.255"
+                }
+              },
+              "protocol": "ipv4",
+              "source_network": {
+                "host 172.16.2.254": {
+                  "source_network": "host 172.16.2.254"
+                }
+              }
+            }
+          },
+          "l4": {
+            "ipv4": {
+              "established": false
+            }
+          }
+        },
+        "name": "20"
+      }
+    },
+    "acl_type": "extended",
+    "name": "topo2",
+    "type": "ipv4-acl-type"
+  },
+  "wan": {
+    "aces": {
+      "10": {
+        "actions": {
+          "forwarding": "deny",
+          "logging": "log-syslog"
+        },
+        "matches": {
+          "l3": {
+            "ipv4": {
+              "destination_network": {
+                "172.16.0.0 0.0.255.255": {
+                  "destination_network": "172.16.0.0 0.0.255.255"
+                }
+              },
+              "protocol": "ipv4",
+              "source_network": {
+                "any": {
+                  "source_network": "any"
+                }
+              }
+            }
+          },
+          "l4": {
+            "ipv4": {
+              "established": false
+            }
+          }
+        },
+        "name": "10"
+      },
+      "20": {
+        "actions": {
+          "forwarding": "permit",
+          "logging": "log-syslog"
+        },
+        "matches": {
+          "l3": {
+            "ipv4": {
+              "destination_network": {
+                "any": {
+                  "destination_network": "any"
+                }
+              },
+              "protocol": "ipv4",
+              "source_network": {
+                "any": {
+                  "source_network": "any"
+                }
+              }
+            }
+          },
+          "l4": {
+            "ipv4": {
+              "established": false
+            }
+          }
+        },
+        "name": "20",
+        "statistics": {
+          "matched_packets": 2552
+        }
+      }
+    },
+    "acl_type": "extended",
+    "name": "wan",
+    "type": "ipv4-acl-type"
+  }
+}
