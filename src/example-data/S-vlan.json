@@ -1,0 +1,104 @@
+{
+  "vlans": {
+    "1": {
+      "interfaces": [
+        "GigabitEthernet0/1",
+        "GigabitEthernet0/2",
+        "GigabitEthernet0/3",
+        "GigabitEthernet3/0",
+        "GigabitEthernet3/1",
+        "GigabitEthernet3/2",
+        "GigabitEthernet3/3"
+      ],
+      "mtu": 1500,
+      "name": "default",
+      "said": 100001,
+      "shutdown": false,
+      "state": "active",
+      "trans1": 0,
+      "trans2": 0,
+      "type": "enet",
+      "vlan_id": "1"
+    },
+    "10": {
+      "interfaces": [
+        "GigabitEthernet1/0",
+        "GigabitEthernet1/1",
+        "GigabitEthernet1/2",
+        "GigabitEthernet1/3"
+      ],
+      "mtu": 1500,
+      "name": "VLAN0010",
+      "said": 100010,
+      "shutdown": false,
+      "state": "active",
+      "trans1": 0,
+      "trans2": 0,
+      "type": "enet",
+      "vlan_id": "10"
+    },
+    "1002": {
+      "mtu": 1500,
+      "name": "fddi-default",
+      "said": 101002,
+      "shutdown": false,
+      "state": "unsupport",
+      "trans1": 0,
+      "trans2": 0,
+      "type": "fddi",
+      "vlan_id": "1002"
+    },
+    "1003": {
+      "mtu": 1500,
+      "name": "token-ring-default",
+      "said": 101003,
+      "shutdown": false,
+      "state": "unsupport",
+      "trans1": 0,
+      "trans2": 0,
+      "type": "tr",
+      "vlan_id": "1003"
+    },
+    "1004": {
+      "mtu": 1500,
+      "name": "fddinet-default",
+      "said": 101004,
+      "shutdown": false,
+      "state": "unsupport",
+      "stp": "ieee",
+      "trans1": 0,
+      "trans2": 0,
+      "type": "fdnet",
+      "vlan_id": "1004"
+    },
+    "1005": {
+      "mtu": 1500,
+      "name": "trnet-default",
+      "said": 101005,
+      "shutdown": false,
+      "state": "unsupport",
+      "stp": "ibm",
+      "trans1": 0,
+      "trans2": 0,
+      "type": "trnet",
+      "vlan_id": "1005"
+    },
+    "20": {
+      "interfaces": [
+        "GigabitEthernet2/0",
+        "GigabitEthernet2/1",
+        "GigabitEthernet2/2",
+        "GigabitEthernet2/3"
+      ],
+      "mtu": 1500,
+      "name": "VLAN0020",
+      "said": 100020,
+      "shutdown": false,
+      "state": "active",
+      "trans1": 0,
+      "trans2": 0,
+      "type": "enet",
+      "vlan_id": "20"
+    }
+  }
+}
