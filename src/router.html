@@ -123,6 +123,8 @@
                                                                             <label for="ip" class="block text-sm font-medium text-gray-700">IP
                                                                                 Address</label>
                                                                             <input type="text" name="ip" id="ip" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                                                                            <label id="ipLabel" class="text-sm text-red-500"></label>
+
                                                                         </div>
 
                                                                         <div class="col-span-2">
@@ -203,6 +205,8 @@
                                                                         <div class="col-span-2">
                                                                             <label for="destination" class="block text-sm font-medium text-gray-700">Destination</label>
                                                                             <input type="text" name="destination" id="destination" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                                                                            <label id="destinationLabel" class="text-sm"></label>
+
                                                                         </div>
                                                                         <div class="col-span-2">
                                                                             <label for="staticsubnet" class="block text-sm font-medium text-gray-700">Subnet Mask</label>
@@ -248,6 +252,8 @@
                                                                         <div class="col-span-2">
                                                                             <label for="Nexthop" class="block text-sm font-medium text-gray-700">Nexthop</label>
                                                                             <input type="text" name="Nexthop" id="Nexthop" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                                                                            <label id="nexthopLabel" class="text-sm"></label>
+
                                                                         </div>
                                                                         <div class="col-start-6 px-4 py-3 text-right bg-gray-50">
                                                                             <button type="submit" class="inline-block rounded bg-meta-8 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
@@ -308,6 +314,8 @@
                                                                         <div class="col-span-2">
                                                                             <label for="network" class="block text-sm font-medium text-gray-700">Network</label>
                                                                             <input type="text" name="network" id="network" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                                                                            <label id="networkLabel" class="text-sm text-red-500"></label>
+
                                                                         </div>
                                                                         <div class="col-span-2">
                                                                             <label for="wildcard" class="block text-sm font-medium text-gray-700">Wild
@@ -423,6 +431,8 @@
                                                                         <div class="col-span-2">
                                                                             <label for="aclsource" class="block text-sm font-medium text-gray-700">Source</label>
                                                                             <input type="text" name="aclsource" id="aclsource" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                                                                            <label id="aclsourceLabel" class="text-sm"></label>
+
                                                                         </div>
                                                                         <div class="col-span-1">
                                                                             <label for="aclwildcardsource" class="block text-sm font-medium text-gray-700">Wild
@@ -467,6 +477,8 @@
                                                                         <div class="col-span-2">
                                                                             <label for="acldestination" class="block text-sm font-medium text-gray-700">Destination</label>
                                                                             <input type="text" name="acldestination" id="acldestination" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                                                                            <label id="acldestinationLabel" class="text-sm"></label>
+
                                                                         </div>
                                                                         <div class="col-span-1">
                                                                             <label for="aclwildcardsestination" class="block text-sm font-medium text-gray-700">Wild
@@ -521,6 +533,7 @@
                                                                             <label for="aclportnumber" class="block text-sm font-medium text-gray-700">Port
                                                                                 Number</label>
                                                                             <input type="text" name="aclportnumber" id="aclportnumber" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+
                                                                         </div>
                                                                         <div class="col-start-6 px-4 py-3 text-right bg-gray-50">
                                                                             <button type="submit" class="inline-block rounded bg-meta-8 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
