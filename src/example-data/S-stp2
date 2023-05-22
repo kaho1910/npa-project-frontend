@@ -1,0 +1,47 @@
+{
+  "backbone_fast": false,
+  "bpdu_filter": false,
+  "bpdu_guard": false,
+  "configured_pathcost": {
+    "method": "short"
+  },
+  "etherchannel_misconfig_guard": true,
+  "extended_system_id": true,
+  "loop_guard": false,
+  "mode": {
+    "pvst": {
+      "VLAN0001": {
+        "blocking": 0,
+        "forwarding": 7,
+        "learning": 0,
+        "listening": 0,
+        "stp_active": 7
+      },
+      "VLAN0010": {
+        "blocking": 0,
+        "forwarding": 4,
+        "learning": 0,
+        "listening": 0,
+        "stp_active": 4
+      },
+      "VLAN0020": {
+        "blocking": 0,
+        "forwarding": 4,
+        "learning": 0,
+        "listening": 0,
+        "stp_active": 4
+      }
+    }
+  },
+  "portfast_default": false,
+  "root_bridge_for": "VLAN0001, VLAN0010, VLAN0020",
+  "total_statistics": {
+    "blockings": 0,
+    "forwardings": 15,
+    "learnings": 0,
+    "listenings": 0,
+    "num_of_vlans": 3,
+    "stp_actives": 15
+  },
+  "uplink_fast": false
+}
