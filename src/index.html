@@ -118,53 +118,37 @@
             }
         });
 
+
         new Vue({
             el: '#app',
             data: {
                 newText: {},
-                texts: [{
-                    name: 'R1',
-                    ip: '1.1.1.1',
-                    type: 'Router'
-                }, {
-                    name: 'R2',
-                    ip: '2.2.2.2',
-                    type: 'Router'
-                }, {
-                    name: 'R3',
-                    ip: '3.3.3.3',
-                    type: 'Router'
-                }, {
-                    name: 'R4',
-                    ip: '4.4.4.4',
-                    type: 'Router'
-                }, {
-                    name: 'R5',
-                    ip: '5.5.5.5',
-                    type: 'Router'
-                }, {
-                    name: 'Sw1',
-                    ip: '6.6.6.6',
-                    type: 'Switch'
-                }, {
-                    name: 'Sw2',
-                    ip: '10.10.10.10',
-                    type: 'Switch'
-                }, {
-                    name: 'Sw3',
-                    ip: '11.11.11.11',
-                    type: 'Switch'
-                }, {
-                    name: 'Sw4',
-                    ip: '22.22.22.22',
-                    type: 'Switch'
-                }, ],
+                texts: [],
+            },
+            mounted() {
+                fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/device.json')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        // Update the texts data with the fetched JSON data
+                        this.texts = data.map(item => ({
+                            name: item.hostname,
+                            ip: item.ipaddress,
+                            type: item.type
+                        }));
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
             },
             methods: {
                 createNewElement() {
-                    console.log('here', Object.keys(this.newText).length)
+                    console.log('here', Object.keys(this.newText).length);
                     if (Object.keys(this.newText).length == 3) {
-                        console.log('dafuq y im here :', this.newText.name)
                         this.texts.push(this.newText);
                         this.newText = {};
                     }
