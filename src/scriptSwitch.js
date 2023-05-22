@@ -9,8 +9,6 @@ fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/
         return response.json();
     })
     .then(data => {
-        // Handle the response data
-        console.log(data);
         interfaces = data.interface
         createInterfaceButtons(data.interface);
 
@@ -31,6 +29,23 @@ fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/
     })
     .then(data => {
         extendAclInfo = data
+    })
+    .catch(error => {
+        // Handle any errors
+        console.log(error);
+    });
+var vlanInfo;
+fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/S-vlan.json', {
+        method: 'GET' // No need to specify the body for a GET request
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        vlanInfo = data
     })
     .catch(error => {
         // Handle any errors
@@ -194,16 +209,22 @@ function interfaceButtonSwitchClick(event) {
     }
 }
 
-var vlanArray = [
-    { vlanid: "10", vlanname: "Management", vlandescription: "For Manage Devices" },
-    { vlanid: "20", vlanname: "Financial", vlandescription: "For Money" },
-    { vlanid: "40", vlanname: "Developer", vlandescription: "For Developer" },
-    // Add more objects as needed
-];
+
 
 function populateVlanTable() {
     var tableVlan = document.getElementById("tableVlan");
     tableVlan.innerHTML = ""; // Clear existing content
+    var vlanArray = [];
+    Object.keys(vlanInfo.vlans).forEach(function(key) {
+        var vlanData = vlanInfo.vlans[key];
+        var vlanObject = {
+            vlanid: vlanData.vlan_id,
+            vlanname: vlanData.name,
+            interfaces: vlanData.interfaces,
+            vlandescription: "For Manage Devices"
+        };
+        vlanArray.push(vlanObject);
+    });
 
     vlanArray.forEach(function(data) {
         var row = document.createElement("tr");
@@ -216,6 +237,10 @@ function populateVlanTable() {
         vlannameCell.textContent = data.vlanname;
         row.appendChild(vlannameCell);
 
+        var interfaceCell = document.createElement("td");
+        interfaceCell.textContent = data.interfaces;
+        row.appendChild(interfaceCell);
+
         var vlandescriptionCell = document.createElement("td");
         vlandescriptionCell.textContent = data.vlandescription;
         row.appendChild(vlandescriptionCell);
@@ -227,6 +252,7 @@ function populateVlanTable() {
         removeLink.classList.add("text-blue-600", "dark:text-blue-500", "font-medium", "hover:underline");
         actionCell.appendChild(removeLink);
         row.appendChild(actionCell);
+
         tableVlan.appendChild(row);
     });
 }
