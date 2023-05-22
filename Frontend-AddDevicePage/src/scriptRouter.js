@@ -1,3 +1,22 @@
+// fetch('http://127.0.0.1:8000/ip_addr', {
+//         method: 'GET' // No need to specify the body for a GET request
+//     })
+//     .then(response => {
+//         if (!response.ok) {
+//             throw new Error('Network response was not ok');
+//         }
+//         return response.json();
+//     })
+//     .then(data => {
+//         // Handle the response data
+//         console.log(data);
+//     })
+//     .catch(error => {
+//         // Handle any errors
+//         console.log(error);
+//     });
+
+
 function showInterfaceRouterForm() {
     interfaceRouterForm.style.display = 'grid';
     staticRouteForm.style.display = 'none';

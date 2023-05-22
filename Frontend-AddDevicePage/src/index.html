@@ -2,91 +2,88 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>eCommerce Dashboard | TailAdmin - Tailwind CSS Admin Dashboard Template</title>
-  <script src="https://unpkg.com/vue@2.6.14/dist/vue.js"></script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>eCommerce Dashboard | TailAdmin - Tailwind CSS Admin Dashboard Template</title>
+    <script src="https://unpkg.com/vue@2.6.14/dist/vue.js"></script>
 </head>
 
-<body x-data="{ page: 'ecommerce', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
-  x-init="darkMode = JSON.parse(localStorage.getItem('darkMode'));
-         $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
-  :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}">
-  <!-- ===== Preloader Start ===== -->
-  <include src="./partials/preloader.html"></include>
-  <!-- ===== Preloader End ===== -->
+<body x-data="{ page: 'ecommerce', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }" x-init="darkMode = JSON.parse(localStorage.getItem('darkMode'));
+         $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))" :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}">
+    <!-- ===== Preloader Start ===== -->
+    <include src="./partials/preloader.html"></include>
+    <!-- ===== Preloader End ===== -->
 
-  <!-- ===== Page Wrapper Start ===== -->
-  <div class="flex h-screen overflow-hidden">
-    <!-- ===== Sidebar Start ===== -->
-    <include src="./partials/sidebar.html"></include>
-    <!-- ===== Sidebar End ===== -->
+    <!-- ===== Page Wrapper Start ===== -->
+    <div class="flex h-screen overflow-hidden">
+        <!-- ===== Sidebar Start ===== -->
+        <include src="./partials/sidebar.html"></include>
+        <!-- ===== Sidebar End ===== -->
 
-    <!-- ===== Content Area Start ===== -->
-    <div class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden ">
-      <!-- ===== Header Start ===== -->
-      <include src="./partials/header.html" />
-      <!-- ===== Header End ===== -->
+        <!-- ===== Content Area Start ===== -->
+        <div class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden ">
+            <!-- ===== Header Start ===== -->
+            <include src="./partials/header.html" />
+            <!-- ===== Header End ===== -->
 
-      <!-- ===== Main Content Start ===== -->
-      <main>
-        <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10" id="app">
-          <!-- Inform Zone Start -->
-          <div class="rounded-sm sticky top-10 mb-5.5 border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
-            <div class="border-b border-stroke py-4 px-7 dark:border-strokedark">
-              <h3 class="font-medium text-black dark:text-white">Device Information</h3>
-            </div>
-            <div class="p-7 ">
-              <form action="#" class="grid md:grid-cols-3 gap-2">
-                <div class="mb-5.5">
-                  <!-- ===== Select Type ===== -->
-                  <label class="mb-3 block text-sm font-medium text-black dark:text-white" for="Username">Device Type</label>
-                  <select class="relative z-20 w-full appearance-none rounded border border-stroke bg-gray py-3 px-4.5 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input"
-                    v-model="newText.type" required="">
+            <!-- ===== Main Content Start ===== -->
+            <main>
+                <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10" id="app">
+                    <!-- Inform Zone Start -->
+                    <div class="rounded-sm sticky top-10 mb-5.5 border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+                        <div class="border-b border-stroke py-4 px-7 dark:border-strokedark">
+                            <h3 class="font-medium text-black dark:text-white">Device Information</h3>
+                        </div>
+                        <div class="p-7 ">
+                            <form action="#" class="grid md:grid-cols-3 gap-2">
+                                <div class="mb-5.5">
+                                    <!-- ===== Select Type ===== -->
+                                    <label class="mb-3 block text-sm font-medium text-black dark:text-white" for="Username">Device Type</label>
+                                    <select class="relative z-20 w-full appearance-none rounded border border-stroke bg-gray py-3 px-4.5 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input" v-model="newText.type" required="">
                     <option value="" disabled="" selected="" hidden="">Select please</option>
                     <option value="Router">Router</option>
                     <option value="Switch">Switch</option>
                   </select>
-                </div>
-                <div class="mb-5.5">
-                  <!-- ===== Name Input ===== -->
-                  <label class="mb-3 block text-sm font-medium text-black dark:text-white" for="Username">Device Name</label>
-                  <input class="w-full rounded border border-stroke bg-gray py-3 px-4.5 font-medium text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
-                    type="text" v-model="newText.name" placeholder="Enter Device Name (eg. R1)" required>
-                </div>
-                <div class="mb-5.5">
-                  <!-- ===== IP Input ===== -->
-                  <label class="mb-3 block text-sm font-medium text-black dark:text-white" for="Username">IP Address</label>
-                  <input class="w-full rounded border border-stroke bg-gray py-3 px-4.5 font-medium text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
-                    type="text" v-model="newText.ip" placeholder="Monitor address (eg. 192.168.1.1)" required>
-                </div>
-              </form>
-              <div class="flex justify-center items-center">
-                <button class="flex justify-center rounded bg-meta-3 py-2 px-6 font-medium text-gray hover:bg-opacity-90" type="submit" @click="createNewElement">+ Add Device</button>
-              </div>
-            </div>
-          </div>
-          <!-- Inform Zone End -->
+                                </div>
+                                <div class="mb-5.5">
+                                    <!-- ===== Name Input ===== -->
+                                    <label class="mb-3 block text-sm font-medium text-black dark:text-white" for="Username">Device Name</label>
+                                    <input class="w-full rounded border border-stroke bg-gray py-3 px-4.5 font-medium text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary" type="text" v-model="newText.name"
+                                        placeholder="Enter Device Name (eg. R1)" required>
+                                </div>
+                                <div class="mb-5.5">
+                                    <!-- ===== IP Input ===== -->
+                                    <label class="mb-3 block text-sm font-medium text-black dark:text-white" for="Username">IP Address</label>
+                                    <input class="w-full rounded border border-stroke bg-gray py-3 px-4.5 font-medium text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary" type="text" v-model="newText.ip"
+                                        placeholder="Monitor address (eg. 192.168.1.1)" required>
+                                </div>
+                            </form>
+                            <div class="flex justify-center items-center">
+                                <button class="flex justify-center rounded bg-meta-3 py-2 px-6 font-medium text-gray hover:bg-opacity-90" type="submit" @click="createNewElement">+ Add Device</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Inform Zone End -->
 
-          <!-- Card Zone Start-->
-          <div id="device_deck" class="grid grid-cols-1 gap-4 md:grid-cols-4 md:gap-6 xl:grid-cols-4 2xl:gap-7.5 overflow-y-auto min-h-100">
-            <card v-for="(text, index) in texts" :key="index" :index="index" :name="text.name" :ip="text.ip" :type="text.type" @delete="deleteElement"></card>
-          </div>
-          
-          <!-- Card Zone End-->
+                    <!-- Card Zone Start-->
+                    <div id="device_deck" class="grid grid-cols-1 gap-4 md:grid-cols-4 md:gap-6 xl:grid-cols-4 2xl:gap-7.5 overflow-y-auto min-h-100">
+                        <card v-for="(text, index) in texts" :key="index" :index="index" :name="text.name" :ip="text.ip" :type="text.type" @delete="deleteElement"></card>
+                    </div>
+
+                    <!-- Card Zone End-->
+                </div>
+            </main>
+            <!-- ===== Main Content End ===== -->
         </div>
-      </main>
-      <!-- ===== Main Content End ===== -->
+        <!-- ===== Content Area End ===== -->
     </div>
-    <!-- ===== Content Area End ===== -->
-  </div>
-  <!-- ===== Page Wrapper End ===== -->
+    <!-- ===== Page Wrapper End ===== -->
 
-  <script>
-    Vue.component('card', {
-      props: ['index', 'name', 'ip', 'type'],
-      template: `
+    <script>
+        Vue.component('card', {
+            props: ['index', 'name', 'ip', 'type'],
+            template: `
         <div class="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark">
           <div class="mt-4 flex justify-between items-center">
             <div>
@@ -99,132 +96,86 @@
               <h6 v-else>status: offline</h6>
             </div>
             <div>
-            <button @click="" class="w-full mb-2 flex justify-center rounded bg-primary py-2 px-6 font-medium text-gray hover:bg-opacity-90" type="submit">Config</button>
+            <button @click="configDevice" class="w-full mb-2 flex justify-center rounded bg-primary py-2 px-6 font-medium text-gray hover:bg-opacity-90" type="submit">Config</button>
             <button @click="deleteElement" class="w-full mt-2 flex justify-center rounded bg-danger py-2 px-6 font-medium text-gray hover:bg-opacity-90" type="submit">Remove</button>
             <div>
           </div>
         </div>
       `,
-      methods: {
-        deleteElement() {
-          this.$emit('delete', this.index);
-        }
-      }
-    });
-  
-    new Vue({
-      el: '#app',
-      data: {
-        newText: {},
-        texts: [
-          {
-            name: 'R1',
-            ip: '1.1.1.1',
-            type: 'Router'
-          },
-          {
-            name: 'R1',
-            ip: '1.1.1.1',
-            type: 'Router'
-          },
-          {
-            name: 'R1',
-            ip: '1.1.1.1',
-            type: 'Router'
-          },
-          {
-            name: 'R1',
-            ip: '1.1.1.1',
-            type: 'Router'
-          },
-          {
-            name: 'R1',
-            ip: '1.1.1.1',
-            type: 'Router'
-          },
-          {
-            name: 'R1',
-            ip: '1.1.1.1',
-            type: 'Router'
-          },
-          {
-            name: 'R1',
-            ip: '1.1.1.1',
-            type: 'Router'
-          },
-          {
-            name: 'R1',
-            ip: '1.1.1.1',
-            type: 'Router'
-          },
-          {
-            name: 'R1',
-            ip: '1.1.1.1',
-            type: 'Router'
-          },
-          {
-            name: 'R1',
-            ip: '1.1.1.1',
-            type: 'Router'
-          },
-          {
-            name: 'R1',
-            ip: '1.1.1.1',
-            type: 'Router'
-          },
-          {
-            name: 'R1',
-            ip: '1.1.1.1',
-            type: 'Router'
-          },
-          {
-            name: 'R1',
-            ip: '1.1.1.1',
-            type: 'Router'
-          },
-          {
-            name: 'R1',
-            ip: '1.1.1.1',
-            type: 'Router'
-          },
-          {
-            name: 'R1',
-            ip: '1.1.1.1',
-            type: 'Router'
-          },
-          {
-            name: 'R1',
-            ip: '1.1.1.1',
-            type: 'Router'
-          },
-          {
-            name: 'R1',
-            ip: '1.1.1.1',
-            type: 'Router'
-          },
-          {
-            name: 'R1',
-            ip: '1.1.1.1',
-            type: 'Router'
-          }
-        ],
-      },
-      methods: {
-        createNewElement() {
-          console.log('here', Object.keys(this.newText).length)
-          if (Object.keys(this.newText).length == 3) {
-            console.log('dafuq y im here :', this.newText.name)
-            this.texts.push(this.newText);
-            this.newText = {};
-          }
-        },
-        deleteElement(index) {
-          this.texts.splice(index, 1);
-        }
-      }
-    });
-  </script>
-  
+            methods: {
+                deleteElement() {
+                    this.$emit('delete', this.index);
+                },
+                configDevice() {
+                    if (this.type === 'Router') {
+                        // Redirect to profile.html and pass ip and name values to test.js
+                        window.location.href = `profile.html?ip=${this.ip}&name=${this.name}`;
+                    } else if (this.type === 'Switch') {
+                        // Redirect to calendar.html and pass ip and name values to test.js
+                        window.location.href = `calendar.html?ip=${this.ip}&name=${this.name}`;
+                    }
+                },
+            }
+        });
+
+        new Vue({
+            el: '#app',
+            data: {
+                newText: {},
+                texts: [{
+                    name: 'R1',
+                    ip: '1.1.1.1',
+                    type: 'Router'
+                }, {
+                    name: 'R2',
+                    ip: '2.2.2.2',
+                    type: 'Router'
+                }, {
+                    name: 'R3',
+                    ip: '3.3.3.3',
+                    type: 'Router'
+                }, {
+                    name: 'R4',
+                    ip: '4.4.4.4',
+                    type: 'Router'
+                }, {
+                    name: 'R5',
+                    ip: '5.5.5.5',
+                    type: 'Router'
+                }, {
+                    name: 'Sw1',
+                    ip: '6.6.6.6',
+                    type: 'Switch'
+                }, {
+                    name: 'Sw2',
+                    ip: '10.10.10.10',
+                    type: 'Switch'
+                }, {
+                    name: 'Sw3',
+                    ip: '11.11.11.11',
+                    type: 'Switch'
+                }, {
+                    name: 'Sw4',
+                    ip: '22.22.22.22',
+                    type: 'Switch'
+                }, ],
+            },
+            methods: {
+                createNewElement() {
+                    console.log('here', Object.keys(this.newText).length)
+                    if (Object.keys(this.newText).length == 3) {
+                        console.log('dafuq y im here :', this.newText.name)
+                        this.texts.push(this.newText);
+                        this.newText = {};
+                    }
+                },
+                deleteElement(index) {
+                    this.texts.splice(index, 1);
+                }
+            }
+        });
+    </script>
+
 </body>
 
 </html>
