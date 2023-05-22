@@ -1,21 +1,50 @@
-// fetch('http://127.0.0.1:8000/ip_addr', {
-//         method: 'GET' // No need to specify the body for a GET request
-//     })
-//     .then(response => {
-//         if (!response.ok) {
-//             throw new Error('Network response was not ok');
-//         }
-//         return response.json();
-//     })
-//     .then(data => {
-//         // Handle the response data
-//         console.log(data);
-//     })
-//     .catch(error => {
-//         // Handle any errors
-//         console.log(error);
-//     });
+var interfaces;
+fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/S-interfaces.json', {
+        method: 'GET' // No need to specify the body for a GET request
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        // Handle the response data
+        console.log(data);
+        interfaces = data.interface
+        createInterfaceButtons(data.interface);
 
+    })
+    .catch(error => {
+        // Handle any errors
+        console.log(error);
+    });
+const interfaceContainer = document.getElementById('interfaceContainerRouter');
+// Function to create and add buttons dynamically
+function createInterfaceButtons(interfaces) {
+
+    for (const interfaceName in interfaces) {
+        // Create a button element
+        const button = document.createElement('button');
+        if (!interfaceName.includes('GigabitEthernet')) {
+            continue; // Skip interfaces of type "vlan" and those not containing "GigabitEthernet"
+        }
+        // Add the interfaceName as a data attribute
+        button.setAttribute('data-interface', interfaceName);
+
+        // Add classes to the button
+        button.classList.add('interfaceButtonRouter', 'hover:bg-primary-600', 'focus:bg-primary-600', 'active:bg-primary-700', 'block', 'rounded', 'bg-primary', 'px-6', 'pb-2', 'pt-2.5', 'text-xs', 'font-medium', 'uppercase', 'leading-normal', 'text-white', 'shadow-[0_4px_9px_-4px_#3b71ca]', 'transition', 'duration-150', 'ease-in-out', 'hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]', 'focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]', 'focus:outline-none', 'focus:ring-0', 'active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]', 'dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)]', 'dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]', 'dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]', 'dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]');
+
+        // Set the button text
+        button.textContent = `Interface ${interfaceName}`;
+
+        // Append the button to the container
+        interfaceContainer.appendChild(button);
+    }
+}
+
+// Call the function with your JSON data
+createInterfaceButtons(interfaces);
 
 function showInterfaceRouterForm() {
     interfaceRouterForm.style.display = 'grid';
@@ -23,6 +52,10 @@ function showInterfaceRouterForm() {
     ospfForm.style.display = 'none';
     aclForm.style.display = 'none';
     dhcpForm.style.display = 'none';
+    var interfaceButtonRouter = document.getElementsByClassName('interfaceButtonRouter');
+    for (var i = 0; i < interfaceButtonRouter.length; i++) {
+        interfaceButtonRouter[i].addEventListener('click', interfaceButtonRouterClick);
+    }
 }
 
 function showStaticRouteForm() {
@@ -78,58 +111,50 @@ aclButton.addEventListener('click', showAclForm);
 dhcpButton.addEventListener('click', showDhcpForm);
 
 
-var interfaceButtonRouter = document.getElementsByClassName('interfaceButtonRouter');
-for (var i = 0; i < interfaceButtonRouter.length; i++) {
-    interfaceButtonRouter[i].addEventListener('click', interfaceButtonRouterClick);
-}
 
+var test;
 var methodIpSelect = document.getElementById("methodip");
 var ipInput = document.getElementById("ip");
 var subnetInput = document.getElementById("ipsubnet");
 
 methodIpSelect.addEventListener("change", function() {
-    if (methodIpSelect.value === "dhcp") {
-        ipInput.disabled = true;
-        subnetInput.disabled = true;
-    } else {
+    console.log(methodIpSelect.value);
+    if (methodIpSelect.value === "manual") {
         ipInput.disabled = false;
         subnetInput.disabled = false;
+        console.log("m");
+    } else {
+        ipInput.disabled = true;
+        subnetInput.disabled = true;
+        console.log("du");
     }
 });
 
 function interfaceButtonRouterClick(event) {
-    var test = event.target.dataset.interface; // Get the interface value
-
+    test = event.target.dataset.interface; // Get the interface value
+    console.log(interfaces[test]);
     // Get the corresponding interface details from the dictionary
-    var interfaceDetails = {
-        "G0/0": { status: "on", method: "static", ip: "192.18.1.1", ipsubnet: '255.255.240.0', description: "test" },
-        "G0/1": { status: "on", method: "dhcp", ip: "192.18.1.2", ipsubnet: '255.255.255.0', description: "2" },
-        "G0/2": { status: "on", method: "static", ip: "192.18.1.3", ipsubnet: '255.255.255.0', description: "3" },
-        "G0/3": { status: "on", method: "static", ip: "192.18.1.4", ipsubnet: '255.255.192.0', description: "4" },
-        "G0/4": { status: "on", method: "dhcp", ip: "192.18.1.5", ipsubnet: '255.255.255.0', description: "5" },
-        "G0/5": { status: "off", method: "static", ip: "192.18.1.6", ipsubnet: '255.255.255.128', description: "test" },
-        // Add more interface details here
-    };
+
 
     // Update the input fields with the interface details
-    document.getElementById('ip').value = interfaceDetails[test].ip;
-    document.getElementById('ipsubnet').value = interfaceDetails[test].ipsubnet;
-    document.getElementById('description').value = interfaceDetails[test].description;
-    document.getElementById('methodip').value = interfaceDetails[test].method;
+    document.getElementById('ip').value = interfaces[test].ip_address;
+    // document.getElementById('ipsubnet').value = interfaces[test].ipsubnet;
+    // document.getElementById('description').value = interfaces[test].description;
+    document.getElementById('methodip').value = interfaces[test].method;
     document.getElementById('interfaceRouter').textContent = test;
 
     var checkbox = document.getElementById('statusRouter');
-    if (interfaceDetails[test].status === "on") {
-        checkbox.checked = true; // Set the checkbox to checked
-    } else {
+    if (interfaces[test].status === "administratively down") {
         checkbox.checked = false; // Set the checkbox to unchecked
-    }
-    if (interfaceDetails[test].method === "dhcp") {
-        ipInput.disabled = true;
-        subnetInput.disabled = true;
     } else {
+        checkbox.checked = true; // Set the checkbox to checked
+    }
+    if (interfaces[test].method === "manual") {
         ipInput.disabled = false;
         subnetInput.disabled = false;
+    } else {
+        ipInput.disabled = true;
+        subnetInput.disabled = true;
     }
 }
 var staticRouteArray = [
