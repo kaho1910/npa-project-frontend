@@ -2,11 +2,27 @@
   {
     "type": "Router",
     "hostname": "RS",
-    "ipaddress": "10.0.15.201"
+    "ipaddress": "10.0.15.201",
+    "abstraction": {
+      "order": [
+        "os",
+        "platform",
+        "model"
+      ]
+    },
+    "status": true
   },
   {
-    "type": "Router",
-    "hostname": "test",
-    "ipaddress": "10.0.15.202"
+    "type": "Switch",
+    "hostname": "SS",
+    "ipaddress": "10.0.15.202",
+    "abstraction": {
+      "order": [
+        "os",
+        "platform",
+        "model"
+      ]
+    },
+    "status": false
   }
 ]
