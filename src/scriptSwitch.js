@@ -257,6 +257,7 @@ function populateVlanTable() {
     });
 }
 
+
 var stpArray = [
     { statusStp: "on", stpmode: "pvst", stppriority: "1", hellotime: "10", maxage: "30", forwardtime: "15", lpguard: "on" },
 ];
@@ -284,6 +285,37 @@ function stpFormClick() {
         }
     });
 }
+var vlanIdInput = document.getElementById("vlanid");
+var vlanRangeLabel = document.getElementById("vlanRange");
+
+vlanIdInput.addEventListener("input", function() {
+    var vlanId = parseInt(vlanIdInput.value);
+    var vlanRange = getVlanRange(vlanId);
+
+    vlanRangeLabel.textContent = vlanRange;
+
+    // Add tailwind classes based on input validity
+    if (vlanRange === "Invalid VLAN Range") {
+        vlanRangeLabel.classList.remove("text-success");
+        vlanRangeLabel.classList.add("text-danger");
+    } else {
+        vlanRangeLabel.classList.remove("text-danger");
+        vlanRangeLabel.classList.add("text-success");
+    }
+});
+
+function getVlanRange(vlanId) {
+    if (vlanId >= 2 && vlanId <= 1005) {
+        return "Normal VLAN Range (2-1005)";
+    } else if ((vlanId >= 1006 && vlanId <= 3967) || (vlanId >= 4048 && vlanId <= 4093)) {
+        return "Extended VLAN Range (1006-3967, 4048-4093)";
+    } else if ((vlanId >= 3968 && vlanId <= 4047) || vlanId === 4094) {
+        return "Internally Allocated VLAN Range (3968-4047, 4094)";
+    } else {
+        return "Invalid VLAN Range";
+    }
+}
+
 
 var switchportArray = [
     { swportinterface: "G0/1", swportmode: "Trunk", swporttrunknative: "99", swportallowednative: "1,2,3", swportaccess: "-" },
