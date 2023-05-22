@@ -10,10 +10,26 @@ fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/
     })
     .then(data => {
         // Handle the response data
-        console.log(data);
         interfaces = data.interface
         createInterfaceButtons(data.interface);
 
+    })
+    .catch(error => {
+        // Handle any errors
+        console.log(error);
+    });
+var staticRoutesInfo;
+fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/R-routes.json', {
+        method: 'GET' // No need to specify the body for a GET request
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        staticRoutesInfo = data
     })
     .catch(error => {
         // Handle any errors
@@ -157,15 +173,22 @@ function interfaceButtonRouterClick(event) {
         subnetInput.disabled = true;
     }
 }
-var staticRouteArray = [
-    { destination: "192.168.1.0", subnet: "255.255.255.0", nextHop: "192.168.1.1" },
-    { destination: "10.168.2.0", subnet: "255.255.255.0", nextHop: "10.168.2.1" },
-    // Add more objects as needed
-];
 
 function populateStaticRouteTable() {
+    var staticRouteArray = [];
     var tableStaticRoute = document.getElementById("tableStaticRoute");
     tableStaticRoute.innerHTML = ""; // Clear existing content
+    var routes = staticRoutesInfo.vrf.default.address_family.ipv4.routes;
+    for (var route in routes) {
+        if (routes.hasOwnProperty(route)) {
+            var data = {
+                destination: route,
+                // subnet: routes[route].route,
+                nextHop: routes[route].next_hop.next_hop_list["1"].next_hop
+            };
+            staticRouteArray.push(data);
+        }
+    }
 
     staticRouteArray.forEach(function(data) {
         var row = document.createElement("tr");
@@ -174,9 +197,9 @@ function populateStaticRouteTable() {
         destinationCell.textContent = data.destination;
         row.appendChild(destinationCell);
 
-        var subnetCell = document.createElement("td");
-        subnetCell.textContent = data.subnet;
-        row.appendChild(subnetCell);
+        // var subnetCell = document.createElement("td");
+        // subnetCell.textContent = data.subnet;
+        // row.appendChild(subnetCell);
 
         var nextHopCell = document.createElement("td");
         nextHopCell.textContent = data.nextHop;
@@ -194,8 +217,8 @@ function populateStaticRouteTable() {
 }
 
 var ospfRouteArray = [
-    { processid: "192.168.1.0", area: "1", network: "192.168.10.0", wildcard: "0.0.0.255" },
-    { processid: "192.168.1.0", area: "1", network: "192.168.10.0", wildcard: "0.0.0.255" },
+    { area: "1", network: "192.168.10.0", wildcard: "0.0.0.255" },
+    { area: "1", network: "192.168.10.0", wildcard: "0.0.0.255" },
     // Add more objects as needed
 ];
 
@@ -205,10 +228,6 @@ function populateOspfRouteTable() {
 
     ospfRouteArray.forEach(function(data) {
         var row = document.createElement("tr");
-
-        var processidCell = document.createElement("td");
-        processidCell.textContent = data.processid;
-        row.appendChild(processidCell);
 
         var areaCell = document.createElement("td");
         areaCell.textContent = data.area;
