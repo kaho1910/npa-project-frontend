@@ -35,6 +35,40 @@ fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/
         // Handle any errors
         console.log(error);
     });
+var ospfRouteInfo;
+fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/R-ospf.json', {
+        method: 'GET' // No need to specify the body for a GET request
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        ospfRouteInfo = data
+    })
+    .catch(error => {
+        // Handle any errors
+        console.log(error);
+    });
+var extendAclInfo;
+fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/R-acl.json', {
+        method: 'GET' // No need to specify the body for a GET request
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        extendAclInfo = data
+    })
+    .catch(error => {
+        // Handle any errors
+        console.log(error);
+    });
 const interfaceContainer = document.getElementById('interfaceContainerRouter');
 // Function to create and add buttons dynamically
 function createInterfaceButtons(interfaces) {
@@ -216,15 +250,27 @@ function populateStaticRouteTable() {
     });
 }
 
-var ospfRouteArray = [
-    { area: "1", network: "192.168.10.0", wildcard: "0.0.0.255" },
-    { area: "1", network: "192.168.10.0", wildcard: "0.0.0.255" },
-    // Add more objects as needed
-];
-
 function populateOspfRouteTable() {
+    var ospfRouteArray = [];
     var tableOspfRoute = document.getElementById("tableOspfRoute");
     tableOspfRoute.innerHTML = ""; // Clear existing content
+
+    var areas = ospfRouteInfo.instance["1"].areas;
+    for (var area in areas) {
+        if (areas.hasOwnProperty(area)) {
+            var interfaces = areas[area].interfaces;
+            for (var iface in interfaces) {
+                if (interfaces.hasOwnProperty(iface)) {
+                    var data = {
+                        area: area,
+                        network: interfaces[iface].ip_address,
+                        interface: iface
+                    };
+                    ospfRouteArray.push(data);
+                }
+            }
+        }
+    }
 
     ospfRouteArray.forEach(function(data) {
         var row = document.createElement("tr");
@@ -236,9 +282,10 @@ function populateOspfRouteTable() {
         var networkCell = document.createElement("td");
         networkCell.textContent = data.network;
         row.appendChild(networkCell);
-        var wildcardCell = document.createElement("td");
-        wildcardCell.textContent = data.wildcard;
-        row.appendChild(wildcardCell);
+
+        var interfaceOspfCell = document.createElement("td");
+        interfaceOspfCell.textContent = data.interface;
+        row.appendChild(interfaceOspfCell);
 
         var actionCell = document.createElement("td");
         var removeLink = document.createElement("a");
@@ -251,56 +298,53 @@ function populateOspfRouteTable() {
     });
 }
 
-var extendedAclArray = [
-    { aclnumber: "99", aclpermission: "permit", aclprotocol: "tcp", aclsource: "192.168.1.0", aclwildcardsource: "0.0.0.255", acldestination: "10.10.0.0", aclwildcardsestination: "0.0.0.255", acloperation: "eq", aclportnumber: "80" },
-    { aclnumber: "100", aclpermission: "deny", aclprotocol: "tcp", aclsource: "192.168.5.0", aclwildcardsource: "0.0.0.255", acldestination: "172.10.0.0", aclwildcardsestination: "0.0.0.255", acloperation: "eq", aclportnumber: "80" },
-    { aclnumber: "101", aclpermission: "permit", aclprotocol: "udp", aclsource: "192.168.10.0", aclwildcardsource: "0.0.0.255", acldestination: "10.10.0.0", aclwildcardsestination: "0.0.255.255", acloperation: "gt", aclportnumber: "443" },
-
-    // Add more objects as needed
-];
 
 function populateExtendedAclTable() {
+    var extendedAclArray = [];
     var tableExtenedAcl = document.getElementById("tableExtenedAcl");
     tableExtenedAcl.innerHTML = ""; // Clear existing content
 
+    for (var key in extendAclInfo) {
+        var aclData = extendAclInfo[key];
+        for (var aceKey in aclData.aces) {
+            var aceData = aclData.aces[aceKey];
+
+            extendedAclArray.push({
+                aclname: aclData.name,
+                aces: aceKey,
+                forward: aceData.actions.forwarding,
+                protocol: aceData.matches.l3.ipv4.protocol,
+                source: Object.keys(aceData.matches.l3.ipv4.source_network)[0],
+                destination: Object.keys(aceData.matches.l3.ipv4.destination_network)[0]
+            });
+        }
+    }
     extendedAclArray.forEach(function(data) {
         var row = document.createElement("tr");
 
-        var aclnumberCell = document.createElement("td");
-        aclnumberCell.textContent = data.aclnumber;
-        row.appendChild(aclnumberCell);
+        var aclnameCell = document.createElement("td");
+        aclnameCell.textContent = data.aclname;
+        row.appendChild(aclnameCell);
 
-        var aclpermissionCell = document.createElement("td");
-        aclpermissionCell.textContent = data.aclpermission;
-        row.appendChild(aclpermissionCell);
+        var acesCell = document.createElement("td");
+        acesCell.textContent = data.aces;
+        row.appendChild(acesCell);
 
-        var aclprotocolCell = document.createElement("td");
-        aclprotocolCell.textContent = data.aclprotocol;
-        row.appendChild(aclprotocolCell);
+        var forwardCell = document.createElement("td");
+        forwardCell.textContent = data.forward;
+        row.appendChild(forwardCell);
 
-        var aclsourceCell = document.createElement("td");
-        aclsourceCell.textContent = data.aclsource;
-        row.appendChild(aclsourceCell);
+        var protocolCell = document.createElement("td");
+        protocolCell.textContent = data.protocol;
+        row.appendChild(protocolCell);
 
-        var aclwildcardsourceCell = document.createElement("td");
-        aclwildcardsourceCell.textContent = data.aclwildcardsource;
-        row.appendChild(aclwildcardsourceCell);
+        var sourceCell = document.createElement("td");
+        sourceCell.textContent = data.source;
+        row.appendChild(sourceCell);
 
-        var acldestinationCell = document.createElement("td");
-        acldestinationCell.textContent = data.acldestination;
-        row.appendChild(acldestinationCell);
-
-        var aclwildcardsestinationCell = document.createElement("td");
-        aclwildcardsestinationCell.textContent = data.aclwildcardsestination;
-        row.appendChild(aclwildcardsestinationCell);
-
-        var acloperationCell = document.createElement("td");
-        acloperationCell.textContent = data.acloperation;
-        row.appendChild(acloperationCell);
-
-        var aclportnumberCell = document.createElement("td");
-        aclportnumberCell.textContent = data.aclportnumber;
-        row.appendChild(aclportnumberCell);
+        var destinaionCell = document.createElement("td");
+        destinaionCell.textContent = data.destination;
+        row.appendChild(destinaionCell);
 
         var actionCell = document.createElement("td");
         var removeLink = document.createElement("a");
