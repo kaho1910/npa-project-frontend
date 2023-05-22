@@ -1,0 +1,130 @@
+{
+  "interface": {
+    "GigabitEthernet0/0": {
+      "interface_is_ok": "YES",
+      "ip_address": "10.0.15.202",
+      "method": "manual",
+      "protocol": "up",
+      "status": "up"
+    },
+    "GigabitEthernet0/1": {
+      "interface_is_ok": "YES",
+      "ip_address": "unassigned",
+      "method": "unset",
+      "protocol": "up",
+      "status": "up"
+    },
+    "GigabitEthernet0/2": {
+      "interface_is_ok": "YES",
+      "ip_address": "unassigned",
+      "method": "unset",
+      "protocol": "down",
+      "status": "down"
+    },
+    "GigabitEthernet0/3": {
+      "interface_is_ok": "YES",
+      "ip_address": "unassigned",
+      "method": "unset",
+      "protocol": "down",
+      "status": "down"
+    },
+    "GigabitEthernet1/0": {
+      "interface_is_ok": "YES",
+      "ip_address": "unassigned",
+      "method": "unset",
+      "protocol": "down",
+      "status": "down"
+    },
+    "GigabitEthernet1/1": {
+      "interface_is_ok": "YES",
+      "ip_address": "unassigned",
+      "method": "unset",
+      "protocol": "down",
+      "status": "down"
+    },
+    "GigabitEthernet1/2": {
+      "interface_is_ok": "YES",
+      "ip_address": "unassigned",
+      "method": "unset",
+      "protocol": "down",
+      "status": "down"
+    },
+    "GigabitEthernet1/3": {
+      "interface_is_ok": "YES",
+      "ip_address": "unassigned",
+      "method": "unset",
+      "protocol": "down",
+      "status": "down"
+    },
+    "GigabitEthernet2/0": {
+      "interface_is_ok": "YES",
+      "ip_address": "unassigned",
+      "method": "unset",
+      "protocol": "down",
+      "status": "down"
+    },
+    "GigabitEthernet2/1": {
+      "interface_is_ok": "YES",
+      "ip_address": "unassigned",
+      "method": "unset",
+      "protocol": "down",
+      "status": "down"
+    },
+    "GigabitEthernet2/2": {
+      "interface_is_ok": "YES",
+      "ip_address": "unassigned",
+      "method": "unset",
+      "protocol": "down",
+      "status": "down"
+    },
+    "GigabitEthernet2/3": {
+      "interface_is_ok": "YES",
+      "ip_address": "unassigned",
+      "method": "unset",
+      "protocol": "down",
+      "status": "down"
+    },
+    "GigabitEthernet3/0": {
+      "interface_is_ok": "YES",
+      "ip_address": "unassigned",
+      "method": "unset",
+      "protocol": "down",
+      "status": "down"
+    },
+    "GigabitEthernet3/1": {
+      "interface_is_ok": "YES",
+      "ip_address": "unassigned",
+      "method": "unset",
+      "protocol": "down",
+      "status": "down"
+    },
+    "GigabitEthernet3/2": {
+      "interface_is_ok": "YES",
+      "ip_address": "unassigned",
+      "method": "unset",
+      "protocol": "down",
+      "status": "down"
+    },
+    "GigabitEthernet3/3": {
+      "interface_is_ok": "YES",
+      "ip_address": "unassigned",
+      "method": "unset",
+      "protocol": "down",
+      "status": "down"
+    },
+    "Vlan10": {
+      "interface_is_ok": "YES",
+      "ip_address": "unassigned",
+      "method": "unset",
+      "protocol": "down",
+      "status": "administratively down"
+    },
+    "Vlan20": {
+      "interface_is_ok": "YES",
+      "ip_address": "unassigned",
+      "method": "unset",
+      "protocol": "down",
+      "status": "administratively down"
+    }
+  }
+}
