@@ -101,7 +101,7 @@ function showInterfaceRouterForm() {
     staticRouteForm.style.display = 'none';
     ospfForm.style.display = 'none';
     aclForm.style.display = 'none';
-    dhcpForm.style.display = 'none';
+    // dhcpForm.style.display = 'none';
     var interfaceButtonRouter = document.getElementsByClassName('interfaceButtonRouter');
     for (var i = 0; i < interfaceButtonRouter.length; i++) {
         interfaceButtonRouter[i].addEventListener('click', interfaceButtonRouterClick);
@@ -113,7 +113,7 @@ function showStaticRouteForm() {
     staticRouteForm.style.display = 'grid';
     ospfForm.style.display = 'none';
     aclForm.style.display = 'none';
-    dhcpForm.style.display = 'none';
+    // dhcpForm.style.display = 'none';
     populateStaticRouteTable();
 }
 
@@ -122,7 +122,7 @@ function showOpsfForm() {
     staticRouteForm.style.display = 'none';
     ospfForm.style.display = 'grid';
     aclForm.style.display = 'none';
-    dhcpForm.style.display = 'none';
+    // dhcpForm.style.display = 'none';
     populateOspfRouteTable();
 }
 
@@ -131,19 +131,19 @@ function showAclForm() {
     staticRouteForm.style.display = 'none';
     ospfForm.style.display = 'none';
     aclForm.style.display = 'grid';
-    dhcpForm.style.display = 'none';
+    // dhcpForm.style.display = 'none';
     populateExtendedAclTable();
     populateAclApplyInterfaceTable();
 }
 
-function showDhcpForm() {
-    interfaceRouterForm.style.display = 'none';
-    staticRouteForm.style.display = 'none';
-    ospfForm.style.display = 'none';
-    aclForm.style.display = 'none';
-    dhcpForm.style.display = 'grid';
-    populataDhcpPoolTable();
-}
+// function showDhcpForm() {
+//     interfaceRouterForm.style.display = 'none';
+//     staticRouteForm.style.display = 'none';
+//     ospfForm.style.display = 'none';
+//     aclForm.style.display = 'none';
+//     dhcpForm.style.display = 'grid';
+//     populataDhcpPoolTable();
+// }
 
 var interfaceRouterButton = document.getElementById('interfaceRouterButton');
 var interfaceRouterForm = document.getElementById('interfaceRouterForm');
@@ -153,13 +153,13 @@ var ospfButton = document.getElementById('ospfButton');
 var ospfForm = document.getElementById('ospfForm');
 var aclButton = document.getElementById('aclButton');
 var aclForm = document.getElementById('aclForm');
-var dhcpButton = document.getElementById('dhcpButton');
-var dhcpForm = document.getElementById('dhcpForm');
+// var dhcpButton = document.getElementById('dhcpButton');
+// var dhcpForm = document.getElementById('dhcpForm');
 interfaceRouterButton.addEventListener('click', showInterfaceRouterForm);
 staticRouteButton.addEventListener('click', showStaticRouteForm);
 ospfButton.addEventListener('click', showOpsfForm);
 aclButton.addEventListener('click', showAclForm);
-dhcpButton.addEventListener('click', showDhcpForm);
+// dhcpButton.addEventListener('click', showDhcpForm);
 
 
 
@@ -396,50 +396,50 @@ function populateAclApplyInterfaceTable() {
     });
 }
 
-var dhcpPoolArray = [
-    { dhcppoolname: "Toen", dhcpnetwork: "10.0.0.0", dhcpsubnet: "255.255.0.0", exclfrom: "10.0.0.1", exclto: "10.0.0.50", dhcpdfgwip: "10.0.0.1", dhcpdnsipad: "8.8.8.8" },
-    { dhcppoolname: "Gram", dhcpnetwork: "192.168.1.0", dhcpsubnet: "255.255.255.0", exclfrom: "192.168.1.1", exclto: "192.168.1.128", dhcpdfgwip: "192.168.1.1", dhcpdnsipad: "8.8.1.1" },
-    { dhcppoolname: "Ji", dhcpnetwork: "172.168.1.0", dhcpsubnet: "255.255.0.0", exclfrom: "172.168.1.1", exclto: "172.168.1.70", dhcpdfgwip: "172.168.1.1", dhcpdnsipad: "1.1.1.1" },
-    // Add more objects as needed
-];
+// var dhcpPoolArray = [
+//     { dhcppoolname: "Toen", dhcpnetwork: "10.0.0.0", dhcpsubnet: "255.255.0.0", exclfrom: "10.0.0.1", exclto: "10.0.0.50", dhcpdfgwip: "10.0.0.1", dhcpdnsipad: "8.8.8.8" },
+//     { dhcppoolname: "Gram", dhcpnetwork: "192.168.1.0", dhcpsubnet: "255.255.255.0", exclfrom: "192.168.1.1", exclto: "192.168.1.128", dhcpdfgwip: "192.168.1.1", dhcpdnsipad: "8.8.1.1" },
+//     { dhcppoolname: "Ji", dhcpnetwork: "172.168.1.0", dhcpsubnet: "255.255.0.0", exclfrom: "172.168.1.1", exclto: "172.168.1.70", dhcpdfgwip: "172.168.1.1", dhcpdnsipad: "1.1.1.1" },
+//     // Add more objects as needed
+// ];
 
-function populataDhcpPoolTable() {
-    var tableDhcpPoolTable = document.getElementById("tableDhcpPoolTable");
-    tableDhcpPoolTable.innerHTML = ""; // Clear existing content
+// function populataDhcpPoolTable() {
+//     var tableDhcpPoolTable = document.getElementById("tableDhcpPoolTable");
+//     tableDhcpPoolTable.innerHTML = ""; // Clear existing content
 
-    dhcpPoolArray.forEach(function(data) {
-        var row = document.createElement("tr");
+//     dhcpPoolArray.forEach(function(data) {
+//         var row = document.createElement("tr");
 
-        var dhcppoolnameCell = document.createElement("td");
-        dhcppoolnameCell.textContent = data.dhcppoolname;
-        row.appendChild(dhcppoolnameCell);
+//         var dhcppoolnameCell = document.createElement("td");
+//         dhcppoolnameCell.textContent = data.dhcppoolname;
+//         row.appendChild(dhcppoolnameCell);
 
-        var dhcpnetworkCell = document.createElement("td");
-        dhcpnetworkCell.textContent = data.dhcpnetwork + "/" + data.dhcpsubnet;
-        row.appendChild(dhcpnetworkCell);
+//         var dhcpnetworkCell = document.createElement("td");
+//         dhcpnetworkCell.textContent = data.dhcpnetwork + "/" + data.dhcpsubnet;
+//         row.appendChild(dhcpnetworkCell);
 
-        var exclfromtoCell = document.createElement("td");
-        exclfromtoCell.textContent = data.exclfrom + "-" + data.exclto;
-        row.appendChild(exclfromtoCell);
+//         var exclfromtoCell = document.createElement("td");
+//         exclfromtoCell.textContent = data.exclfrom + "-" + data.exclto;
+//         row.appendChild(exclfromtoCell);
 
-        var dhcpdfgwipCell = document.createElement("td");
-        dhcpdfgwipCell.textContent = data.dhcpdfgwip;
-        row.appendChild(dhcpdfgwipCell);
+//         var dhcpdfgwipCell = document.createElement("td");
+//         dhcpdfgwipCell.textContent = data.dhcpdfgwip;
+//         row.appendChild(dhcpdfgwipCell);
 
-        var dhcpdnsipadCell = document.createElement("td");
-        dhcpdnsipadCell.textContent = data.dhcpdnsipad;
-        row.appendChild(dhcpdnsipadCell);
+//         var dhcpdnsipadCell = document.createElement("td");
+//         dhcpdnsipadCell.textContent = data.dhcpdnsipad;
+//         row.appendChild(dhcpdnsipadCell);
 
-        var actionCell = document.createElement("td");
-        var removeLink = document.createElement("a");
-        removeLink.href = "#";
-        removeLink.textContent = "Remove";
-        removeLink.classList.add("text-blue-600", "dark:text-blue-500", "font-medium", "hover:underline");
-        actionCell.appendChild(removeLink);
-        row.appendChild(actionCell);
-        tableDhcpPoolTable.appendChild(row);
-    });
-}
+//         var actionCell = document.createElement("td");
+//         var removeLink = document.createElement("a");
+//         removeLink.href = "#";
+//         removeLink.textContent = "Remove";
+//         removeLink.classList.add("text-blue-600", "dark:text-blue-500", "font-medium", "hover:underline");
+//         actionCell.appendChild(removeLink);
+//         row.appendChild(actionCell);
+//         tableDhcpPoolTable.appendChild(row);
+//     });
+// }
 var methodIpSelect = document.getElementById("methodip");
 var ipInput = document.getElementById("ip");
 var subnetInput = document.getElementById("ipsubnet");

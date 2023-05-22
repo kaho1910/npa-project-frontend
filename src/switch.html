@@ -488,117 +488,6 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div id="dhcpForm" class="grid h-96 grid-cols-3 gap-4" style="display: none">
-                                        <div class="... col-span-3">
-                                            <div class="mt-10">
-                                                <div class="grid grid-cols-3 gap-6">
-                                                    <div class="col-span-3 mt-6">
-                                                        <h1>DHCP</h1>
-                                                        <form action="#" method="POST">
-                                                            <div class="overflow-hidden shadow sm:rounded-md">
-                                                                <div class="bg-white px-4 py-5">
-                                                                    <div class="grid grid-cols-6 gap-6">
-                                                                        <div class="col-span-2">
-                                                                            <label for="poolname" class="text-gray-700 block text-sm font-medium">Pool
-                                                                                name</label>
-                                                                            <input type="text" name="poolname" id="poolname" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
-                                                                        </div>
-                                                                        <div class="col-span-2">
-                                                                            <label for="dhcpnetwork" class="text-gray-700 block text-sm font-medium">DHCP
-                                                                                Network</label>
-                                                                            <input type="text" name="dhcpnetwork" id="dhcpnetwork" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
-                                                                        </div>
-                                                                        <div class="col-span-2">
-                                                                            <label for="dhcpsubnet" class="text-gray-700 block text-sm font-medium">DHCP
-                                                                                Subnet Mask</label>
-                                                                            <input type="text" name="dhcpsubnet" id="dhcpsubnet" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
-                                                                        </div>
-                                                                        <div class="col-span-1">
-                                                                            <label for="exclfrom" class="text-gray-700 block text-sm font-medium">Exclude-address
-                                                                                From</label>
-                                                                            <input type="text" name="exclfrom" id="exclfrom" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
-                                                                        </div>
-                                                                        <div class="col-span-1">
-                                                                            <label for="exclto" class="text-gray-700 block text-sm font-medium">Exclude-address
-                                                                                To</label>
-                                                                            <input type="text" name="exclto" id="exclto" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
-                                                                        </div>
-                                                                        <div class="col-span-1">
-                                                                            <label for="dhcpdfgwip" class="text-gray-700 block text-sm font-medium">Default
-                                                                                gateway’s IP address</label>
-                                                                            <input type="text" name="dhcpdfgwip" id="dhcpdfgwip" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
-                                                                        </div>
-                                                                        <div class="col-span-1">
-                                                                            <label for="dhcpdnsipad" class="text-gray-700 block text-sm font-medium">DNS
-                                                                                server’s IP address</label>
-                                                                            <input type="text" name="dhcpdnsipad" id="dhcpdnsipad" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
-                                                                        </div>
-                                                                        <div class="bg-gray-50 col-start-6 px-4 py-3 text-right">
-                                                                            <button type="submit" class="hover:bg-success-600 focus:bg-success-600 active:bg-success-700 inline-block rounded bg-success px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
-                                                                                Success
-                                                                            </button>
-
-                                                                        </div>
-
-                                                                        <div class="relative col-span-6 overflow-x-auto shadow-md">
-                                                                            <table class="text-gray-500 dark:text-gray-400 w-full text-left text-sm">
-                                                                                <thead class="text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400 text-xs uppercase">
-                                                                                    <tr>
-                                                                                        <th scope="col" class="px-6 py-3">
-                                                                                            Pool Name
-                                                                                        </th>
-                                                                                        <th scope="col" class="px-6 py-3">
-                                                                                            DHCP Network
-                                                                                        </th>
-                                                                                        <th scope="col" class="px-6 py-3">
-                                                                                            Exclude-address
-                                                                                        </th>
-                                                                                        <th scope="col" class="px-6 py-3">
-                                                                                            Default gateway’s IP address
-                                                                                        </th>
-                                                                                        <th scope="col" class="px-6 py-3">
-                                                                                            DNS server’s IP address
-                                                                                        </th>
-                                                                                        <th scope="col" class="px-6 py-3">
-                                                                                            <span class="sr-only">Action</span>
-                                                                                        </th>
-                                                                                    </tr>
-                                                                                </thead>
-                                                                                <tbody>
-                                                                                    <tr class="dark:bg-gray-800 dark:border-gray-700 border-b bg-white">
-                                                                                        <th scope="row" class="text-gray-900 whitespace-nowrap px-6 py-4 font-medium dark:text-white">
-                                                                                            1
-                                                                                        </th>
-                                                                                        <td class="px-6 py-4">
-                                                                                            1
-                                                                                        </td>
-                                                                                        <td class="px-6 py-4">
-                                                                                            192.168.1.1
-                                                                                        </td>
-                                                                                        <td class="px-6 py-4">
-                                                                                            0.0.0.255
-                                                                                        </td>
-                                                                                        <td class="px-6 py-4">
-                                                                                            0.0.0.255
-                                                                                        </td>
-
-                                                                                        <td class="px-6 py-4 text-right">
-                                                                                            <a href="#" class="text-blue-600 dark:text-blue-500 font-medium hover:underline">Remove</a>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                </tbody>
-                                                                            </table>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div id="aclForm" class="grid grid-cols-3 gap-4 overflow-auto h-96" style="display: none">
                                         <div class="... col-span-3">
                                             <div class="mt-10">
@@ -745,31 +634,22 @@
                                                                                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                                                                     <tr>
                                                                                         <th scope="col" class="px-6 py-3">
-                                                                                            ACL Number
+                                                                                            ACL Name
+                                                                                        </th>
+                                                                                        <th scope="col" class="px-6 py-3">
+                                                                                            Rule
                                                                                         </th>
                                                                                         <th scope="col" class="px-6 py-3">
                                                                                             Permission
                                                                                         </th>
                                                                                         <th scope="col" class="px-6 py-3">
-                                                                                            Protocols
+                                                                                            Protocol
                                                                                         </th>
                                                                                         <th scope="col" class="px-6 py-3">
-                                                                                            Source
+                                                                                            Source Network
                                                                                         </th>
                                                                                         <th scope="col" class="px-6 py-3">
-                                                                                            Wild Card
-                                                                                        </th>
-                                                                                        <th scope="col" class="px-6 py-3">
-                                                                                            Destination
-                                                                                        </th>
-                                                                                        <th scope="col" class="px-6 py-3">
-                                                                                            Wild Card
-                                                                                        </th>
-                                                                                        <th scope="col" class="px-6 py-3">
-                                                                                            Operation
-                                                                                        </th>
-                                                                                        <th scope="col" class="px-6 py-3">
-                                                                                            Port Number
+                                                                                            Destination Network
                                                                                         </th>
                                                                                         <th scope="col" class="px-6 py-3">
                                                                                             <span class="sr-only">Action</span>
