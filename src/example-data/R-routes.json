@@ -5,124 +5,18 @@
         "ipv4": {
           "routes": {
             "0.0.0.0/0": {
-              "active": true,
-              "metric": 0,
               "next_hop": {
                 "next_hop_list": {
                   "1": {
+                    "active": true,
                     "index": 1,
-                    "next_hop": "10.0.15.1"
+                    "next_hop": "10.0.15.1",
+                    "owner_code": "M",
+                    "preference": 1
                   }
                 }
               },
-              "route": "0.0.0.0/0",
-              "route_preference": 1,
-              "source_protocol": "static",
-              "source_protocol_codes": "S*"
-            },
-            "10.0.0.0/24": {
-              "active": true,
-              "next_hop": {
-                "outgoing_interface": {
-                  "GigabitEthernet0/2": {
-                    "outgoing_interface": "GigabitEthernet0/2"
-                  }
-                }
-              },
-              "route": "10.0.0.0/24",
-              "source_protocol": "connected",
-              "source_protocol_codes": "C"
-            },
-            "10.0.0.1/32": {
-              "active": true,
-              "next_hop": {
-                "outgoing_interface": {
-                  "GigabitEthernet0/2": {
-                    "outgoing_interface": "GigabitEthernet0/2"
-                  }
-                }
-              },
-              "route": "10.0.0.1/32",
-              "source_protocol": "local",
-              "source_protocol_codes": "L"
-            },
-            "10.0.15.0/24": {
-              "active": true,
-              "next_hop": {
-                "outgoing_interface": {
-                  "GigabitEthernet0/3": {
-                    "outgoing_interface": "GigabitEthernet0/3"
-                  }
-                }
-              },
-              "route": "10.0.15.0/24",
-              "source_protocol": "connected",
-              "source_protocol_codes": "C"
-            },
-            "10.0.15.201/32": {
-              "active": true,
-              "next_hop": {
-                "outgoing_interface": {
-                  "GigabitEthernet0/3": {
-                    "outgoing_interface": "GigabitEthernet0/3"
-                  }
-                }
-              },
-              "route": "10.0.15.201/32",
-              "source_protocol": "local",
-              "source_protocol_codes": "L"
-            },
-            "172.16.1.0/24": {
-              "active": true,
-              "next_hop": {
-                "outgoing_interface": {
-                  "GigabitEthernet0/0": {
-                    "outgoing_interface": "GigabitEthernet0/0"
-                  }
-                }
-              },
-              "route": "172.16.1.0/24",
-              "source_protocol": "connected",
-              "source_protocol_codes": "C"
-            },
-            "172.16.1.254/32": {
-              "active": true,
-              "next_hop": {
-                "outgoing_interface": {
-                  "GigabitEthernet0/0": {
-                    "outgoing_interface": "GigabitEthernet0/0"
-                  }
-                }
-              },
-              "route": "172.16.1.254/32",
-              "source_protocol": "local",
-              "source_protocol_codes": "L"
-            },
-            "172.16.2.0/24": {
-              "active": true,
-              "next_hop": {
-                "outgoing_interface": {
-                  "GigabitEthernet0/1": {
-                    "outgoing_interface": "GigabitEthernet0/1"
-                  }
-                }
-              },
-              "route": "172.16.2.0/24",
-              "source_protocol": "connected",
-              "source_protocol_codes": "C"
-            },
-            "172.16.2.254/32": {
-              "active": true,
-              "next_hop": {
-                "outgoing_interface": {
-                  "GigabitEthernet0/1": {
-                    "outgoing_interface": "GigabitEthernet0/1"
-                  }
-                }
-              },
-              "route": "172.16.2.254/32",
-              "source_protocol": "local",
-              "source_protocol_codes": "L"
+              "route": "0.0.0.0/0"
             }
           }
         }
