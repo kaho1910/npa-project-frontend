@@ -1,3 +1,14 @@
+// Parse the query parameters from the API URL
+const urlParams = new URLSearchParams(window.location.search);
+
+// Extract the value of the "name" parameter
+const switchName = urlParams.get('name');
+const switchIp = urlParams.get('ip');
+
+// Update the content of the <h2> element
+const switchNameElement = document.getElementById('switchName');
+switchNameElement.textContent = switchName;
+
 var interfaces;
 fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/S-interfaces.json', {
         method: 'GET' // No need to specify the body for a GET request
@@ -65,7 +76,7 @@ function createInterfaceButtons(interfaces) {
         button.setAttribute('data-interface', interfaceName);
 
         // Add classes to the button
-        button.classList.add('rounded-md', 'border', 'border-primary','mx-2','my-2', 'interfaceButtonSwitch', 'hover:bg-primary-600', 'focus:bg-primary-600', 'active:bg-primary-700', 'block', 'px-6', 'pb-2', 'pt-2.5', 'text-xs', 'font-medium', 'uppercase', 'leading-normal', 'text-primary', 'shadow-[0_4px_9px_-4px_#3b71ca]', 'transition', 'duration-150', 'ease-in-out', 'hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]', 'focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]', 'focus:outline-none', 'focus:ring-0', 'active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]', 'dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)]', 'dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]', 'dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]', 'dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]');
+        button.classList.add('rounded-md', 'border', 'border-primary', 'mx-2', 'my-2', 'interfaceButtonSwitch', 'hover:bg-primary-600', 'focus:bg-primary-600', 'active:bg-primary-700', 'block', 'px-6', 'pb-2', 'pt-2.5', 'text-xs', 'font-medium', 'uppercase', 'leading-normal', 'text-primary', 'shadow-[0_4px_9px_-4px_#3b71ca]', 'transition', 'duration-150', 'ease-in-out', 'hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]', 'focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]', 'focus:outline-none', 'focus:ring-0', 'active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]', 'dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)]', 'dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]', 'dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]', 'dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]');
 
         // Set the button text
         button.textContent = `Interface ${interfaceName}`;
@@ -482,14 +493,6 @@ function populateAclApplyInterfaceTable() {
 
 // Dynamic Device Name Zone
 
-// Parse the query parameters from the API URL
-const urlParams = new URLSearchParams(window.location.search);
 
-// Extract the value of the "name" parameter
-const routerName = urlParams.get('name');
-
-// Update the content of the <h2> element
-const routerNameElement = document.getElementById('routerName');
-routerNameElement.textContent = routerName;
 
 // DDNZ
