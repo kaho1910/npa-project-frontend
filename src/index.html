@@ -41,7 +41,7 @@
                                     <!-- ===== Select Type ===== -->
                                     <label class="mb-3 block text-sm font-medium text-black dark:text-white" for="Username">Device Type</label>
                                     <select class="relative z-20 w-full appearance-none rounded border border-stroke bg-gray py-3 px-4.5 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input" v-model="newText.type" required="">
-                    <option value="" disabled="" selected="" hidden="">Select please</option>
+                    <option value="" disabled="" selected="" hidden="">Select Type</option>
                     <option value="Router">Router</option>
                     <option value="Switch">Switch</option>
                   </select>
@@ -108,11 +108,11 @@
                 },
                 configDevice() {
                     if (this.type === 'Router') {
-                        // Redirect to profile.html and pass ip and name values to test.js
-                        window.location.href = `profile.html?ip=${this.ip}&name=${this.name}`;
+                        // Redirect to router.html and pass ip and name values to test.js
+                        window.location.href = `router.html?ip=${this.ip}&name=${this.name}`;
                     } else if (this.type === 'Switch') {
-                        // Redirect to calendar.html and pass ip and name values to test.js
-                        window.location.href = `calendar.html?ip=${this.ip}&name=${this.name}`;
+                        // Redirect to switch.html and pass ip and name values to test.js
+                        window.location.href = `switch.html?ip=${this.ip}&name=${this.name}`;
                     }
                 },
             }
