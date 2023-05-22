@@ -161,6 +161,7 @@ var staticRouteArray = [
     { destination: "192.168.1.0", subnet: "255.255.255.0", nextHop: "192.168.1.1" },
     { destination: "10.168.2.0", subnet: "255.255.255.0", nextHop: "10.168.2.1" },
     // Add more objects as needed
+    // Add From API using Loop
 ];
 
 function populateStaticRouteTable() {
