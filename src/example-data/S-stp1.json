@@ -1,0 +1,189 @@
+{
+  "pvst": {
+    "vlans": {
+      "1": {
+        "bridge": {
+          "address": "0c64.f336.0000",
+          "aging_time": 300,
+          "configured_bridge_priority": 32768,
+          "forward_delay": 15,
+          "hello_time": 2,
+          "max_age": 20,
+          "priority": 32769,
+          "sys_id_ext": 1
+        },
+        "interfaces": {
+          "GigabitEthernet0/1": {
+            "cost": 4,
+            "port_num": 2,
+            "port_priority": 128,
+            "port_state": "forwarding",
+            "role": "designated",
+            "type": "P2p"
+          },
+          "GigabitEthernet0/2": {
+            "cost": 4,
+            "port_num": 3,
+            "port_priority": 128,
+            "port_state": "forwarding",
+            "role": "designated",
+            "type": "P2p"
+          },
+          "GigabitEthernet0/3": {
+            "cost": 4,
+            "port_num": 4,
+            "port_priority": 128,
+            "port_state": "forwarding",
+            "role": "designated",
+            "type": "P2p"
+          },
+          "GigabitEthernet3/0": {
+            "cost": 4,
+            "port_num": 13,
+            "port_priority": 128,
+            "port_state": "forwarding",
+            "role": "designated",
+            "type": "P2p"
+          },
+          "GigabitEthernet3/1": {
+            "cost": 4,
+            "port_num": 14,
+            "port_priority": 128,
+            "port_state": "forwarding",
+            "role": "designated",
+            "type": "P2p"
+          },
+          "GigabitEthernet3/2": {
+            "cost": 4,
+            "port_num": 15,
+            "port_priority": 128,
+            "port_state": "forwarding",
+            "role": "designated",
+            "type": "P2p"
+          },
+          "GigabitEthernet3/3": {
+            "cost": 4,
+            "port_num": 16,
+            "port_priority": 128,
+            "port_state": "forwarding",
+            "role": "designated",
+            "type": "P2p"
+          }
+        },
+        "root": {
+          "address": "0c64.f336.0000",
+          "forward_delay": 15,
+          "hello_time": 2,
+          "max_age": 20,
+          "priority": 32769
+        }
+      },
+      "10": {
+        "bridge": {
+          "address": "0c64.f336.0000",
+          "aging_time": 300,
+          "configured_bridge_priority": 32768,
+          "forward_delay": 15,
+          "hello_time": 2,
+          "max_age": 20,
+          "priority": 32778,
+          "sys_id_ext": 10
+        },
+        "interfaces": {
+          "GigabitEthernet1/0": {
+            "cost": 4,
+            "port_num": 5,
+            "port_priority": 128,
+            "port_state": "forwarding",
+            "role": "designated",
+            "type": "P2p"
+          },
+          "GigabitEthernet1/1": {
+            "cost": 4,
+            "port_num": 6,
+            "port_priority": 128,
+            "port_state": "forwarding",
+            "role": "designated",
+            "type": "P2p"
+          },
+          "GigabitEthernet1/2": {
+            "cost": 4,
+            "port_num": 7,
+            "port_priority": 128,
+            "port_state": "forwarding",
+            "role": "designated",
+            "type": "P2p"
+          },
+          "GigabitEthernet1/3": {
+            "cost": 4,
+            "port_num": 8,
+            "port_priority": 128,
+            "port_state": "forwarding",
+            "role": "designated",
+            "type": "P2p"
+          }
+        },
+        "root": {
+          "address": "0c64.f336.0000",
+          "forward_delay": 15,
+          "hello_time": 2,
+          "max_age": 20,
+          "priority": 32778
+        }
+      },
+      "20": {
+        "bridge": {
+          "address": "0c64.f336.0000",
+          "aging_time": 300,
+          "configured_bridge_priority": 32768,
+          "forward_delay": 15,
+          "hello_time": 2,
+          "max_age": 20,
+          "priority": 32788,
+          "sys_id_ext": 20
+        },
+        "interfaces": {
+          "GigabitEthernet2/0": {
+            "cost": 4,
+            "port_num": 9,
+            "port_priority": 128,
+            "port_state": "forwarding",
+            "role": "designated",
+            "type": "P2p"
+          },
+          "GigabitEthernet2/1": {
+            "cost": 4,
+            "port_num": 10,
+            "port_priority": 128,
+            "port_state": "forwarding",
+            "role": "designated",
+            "type": "P2p"
+          },
+          "GigabitEthernet2/2": {
+            "cost": 4,
+            "port_num": 11,
+            "port_priority": 128,
+            "port_state": "forwarding",
+            "role": "designated",
+            "type": "P2p"
+          },
+          "GigabitEthernet2/3": {
+            "cost": 4,
+            "port_num": 12,
+            "port_priority": 128,
+            "port_state": "forwarding",
+            "role": "designated",
+            "type": "P2p"
+          }
+        },
+        "root": {
+          "address": "0c64.f336.0000",
+          "forward_delay": 15,
+          "hello_time": 2,
+          "max_age": 20,
+          "priority": 32788
+        }
+      }
+    }
+  }
+}
