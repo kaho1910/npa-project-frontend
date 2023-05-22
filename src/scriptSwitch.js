@@ -408,3 +408,17 @@ function populateAclApplyInterfaceTable() {
         tableApplyPolicyAcl.appendChild(row);
     });
 }
+
+// Dynamic Device Name Zone
+
+// Parse the query parameters from the API URL
+const urlParams = new URLSearchParams(window.location.search);
+
+// Extract the value of the "name" parameter
+const routerName = urlParams.get('name');
+
+// Update the content of the <h2> element
+const routerNameElement = document.getElementById('routerName');
+routerNameElement.textContent = routerName;
+
+// DDNZ
