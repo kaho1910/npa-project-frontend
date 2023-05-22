@@ -1,0 +1,12 @@
+[
+  {
+    "type": "Router",
+    "hostname": "RS",
+    "ipaddress": "10.0.15.201"
+  },
+  {
+    "type": "Router",
+    "hostname": "test",
+    "ipaddress": "10.0.15.202"
+  }
+]
