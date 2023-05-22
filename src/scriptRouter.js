@@ -123,7 +123,7 @@ function createInterfaceButtons(interfaces) {
         button.setAttribute('data-interface', interfaceName);
 
         // Add classes to the button
-        button.classList.add('hover:bg-violet-600', 'active:bg-violet-700', 'focus:outline-none', 'focus:ring', 'focus:ring-violet-300', 'rounded-md', 'border', 'border-primary', 'border-primary','mx-2','my-2', 'interfaceButtonRouter', 'block', 'px-6', 'pb-2', 'pt-2.5', 'text-xs', 'font-medium', 'uppercase', 'leading-normal', 'text-primary', 'shadow-[0_4px_9px_-4px_#3b71ca]', 'transition', 'duration-150', 'ease-in-out', 'hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]', 'focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]', 'focus:outline-none', 'focus:ring-0', 'active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]', 'dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)]', 'dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]', 'dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]', 'dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]');
+        button.classList.add('hover:bg-violet-600', 'active:bg-violet-700', 'focus:outline-none', 'focus:ring', 'focus:ring-violet-300', 'rounded-md', 'border', 'border-primary', 'border-primary', 'mx-2', 'my-2', 'interfaceButtonRouter', 'block', 'px-6', 'pb-2', 'pt-2.5', 'text-xs', 'font-medium', 'uppercase', 'leading-normal', 'text-primary', 'shadow-[0_4px_9px_-4px_#3b71ca]', 'transition', 'duration-150', 'ease-in-out', 'hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]', 'focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]', 'focus:outline-none', 'focus:ring-0', 'active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]', 'dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)]', 'dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]', 'dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]', 'dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]');
 
         // Set the button text
         button.textContent = `Interface ${interfaceName}`;
@@ -220,10 +220,11 @@ methodIpSelect.addEventListener("change", function() {
         console.log("du");
     }
 });
+var ipInput = document.getElementById("ip");
+var ipLabel = document.getElementById("ipLabel");
 
 function interfaceButtonRouterClick(event) {
     test = event.target.dataset.interface; // Get the interface value
-    console.log(interfaces[test]);
     // Get the corresponding interface details from the dictionary
 
 
@@ -247,9 +248,43 @@ function interfaceButtonRouterClick(event) {
         ipInput.disabled = true;
         subnetInput.disabled = true;
     }
+    var ipAddress = ipInput.value;
+    // Regular expression to match the IP address format
+    var ipRegex = /^(\d{1,3}\.){3}\d{1,3}$/;
+
+    // Check if the input matches the IP address format
+    if (ipRegex.test(ipAddress)) {
+        var octets = ipAddress.split(".");
+        var isValid = octets.every(function(octet) {
+            // Convert each octet to a number and check if it falls within the valid range (0-255)
+            var num = parseInt(octet);
+            return num >= 0 && num <= 255;
+        });
+        if (isValid) {
+            // Input is valid
+            ipLabel.textContent = "Valid IP address format";
+            ipLabel.classList.remove("text-danger");
+            ipLabel.classList.remove("text-primary");
+            ipLabel.classList.add("text-success");
+        } else {
+            // Input is invalid
+            ipLabel.textContent = "Invalid IP address format";
+            ipLabel.classList.remove("text-success");
+            ipLabel.classList.remove("text-primary");
+            ipLabel.classList.add("text-danger");
+        }
+    } else if (ipInput.value == "unassigned") {
+        ipLabel.textContent = "Waiting for IP address...";
+        ipLabel.classList.remove("text-danger");
+        ipLabel.classList.remove("text-success");
+        ipLabel.classList.add("text-primary");
+    } else {
+        // Input is invalid
+        ipLabel.textContent = "Invalid IP address format";
+        ipLabel.classList.remove("text-success");
+        ipLabel.classList.add("text-danger");
+    }
 }
-var ipInput = document.getElementById("ip");
-var ipLabel = document.getElementById("ipLabel");
 
 ipInput.addEventListener("input", function() {
     var ipAddress = ipInput.value;
@@ -270,11 +305,18 @@ ipInput.addEventListener("input", function() {
             // Input is valid
             ipLabel.textContent = "Valid IP address format";
             ipLabel.classList.remove("text-danger");
+            ipLabel.classList.remove("text-primary");
             ipLabel.classList.add("text-success");
+        } else if (ipInput.value == "unassigned") {
+            ipLabel.textContent = "Waiting for IP address...";
+            ipLabel.classList.remove("text-danger");
+            ipLabel.classList.remove("text-success");
+            ipLabel.classList.add("text-primary");
         } else {
             // Input is invalid
             ipLabel.textContent = "Invalid IP address format";
             ipLabel.classList.remove("text-success");
+            ipLabel.classList.remove("text-primary");
             ipLabel.classList.add("text-danger");
         }
     } else {

@@ -76,7 +76,7 @@ function createInterfaceButtons(interfaces) {
         button.setAttribute('data-interface', interfaceName);
 
         // Add classes to the button
-        button.classList.add('hover:bg-violet-600', 'active:bg-violet-700', 'focus:outline-none', 'focus:ring', 'focus:ring-violet-300', 'rounded-md', 'border', 'border-primary','mx-2','my-2', 'interfaceButtonSwitch', 'block', 'px-6', 'pb-2', 'pt-2.5', 'text-xs', 'font-medium', 'uppercase', 'leading-normal', 'text-primary', 'shadow-[0_4px_9px_-4px_#3b71ca]', 'transition', 'duration-150', 'ease-in-out', 'hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]', 'focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]', 'focus:outline-none', 'focus:ring-0', 'active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]', 'dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)]', 'dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]', 'dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]', 'dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]');
+        button.classList.add('hover:bg-violet-600', 'active:bg-violet-700', 'focus:outline-none', 'focus:ring', 'focus:ring-violet-300', 'rounded-md', 'border', 'border-primary', 'mx-2', 'my-2', 'interfaceButtonSwitch', 'block', 'px-6', 'pb-2', 'pt-2.5', 'text-xs', 'font-medium', 'uppercase', 'leading-normal', 'text-primary', 'shadow-[0_4px_9px_-4px_#3b71ca]', 'transition', 'duration-150', 'ease-in-out', 'hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]', 'focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]', 'focus:outline-none', 'focus:ring-0', 'active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]', 'dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)]', 'dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]', 'dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]', 'dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]');
 
         // Set the button text
         button.textContent = `Interface ${interfaceName}`;
@@ -336,20 +336,38 @@ var vlanIdInput = document.getElementById("vlanid");
 var vlanRangeLabel = document.getElementById("vlanRange");
 
 vlanIdInput.addEventListener("input", function() {
-    var vlanId = parseInt(vlanIdInput.value);
-    var vlanRange = getVlanRange(vlanId);
+    var inputValue = vlanIdInput.value;
 
-    vlanRangeLabel.textContent = vlanRange;
+    // Remove any non-digit characters from the input
+    var numericValue = inputValue.replace(/\D/g, "");
 
-    // Add tailwind classes based on input validity
-    if (vlanRange === "Invalid VLAN Range") {
+    // Ensure the input is within the valid range
+    if (numericValue < 2 || numericValue > 4094) {
+        // If the input is invalid, clear the input field
+        vlanIdInput.value = "";
+        vlanRangeLabel.textContent = "Invalid VLAN ID";
         vlanRangeLabel.classList.remove("text-success");
         vlanRangeLabel.classList.add("text-danger");
     } else {
-        vlanRangeLabel.classList.remove("text-danger");
-        vlanRangeLabel.classList.add("text-success");
+        // Update the input value with the sanitized numeric value
+        vlanIdInput.value = numericValue;
+
+        var vlanRange = getVlanRange(numericValue);
+        vlanRangeLabel.textContent = vlanRange;
+
+        // Add tailwind classes based on input validity
+        if (vlanRange === "Invalid VLAN Range") {
+            vlanRangeLabel.classList.remove("text-success");
+            vlanRangeLabel.classList.add("text-danger");
+        } else {
+            vlanRangeLabel.classList.remove("text-danger");
+            vlanRangeLabel.classList.add("text-success");
+        }
     }
 });
+
+
+
 
 function getVlanRange(vlanId) {
     if (vlanId >= 2 && vlanId <= 1005) {
