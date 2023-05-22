@@ -11,5 +11,18 @@
       ]
     },
     "status": true
+  },
+  {
+    "type": "Switch",
+    "hostname": "SS",
+    "ipaddress": "10.0.15.202",
+    "abstraction": {
+      "order": [
+        "os",
+        "platform",
+        "model"
+      ]
+    },
+    "status": true
   }
 ]
