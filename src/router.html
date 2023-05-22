@@ -50,7 +50,7 @@
 
                         <!-- ====== Profile Section Start -->
                         <div class="overflow-hidden bg-white border rounded-sm border-stroke shadow-default dark:border-strokedark dark:bg-boxdark">
-                            <div class="relative z-20 h-35">
+                            <div class="relative z-20 h-25">
                                 <img src="./images/cover/cover-01.png" alt="profile cover" class=" object-cover object-center w-full h-full rounded-tl-sm rounded-tr-sm" />
                                 <div class="absolute z-10 bottom-0 right-1 xsm:bottom-2 xsm:right-4">
                                     <label for="cover" class="flex items-center justify-center gap-2 px-2 py-1 text-sm font-medium text-white rounded cursor-pointer xsm:px-4">
@@ -82,38 +82,44 @@
                                             DHCP
                                         </button> -->
                                     </div>
-                                    <div id="interfaceRouterForm" class="grid grid-cols-5 gap-4 h-115 max-h-115" style="display: none">
-                                        <div class="... block overflow-auto w-fit py-2" id="interfaceContainerRouter">
+                                    <div id="interfaceRouterForm" class="grid grid-cols-5 gap-4 h-125 max-h-125" style="display: none">
+                                        <div class="... block overflow-auto w-fit py-2 mt-6 border-2 border-x-meta-5 border-y-transparent" id="interfaceContainerRouter">
 
                                         </div>
                                         <div class="... col-span-4">
-                                            <div class="mt-10">
+                                            <div class="">
                                                 <div class="grid grid-cols-3 gap-6">
                                                     <div class="col-span-3 mt-6">
-                                                        <h1 id="interfaceRouter"></h1>
                                                         <form action="#" method="POST">
-                                                            <div class="overflow-hidden shadow sm:rounded-md">
-                                                                <div class="px-4 py-5 bg-white">
-                                                                    <div class="grid grid-cols-6 gap-6">
-                                                                        <div class="col-span-1">
-                                                                            <label class="inline-block pl-[0.15rem] hover:cursor-pointer" for="statusRouter">Status Off</label>
-                                                                            <input class="bg-neutral-300 after:bg-neutral-100 dark:bg-neutral-600 dark:after:bg-neutral-400 mr-2 mt-[0.3rem] h-3.5 w-8 appearance-none rounded-[0.4375rem] before:pointer-events-none before:absolute before:h-3.5 before:w-3.5 before:rounded-full before:bg-transparent before:content-[''] after:absolute after:z-[2] after:-mt-[0.1875rem] after:h-5 after:w-5 after:rounded-full after:border-none after:shadow-[0_0px_3px_0_rgb(0_0_0_/_7%),_0_2px_2px_0_rgb(0_0_0_/_4%)] after:transition-[background-color_0.2s,transform_0.2s] after:content-[''] checked:bg-primary checked:after:absolute checked:after:z-[2] checked:after:-mt-[3px] checked:after:ml-[1.0625rem] checked:after:h-5 checked:after:w-5 checked:after:rounded-full checked:after:border-none checked:after:bg-primary checked:after:shadow-[0_3px_1px_-2px_rgba(0,0,0,0.2),_0_2px_2px_0_rgba(0,0,0,0.14),_0_1px_5px_0_rgba(0,0,0,0.12)] checked:after:transition-[background-color_0.2s,transform_0.2s] checked:after:content-[''] hover:cursor-pointer focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[3px_-1px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-5 focus:after:w-5 focus:after:rounded-full focus:after:content-[''] checked:focus:border-primary checked:focus:bg-primary checked:focus:before:ml-[1.0625rem] checked:focus:before:scale-100 checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:checked:bg-primary dark:checked:after:bg-primary dark:focus:before:shadow-[3px_-1px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca]"
-                                                                                type="checkbox" role="switch" name="statusRouter" id="statusRouter" />
-                                                                            <label class="inline-block pl-[0.15rem] hover:cursor-pointer" for="statusRouter">On</label>
+                                                            <div class="overflow-hidden shadow sm:rounded-md border-2 border-meta-5  h-125 max-h-125 px-4 py-5 bg-white">
+                                                                <div class="grid grid-cols-4 gap-6 h-1/2">
+                                                                    <div class="col-span-4 flex px-2 mt-4">
+                                                                            <div class="w-2/3 flex text-4xl font-semibold text-black">
+                                                                                <h1 class="">Interface:&nbsp</h1>
+                                                                                <h1 id="interfaceRouter"></h1>
+                                                                            </div>
+                                                                            <div class="w-1/3">
+                                                                                <label class="inline-block pl-[0.15rem] hover:cursor-pointer" for="statusRouter">Status Off</label>
+                                                                                <input class="bg-neutral-300 after:bg-neutral-100 dark:bg-neutral-600 dark:after:bg-neutral-400 mr-2 mt-[0.3rem] h-3.5 w-8 appearance-none rounded-[0.4375rem] before:pointer-events-none before:absolute before:h-3.5 before:w-3.5 before:rounded-full before:bg-transparent before:content-[''] after:absolute after:z-[2] after:-mt-[0.1875rem] after:h-5 after:w-5 after:rounded-full after:border-none after:shadow-[0_0px_3px_0_rgb(0_0_0_/_7%),_0_2px_2px_0_rgb(0_0_0_/_4%)] after:transition-[background-color_0.2s,transform_0.2s] after:content-[''] checked:bg-primary checked:after:absolute checked:after:z-[2] checked:after:-mt-[3px] checked:after:ml-[1.0625rem] checked:after:h-5 checked:after:w-5 checked:after:rounded-full checked:after:border-none checked:after:bg-primary checked:after:shadow-[0_3px_1px_-2px_rgba(0,0,0,0.2),_0_2px_2px_0_rgba(0,0,0,0.14),_0_1px_5px_0_rgba(0,0,0,0.12)] checked:after:transition-[background-color_0.2s,transform_0.2s] checked:after:content-[''] hover:cursor-pointer focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[3px_-1px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-5 focus:after:w-5 focus:after:rounded-full focus:after:content-[''] checked:focus:border-primary checked:focus:bg-primary checked:focus:before:ml-[1.0625rem] checked:focus:before:scale-100 checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:checked:bg-primary dark:checked:after:bg-primary dark:focus:before:shadow-[3px_-1px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca]"
+                                                                                    type="checkbox" role="switch" name="statusRouter" id="statusRouter" />
+                                                                                <label class="inline-block pl-[0.15rem] hover:cursor-pointer" for="statusRouter">On</label>
+                                                                            </div>
                                                                         </div>
 
                                                                         <div class="col-span-1">
-                                                                            <label for="methodip" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                                                                Select IP Method
-                                                                            </label>
-                                                                            <select id="methodip" name="methodip" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                                <option value="unset" disabled selected>Choose a Method</option>
-                                                                                <option value="manual">Static IP</option>
-                                                                                <option value="dhcp">DHCP</option>
-                                                                            </select>
+                                                                            <div>
+                                                                                <label for="methodip" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                                                                    Select IP Method
+                                                                                </label>
+                                                                                <select id="methodip" name="methodip" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                                                                    <option value="unset" disabled selected>Choose a Method</option>
+                                                                                    <option value="manual">Static IP</option>
+                                                                                    <option value="dhcp">DHCP</option>
+                                                                                </select>
+                                                                            </div>
                                                                         </div>
 
-                                                                        <div class="col-span-2">
+                                                                        <div class="col-span-1">
                                                                             <label for="ip" class="block text-sm font-medium text-gray-700">IP
                                                                                 Address</label>
                                                                             <input type="text" name="ip" id="ip" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
@@ -122,7 +128,7 @@
                                                                         <div class="col-span-2">
                                                                             <label for="ipsubnet" class="block text-sm font-medium text-gray-700">Subnet</label>
                                                                             <select name="ipsubnet" id="ipsubnet" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                                                                <option value="" selected>Choose a Subnet Mask
+                                                                                <option value="" disabled selected>Choose a Subnet Mask
                                                                                 </option>
                                                                                 <option value="0.0.0.0">0.0.0.0/0</option>
                                                                                 <option value="128.0.0.0">128.0.0.0/1</option>
@@ -160,21 +166,23 @@
                                                                                 <option value="255.255.255.255">255.255.255.255/32</option>
                                                                             </select>
                                                                         </div>
-
+                                                                    </div>
+                                                                    <div class="grid grid-cols-4 gap-6 h-1/2">
                                                                         <div class="col-span-6">
-                                                                            <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
-                                                                            <textarea id="description" name="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                                placeholder="Write your description about device..."></textarea>
+                                                                            <label for="description" class="block text-left mb-2 text-xl font-normal text-black dark:text-white">
+                                                                                Description
+                                                                            </label>
 
+                                                                            <textarea id="description" name="description" rows="4" class="max-h-30 block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                                                placeholder="Write your description about device...">
+                                                                            </textarea>
+                                                                        </div>
+                                                                        <div class="col-span-6 px-4 py-3 text-right bg-gray-50 right-0">
+                                                                            <button type="submit" class="inline-block rounded bg-meta-8 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
+                                                                                Apply
+                                                                            </button>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="px-4 py-3 text-right bg-gray-50">
-                                                                    <button type="submit" class="hover:bg-success-600 focus:bg-success-600 active:bg-success-700 inline-block rounded bg-success px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
-                                                                        Success
-                                                                    </button>
-
-                                                                </div>
                                                             </div>
                                                         </form>
                                                     </div>
@@ -182,7 +190,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="staticRouteForm" class="grid grid-cols-3 gap-4 h-115 max-h-115" style="display: none">
+                                    <div id="staticRouteForm" class="grid grid-cols-3 gap-4 h-125 max-h-125" style="display: none">
                                         <div class="... col-span-3">
                                             <div class="mt-10">
                                                 <div class="grid grid-cols-3 gap-6">
@@ -242,8 +250,8 @@
                                                                             <input type="text" name="Nexthop" id="Nexthop" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                                                                         </div>
                                                                         <div class="col-start-6 px-4 py-3 text-right bg-gray-50">
-                                                                            <button type="submit" class="hover:bg-success-600 focus:bg-success-600 active:bg-success-700 inline-block rounded bg-success px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
-                                                                                Success
+                                                                            <button type="submit" class="inline-block rounded bg-meta-8 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
+                                                                                Apply
                                                                             </button>
 
                                                                         </div>
@@ -282,7 +290,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="ospfForm" class="grid grid-cols-3 gap-4 h-115 max-h-115" style="display: none">
+                                    <div id="ospfForm" class="grid grid-cols-3 gap-4 h-125 max-h-125" style="display: none">
                                         <div class="... col-span-3">
                                             <div class="mt-10">
                                                 <div class="grid grid-cols-3 gap-6">
@@ -342,8 +350,8 @@
                                                                                   </select>
                                                                         </div>
                                                                         <div class="col-start-6 px-4 py-3 text-right bg-gray-50">
-                                                                            <button type="submit" class="hover:bg-success-600 focus:bg-success-600 active:bg-success-700 inline-block rounded bg-success px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
-                                                                                Success
+                                                                            <button type="submit" class="inline-block rounded bg-meta-8 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
+                                                                                Apply
                                                                             </button>
 
                                                                         </div>
@@ -380,7 +388,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="aclForm" class="grid grid-cols-3 gap-4 overflow-auto h-115 max-h-115" style="display: none">
+                                    <div id="aclForm" class="grid grid-cols-3 gap-4 overflow-auto h-125 max-h-125" style="display: none">
                                         <div class="... col-span-3">
                                             <div class="mt-10">
                                                 <div class="grid grid-cols-3 gap-6">
@@ -515,8 +523,8 @@
                                                                             <input type="text" name="aclportnumber" id="aclportnumber" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                                                                         </div>
                                                                         <div class="col-start-6 px-4 py-3 text-right bg-gray-50">
-                                                                            <button type="submit" class="hover:bg-success-600 focus:bg-success-600 active:bg-success-700 inline-block rounded bg-success px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
-                                                                                Success
+                                                                            <button type="submit" class="inline-block rounded bg-meta-8 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
+                                                                                Apply
                                                                             </button>
 
                                                                         </div>
@@ -590,8 +598,8 @@
                                                                         </div>
 
                                                                         <div class="col-start-6 px-4 py-3 text-right bg-gray-50">
-                                                                            <button type="submit" class="hover:bg-success-600 focus:bg-success-600 active:bg-success-700 inline-block rounded bg-success px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
-                                                                                Success
+                                                                            <button type="submit" class="inline-block rounded bg-meta-8 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
+                                                                                Apply
                                                                             </button>
 
                                                                         </div>
