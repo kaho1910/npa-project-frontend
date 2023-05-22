@@ -10,10 +10,60 @@ fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/
     })
     .then(data => {
         // Handle the response data
-        console.log(data);
         interfaces = data.interface
         createInterfaceButtons(data.interface);
 
+    })
+    .catch(error => {
+        // Handle any errors
+        console.log(error);
+    });
+var staticRoutesInfo;
+fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/R-routes.json', {
+        method: 'GET' // No need to specify the body for a GET request
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        staticRoutesInfo = data
+    })
+    .catch(error => {
+        // Handle any errors
+        console.log(error);
+    });
+var ospfRouteInfo;
+fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/R-ospf.json', {
+        method: 'GET' // No need to specify the body for a GET request
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        ospfRouteInfo = data
+    })
+    .catch(error => {
+        // Handle any errors
+        console.log(error);
+    });
+var extendAclInfo;
+fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/R-acl.json', {
+        method: 'GET' // No need to specify the body for a GET request
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        extendAclInfo = data
     })
     .catch(error => {
         // Handle any errors
@@ -51,7 +101,7 @@ function showInterfaceRouterForm() {
     staticRouteForm.style.display = 'none';
     ospfForm.style.display = 'none';
     aclForm.style.display = 'none';
-    dhcpForm.style.display = 'none';
+    // dhcpForm.style.display = 'none';
     var interfaceButtonRouter = document.getElementsByClassName('interfaceButtonRouter');
     for (var i = 0; i < interfaceButtonRouter.length; i++) {
         interfaceButtonRouter[i].addEventListener('click', interfaceButtonRouterClick);
@@ -63,7 +113,7 @@ function showStaticRouteForm() {
     staticRouteForm.style.display = 'grid';
     ospfForm.style.display = 'none';
     aclForm.style.display = 'none';
-    dhcpForm.style.display = 'none';
+    // dhcpForm.style.display = 'none';
     populateStaticRouteTable();
 }
 
@@ -72,7 +122,7 @@ function showOpsfForm() {
     staticRouteForm.style.display = 'none';
     ospfForm.style.display = 'grid';
     aclForm.style.display = 'none';
-    dhcpForm.style.display = 'none';
+    // dhcpForm.style.display = 'none';
     populateOspfRouteTable();
 }
 
@@ -81,19 +131,19 @@ function showAclForm() {
     staticRouteForm.style.display = 'none';
     ospfForm.style.display = 'none';
     aclForm.style.display = 'grid';
-    dhcpForm.style.display = 'none';
+    // dhcpForm.style.display = 'none';
     populateExtendedAclTable();
     populateAclApplyInterfaceTable();
 }
 
-function showDhcpForm() {
-    interfaceRouterForm.style.display = 'none';
-    staticRouteForm.style.display = 'none';
-    ospfForm.style.display = 'none';
-    aclForm.style.display = 'none';
-    dhcpForm.style.display = 'grid';
-    populataDhcpPoolTable();
-}
+// function showDhcpForm() {
+//     interfaceRouterForm.style.display = 'none';
+//     staticRouteForm.style.display = 'none';
+//     ospfForm.style.display = 'none';
+//     aclForm.style.display = 'none';
+//     dhcpForm.style.display = 'grid';
+//     populataDhcpPoolTable();
+// }
 
 var interfaceRouterButton = document.getElementById('interfaceRouterButton');
 var interfaceRouterForm = document.getElementById('interfaceRouterForm');
@@ -103,13 +153,13 @@ var ospfButton = document.getElementById('ospfButton');
 var ospfForm = document.getElementById('ospfForm');
 var aclButton = document.getElementById('aclButton');
 var aclForm = document.getElementById('aclForm');
-var dhcpButton = document.getElementById('dhcpButton');
-var dhcpForm = document.getElementById('dhcpForm');
+// var dhcpButton = document.getElementById('dhcpButton');
+// var dhcpForm = document.getElementById('dhcpForm');
 interfaceRouterButton.addEventListener('click', showInterfaceRouterForm);
 staticRouteButton.addEventListener('click', showStaticRouteForm);
 ospfButton.addEventListener('click', showOpsfForm);
 aclButton.addEventListener('click', showAclForm);
-dhcpButton.addEventListener('click', showDhcpForm);
+// dhcpButton.addEventListener('click', showDhcpForm);
 
 
 
@@ -158,16 +208,22 @@ function interfaceButtonRouterClick(event) {
         subnetInput.disabled = true;
     }
 }
-var staticRouteArray = [
-    { destination: "192.168.1.0", subnet: "255.255.255.0", nextHop: "192.168.1.1" },
-    { destination: "10.168.2.0", subnet: "255.255.255.0", nextHop: "10.168.2.1" },
-    // Add more objects as needed
-    // Add From API using Loop
-];
 
 function populateStaticRouteTable() {
+    var staticRouteArray = [];
     var tableStaticRoute = document.getElementById("tableStaticRoute");
     tableStaticRoute.innerHTML = ""; // Clear existing content
+    var routes = staticRoutesInfo.vrf.default.address_family.ipv4.routes;
+    for (var route in routes) {
+        if (routes.hasOwnProperty(route)) {
+            var data = {
+                destination: route,
+                // subnet: routes[route].route,
+                nextHop: routes[route].next_hop.next_hop_list["1"].next_hop
+            };
+            staticRouteArray.push(data);
+        }
+    }
 
     staticRouteArray.forEach(function(data) {
         var row = document.createElement("tr");
@@ -176,9 +232,9 @@ function populateStaticRouteTable() {
         destinationCell.textContent = data.destination;
         row.appendChild(destinationCell);
 
-        var subnetCell = document.createElement("td");
-        subnetCell.textContent = data.subnet;
-        row.appendChild(subnetCell);
+        // var subnetCell = document.createElement("td");
+        // subnetCell.textContent = data.subnet;
+        // row.appendChild(subnetCell);
 
         var nextHopCell = document.createElement("td");
         nextHopCell.textContent = data.nextHop;
@@ -195,22 +251,30 @@ function populateStaticRouteTable() {
     });
 }
 
-var ospfRouteArray = [
-    { processid: "192.168.1.0", area: "1", network: "192.168.10.0", wildcard: "0.0.0.255" },
-    { processid: "192.168.1.0", area: "1", network: "192.168.10.0", wildcard: "0.0.0.255" },
-    // Add more objects as needed
-];
-
 function populateOspfRouteTable() {
+    var ospfRouteArray = [];
     var tableOspfRoute = document.getElementById("tableOspfRoute");
     tableOspfRoute.innerHTML = ""; // Clear existing content
 
+    var areas = ospfRouteInfo.instance["1"].areas;
+    for (var area in areas) {
+        if (areas.hasOwnProperty(area)) {
+            var interfaces = areas[area].interfaces;
+            for (var iface in interfaces) {
+                if (interfaces.hasOwnProperty(iface)) {
+                    var data = {
+                        area: area,
+                        network: interfaces[iface].ip_address,
+                        interface: iface
+                    };
+                    ospfRouteArray.push(data);
+                }
+            }
+        }
+    }
+
     ospfRouteArray.forEach(function(data) {
         var row = document.createElement("tr");
-
-        var processidCell = document.createElement("td");
-        processidCell.textContent = data.processid;
-        row.appendChild(processidCell);
 
         var areaCell = document.createElement("td");
         areaCell.textContent = data.area;
@@ -219,9 +283,10 @@ function populateOspfRouteTable() {
         var networkCell = document.createElement("td");
         networkCell.textContent = data.network;
         row.appendChild(networkCell);
-        var wildcardCell = document.createElement("td");
-        wildcardCell.textContent = data.wildcard;
-        row.appendChild(wildcardCell);
+
+        var interfaceOspfCell = document.createElement("td");
+        interfaceOspfCell.textContent = data.interface;
+        row.appendChild(interfaceOspfCell);
 
         var actionCell = document.createElement("td");
         var removeLink = document.createElement("a");
@@ -234,56 +299,53 @@ function populateOspfRouteTable() {
     });
 }
 
-var extendedAclArray = [
-    { aclnumber: "99", aclpermission: "permit", aclprotocol: "tcp", aclsource: "192.168.1.0", aclwildcardsource: "0.0.0.255", acldestination: "10.10.0.0", aclwildcardsestination: "0.0.0.255", acloperation: "eq", aclportnumber: "80" },
-    { aclnumber: "100", aclpermission: "deny", aclprotocol: "tcp", aclsource: "192.168.5.0", aclwildcardsource: "0.0.0.255", acldestination: "172.10.0.0", aclwildcardsestination: "0.0.0.255", acloperation: "eq", aclportnumber: "80" },
-    { aclnumber: "101", aclpermission: "permit", aclprotocol: "udp", aclsource: "192.168.10.0", aclwildcardsource: "0.0.0.255", acldestination: "10.10.0.0", aclwildcardsestination: "0.0.255.255", acloperation: "gt", aclportnumber: "443" },
-
-    // Add more objects as needed
-];
 
 function populateExtendedAclTable() {
+    var extendedAclArray = [];
     var tableExtenedAcl = document.getElementById("tableExtenedAcl");
     tableExtenedAcl.innerHTML = ""; // Clear existing content
 
+    for (var key in extendAclInfo) {
+        var aclData = extendAclInfo[key];
+        for (var aceKey in aclData.aces) {
+            var aceData = aclData.aces[aceKey];
+
+            extendedAclArray.push({
+                aclname: aclData.name,
+                aces: aceKey,
+                forward: aceData.actions.forwarding,
+                protocol: aceData.matches.l3.ipv4.protocol,
+                source: Object.keys(aceData.matches.l3.ipv4.source_network)[0],
+                destination: Object.keys(aceData.matches.l3.ipv4.destination_network)[0]
+            });
+        }
+    }
     extendedAclArray.forEach(function(data) {
         var row = document.createElement("tr");
 
-        var aclnumberCell = document.createElement("td");
-        aclnumberCell.textContent = data.aclnumber;
-        row.appendChild(aclnumberCell);
+        var aclnameCell = document.createElement("td");
+        aclnameCell.textContent = data.aclname;
+        row.appendChild(aclnameCell);
 
-        var aclpermissionCell = document.createElement("td");
-        aclpermissionCell.textContent = data.aclpermission;
-        row.appendChild(aclpermissionCell);
+        var acesCell = document.createElement("td");
+        acesCell.textContent = data.aces;
+        row.appendChild(acesCell);
 
-        var aclprotocolCell = document.createElement("td");
-        aclprotocolCell.textContent = data.aclprotocol;
-        row.appendChild(aclprotocolCell);
+        var forwardCell = document.createElement("td");
+        forwardCell.textContent = data.forward;
+        row.appendChild(forwardCell);
 
-        var aclsourceCell = document.createElement("td");
-        aclsourceCell.textContent = data.aclsource;
-        row.appendChild(aclsourceCell);
+        var protocolCell = document.createElement("td");
+        protocolCell.textContent = data.protocol;
+        row.appendChild(protocolCell);
 
-        var aclwildcardsourceCell = document.createElement("td");
-        aclwildcardsourceCell.textContent = data.aclwildcardsource;
-        row.appendChild(aclwildcardsourceCell);
+        var sourceCell = document.createElement("td");
+        sourceCell.textContent = data.source;
+        row.appendChild(sourceCell);
 
-        var acldestinationCell = document.createElement("td");
-        acldestinationCell.textContent = data.acldestination;
-        row.appendChild(acldestinationCell);
-
-        var aclwildcardsestinationCell = document.createElement("td");
-        aclwildcardsestinationCell.textContent = data.aclwildcardsestination;
-        row.appendChild(aclwildcardsestinationCell);
-
-        var acloperationCell = document.createElement("td");
-        acloperationCell.textContent = data.acloperation;
-        row.appendChild(acloperationCell);
-
-        var aclportnumberCell = document.createElement("td");
-        aclportnumberCell.textContent = data.aclportnumber;
-        row.appendChild(aclportnumberCell);
+        var destinaionCell = document.createElement("td");
+        destinaionCell.textContent = data.destination;
+        row.appendChild(destinaionCell);
 
         var actionCell = document.createElement("td");
         var removeLink = document.createElement("a");
@@ -334,50 +396,50 @@ function populateAclApplyInterfaceTable() {
     });
 }
 
-var dhcpPoolArray = [
-    { dhcppoolname: "Toen", dhcpnetwork: "10.0.0.0", dhcpsubnet: "255.255.0.0", exclfrom: "10.0.0.1", exclto: "10.0.0.50", dhcpdfgwip: "10.0.0.1", dhcpdnsipad: "8.8.8.8" },
-    { dhcppoolname: "Gram", dhcpnetwork: "192.168.1.0", dhcpsubnet: "255.255.255.0", exclfrom: "192.168.1.1", exclto: "192.168.1.128", dhcpdfgwip: "192.168.1.1", dhcpdnsipad: "8.8.1.1" },
-    { dhcppoolname: "Ji", dhcpnetwork: "172.168.1.0", dhcpsubnet: "255.255.0.0", exclfrom: "172.168.1.1", exclto: "172.168.1.70", dhcpdfgwip: "172.168.1.1", dhcpdnsipad: "1.1.1.1" },
-    // Add more objects as needed
-];
+// var dhcpPoolArray = [
+//     { dhcppoolname: "Toen", dhcpnetwork: "10.0.0.0", dhcpsubnet: "255.255.0.0", exclfrom: "10.0.0.1", exclto: "10.0.0.50", dhcpdfgwip: "10.0.0.1", dhcpdnsipad: "8.8.8.8" },
+//     { dhcppoolname: "Gram", dhcpnetwork: "192.168.1.0", dhcpsubnet: "255.255.255.0", exclfrom: "192.168.1.1", exclto: "192.168.1.128", dhcpdfgwip: "192.168.1.1", dhcpdnsipad: "8.8.1.1" },
+//     { dhcppoolname: "Ji", dhcpnetwork: "172.168.1.0", dhcpsubnet: "255.255.0.0", exclfrom: "172.168.1.1", exclto: "172.168.1.70", dhcpdfgwip: "172.168.1.1", dhcpdnsipad: "1.1.1.1" },
+//     // Add more objects as needed
+// ];
 
-function populataDhcpPoolTable() {
-    var tableDhcpPoolTable = document.getElementById("tableDhcpPoolTable");
-    tableDhcpPoolTable.innerHTML = ""; // Clear existing content
+// function populataDhcpPoolTable() {
+//     var tableDhcpPoolTable = document.getElementById("tableDhcpPoolTable");
+//     tableDhcpPoolTable.innerHTML = ""; // Clear existing content
 
-    dhcpPoolArray.forEach(function(data) {
-        var row = document.createElement("tr");
+//     dhcpPoolArray.forEach(function(data) {
+//         var row = document.createElement("tr");
 
-        var dhcppoolnameCell = document.createElement("td");
-        dhcppoolnameCell.textContent = data.dhcppoolname;
-        row.appendChild(dhcppoolnameCell);
+//         var dhcppoolnameCell = document.createElement("td");
+//         dhcppoolnameCell.textContent = data.dhcppoolname;
+//         row.appendChild(dhcppoolnameCell);
 
-        var dhcpnetworkCell = document.createElement("td");
-        dhcpnetworkCell.textContent = data.dhcpnetwork + "/" + data.dhcpsubnet;
-        row.appendChild(dhcpnetworkCell);
+//         var dhcpnetworkCell = document.createElement("td");
+//         dhcpnetworkCell.textContent = data.dhcpnetwork + "/" + data.dhcpsubnet;
+//         row.appendChild(dhcpnetworkCell);
 
-        var exclfromtoCell = document.createElement("td");
-        exclfromtoCell.textContent = data.exclfrom + "-" + data.exclto;
-        row.appendChild(exclfromtoCell);
+//         var exclfromtoCell = document.createElement("td");
+//         exclfromtoCell.textContent = data.exclfrom + "-" + data.exclto;
+//         row.appendChild(exclfromtoCell);
 
-        var dhcpdfgwipCell = document.createElement("td");
-        dhcpdfgwipCell.textContent = data.dhcpdfgwip;
-        row.appendChild(dhcpdfgwipCell);
+//         var dhcpdfgwipCell = document.createElement("td");
+//         dhcpdfgwipCell.textContent = data.dhcpdfgwip;
+//         row.appendChild(dhcpdfgwipCell);
 
-        var dhcpdnsipadCell = document.createElement("td");
-        dhcpdnsipadCell.textContent = data.dhcpdnsipad;
-        row.appendChild(dhcpdnsipadCell);
+//         var dhcpdnsipadCell = document.createElement("td");
+//         dhcpdnsipadCell.textContent = data.dhcpdnsipad;
+//         row.appendChild(dhcpdnsipadCell);
 
-        var actionCell = document.createElement("td");
-        var removeLink = document.createElement("a");
-        removeLink.href = "#";
-        removeLink.textContent = "Remove";
-        removeLink.classList.add("text-blue-600", "dark:text-blue-500", "font-medium", "hover:underline");
-        actionCell.appendChild(removeLink);
-        row.appendChild(actionCell);
-        tableDhcpPoolTable.appendChild(row);
-    });
-}
+//         var actionCell = document.createElement("td");
+//         var removeLink = document.createElement("a");
+//         removeLink.href = "#";
+//         removeLink.textContent = "Remove";
+//         removeLink.classList.add("text-blue-600", "dark:text-blue-500", "font-medium", "hover:underline");
+//         actionCell.appendChild(removeLink);
+//         row.appendChild(actionCell);
+//         tableDhcpPoolTable.appendChild(row);
+//     });
+// }
 var methodIpSelect = document.getElementById("methodip");
 var ipInput = document.getElementById("ip");
 var subnetInput = document.getElementById("ipsubnet");
