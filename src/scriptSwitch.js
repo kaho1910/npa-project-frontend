@@ -445,14 +445,16 @@ function populateVlanTable() {
 
         var vlannameCell = document.createElement("td");
         vlannameCell.textContent = data.vlanname;
+        vlannameCell.classList.add("border-2", "border-slate-600", "border-y-transparent", "border-x-primary");
         row.appendChild(vlannameCell);
 
         var interfaceCell = document.createElement("td");
         interfaceCell.textContent = data.interfaces;
+        interfaceCell.classList.add("border-2", "border-slate-600", "border-y-transparent", "border-x-primary");
         row.appendChild(interfaceCell);
 
         var vlandescriptionCell = document.createElement("td");
-        vlandescriptionCell.textContent = data.vlandescription;
+        vlandescriptionCell.classList.add("border-2", "border-slate-600", "border-y-transparent", "border-x-primary");
         row.appendChild(vlandescriptionCell);
 
         var actionCell = document.createElement("td");
