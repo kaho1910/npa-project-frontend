@@ -53,9 +53,25 @@
                         <div class="overflow-hidden bg-white border rounded-sm border-stroke shadow-default dark:border-strokedark dark:bg-boxdark">
                             <div class="relative z-20 h-25">
                                 <img src="./images/cover/cover-01.png" alt="profile cover" class="h-full w-full rounded-tl-sm rounded-tr-sm object-cover object-center" />
-                                <div class="absolute bottom-1 right-1 z-10 xsm:bottom-4 xsm:right-4">
+                                <div class="absolute z-10 bottom-0 right-1 xsm:bottom-2 xsm:right-4">
                                     <label for="cover" class="flex items-center justify-center gap-2 px-2 py-1 text-sm font-medium text-white rounded cursor-pointer xsm:px-4">
-                                        <button @click="deleteElement" class="w-full mt-2 flex justify-center rounded bg-danger py-2 px-6 font-medium text-gray hover:bg-opacity-90" type="submit">Remove</button>
+                                        <button type="submit" class="inline-block rounded bg-danger px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
+                                            Remove
+                                        </button>
+                                    </label>
+                                </div>
+                                <div class="absolute z-10 top-1 left-1">
+                                    <label for="cover" class="flex items-center justify-center gap-2 px-2 py-1 text-sm font-medium text-white rounded cursor-pointer xsm:px-4">
+                                        <button type="submit" class="inline-block rounded bg-meta-3 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
+                                            Import Configuration
+                                        </button>
+                                    </label>
+                                </div>
+                                <div class="absolute z-10 bottom-1 left-1">
+                                    <label for="cover" class="flex items-center justify-center gap-2 px-2 py-1 text-sm font-medium text-white rounded cursor-pointer xsm:px-4">
+                                        <button type="submit" class="inline-block rounded bg-meta-5 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
+                                            Export Configuration
+                                        </button>
                                     </label>
                                 </div>
                             </div>
@@ -98,7 +114,7 @@
                                                                 <div class="grid grid-cols-4 gap-6 h-1/2">
                                                                     <div class="col-span-4 flex px-2 mt-4">
                                                                         <div class="w-2/3 flex text-4xl font-semibold text-black">
-                                                                            <div x-data="{ switcherToggle: false }" class="pt-1">
+                                                                            <!-- <div x-data="{ switcherToggle: false }" class="pt-1">
                                                                                 <label for="statusSwitch" class="flex cursor-pointer select-none items-center">
                                                                                   <div class="relative">
                                                                                     <input type="checkbox" id="statusSwitch" class="sr-only" name="statusSwitch" 
@@ -110,6 +126,12 @@
                                                                                     </div>
                                                                                   </div>
                                                                                 </label>
+                                                                            </div> -->
+                                                                            <div class="">
+                                                                                <label class="inline-block pl-[0.15rem] hover:cursor-pointer" for="statusSwitch">Status:</label>
+                                                                                <input class="border border-x-form-input bg-neutral-300 after:bg-neutral-100 dark:bg-neutral-600 dark:after:bg-neutral-400 mr-2 mt-[0.3rem] h-3.5 w-8 appearance-none rounded-[0.4375rem] before:pointer-events-none before:absolute before:h-3.5 before:w-3.5 before:rounded-full before:bg-transparent before:content-[''] after:absolute after:z-[2] after:-mt-[0.1875rem] after:h-5 after:w-5 after:rounded-full after:border-none after:shadow-[0_0px_3px_0_rgb(0_0_0_/_7%),_0_2px_2px_0_rgb(0_0_0_/_4%)] after:transition-[background-color_0.2s,transform_0.2s] after:content-[''] checked:bg-primary checked:after:absolute checked:after:z-[2] checked:after:-mt-[3px] checked:after:ml-[1.0625rem] checked:after:h-5 checked:after:w-5 checked:after:rounded-full checked:after:border-none checked:after:bg-primary checked:after:shadow-[0_3px_1px_-2px_rgba(0,0,0,0.2),_0_2px_2px_0_rgba(0,0,0,0.14),_0_1px_5px_0_rgba(0,0,0,0.12)] checked:after:transition-[background-color_0.2s,transform_0.2s] checked:after:content-[''] hover:cursor-pointer focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[3px_-1px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-5 focus:after:w-5 focus:after:rounded-full focus:after:content-[''] checked:focus:border-primary checked:focus:bg-primary checked:focus:before:ml-[1.0625rem] checked:focus:before:scale-100 checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:checked:bg-primary dark:checked:after:bg-primary dark:focus:before:shadow-[3px_-1px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca]"
+                                                                                    type="checkbox" role="switch" name="statusSwitch" id="statusSwitch" />
+                                                                                <label class="inline-block pl-[0.15rem] hover:cursor-pointer" for="statusSwitch"></label>
                                                                             </div>
                                                                             <h1 class="">&nbspInterface:&nbsp</h1>
                                                                             <h1 id="interfaceSwitch"></h1>
