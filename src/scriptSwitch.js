@@ -9,7 +9,6 @@ const switchIp = urlParams.get('ip');
 const switchNameElement = document.getElementById('switchName');
 switchNameElement.textContent = switchName;
 
-
 var extendAclInfo;
 fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/R-acl.json', {
         method: 'GET' // No need to specify the body for a GET request
@@ -153,6 +152,22 @@ function showAclForm() {
     aclForm.style.display = 'grid';
     populateExtendedAclTable();
     populateAclApplyInterfaceTable();
+    fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/R-acl.json', {
+            method: 'GET' // No need to specify the body for a GET request
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            extendAclInfo = data
+        })
+        .catch(error => {
+            // Handle any errors
+            console.log(error);
+        });
 }
 
 var interfaceSwitchButton = document.getElementById('interfaceSwitchButton');
