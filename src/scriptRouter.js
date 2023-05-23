@@ -800,9 +800,34 @@ function populateExtendedAclTable() {
         actionCell.appendChild(removeLink);
         row.appendChild(actionCell);
         tableExtenedAcl.appendChild(row);
+
+        removeLink.addEventListener("click", function() {
+            removeExtendedAclEntry(data.aclname, data.aces);
+        });
     });
 }
+function removeExtendedAclEntry(aclname, aces) {
+    var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
 
+var raw = JSON.stringify({
+  "device": routerName,
+  "name": aclname,
+  "label": aces
+});
+
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+console.log(raw);
+fetch("http://127.0.0.1:8000/acl_del", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+  }
 // Add event listener for form submission
 aclForm.addEventListener('submit', function(event) {
   event.preventDefault(); // Prevent form submission
