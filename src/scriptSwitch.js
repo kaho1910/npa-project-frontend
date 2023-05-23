@@ -61,6 +61,7 @@ function createInterfaceButtons(interfaces) {
 
     for (const interfaceName in interfaces) {
         // Create a button element
+        interfaceSwitchNames.push(interfaceName);
         const button = document.createElement('button');
         if (!interfaceName.includes('GigabitEthernet')) {
             continue; // Skip interfaces of type "vlan" and those not containing "GigabitEthernet"
@@ -110,7 +111,7 @@ fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/
 //   .then(result => console.log(result))
 //   .catch(error => console.log('error', error));
 function showInterSwitchForm() {
-    console.log(1);
+    console.log(interfaceSwitchNames);
     interfaceSwitchForm.style.display = 'grid';
     vlanForm.style.display = 'none';
     stpForm.style.display = 'none';
@@ -188,6 +189,18 @@ function showSwportForm() {
     stpForm.style.display = 'none';
     swportForm.style.display = 'grid';
     aclForm.style.display = 'none';
+    var selectInput = document.getElementById('swportinterface');
+    
+  // Clear existing options
+  selectInput.innerHTML = '<option value="" selected >Choose a Switchport Mode</option>';
+
+  // Create options for each interfaceSwitchName in the array
+  interfaceSwitchNames.forEach(function(interfaceName) {
+    var option = document.createElement('option');
+    option.value = interfaceName;
+    option.textContent = interfaceName;
+    selectInput.appendChild(option);
+  });
     populateSwitchportTable();
 }
 
@@ -197,24 +210,24 @@ function showAclForm() {
     stpForm.style.display = 'none';
     swportForm.style.display = 'none';
     aclForm.style.display = 'grid';
+    fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/R-acl.json', {
+        method: 'GET' // No need to specify the body for a GET request
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        extendAclInfo = data
+    })
+    .catch(error => {
+        // Handle any errors
+        console.log(error);
+    });
     populateExtendedAclTable();
     populateAclApplyInterfaceTable();
-    fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/R-acl.json', {
-            method: 'GET' // No need to specify the body for a GET request
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            extendAclInfo = data
-        })
-        .catch(error => {
-            // Handle any errors
-            console.log(error);
-        });
 }
 
 var interfaceSwitchButton = document.getElementById('interfaceSwitchButton');
@@ -238,6 +251,7 @@ aclButton.addEventListener('click', showAclForm);
 var interfaceButtonSwitch = document.getElementsByClassName('interfaceButtonSwitch');
 for (var i = 0; i < interfaceButtonSwitch.length; i++) {
     interfaceButtonSwitch[i].addEventListener('click', interfaceButtonSwitchClick);
+    
 }
 
 var methodIpSelect = document.getElementById("methodip");
@@ -256,6 +270,7 @@ methodIpSelect.addEventListener("change", function() {
 
 
 var interfaceSwitchName;
+var interfaceSwitchNames = [];
 var methodIpSelect = document.getElementById("methodip");
 var ipInput = document.getElementById("ip");
 var subnetInput = document.getElementById("ipsubnet");
@@ -276,9 +291,8 @@ methodIpSelect.addEventListener("change", function() {
 function interfaceButtonSwitchClick(event) {
     interfaceSwitchName = event.target.dataset.interface; // Get the interface value
     console.log(interfaces[interfaceSwitchName]);
+    
     // Get the corresponding interface details from the dictionary
-
-
     // Update the input fields with the interface details
     document.getElementById('ip').value = interfaces[interfaceSwitchName].ip_address;
     // document.getElementById('ipsubnet').value = interfaces[interfaceSwitchName].ipsubnet;
@@ -468,6 +482,73 @@ function populateVlanTable() {
         tableVlan.appendChild(row);
     });
 }
+var vlanipInput = document.getElementById("vlanip");
+var vlanipLabel = document.getElementById("vlaniplabel");
+vlanipInput.addEventListener("input", function() {
+    var vlanip = vlanipInput.value;
+    console.log(111);
+    // Regular expression to match the IP address format
+    var ipRegex = /^(\d{1,3}\.){3}\d{1,3}$/;
+
+    // Check if the input matches the IP address format
+    if (ipRegex.test(vlanip)) {
+        var octets = vlanip.split(".");
+        var isValid = octets.every(function(octet) {
+            // Convert each octet to a number and check if it falls within the valid range (0-255)
+            var num = parseInt(octet);
+            return num >= 0 && num <= 255;
+        });
+
+        if (isValid) {
+            // Input is valid
+            vlanipLabel.textContent = "*Valid IP address format";
+            vlanipLabel.classList.remove("text-danger");
+            vlanipLabel.classList.add("text-success");
+        } else {
+            // Input is invalid
+            vlanipLabel.textContent = "*Invalid IP address format";
+            vlanipLabel.classList.remove("text-success");
+            vlanipLabel.classList.add("text-danger");
+        }
+    } else {
+        // Input is invalid
+        vlanipLabel.textContent = "*Invalid IP address format";
+        vlanipLabel.classList.remove("text-success");
+        vlanipLabel.classList.add("text-danger");
+    }
+});
+vlanForm.addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent the form from submitting normally
+
+    // Get the form values
+    var statusVlan = document.getElementById("statusVlan").value;
+    var vlanId = document.getElementById("vlanid").value;
+    var vlanName = document.getElementById("vlanname").value;
+    var vlanIp = document.getElementById("vlanip").value;
+    var vlanSubnet = document.getElementById("vlansubnet").value;
+    var vlanDescription = document.getElementById("vlandescription").value;
+
+    // Create the payload object
+    var payload = {
+        device: switchName,
+        vlan: vlanId,
+        name: vlanName,
+        ip: vlanIp,
+        subnet: vlanSubnet,
+        description: vlanDescription,
+        status: statusVlan
+    };
+    fetch("http://127.0.0.1:8000/vlan", {
+        method: "POST",
+        body: JSON.stringify(payload),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log("Error", error));
+});
 
 
 var stpArray = [
@@ -531,9 +612,6 @@ vlanIdInput.addEventListener("input", function() {
     }
 });
 
-
-
-
 function getVlanRange(vlanId) {
     if (vlanId >= 2 && vlanId <= 1005) {
         return "Normal VLAN Range (2-1005)";
@@ -571,6 +649,18 @@ function populateSwitchportTable() {
                     swportallowednative: portData.pruning_vlans
                 };
             });
+
+//     var rawInterface = "{\n    \"device\": \"" + switchName + "\"\n}";
+// var requestOptions = {
+//   method: 'GET',
+//   body: rawInterface,
+//   redirect: 'follow'
+// };
+
+// fetch("127.0.0.1:8000/show_swp", requestOptions)
+//   .then(response => response.text())
+//   .then(result => console.log(result))
+//   .catch(error => console.log('error', error));
 
             switchportArray.forEach(function(data) {
                 var row = document.createElement("tr");
@@ -619,12 +709,16 @@ var swportallowednative = document.getElementById("swportallowednative");
 var swportaccess = document.getElementById("swportaccess");
 
 swportmode.addEventListener("change", function() {
-    if (swportmode.value === "Trunk") {
+    if (swportmode.value === "access") {
+        swportaccess.disabled = false;
+        swporttrunknative.disabled = true;
+        swportallowednative.disabled = true;
+    } else if (swportmode.value === "trunk") {
         swportaccess.disabled = true;
         swporttrunknative.disabled = false;
         swportallowednative.disabled = false;
     } else {
-        swportaccess.disabled = false;
+        swportaccess.disabled = true;
         swporttrunknative.disabled = true;
         swportallowednative.disabled = true;
     }
