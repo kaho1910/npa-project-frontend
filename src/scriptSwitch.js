@@ -192,7 +192,7 @@ function showSwportForm() {
     var selectInput = document.getElementById('swportinterface');
     
   // Clear existing options
-  selectInput.innerHTML = '<option value="" selected >Choose a Switchport Mode</option>';
+  selectInput.innerHTML = '<option value="" selected >Choose a Interface</option>';
 
   // Create options for each interfaceSwitchName in the array
   interfaceSwitchNames.forEach(function(interfaceName) {
@@ -727,6 +727,58 @@ swportmode.addEventListener("change", function() {
     swportallowednative.value = "";
 });
 
+swportForm.addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent form submission
+
+  var swportmode = document.getElementById('swportmode').value;
+  var swportinterface = document.getElementById('swportinterface').value;
+
+  if (swportmode === 'access') {
+    var vlan = document.getElementById('swportaccess').value;
+    var requestData = {
+      device: switchName,
+      interface: swportinterface,
+      vlan: parseInt(vlan),
+      status: true
+    };
+
+    var requestOptions = {
+      method: 'POST',
+      body: JSON.stringify(requestData),
+      redirect: 'follow'
+    };
+    console.log(requestOptions);
+    console.log(1);
+
+    fetch("http://127.0.0.1:8000/vlan_access", requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+  } else if (swportmode === 'trunk') {
+    var nativeVlan = document.getElementById('swporttrunknative').value;
+    var allowedVlan = document.getElementById('swportallowednative').value;
+    var requestData = {
+      device: switchName,
+      interface: swportinterface,
+      vlan: parseInt(nativeVlan),
+      allow: allowedVlan,
+      status: true
+    };
+    console.log(requestData);
+    console.log(2);
+    var requestOptions = {
+      method: 'POST',
+      body: JSON.stringify(requestData),
+      redirect: 'follow'
+    };
+
+    fetch("http://127.0.0.1:8000/vlan_trunk", requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+  }
+});
+
 
 function populateExtendedAclTable() {
     var extendedAclArray = [];
@@ -785,6 +837,51 @@ function populateExtendedAclTable() {
         tableExtenedAcl.appendChild(row);
     });
 }
+// Function to handle the form submission
+function handleFormSubmit(event) {
+    event.preventDefault(); // Prevent the default form submission
+  
+    // Get form values
+    var aclName = document.getElementById('aclname').value;
+    var aclPermission = document.getElementById('aclpermission').value;
+    var aclProtocol = document.getElementById('aclprotocol').value;
+    var aclSource = document.getElementById('aclsource').value;
+    var aclWildcardSource = document.getElementById('aclwildcardsource').value;
+    var aclOperation = document.getElementById('acloperation').value;
+    var aclDestination = document.getElementById('acldestination').value;
+    var aclWildcardDestination = document.getElementById('aclwildcardsestination').value;
+    var aclPortNumber = document.getElementById('aclportnumber').value;
+  
+    // Create the request body object
+    var requestBody = {
+      device: switchName,
+      name: aclName,
+      action: aclPermission,
+      protocol: aclProtocol,
+      ip: aclSource,
+      wildcard: aclWildcardSource,
+      dst: aclDestination,
+      network: aclWildcardDestination,
+      eq: aclOperation,
+      port: aclPortNumber
+    };
+    console.log(requestBody);
+    // Send the POST request
+    fetch("http://127.0.0.1:8000/acl", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(requestBody)
+    })
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+  }
+  
+  // Add event listener to the form submit event
+  aclForm.addEventListener('submit', handleFormSubmit);
+  
 
 var applyAclArray = [
     { aclpolicy: "99", aclapplyinterface: "G0/0", aclinout: "in" },
