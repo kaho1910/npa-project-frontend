@@ -383,9 +383,9 @@ function getVlanRange(vlanId) {
 
 
 var switchportArray = [
-    { swportinterface: "G0/1", swportmode: "Trunk", swporttrunknative: "99", swportallowednative: "1,2,3", swportaccess: "-" },
-    { swportinterface: "G0/2", swportmode: "Access", swporttrunknative: "-", swportallowednative: "-", swportaccess: "10,20" },
-    { swportinterface: "G0/3", swportmode: "Trunk", swporttrunknative: "100", swportallowednative: "5,6,8", swportaccess: "-" },
+    { swportinterface: "G0/1", swportmode: "Trunk", swportaccess: "-", swporttrunknative: "99", swportallowednative: "1,2,3" },
+    { swportinterface: "G0/2", swportmode: "Access", swportaccess: "10,20", swporttrunknative: "-", swportallowednative: "-" },
+    { swportinterface: "G0/3", swportmode: "Trunk", swportaccess: "-", swporttrunknative: "100", swportallowednative: "5,6,8" },
 
     // Add more objects as needed
 ];
@@ -405,6 +405,10 @@ function populateSwitchportTable() {
         swportmodeCell.textContent = data.swportmode;
         row.appendChild(swportmodeCell);
 
+        var swportaccessCell = document.createElement("td");
+        swportaccessCell.textContent = data.swportaccess;
+        row.appendChild(swportaccessCell);
+
         var swporttrunknativeCell = document.createElement("td");
         swporttrunknativeCell.textContent = data.swporttrunknative;
         row.appendChild(swporttrunknativeCell);
@@ -413,9 +417,6 @@ function populateSwitchportTable() {
         swportallowednativeCell.textContent = data.swportallowednative;
         row.appendChild(swportallowednativeCell);
 
-        var swportaccessCell = document.createElement("td");
-        swportaccessCell.textContent = data.swportaccess;
-        row.appendChild(swportaccessCell);
 
         var actionCell = document.createElement("td");
         var removeLink = document.createElement("a");

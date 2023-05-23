@@ -501,6 +501,8 @@ ospfForm.addEventListener("submit", function(event) {
     var network = networkInput.value;
     var wildcard = wildcardInput.value;
 
+    form.reset();
+
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
