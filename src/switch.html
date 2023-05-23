@@ -387,36 +387,41 @@
                                                                             <label for="stpmode" class="block text-sm font-medium text-gray-700">STP
                                                                                 Mode
                                                                             </label>
-                                                                            <select id="stpmode" name="stpmode" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                                                                <option value="" selected >Choose a STP Mode</option>
+                                                                            <select id="stpmode" name="stpmode" class="h-10 w-full mt-1 border block text-sm font-medium text-gray-700 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                                                                <option value="" selected disabled>Choose a STP Mode</option>
                                                                                 <option value="pvst">Per-Vlan spanning tree mode</option>
                                                                                 <option value="rpvst">rapid-pvst  Per-Vlan rapid spanning tree mode</option>
                                                                               </select>
                                                                         </div>
-                                                                        <div class="col-span-1">
-                                                                            <label for="stppriority" class="block text-sm font-medium text-gray-700">STP
+                                                                        <div class="col-span-2">
+                                                                            <label for="stppriority" class="block text-left mb-2 text-xl font-normal text-black dark:text-white">STP
                                                                                 Priority</label>
-                                                                            <input type="text" name="stppriority" id="stppriority" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
-                                                                        </div>
-                                                                        <div class="col-span-1">
-                                                                            <label for="hellotime" class="block text-sm font-medium text-gray-700">Hello-Time</label>
-                                                                            <input type="text" name="hellotime" id="hellotime" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
-                                                                        </div>
-                                                                        <div class="col-span-1">
-                                                                            <label for="maxage" class="block text-sm font-medium text-gray-700">Max-Age
-                                                                                card</label>
-                                                                            <input type="text" name="maxage" id="maxage" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
-                                                                        </div>
-                                                                        <div class="col-span-1">
-                                                                            <label for="forwardtime" class="block text-sm font-medium text-gray-700">Forward-Time
-                                                                                card</label>
-                                                                            <input type="text" name="forwardtime" id="forwardtime" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                                                                            <input type="text" name="stppriority" id="stppriority" class="px-2 h-10 w-full mt-1 border block border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                                                                         </div>
                                                                         <div class="col-span-2">
-                                                                            <label class="inline-block pl-[0.15rem] hover:cursor-pointer" for="lpguard">Loopback-Guard Off</label>
-                                                                            <input class="bg-neutral-300 after:bg-neutral-100 dark:bg-neutral-600 dark:after:bg-neutral-400 mr-2 mt-[0.3rem] h-3.5 w-8 appearance-none rounded-[0.4375rem] before:pointer-events-none before:absolute before:h-3.5 before:w-3.5 before:rounded-full before:bg-transparent before:content-[''] after:absolute after:z-[2] after:-mt-[0.1875rem] after:h-5 after:w-5 after:rounded-full after:border-none after:shadow-[0_0px_3px_0_rgb(0_0_0_/_7%),_0_2px_2px_0_rgb(0_0_0_/_4%)] after:transition-[background-color_0.2s,transform_0.2s] after:content-[''] checked:bg-primary checked:after:absolute checked:after:z-[2] checked:after:-mt-[3px] checked:after:ml-[1.0625rem] checked:after:h-5 checked:after:w-5 checked:after:rounded-full checked:after:border-none checked:after:bg-primary checked:after:shadow-[0_3px_1px_-2px_rgba(0,0,0,0.2),_0_2px_2px_0_rgba(0,0,0,0.14),_0_1px_5px_0_rgba(0,0,0,0.12)] checked:after:transition-[background-color_0.2s,transform_0.2s] checked:after:content-[''] hover:cursor-pointer focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[3px_-1px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-5 focus:after:w-5 focus:after:rounded-full focus:after:content-[''] checked:focus:border-primary checked:focus:bg-primary checked:focus:before:ml-[1.0625rem] checked:focus:before:scale-100 checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:checked:bg-primary dark:checked:after:bg-primary dark:focus:before:shadow-[3px_-1px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca]"
-                                                                                type="checkbox" role="switch" name="lpguard" id="lpguard" />
-                                                                            <label class="inline-block pl-[0.15rem] hover:cursor-pointer" for="lpguard">On</label>
+                                                                            <label for="hellotime" class="block text-left mb-2 text-xl font-normal text-black dark:text-white">Hello-Time</label>
+                                                                            <input type="text" name="hellotime" id="hellotime" class="px-2 h-10 border block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                                                                        </div>
+                                                                        <div class="col-span-2">
+                                                                            <label for="maxage" class="block text-left mb-2 text-xl font-normal text-black dark:text-white">Max-Age
+                                                                                card</label>
+                                                                            <input type="text" name="maxage" id="maxage" class="px-2 h-10 border block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                                                                        </div>
+                                                                        <div class="col-span-2">
+                                                                            <label for="forwardtime" class="block text-left mb-2 text-xl font-normal text-black dark:text-white">Forward-Time
+                                                                                card</label>
+                                                                            <input type="text" name="forwardtime" id="forwardtime" class="px-2 h-10 border block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                                                                        </div>
+                                                                        <div class="col-span-2">
+                                                                            <label class="block pl-[0.15rem] hover:cursor-pointer text-left mb-2 text-xl font-normal text-black dark:text-white" for="lpguard">
+                                                                                Loopback-Guard
+                                                                            </label>
+                                                                            <div class="w-1/2 h-10 border border-gray-300">
+                                                                                <label class="inline-block pl-[0.15rem] hover:cursor-pointer" for="lpguard">Off</label>
+                                                                                <input class="bg-neutral-300 after:bg-neutral-100 dark:bg-neutral-600 dark:after:bg-neutral-400 mr-2 mt-[0.3rem] h-3.5 w-8 appearance-none rounded-[0.4375rem] before:pointer-events-none before:absolute before:h-3.5 before:w-3.5 before:rounded-full before:bg-transparent before:content-[''] after:absolute after:z-[2] after:-mt-[0.1875rem] after:h-5 after:w-5 after:rounded-full after:border-none after:shadow-[0_0px_3px_0_rgb(0_0_0_/_7%),_0_2px_2px_0_rgb(0_0_0_/_4%)] after:transition-[background-color_0.2s,transform_0.2s] after:content-[''] checked:bg-primary checked:after:absolute checked:after:z-[2] checked:after:-mt-[3px] checked:after:ml-[1.0625rem] checked:after:h-5 checked:after:w-5 checked:after:rounded-full checked:after:border-none checked:after:bg-primary checked:after:shadow-[0_3px_1px_-2px_rgba(0,0,0,0.2),_0_2px_2px_0_rgba(0,0,0,0.14),_0_1px_5px_0_rgba(0,0,0,0.12)] checked:after:transition-[background-color_0.2s,transform_0.2s] checked:after:content-[''] hover:cursor-pointer focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[3px_-1px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-5 focus:after:w-5 focus:after:rounded-full focus:after:content-[''] checked:focus:border-primary checked:focus:bg-primary checked:focus:before:ml-[1.0625rem] checked:focus:before:scale-100 checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:checked:bg-primary dark:checked:after:bg-primary dark:focus:before:shadow-[3px_-1px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca]"
+                                                                                    type="checkbox" role="switch" name="lpguard" id="lpguard" />
+                                                                                <label class="inline-block pl-[0.15rem] hover:cursor-pointer" for="lpguard">On</label>
+                                                                            </div>
                                                                         </div>
                                                                         <div class="col-start-6 px-4 py-3 text-right bg-gray-50">
                                                                             <button type="submit" class="inline-block rounded bg-meta-8 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
@@ -437,10 +442,10 @@
                                     </div>
                                     <div id="swportForm" class="grid grid-cols-3 gap-4 overflow-auto h-125 max-h-125" style="display: none">
                                         <div class="... col-span-3">
-                                            <div class="mt-10">
+                                            <div class="mt-6">
                                                 <div class="grid grid-cols-3 gap-6">
-                                                    <div class="col-span-3 mt-6">
-                                                        <h1>Switchport</h1>
+                                                    <div class="col-span-3">
+                                                        <h1 class="px-6 text-left text-4xl font-semibold text-black">Switchport</h1>
                                                         <form action="#" method="POST">
                                                             <div class="overflow-hidden shadow sm:rounded-md">
                                                                 <div class="px-4 py-5 bg-white">
@@ -610,47 +615,107 @@
                                     </div>
                                     <div id="aclForm" class="grid grid-cols-3 gap-4 overflow-auto h-125 max-h-125" style="display: none">
                                         <div class="... col-span-3">
-                                            <div class="mt-10">
+                                            <div class="mt-6">
                                                 <div class="grid grid-cols-3 gap-6">
-                                                    <div class="col-span-3 mt-6">
-                                                        <h1>Extended ACL</h1>
+                                                    <div class="col-span-3">
+                                                        <h1 class="px-6 text-4xl font-semibold text-black">Extended ACL</h1>
                                                         <form action="#" method="POST">
                                                             <div class="overflow-hidden shadow sm:rounded-md">
                                                                 <div class="px-4 py-5 bg-white">
                                                                     <div class="grid grid-cols-6 gap-6">
-                                                                        <div class="col-span-1">
-                                                                            <label for="aclnumber" class="block text-sm font-medium text-gray-700">ACL
-                                                                                Number</label>
-                                                                            <input type="text" name="aclnumber" id="aclnumber" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                                                                        <div class="col-span-2">
+                                                                            <label for="aclnumber" class="block text-left mb-2 text-xl font-normal text-black">
+                                                                                ACL Number
+                                                                            </label>
+                                                                            <input type="text" name="aclnumber" placeholder="Enter ACL Number"  id="aclnumber" class="block h-10 w-full px-2 border mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                                                                         </div>
-                                                                        <div class="col-span-1">
-                                                                            <label for="aclpermission" class="block text-sm font-medium text-gray-700">Permission</label>
-                                                                            <select id="aclpermission" name="aclpermission" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                                                                <option value="" selected >Choose a Permission</option>
+                                                                        <div class="col-span-2">
+                                                                            <label for="aclpermission" class="block text-left mb-2 text-xl font-normal text-black">Permission</label>
+                                                                            <select id="aclpermission" name="aclpermission" class="block h-10 w-full px-2 border mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                                                                <option value="" disabled selected >Choose a Permission</option>
                                                                                 <option value="permit">Permit</option>
                                                                                 <option value="deny">Deny</option>
                                                                               </select>
                                                                         </div>
-                                                                        <div class="col-span-1">
-                                                                            <label for="aclprotocol" class="block text-sm font-medium text-gray-700">Protocol</label>
-                                                                            <select id="aclprotocol" name="aclprotocol" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                                                                <option value="" selected >Choose a Protocol</option>
+                                                                        <div class="col-span-2">
+                                                                            <label for="aclprotocol" class="block text-left mb-2 text-xl font-normal text-black">Protocol</label>
+                                                                            <select id="aclprotocol" name="aclprotocol" class="block h-10 w-full px-2 border mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                                                                <option value="" disabled selected >Choose a Protocol</option>
                                                                                 <option value="tcp">TCP</option>
                                                                                 <option value="udp">UDP</option>
                                                                                 <option value="icmp">ICMP</option>
                                                                               </select>
                                                                         </div>
                                                                         <div class="col-span-2">
-                                                                            <label for="aclsource" class="block text-sm font-medium text-gray-700">Source</label>
-                                                                            <input type="text" name="aclsource" id="aclsource" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
-                                                                            <label id="aclsourceLabel" class="text-sm"></label>
+                                                                            <label for="aclsource" class="block text-left mb-2 text-xl font-normal text-black">
+                                                                                Source <span><label id="aclsourceLabel" class="text-sm px-2"></label></span>
+                                                                            </label>
+                                                                            <input type="text" name="aclsource" placeholder="Enter Source Address"  id="aclsource" class="block h-10 w-full px-2 border mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                                                                            
 
                                                                         </div>
-                                                                        <div class="col-span-1">
-                                                                            <label for="aclwildcardsource" class="block text-sm font-medium text-gray-700">Wild
-                                                                                Card Source</label>
-                                                                            <select id="aclwildcardsource" name="aclwildcardsource" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                                                                    <option value="" selected>Choose a Wild Card Mask</option>
+                                                                        <div class="col-span-2">
+                                                                            <label for="aclwildcardsource" class="block text-left mb-2 text-xl font-normal text-black">
+                                                                                Source Wild Card
+                                                                            </label>
+                                                                            <select id="aclwildcardsource" name="aclwildcardsource" class="block h-10 w-full px-2 border mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                                                                    <option value="" disabled selected>Choose a Wild Card Mask</option>
+                                                                                    <option value="0.0.0.0">0.0.0.0</option>
+                                                                                    <option value="127.255.255.255">127.255.255.255</option>
+                                                                                    <option value="63.255.255.255">63.255.255.255</option>
+                                                                                    <option value="31.255.255.255">31.255.255.255</option>
+                                                                                    <option value="15.255.255.255">15.255.255.255</option>
+                                                                                    <option value="7.255.255.255">7.255.255.255</option>
+                                                                                    <!-- Add more wildcard mask options here -->
+                                                                                    <option value="3.255.255.255">3.255.255.255</option>
+                                                                                    <option value="1.255.255.255">1.255.255.255</option>
+                                                                                    <option value="0.255.255.255">0.255.255.255</option>
+                                                                                    <option value="0.127.255.255">0.127.255.255</option>
+                                                                                    <option value="0.63.255.255">0.63.255.255</option>
+                                                                                    <option value="0.31.255.255">0.31.255.255</option>
+                                                                                    <option value="0.15.255.255">0.15.255.255</option>
+                                                                                    <option value="0.7.255.255">0.7.255.255</option>
+                                                                                    <option value="0.3.255.255">0.3.255.255</option>
+                                                                                    <option value="0.1.255.255">0.1.255.255</option>
+                                                                                    <option value="0.0.255.255">0.0.255.255</option>
+                                                                                    <option value="0.0.127.255">0.0.127.255</option>
+                                                                                    <option value="0.0.63.255">0.0.63.255</option>
+                                                                                    <option value="0.0.31.255">0.0.31.255</option>
+                                                                                    <option value="0.0.15.255">0.0.15.255</option>
+                                                                                    <option value="0.0.7.255">0.0.7.255</option>
+                                                                                    <option value="0.0.3.255">0.0.3.255</option>
+                                                                                    <option value="0.0.1.255">0.0.1.255</option>
+                                                                                    <option value="0.0.0.255">0.0.0.255</option>
+                                                                                    <option value="0.0.0.127">0.0.0.127</option>
+                                                                                    <option value="0.0.0.63">0.0.0.63</option>
+                                                                                    <option value="0.0.0.31">0.0.0.31</option>
+                                                                                    <option value="0.0.0.15">0.0.0.15</option>
+                                                                                    <option value="0.0.0.7">0.0.0.7</option>
+                                                                                    <option value="0.0.0.3">0.0.0.3</option>
+                                                                                    <option value="0.0.0.1">0.0.0.1</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        <div class="col-span-2">
+                                                                            <label for="acloperation" class="block text-left mb-2 text-xl font-normal text-black">Operation</label>
+                                                                            <select id="acloperation" name="acloperation" class="block h-10 w-full px-2 border mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                                                                <option value="" disabled selected >Choose a Operation</option>
+                                                                                <option value="eq">Equal</option>
+                                                                                <option value="gt">Greater Than</option>
+                                                                                <option value="lt">Lower Than</option>
+                                                                                </select>
+                                                                        </div>
+                                                                            <div class="col-span-2">
+                                                                            <label for="acldestination" class="block text-left mb-2 text-xl font-normal text-black">
+                                                                                Destination <span><label id="acldestinationLabel" class="text-sm px-2"></label></span>
+                                                                            </label>
+                                                                            <input type="text" name="acldestination" placeholder="Enter Destination Address" id="acldestination" class="block h-10 w-full px-2 border mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+
+                                                                        </div>
+                                                                        <div class="col-span-2">
+                                                                            <label for="aclwildcardsestination" class="block text-left mb-2 text-xl font-normal text-black">
+                                                                                Destination Wild Card</label>
+                                                                            <select id="aclwildcardsestination" name="aclwildcardsestination" class="block h-10 w-full px-2 border mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                                                                    <option value="" disabled selected>Choose a Wild Card Mask</option>
                                                                                     <option value="0.0.0.0">0.0.0.0</option>
                                                                                     <option value="127.255.255.255">127.255.255.255</option>
                                                                                     <option value="63.255.255.255">63.255.255.255</option>
@@ -687,100 +752,49 @@
                                                                                   </select>
                                                                         </div>
                                                                         <div class="col-span-2">
-                                                                            <label for="acldestination" class="block text-sm font-medium text-gray-700">Destination</label>
-                                                                            <input type="text" name="acldestination" id="acldestination" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
-                                                                            <label id="acldestinationLabel" class="text-sm"></label>
+                                                                            <label for="aclportnumber" class="block text-left mb-2 text-xl font-normal text-black">
+                                                                                Port Number
+                                                                            </label>
+                                                                            <input type="text" name="aclportnumber" placeholder="Enter Port Number"  id="aclportnumber" class="block h-10 w-full px-2 border mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
 
-                                                                        </div>
-                                                                        <div class="col-span-1">
-                                                                            <label for="aclwildcardsestination" class="block text-sm font-medium text-gray-700">Wild
-                                                                                Card Destination</label>
-                                                                            <select id="aclwildcardsestination" name="aclwildcardsestination" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                                                                    <option value="" selected>Choose a Wild Card Mask</option>
-                                                                                    <option value="0.0.0.0">0.0.0.0</option>
-                                                                                    <option value="127.255.255.255">127.255.255.255</option>
-                                                                                    <option value="63.255.255.255">63.255.255.255</option>
-                                                                                    <option value="31.255.255.255">31.255.255.255</option>
-                                                                                    <option value="15.255.255.255">15.255.255.255</option>
-                                                                                    <option value="7.255.255.255">7.255.255.255</option>
-                                                                                    <!-- Add more wildcard mask options here -->
-                                                                                    <option value="3.255.255.255">3.255.255.255</option>
-                                                                                    <option value="1.255.255.255">1.255.255.255</option>
-                                                                                    <option value="0.255.255.255">0.255.255.255</option>
-                                                                                    <option value="0.127.255.255">0.127.255.255</option>
-                                                                                    <option value="0.63.255.255">0.63.255.255</option>
-                                                                                    <option value="0.31.255.255">0.31.255.255</option>
-                                                                                    <option value="0.15.255.255">0.15.255.255</option>
-                                                                                    <option value="0.7.255.255">0.7.255.255</option>
-                                                                                    <option value="0.3.255.255">0.3.255.255</option>
-                                                                                    <option value="0.1.255.255">0.1.255.255</option>
-                                                                                    <option value="0.0.255.255">0.0.255.255</option>
-                                                                                    <option value="0.0.127.255">0.0.127.255</option>
-                                                                                    <option value="0.0.63.255">0.0.63.255</option>
-                                                                                    <option value="0.0.31.255">0.0.31.255</option>
-                                                                                    <option value="0.0.15.255">0.0.15.255</option>
-                                                                                    <option value="0.0.7.255">0.0.7.255</option>
-                                                                                    <option value="0.0.3.255">0.0.3.255</option>
-                                                                                    <option value="0.0.1.255">0.0.1.255</option>
-                                                                                    <option value="0.0.0.255">0.0.0.255</option>
-                                                                                    <option value="0.0.0.127">0.0.0.127</option>
-                                                                                    <option value="0.0.0.63">0.0.0.63</option>
-                                                                                    <option value="0.0.0.31">0.0.0.31</option>
-                                                                                    <option value="0.0.0.15">0.0.0.15</option>
-                                                                                    <option value="0.0.0.7">0.0.0.7</option>
-                                                                                    <option value="0.0.0.3">0.0.0.3</option>
-                                                                                    <option value="0.0.0.1">0.0.0.1</option>
-                                                                                  </select>
-                                                                        </div>
-                                                                        <div class="col-span-1">
-                                                                            <label for="acloperation" class="block text-sm font-medium text-gray-700">Operation</label>
-                                                                            <select id="acloperation" name="acloperation" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                                                                <option value="" selected >Choose a Operation</option>
-                                                                                <option value="eq">Equal</option>
-                                                                                <option value="gt">Greater Than</option>
-                                                                                <option value="lt">Lower Than</option>
-                                                                              </select>
-                                                                        </div>
-                                                                        <div class="col-span-1">
-                                                                            <label for="aclportnumber" class="block text-sm font-medium text-gray-700">Port
-                                                                                Number</label>
-                                                                            <input type="text" name="aclportnumber" id="aclportnumber" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
-                                                                        </div>
-                                                                        <div class="col-start-6 px-4 py-3 text-right bg-gray-50">
-                                                                            <button type="submit" class="inline-block rounded bg-meta-8 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
-                                                                                Apply
-                                                                            </button>
+                                                                    </div>
+                                                                    <div
+                                                                        class="col-start-6 px-4 py-3 text-right bg-gray-50">
+                                                                        <button type="submit"
+                                                                            class="inline-block rounded bg-meta-8 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
+                                                                            Apply
+                                                                        </button>
 
-                                                                        </div>
+                                                                    </div>
 
-                                                                        <div class="relative col-span-6 overflow-x-auto shadow-md">
-                                                                            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                                                                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                                                        <div class="relative col-span-6 overflow-x-auto shadow-md rounded-md">
+                                                                            <table class="w-full h-10 text-left text-gray-500 dark:text-gray-400">
+                                                                                <thead class="text-center mb-2 text-xl font-semibold text-black bg-secondary dark:bg-gray-700 dark:text-gray-400">
                                                                                     <tr>
                                                                                         <th scope="col" class="px-6 py-3">
                                                                                             ACL Name
                                                                                         </th>
-                                                                                        <th scope="col" class="px-6 py-3">
+                                                                                        <th scope="col" class="px-6 py-3 border-2 border-slate-600  border-y-transparent border-x-primary">
                                                                                             Rule
                                                                                         </th>
-                                                                                        <th scope="col" class="px-6 py-3">
+                                                                                        <th scope="col" class="px-6 py-3 border-2 border-slate-600  border-y-transparent border-x-primary">
                                                                                             Permission
                                                                                         </th>
-                                                                                        <th scope="col" class="px-6 py-3">
+                                                                                        <th scope="col" class="px-6 py-3 border-2 border-slate-600  border-y-transparent border-x-primary">
                                                                                             Protocol
                                                                                         </th>
-                                                                                        <th scope="col" class="px-6 py-3">
+                                                                                        <th scope="col" class="px-6 py-3 border-2 border-slate-600  border-y-transparent border-x-primary">
                                                                                             Source Network
                                                                                         </th>
-                                                                                        <th scope="col" class="px-6 py-3">
+                                                                                        <th scope="col" class="px-6 py-3 border-2 border-slate-600  border-y-transparent border-x-primary">
                                                                                             Destination Network
                                                                                         </th>
-                                                                                        <th scope="col" class="px-6 py-3">
+                                                                                        <th scope="col" class="px-6 py-3">Action
                                                                                             <span class="sr-only">Action</span>
                                                                                         </th>
                                                                                     </tr>
                                                                                 </thead>
-                                                                                <tbody id="tableExtenedAcl">
+                                                                                <tbody id="tableExtenedAcl" class="w-full text-center align-top text-lg text-strokedark font-normal">
                                                                                     <tr>
                                                                                     </tr>
                                                                                 </tbody>
@@ -798,56 +812,59 @@
                                             <div class="mt-10">
                                                 <div class="grid grid-cols-3 gap-6">
                                                     <div class="col-span-3 mt-6">
-                                                        <h1>Apply interface</h1>
+                                                        <h1 class="px-6 text-4xl font-semibold text-black">Apply interface</h1>
                                                         <form action="#" method="POST">
                                                             <div class="overflow-hidden shadow sm:rounded-md">
                                                                 <div class="px-4 py-5 bg-white">
                                                                     <div class="grid grid-cols-6 gap-6">
-                                                                        <div class="col-span-1">
-                                                                            <label for="aclpolicy" class="block text-sm font-medium text-gray-700">ACL
-                                                                                Policy</label>
-                                                                            <input type="text" name="aclpolicy" id="aclpolicy" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                                                                        <div class="col-span-2">
+                                                                            <label for="aclpolicy" class="block text-left mb-2 text-xl font-normal text-black">
+                                                                                ACL Policy
+                                                                            </label>
+                                                                            <input type="text" name="aclpolicy" placeholder="Enter ACL Policy" id="aclpolicy" class="px-2 h-10 w-full block border mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                                                                         </div>
-                                                                        <div class="col-span-1">
-                                                                            <label for="aclapplyinterface" class="block text-sm font-medium text-gray-700">Interface</label>
-                                                                            <input type="text" name="aclapplyinterface" id="aclapplyinterface" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                                                                        <div class="col-span-2">
+                                                                            <label for="aclapplyinterface" class="block text-left mb-2 text-xl font-normal text-black">Interface</label>
+                                                                            <input type="text" name="aclapplyinterface" placeholder="Enter ACL Interface" id="aclapplyinterface" class="block px-2 h-10 w-full border mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                                                                         </div>
-                                                                        <div class="col-span-1">
-                                                                            <label for="aclinout" class="block text-sm font-medium text-gray-700">In/Out</label>
-                                                                            <select id="aclinout" name="aclinout" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                                                        <div class="col-span-2">
+                                                                            <label for="aclinout" class="block text-left mb-2 text-xl font-normal text-black">In/Out</label>
+                                                                            <select id="aclinout" name="aclinout" class="block px-2 h-10 w-full border mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                                                                 <option value="" selected >Choose a In/Out</option>
                                                                                 <option value="in">In</option>
                                                                                 <option value="out">Out</option>
                                                                               </select>
                                                                         </div>
 
-                                                                        <div class="col-start-6 px-4 py-3 text-right bg-gray-50">
-                                                                            <button type="submit" class="inline-block rounded bg-meta-8 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
-                                                                                Apply
-                                                                            </button>
+                                                                    <div
+                                                                        class="col-start-6 px-4 py-3 text-right bg-gray-50">
+                                                                        <button type="submit"
+                                                                            class="inline-block rounded bg-meta-8 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
+                                                                            Apply
+                                                                        </button>
 
-                                                                        </div>
+                                                                    </div>
 
-                                                                        <div class="relative col-span-6 overflow-x-auto shadow-md">
-                                                                            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                                                                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                                                        <div class="relative col-span-6 overflow-x-auto shadow-md rounded-md h-55">
+                                                                            <table class="w-full h-10 text-left text-gray-500 dark:text-gray-400">
+                                                                                <thead class="text-center mb-2 text-xl font-semibold text-black bg-secondary dark:bg-gray-700 dark:text-gray-400">
                                                                                     <tr>
                                                                                         <th scope="col" class="px-6 py-3">
                                                                                             ACL Policy
                                                                                         </th>
-                                                                                        <th scope="col" class="px-6 py-3">
+                                                                                        <th scope="col" class="px-6 py-3 border-2 border-slate-600  border-y-transparent border-x-primary">
                                                                                             Interface
                                                                                         </th>
-                                                                                        <th scope="col" class="px-6 py-3">
+                                                                                        <th scope="col" class="px-6 py-3 border-2 border-slate-600  border-y-transparent border-x-primary">
                                                                                             In/Out
                                                                                         </th>
 
-                                                                                        <th scope="col" class="px-6 py-3">
+                                                                                        <th scope="col" class="px-6 py-3">Action
                                                                                             <span class="sr-only">Action</span>
                                                                                         </th>
                                                                                     </tr>
                                                                                 </thead>
-                                                                                <tbody id="tableApplyPolicyAcl">
+                                                                                <tbody id="tableApplyPolicyAcl" class="w-full text-center align-top text-lg text-strokedark font-normal">
                                                                                     <tr>
                                                                                     </tr>
                                                                                 </tbody>
