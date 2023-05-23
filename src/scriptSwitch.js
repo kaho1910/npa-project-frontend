@@ -9,25 +9,6 @@ const switchIp = urlParams.get('ip');
 const switchNameElement = document.getElementById('switchName');
 switchNameElement.textContent = switchName;
 
-var interfaces;
-fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/S-interfaces.json', {
-        method: 'GET' // No need to specify the body for a GET request
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => {
-        interfaces = data.interface
-        createInterfaceButtons(data.interface);
-
-    })
-    .catch(error => {
-        // Handle any errors
-        console.log(error);
-    });
 var extendAclInfo;
 fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/R-acl.json', {
         method: 'GET' // No need to specify the body for a GET request
@@ -85,9 +66,28 @@ function createInterfaceButtons(interfaces) {
         interfaceContainer.appendChild(button);
     }
 }
-createInterfaceButtons(interfaces);
+
+var interfaces;
+fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/S-interfaces.json', {
+        method: 'GET' // No need to specify the body for a GET request
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        interfaces = data.interface
+        createInterfaceButtons(data.interface);
+    })
+    .catch(error => {
+        // Handle any errors
+        console.log(error);
+    });
 
 function showInterSwitchForm() {
+    console.log(1);
     interfaceSwitchForm.style.display = 'grid';
     vlanForm.style.display = 'none';
     stpForm.style.display = 'none';
@@ -97,6 +97,24 @@ function showInterSwitchForm() {
     for (var i = 0; i < interfaceButtonRouter.length; i++) {
         interfaceButtonRouter[i].addEventListener('click', interfaceButtonSwitchClick);
     }
+
+    fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/S-interfaces.json', {
+            method: 'GET' // No need to specify the body for a GET request
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            interfaces = data.interface
+            createInterfaceButtons(data.interface);
+        })
+        .catch(error => {
+            // Handle any errors
+            console.log(error);
+        });
 }
 
 function showVlanForm() {
@@ -134,6 +152,22 @@ function showAclForm() {
     aclForm.style.display = 'grid';
     populateExtendedAclTable();
     populateAclApplyInterfaceTable();
+    fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/R-acl.json', {
+            method: 'GET' // No need to specify the body for a GET request
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            extendAclInfo = data
+        })
+        .catch(error => {
+            // Handle any errors
+            console.log(error);
+        });
 }
 
 var interfaceSwitchButton = document.getElementById('interfaceSwitchButton');
@@ -218,11 +252,48 @@ function interfaceButtonSwitchClick(event) {
         ipInput.disabled = true;
         subnetInput.disabled = true;
     }
+    var ipAddress = ipInput.value;
+    // Regular expression to match the IP address format
+    var ipRegex = /^(\d{1,3}\.){3}\d{1,3}$/;
+
+    // Check if the input matches the IP address format
+    if (ipRegex.test(ipAddress)) {
+        var octets = ipAddress.split(".");
+        var isValid = octets.every(function(octet) {
+            // Convert each octet to a number and check if it falls within the valid range (0-255)
+            var num = parseInt(octet);
+            return num >= 0 && num <= 255;
+        });
+        if (isValid) {
+            // Input is valid
+            ipLabel.textContent = "*Valid IP address format";
+            ipLabel.classList.remove("text-danger");
+            ipLabel.classList.remove("text-primary");
+            ipLabel.classList.add("text-success");
+        } else {
+            // Input is invalid
+            ipLabel.textContent = "*Invalid IP address format";
+            ipLabel.classList.remove("text-success");
+            ipLabel.classList.remove("text-primary");
+            ipLabel.classList.add("text-danger");
+        }
+    } else if (ipInput.value == "unassigned") {
+        ipLabel.textContent = "*Waiting for IP address ...";
+        ipLabel.classList.remove("text-danger");
+        ipLabel.classList.remove("text-success");
+        ipLabel.classList.add("text-primary");
+    } else {
+        // Input is invalid
+        ipLabel.textContent = "*Invalid IP address format";
+        ipLabel.classList.remove("text-success");
+        ipLabel.classList.add("text-danger");
+    }
 }
 var ipInput = document.getElementById("ip");
 var ipLabel = document.getElementById("ipLabel");
 
 ipInput.addEventListener("input", function() {
+    console.log(1);
     var ipAddress = ipInput.value;
 
     // Regular expression to match the IP address format
@@ -239,18 +310,25 @@ ipInput.addEventListener("input", function() {
 
         if (isValid) {
             // Input is valid
-            ipLabel.textContent = "Valid IP address format";
+            ipLabel.textContent = "*Valid IP address format";
             ipLabel.classList.remove("text-danger");
+            ipLabel.classList.remove("text-primary");
             ipLabel.classList.add("text-success");
+        } else if (ipInput.value == "unassigned") {
+            ipLabel.textContent = "Waiting for IP address...";
+            ipLabel.classList.remove("text-danger");
+            ipLabel.classList.remove("text-success");
+            ipLabel.classList.add("text-primary");
         } else {
             // Input is invalid
-            ipLabel.textContent = "Invalid IP address format";
+            ipLabel.textContent = "*Invalid IP address format";
             ipLabel.classList.remove("text-success");
+            ipLabel.classList.remove("text-primary");
             ipLabel.classList.add("text-danger");
         }
     } else {
         // Input is invalid
-        ipLabel.textContent = "Invalid IP address format";
+        ipLabel.textContent = "*Invalid IP address format";
         ipLabel.classList.remove("text-success");
         ipLabel.classList.add("text-danger");
     }
@@ -382,52 +460,71 @@ function getVlanRange(vlanId) {
 }
 
 
-var switchportArray = [
-    { swportinterface: "G0/1", swportmode: "Trunk", swportaccess: "-", swporttrunknative: "99", swportallowednative: "1,2,3" },
-    { swportinterface: "G0/2", swportmode: "Access", swportaccess: "10,20", swporttrunknative: "-", swportallowednative: "-" },
-    { swportinterface: "G0/3", swportmode: "Trunk", swportaccess: "-", swporttrunknative: "100", swportallowednative: "5,6,8" },
-
-    // Add more objects as needed
-];
-
 function populateSwitchportTable() {
     var tableSwitchport = document.getElementById("tableSwitchport");
     tableSwitchport.innerHTML = ""; // Clear existing content
 
-    switchportArray.forEach(function(data) {
-        var row = document.createElement("tr");
+    fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/S-switchport.json', {
+            method: 'GET'
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            var switchportArray = Object.keys(data).map(function(key) {
+                var portData = data[key];
+                return {
+                    swportinterface: key,
+                    swportmode: portData.switchport_mode,
+                    swportaccess: portData.access_vlan,
+                    swporttrunknative: portData.encapsulation.native_vlan,
+                    swportallowednative: portData.pruning_vlans
+                };
+            });
 
-        var swportinterfaceCell = document.createElement("td");
-        swportinterfaceCell.textContent = data.swportinterface;
-        row.appendChild(swportinterfaceCell);
+            switchportArray.forEach(function(data) {
+                var row = document.createElement("tr");
 
-        var swportmodeCell = document.createElement("td");
-        swportmodeCell.textContent = data.swportmode;
-        row.appendChild(swportmodeCell);
+                var swportinterfaceCell = document.createElement("td");
+                swportinterfaceCell.textContent = data.swportinterface;
+                row.appendChild(swportinterfaceCell);
 
-        var swportaccessCell = document.createElement("td");
-        swportaccessCell.textContent = data.swportaccess;
-        row.appendChild(swportaccessCell);
+                var swportmodeCell = document.createElement("td");
+                swportmodeCell.textContent = data.swportmode;
+                row.appendChild(swportmodeCell);
 
-        var swporttrunknativeCell = document.createElement("td");
-        swporttrunknativeCell.textContent = data.swporttrunknative;
-        row.appendChild(swporttrunknativeCell);
+                var swportaccessCell = document.createElement("td");
+                swportaccessCell.textContent = data.swportaccess;
+                row.appendChild(swportaccessCell);
 
-        var swportallowednativeCell = document.createElement("td");
-        swportallowednativeCell.textContent = data.swportallowednative;
-        row.appendChild(swportallowednativeCell);
+                var swporttrunknativeCell = document.createElement("td");
+                swporttrunknativeCell.textContent = data.swporttrunknative;
+                row.appendChild(swporttrunknativeCell);
 
+                var swportallowednativeCell = document.createElement("td");
+                swportallowednativeCell.textContent = data.swportallowednative;
+                row.appendChild(swportallowednativeCell);
 
-        var actionCell = document.createElement("td");
-        var removeLink = document.createElement("a");
-        removeLink.href = "#";
-        removeLink.textContent = "Remove";
-        removeLink.classList.add("text-blue-600", "dark:text-blue-500", "font-medium", "hover:underline");
-        actionCell.appendChild(removeLink);
-        row.appendChild(actionCell);
-        tableSwitchport.appendChild(row);
-    });
+                var actionCell = document.createElement("td");
+                var removeLink = document.createElement("a");
+                removeLink.href = "#";
+                removeLink.textContent = "Remove";
+                removeLink.classList.add("text-blue-600", "dark:text-blue-500", "font-medium", "hover:underline");
+                actionCell.appendChild(removeLink);
+                row.appendChild(actionCell);
+
+                tableSwitchport.appendChild(row);
+            });
+        })
+        .catch(error => {
+            console.log(error);
+        });
 }
+
+
 
 var swportmode = document.getElementById("swportmode");
 var swporttrunknative = document.getElementById("swporttrunknative");
