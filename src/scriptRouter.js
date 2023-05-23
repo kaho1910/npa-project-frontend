@@ -203,7 +203,7 @@ aclButton.addEventListener('click', showAclForm);
 
 
 
-var test;
+var interfaceNameRouter;
 var methodIpSelect = document.getElementById("methodip");
 var ipInput = document.getElementById("ip");
 var subnetInput = document.getElementById("ipsubnet");
@@ -224,24 +224,24 @@ var ipInput = document.getElementById("ip");
 var ipLabel = document.getElementById("ipLabel");
 
 function interfaceButtonRouterClick(event) {
-    test = event.target.dataset.interface; // Get the interface value
+    interfaceNameRouter = event.target.dataset.interface; // Get the interface value
     // Get the corresponding interface details from the dictionary
 
 
     // Update the input fields with the interface details
-    document.getElementById('ip').value = interfaces[test].ip_address;
-    // document.getElementById('ipsubnet').value = interfaces[test].ipsubnet;
-    // document.getElementById('description').value = interfaces[test].description;
-    document.getElementById('methodip').value = interfaces[test].method;
-    document.getElementById('interfaceRouter').textContent = test;
+    document.getElementById('ip').value = interfaces[interfaceNameRouter].ip_address;
+    // document.getElementById('ipsubnet').value = interfaces[interfaceName].ipsubnet;
+    // document.getElementById('description').value = interfaces[interfaceName].description;
+    document.getElementById('methodip').value = interfaces[interfaceNameRouter].method;
+    document.getElementById('interfaceRouter').textContent = interfaceNameRouter;
 
     var checkbox = document.getElementById('statusRouter');
-    if (interfaces[test].status === "administratively down") {
+    if (interfaces[interfaceNameRouter].status === "administratively down") {
         checkbox.checked = false; // Set the checkbox to unchecked
     } else {
         checkbox.checked = true; // Set the checkbox to checked
     }
-    if (interfaces[test].method === "manual") {
+    if (interfaces[interfaceNameRouter].method === "manual") {
         ipInput.disabled = false;
         subnetInput.disabled = false;
     } else {
@@ -282,6 +282,7 @@ function interfaceButtonRouterClick(event) {
         // Input is invalid
         ipLabel.textContent = "*Invalid IP address format";
         ipLabel.classList.remove("text-success");
+        ipLabel.classList.remove("text-primary");
         ipLabel.classList.add("text-danger");
     }
 }
@@ -442,7 +443,46 @@ nexthopInput.addEventListener("input", function() {
         nexthopLabel.classList.add("text-danger");
     }
 });
+// Function to handle form submission
+function handleSubmit(event) {
+    event.preventDefault(); // Prevent form from submitting normally
 
+    const form = event.target;
+    const device = routerName;
+    const interfaceName = interfaceNameRouter;
+    // const description = form.querySelector('textarea[name="description"]').value;
+    const ip = form.querySelector('input[name="ip"]').value;
+    const subnet = form.querySelector('select[name="ipsubnet"]').value;
+    const status = form.querySelector('input[name="statusRouter"]').checked;
+  
+    // Prepare payload
+    const payload = {
+      device,
+      interfaceName,
+    //   description,
+      ip,
+      subnet,
+      status
+    };
+    console.log(payload);
+    // Prepare request options
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    };
+  
+    // Send POST request
+    fetch('http://127.0.0.1:8000/interface', requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.error('Error:', error));
+  }
+  
+  interfaceRouterForm.addEventListener('submit', handleSubmit);
+  
 function populateOspfRouteTable() {
     var ospfRouteArray = [];
     var tableOspfRoute = document.getElementById("tableOspfRoute");
@@ -633,6 +673,53 @@ function populateExtendedAclTable() {
         tableExtenedAcl.appendChild(row);
     });
 }
+
+// Add event listener for form submission
+aclForm.addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent form submission
+  
+  // Get form inputs
+  const aclName = document.getElementById('aclname').value;
+  const aclPermission = document.getElementById('aclpermission').value;
+  const aclProtocol = document.getElementById('aclprotocol').value;
+  const aclSource = document.getElementById('aclsource').value;
+  const aclWildcardSource = document.getElementById('aclwildcardsource').value;
+  const aclOperation = document.getElementById('acloperation').value;
+  const aclDestination = document.getElementById('acldestination').value;
+  const aclWildcardDestination = document.getElementById('aclwildcardsestination').value;
+  const aclPortNumber = document.getElementById('aclportnumber').value;
+  
+  var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+
+var formData = {
+    device: routerName,
+    name: aclName,
+    action: aclPermission,
+    protocol: aclProtocol,
+    ip: aclSource,
+    wildcard: aclWildcardSource,
+    dst: aclDestination,
+    network: aclWildcardDestination,
+    eq: aclOperation, // optional
+    port: aclPortNumber // optional
+};
+console.log(formData);
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: formData,
+  redirect: 'follow'
+};
+
+fetch("127.0.0.1:8000/acl", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+ 
+});
+
+
 var aclsourceInput = document.getElementById("aclsource");
 var aclsourceLabel = document.getElementById("aclsourceLabel");
 

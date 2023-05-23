@@ -23,7 +23,7 @@
         <!-- ===== Sidebar End ===== -->
 
         <!-- ===== Content Area Start ===== -->
-        <div class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
+        <div class="relative flex flex-col flex-1 overflow-x-hidden overflow-y-auto">
             <!-- ===== Header Start ===== -->
             <!-- <include src="./partials/header.html" /> -->
             <!-- ===== Header End ===== -->
@@ -52,8 +52,8 @@
                         <!-- ====== Profile Section Start -->
                         <div class="overflow-hidden bg-white border rounded-sm border-stroke shadow-default dark:border-strokedark dark:bg-boxdark">
                             <div class="relative z-20 h-25">
-                                <img src="./images/cover/cover-01.png" alt="profile cover" class="h-full w-full rounded-tl-sm rounded-tr-sm object-cover object-center" />
-                                <div class="absolute z-10 bottom-0 right-1 xsm:bottom-2 xsm:right-4">
+                                <img src="./images/cover/cover-01.png" alt="profile cover" class="object-cover object-center w-full h-full rounded-tl-sm rounded-tr-sm" />
+                                <div class="absolute bottom-0 z-10 right-1 xsm:bottom-2 xsm:right-4">
                                     <label for="cover"
                                         class="flex items-center justify-center gap-2 px-2 py-1 text-sm font-medium text-white rounded cursor-pointer xsm:px-4">
                                         <button type="submit" class="inline-block rounded bg-danger px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
@@ -79,7 +79,7 @@
                                 </div>
                             </div>
                             <div class="px-4 pb-6 text-center lg:pb-8 xl:pb-6">
-                                <div class="relative z-30 mx-auto -mt-22 h-30 w-full max-w-30 rounded-full bg-white/20 p-1 backdrop-blur sm:h-44 sm:max-w-44 sm:p-3">
+                                <div class="relative z-30 w-full p-1 mx-auto rounded-full -mt-22 h-30 max-w-30 bg-white/20 backdrop-blur sm:h-44 sm:max-w-44 sm:p-3">
                                     <div class="relative drop-shadow-2">
                                         <img src="./images/devices/switch.png" alt="profile" />
                                     </div>
@@ -113,10 +113,23 @@
                                                     <div class="col-span-3 mt-6">
                                                         <!-- new sw int -->
                                                         <form action="#" method="POST">
-                                                            <div class="overflow-hidden shadow sm:rounded-md h-125 max-h-125 px-4 py-5 bg-white">
+                                                            <div class="px-4 py-5 overflow-hidden bg-white shadow sm:rounded-md h-125 max-h-125">
                                                                 <div class="grid grid-cols-4 gap-6 h-1/2">
                                                                     <div class="col-span-4 flex px-2 mt-4">
                                                                         <div class="w-2/3 flex text-4xl font-semibold text-black">
+                                                                            <!-- <div x-data="{ switcherToggle: false }" class="pt-1">
+                                                                                <label for="statusSwitch" class="flex cursor-pointer select-none items-center">
+                                                                                  <div class="relative">
+                                                                                    <input type="checkbox" id="statusSwitch" class="sr-only" name="statusSwitch" 
+                                                                                      @change="switcherToggle = !switcherToggle" />
+                                                                                    <div :class="switcherToggle && '!bg-primary'" class="block h-8 w-14 rounded-full bg-black">
+                                                                                    </div>
+                                                                                    <div :class="switcherToggle && '!right-1 !translate-x-full'"
+                                                                                      class="absolute left-1 top-1 flex h-6 w-6 items-center justify-center rounded-full bg-white transition">
+                                                                                    </div>
+                                                                                  </div>
+                                                                                </label>
+                                                                            </div> -->
                                                                             <div class="">
                                                                                 <label class="inline-block pl-[0.15rem] hover:cursor-pointer" for="statusSwitch">Status:</label>
                                                                                 <input class="border border-x-form-input bg-neutral-300 after:bg-neutral-100 dark:bg-neutral-600 dark:after:bg-neutral-400 mr-2 mt-[0.3rem] h-3.5 w-8 appearance-none rounded-[0.4375rem] before:pointer-events-none before:absolute before:h-3.5 before:w-3.5 before:rounded-full before:bg-transparent before:content-[''] after:absolute after:z-[2] after:-mt-[0.1875rem] after:h-5 after:w-5 after:rounded-full after:border-none after:shadow-[0_0px_3px_0_rgb(0_0_0_/_7%),_0_2px_2px_0_rgb(0_0_0_/_4%)] after:transition-[background-color_0.2s,transform_0.2s] after:content-[''] checked:bg-primary checked:after:absolute checked:after:z-[2] checked:after:-mt-[3px] checked:after:ml-[1.0625rem] checked:after:h-5 checked:after:w-5 checked:after:rounded-full checked:after:border-none checked:after:bg-primary checked:after:shadow-[0_3px_1px_-2px_rgba(0,0,0,0.2),_0_2px_2px_0_rgba(0,0,0,0.14),_0_1px_5px_0_rgba(0,0,0,0.12)] checked:after:transition-[background-color_0.2s,transform_0.2s] checked:after:content-[''] hover:cursor-pointer focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[3px_-1px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-5 focus:after:w-5 focus:after:rounded-full focus:after:content-[''] checked:focus:border-primary checked:focus:bg-primary checked:focus:before:ml-[1.0625rem] checked:focus:before:scale-100 checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:checked:bg-primary dark:checked:after:bg-primary dark:focus:before:shadow-[3px_-1px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca]"
@@ -135,7 +148,7 @@
                                                                     </div>
                                                                     <div class="col-span-1">
                                                                         <div>
-                                                                            <label for="methodip" class="block text-left mb-2 text-xl font-normal text-black dark:text-white">
+                                                                            <label for="methodip" class="block mb-2 text-xl font-normal text-left text-black dark:text-white">
                                                                                     Select IP Method
                                                                                 </label>
                                                                             <select id="methodip" name="methodip" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -147,15 +160,15 @@
                                                                     </div>
 
                                                                     <div class="col-span-2">
-                                                                        <label for="ip" class="block text-left mb-2 text-xl font-normal text-black">
-                                                                            IP Address<span><label id="ipLabel" class="text-sm pl-1"></label></span>
+                                                                        <label for="ip" class="block mb-2 text-xl font-normal text-left text-black">
+                                                                            IP Address<span><label id="ipLabel" class="pl-1 text-sm"></label></span>
                                                                         </label>
-                                                                        <input type="text" name="ip" id="ip" placeholder="Enter Interface IP Address" class="block px-2 w-full h-10 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                                                                        <input type="text" name="ip" id="ip" placeholder="Enter Interface IP Address" class="block w-full h-10 px-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
 
                                                                     </div>
 
                                                                     <div class="col-span-1">
-                                                                        <label for="ipsubnet" class="block text-left mb-2 text-xl font-normal text-black">Subnet Mask</label>
+                                                                        <label for="ipsubnet" class="block mb-2 text-xl font-normal text-left text-black">Subnet Mask</label>
                                                                         <select name="ipsubnet" id="ipsubnet" class="block w-full h-10 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                                                                 <option value="" disabled selected>Choose a Subnet Mask</option>
                                                                                 <option value="0.0.0.0">0.0.0.0/0</option>
@@ -197,7 +210,7 @@
                                                                 </div>
                                                                 <div class="grid grid-cols-4 gap-6 h-1/2">
                                                                     <div class="col-span-6">
-                                                                        <label for="description" class="block text-left mb-2 text-xl font-normal text-black dark:text-white">
+                                                                        <label for="description" class="block mb-2 text-xl font-normal text-left text-black dark:text-white">
                                                                                 Description
                                                                             </label>
 
@@ -205,7 +218,7 @@
                                                                             placeholder="Write your description about device...">
                                                                             </textarea>
                                                                     </div>
-                                                                    <div class="col-span-6 px-4 py-3 text-right bg-gray-50 right-0">
+                                                                    <div class="right-0 col-span-6 px-4 py-3 text-right bg-gray-50">
                                                                         <button type="submit" class="inline-block rounded bg-meta-8 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
                                                                                 Apply
                                                                             </button>
@@ -218,7 +231,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="vlanForm" class="grid h-125 max-h-125 grid-cols-3 gap-4" style="display: none">
+                                    <div id="vlanForm" class="grid grid-cols-3 gap-4 h-125 max-h-125" style="display: none">
                                         <div class="... overflow-auto col-span-3">
                                             <div class="mt-6">
                                                 <div class="grid grid-cols-3 gap-6">
@@ -234,37 +247,35 @@
                                                         </h1>
                                                         <form action="#" method="POST">
                                                             <div class="overflow-auto shadow sm:rounded-md">
-                                                                <div class="bg-white px-4 py-5">
+                                                                <div class="px-4 py-5 bg-white">
                                                                     <div class="grid grid-cols-6 gap-6">
                                                                         <div class="col-span-2">
-                                                                            <label for="vlanid" class="block text-left mb-2 text-xl font-normal text-black">
-                                                                                VLAN ID
-                                                                            </label>
-                                                                            <input type="text" name="vlanid" id="vlanid" placeholder="Enter VLAN ID" class="px-2 h-10 border focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                            <label for="vlanid" class="text-gray-700 block text-sm font-medium">VLAN
+                                                                                ID</label>
+                                                                            <input type="text" name="vlanid" id="vlanid" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
                                                                             <label for="vlanid" id="vlanRange"></label>
                                                                         </div>
                                                                         <div class="col-span-2">
-                                                                            <label for="vlanname" class="block text-left mb-2 text-xl font-normal text-black">
-                                                                                VLAN Name
-                                                                            </label>
-                                                                            <input type="text" name="vlanname" id="vlanname" placeholder="Enter VLAN Name" class="px-2 h-10 border focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                            <label for="vlanname" class="text-gray-700 block text-sm font-medium">VLAN
+                                                                                Name</label>
+                                                                            <input type="text" name="vlanname" id="vlanname" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
                                                                         </div>
                                                                         <div class="col-span-2">
-                                                                            <label for="vlandescription" class="block text-left mb-2 text-xl font-normal text-black">
+                                                                            <label for="vlandescription" class="text-gray-700 block text-sm font-medium">
                                                                                 Description</label>
-                                                                            <input type="text" name="vlandescription" placeholder="Write About VLAN Description" id="vlandescription" class="px-2 h-10 border focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                            <input type="text" name="vlandescription" id="vlandescription" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
                                                                         </div>
 
-                                                                        <div class="bg-gray-50 col-start-6 px-4 py-3 text-right">
+                                                                        <div class="col-start-6 px-4 py-3 text-right bg-gray-50">
                                                                             <button type="submit" class="inline-block rounded bg-meta-8 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
                                                                                 Apply
                                                                             </button>
 
                                                                         </div>
 
-                                                                        <div class="relative col-span-6 overflow-x-auto shadow-md rounded-md h-55">
-                                                                            <table class="h-full w-full text-left text-gray-500 dark:text-gray-400 ">
-                                                                                <thead class="text-center mb-2 text-lg font-semibold text-black bg-secondary dark:bg-gray-700 dark:text-gray-400">
+                                                                        <div class="relative col-span-6 overflow-x-auto shadow-md">
+                                                                            <table class="text-gray-500 dark:text-gray-400 w-full text-left text-sm">
+                                                                                <thead class="text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400 text-xs uppercase">
                                                                                     <tr>
                                                                                         <th scope="col" class="px-6 py-3">
                                                                                             VLAN ID
@@ -284,7 +295,7 @@
                                                                                         </th>
                                                                                     </tr>
                                                                                 </thead>
-                                                                                <tbody id="tableVlan" class="w-full text-center align-top text-sm text-strokedark font-normal">
+                                                                                <tbody id="tableVlan">
                                                                                     <tr class="overflow-auto dark:bg-gray-800 dark:border-gray-700 border-b bg-white">
 
                                                                                     </tr>
@@ -300,7 +311,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="stpForm" class="grid h-125 max-h-125 grid-cols-3 gap-4" style="display: none">
+                                    <div id="stpForm" class="grid grid-cols-3 gap-4 h-125 max-h-125" style="display: none">
                                         <div class="... col-span-3">
                                             <div class="mt-6">
                                                 <div class="grid grid-cols-3 gap-6">
@@ -316,9 +327,15 @@
                                                         </h1>
                                                         <form action="#" method="POST">
                                                             <div class="overflow-hidden shadow sm:rounded-md">
-                                                                <div class="bg-white px-4 py-5">
+                                                                <div class="px-4 py-5 bg-white">
                                                                     <div class="grid grid-cols-6 gap-6">
-                                                                        <div class="col-span-3">
+                                                                        <div class="col-span-2">
+                                                                            <label class="inline-block pl-[0.15rem] hover:cursor-pointer" for="statusStp">Status Off</label>
+                                                                            <input class="bg-neutral-300 after:bg-neutral-100 dark:bg-neutral-600 dark:after:bg-neutral-400 mr-2 mt-[0.3rem] h-3.5 w-8 appearance-none rounded-[0.4375rem] before:pointer-events-none before:absolute before:h-3.5 before:w-3.5 before:rounded-full before:bg-transparent before:content-[''] after:absolute after:z-[2] after:-mt-[0.1875rem] after:h-5 after:w-5 after:rounded-full after:border-none after:shadow-[0_0px_3px_0_rgb(0_0_0_/_7%),_0_2px_2px_0_rgb(0_0_0_/_4%)] after:transition-[background-color_0.2s,transform_0.2s] after:content-[''] checked:bg-primary checked:after:absolute checked:after:z-[2] checked:after:-mt-[3px] checked:after:ml-[1.0625rem] checked:after:h-5 checked:after:w-5 checked:after:rounded-full checked:after:border-none checked:after:bg-primary checked:after:shadow-[0_3px_1px_-2px_rgba(0,0,0,0.2),_0_2px_2px_0_rgba(0,0,0,0.14),_0_1px_5px_0_rgba(0,0,0,0.12)] checked:after:transition-[background-color_0.2s,transform_0.2s] checked:after:content-[''] hover:cursor-pointer focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[3px_-1px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-5 focus:after:w-5 focus:after:rounded-full focus:after:content-[''] checked:focus:border-primary checked:focus:bg-primary checked:focus:before:ml-[1.0625rem] checked:focus:before:scale-100 checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:checked:bg-primary dark:checked:after:bg-primary dark:focus:before:shadow-[3px_-1px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca]"
+                                                                                type="checkbox" role="switch" name="statusStp" id="statusStp" />
+                                                                            <label class="inline-block pl-[0.15rem] hover:cursor-pointer" for="statusStp">On</label>
+                                                                        </div>
+                                                                        <div class="col-span-1">
                                                                             <label for="stpmode" class="text-gray-700 block text-sm font-medium">STP
                                                                                 Mode
                                                                             </label>
@@ -329,23 +346,23 @@
                                                                               </select>
                                                                         </div>
                                                                         <div class="col-span-1">
-                                                                            <label for="stppriority" class="text-gray-700 block text-sm font-medium">STP
+                                                                            <label for="stppriority" class="block text-sm font-medium text-gray-700">STP
                                                                                 Priority</label>
-                                                                            <input type="text" name="stppriority" id="stppriority" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                            <input type="text" name="stppriority" id="stppriority" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                                                                         </div>
                                                                         <div class="col-span-1">
-                                                                            <label for="hellotime" class="text-gray-700 block text-sm font-medium">Hello-Time</label>
-                                                                            <input type="text" name="hellotime" id="hellotime" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                            <label for="hellotime" class="block text-sm font-medium text-gray-700">Hello-Time</label>
+                                                                            <input type="text" name="hellotime" id="hellotime" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                                                                         </div>
                                                                         <div class="col-span-1">
-                                                                            <label for="maxage" class="text-gray-700 block text-sm font-medium">Max-Age
+                                                                            <label for="maxage" class="block text-sm font-medium text-gray-700">Max-Age
                                                                                 card</label>
-                                                                            <input type="text" name="maxage" id="maxage" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                            <input type="text" name="maxage" id="maxage" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                                                                         </div>
                                                                         <div class="col-span-1">
-                                                                            <label for="forwardtime" class="text-gray-700 block text-sm font-medium">Forward-Time
+                                                                            <label for="forwardtime" class="block text-sm font-medium text-gray-700">Forward-Time
                                                                                 card</label>
-                                                                            <input type="text" name="forwardtime" id="forwardtime" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                            <input type="text" name="forwardtime" id="forwardtime" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                                                                         </div>
                                                                         <div class="col-span-2">
                                                                             <label class="inline-block pl-[0.15rem] hover:cursor-pointer" for="lpguard">Loopback-Guard Off</label>
@@ -353,7 +370,7 @@
                                                                                 type="checkbox" role="switch" name="lpguard" id="lpguard" />
                                                                             <label class="inline-block pl-[0.15rem] hover:cursor-pointer" for="lpguard">On</label>
                                                                         </div>
-                                                                        <div class="bg-gray-50 col-start-6 px-4 py-3 text-right">
+                                                                        <div class="col-start-6 px-4 py-3 text-right bg-gray-50">
                                                                             <button type="submit" class="inline-block rounded bg-meta-8 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
                                                                                 Apply
                                                                             </button>
@@ -370,7 +387,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="swportForm" class="grid h-125 max-h-125 grid-cols-3 gap-4 overflow-auto" style="display: none">
+                                    <div id="swportForm" class="grid grid-cols-3 gap-4 overflow-auto h-125 max-h-125" style="display: none">
                                         <div class="... col-span-3">
                                             <div class="mt-10">
                                                 <div class="grid grid-cols-3 gap-6">
@@ -378,16 +395,16 @@
                                                         <h1>Switchport</h1>
                                                         <form action="#" method="POST">
                                                             <div class="overflow-hidden shadow sm:rounded-md">
-                                                                <div class="bg-white px-4 py-5">
+                                                                <div class="px-4 py-5 bg-white">
                                                                     <div class="grid grid-cols-6 gap-6">
                                                                         <div class="col-span-1">
-                                                                            <label for="swportinterface" class="text-gray-700 block text-sm font-medium">Switchport
+                                                                            <label for="swportinterface" class="block text-sm font-medium text-gray-700">Switchport
                                                                                 Interface
                                                                                 Number</label>
-                                                                            <input type="text" name="swportinterface" id="swportinterface" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                            <input type="text" name="swportinterface" id="swportinterface" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                                                                         </div>
                                                                         <div class="col-span-1">
-                                                                            <label for="swportmode" class="text-gray-700 block text-sm font-medium">Switchport
+                                                                            <label for="swportmode" class="block text-sm font-medium text-gray-700">Switchport
                                                                                 Mode</label>
                                                                             <select id="swportmode" name="swportmode" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                                                                     <option value="" selected >Choose a Switchport Mode</option>
@@ -397,25 +414,25 @@
                                                                                   </select>
                                                                         </div>
                                                                         <div class="col-span-1">
-                                                                            <label for="swporttrunknative" class="text-gray-700 block text-sm font-medium">Switchport
+                                                                            <label for="swporttrunknative" class="block text-sm font-medium text-gray-700">Switchport
                                                                                 Trunk Native
                                                                                 VLAN</label>
-                                                                            <input type="text" name="swporttrunknative" id="swporttrunknative" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                            <input type="text" name="swporttrunknative" id="swporttrunknative" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                                                                         </div>
                                                                         <div class="col-span-1">
-                                                                            <label for="swportallowednative" class="text-gray-700 block text-sm font-medium">Switchport
+                                                                            <label for="swportallowednative" class="block text-sm font-medium text-gray-700">Switchport
                                                                                 Trunk Allowed
                                                                                 VLAN</label>
-                                                                            <input type="text" name="swportallowednative" id="swportallowednative" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                            <input type="text" name="swportallowednative" id="swportallowednative" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                                                                         </div>
                                                                         <div class="col-span-1">
-                                                                            <label for="swportaccess" class="text-gray-700 block text-sm font-medium">Switchport
+                                                                            <label for="swportaccess" class="block text-sm font-medium text-gray-700">Switchport
                                                                                 Access VLAN
                                                                             </label>
-                                                                            <input type="text" name="swportaccess" id="swportaccess" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                            <input type="text" name="swportaccess" id="swportaccess" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                                                                         </div>
 
-                                                                        <div class="bg-gray-50 col-start-6 px-4 py-3 text-right">
+                                                                        <div class="col-start-6 px-4 py-3 text-right bg-gray-50">
                                                                             <button type="submit" class="inline-block rounded bg-meta-8 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
                                                                                 Apply
                                                                             </button>
@@ -423,8 +440,8 @@
                                                                         </div>
 
                                                                         <div class="relative col-span-6 overflow-x-auto shadow-md">
-                                                                            <table class="text-gray-500 dark:text-gray-400 w-full text-left text-sm">
-                                                                                <thead class="text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400 text-xs uppercase">
+                                                                            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                                                                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                                                                     <tr>
                                                                                         <th scope="col" class="px-6 py-3">
                                                                                             Switchport Interface Number
@@ -448,7 +465,7 @@
                                                                                     </tr>
                                                                                 </thead>
                                                                                 <tbody id="tableSwitchport">
-                                                                                    <tr class="dark:bg-gray-800 dark:border-gray-700 border-b bg-white">
+                                                                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
 
                                                                                     </tr>
                                                                                 </tbody>
@@ -469,23 +486,23 @@
                                                         <h1>Apply interface</h1>
                                                         <form action="#" method="POST">
                                                             <div class="overflow-hidden shadow sm:rounded-md">
-                                                                <div class="bg-white px-4 py-5">
+                                                                <div class="px-4 py-5 bg-white">
                                                                     <div class="grid grid-cols-6 gap-6">
                                                                         <div class="col-span-1">
-                                                                            <label for="aclpolicy" class="text-gray-700 block text-sm font-medium">ACL
+                                                                            <label for="aclpolicy" class="block text-sm font-medium text-gray-700">ACL
                                                                                 Policy</label>
-                                                                            <input type="text" name="aclpolicy" id="aclpolicy" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                            <input type="text" name="aclpolicy" id="aclpolicy" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                                                                         </div>
                                                                         <div class="col-span-1">
-                                                                            <label for="applyinterface" class="text-gray-700 block text-sm font-medium">Interface</label>
-                                                                            <input type="text" name="applyinterface" id="applyinterface" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                            <label for="applyinterface" class="block text-sm font-medium text-gray-700">Interface</label>
+                                                                            <input type="text" name="applyinterface" id="applyinterface" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                                                                         </div>
                                                                         <div class="col-span-1">
-                                                                            <label for="inout" class="text-gray-700 block text-sm font-medium">In/Out</label>
-                                                                            <input type="text" name="inout" id="inout" class="focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 mt-1 block w-full rounded-md shadow-sm sm:text-sm" />
+                                                                            <label for="inout" class="block text-sm font-medium text-gray-700">In/Out</label>
+                                                                            <input type="text" name="inout" id="inout" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                                                                         </div>
 
-                                                                        <div class="bg-gray-50 col-start-6 px-4 py-3 text-right">
+                                                                        <div class="col-start-6 px-4 py-3 text-right bg-gray-50">
                                                                             <button type="submit" class="inline-block rounded bg-meta-8 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
                                                                                 Apply
                                                                             </button>
@@ -493,8 +510,8 @@
                                                                         </div>
 
                                                                         <div class="relative col-span-6 overflow-x-auto shadow-md">
-                                                                            <table class="text-gray-500 dark:text-gray-400 w-full text-left text-sm">
-                                                                                <thead class="text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400 text-xs uppercase">
+                                                                            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                                                                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                                                                     <tr>
                                                                                         <th scope="col" class="px-6 py-3">
                                                                                             ACL Policy
@@ -512,8 +529,8 @@
                                                                                     </tr>
                                                                                 </thead>
                                                                                 <tbody>
-                                                                                    <tr class="dark:bg-gray-800 dark:border-gray-700 border-b bg-white">
-                                                                                        <th scope="row" class="text-gray-900 whitespace-nowrap px-6 py-4 font-medium dark:text-white">
+                                                                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                                                             1
                                                                                         </th>
                                                                                         <td class="px-6 py-4">
@@ -525,7 +542,7 @@
 
 
                                                                                         <td class="px-6 py-4 text-right">
-                                                                                            <a href="#" class="text-blue-600 dark:text-blue-500 font-medium hover:underline">Remove</a>
+                                                                                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Remove</a>
                                                                                         </td>
                                                                                     </tr>
                                                                                 </tbody>
