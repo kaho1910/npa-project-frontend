@@ -124,7 +124,17 @@ fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/
         // Handle any errors
         console.log(error);
     });
+// var rawEctendedAcl = "{\n    \"device\": \"" + routerName + "\"\n}";
+// var requestOptions = {
+//   method: 'GET',
+//   body: rawEctendedAcl,
+//   redirect: 'follow'
+// };
 
+// fetch("127.0.0.1:8000/show_acl", requestOptions)
+//   .then(response => response.text())
+//   .then(result => console.log(result))
+//   .catch(error => console.log('error', error));
 // Router Interfaces Button
 const interfaceContainer = document.getElementById('interfaceContainerRouter');
 // Function to create and add buttons dynamically
@@ -245,6 +255,18 @@ function showOpsfForm() {
     ospfForm.style.display = 'grid';
     aclForm.style.display = 'none';
     // dhcpForm.style.display = 'none';
+    // var rawOspfRoute = "{\n    \"device\": \"" + routerName + "\"\n}";
+
+    // var requestOptions = {
+    //     method: 'GET',
+    //     body: rawOspfRoute,
+    //     redirect: 'follow'
+    // };
+
+    // fetch("127.0.0.1:8000/show_ip_route", requestOptions)
+    //     .then(response => response.text())
+    //     .then(result => console.log(result))
+    //     .catch(error => console.log('error', error));
     populateOspfRouteTable();
 }
 
@@ -254,6 +276,17 @@ function showAclForm() {
     ospfForm.style.display = 'none';
     aclForm.style.display = 'grid';
     // dhcpForm.style.display = 'none';
+    // var rawEctendedAcl = "{\n    \"device\": \"" + routerName + "\"\n}";
+    // var requestOptions = {
+    //   method: 'GET',
+    //   body: rawEctendedAcl,
+    //   redirect: 'follow'
+    // };
+
+    // fetch("127.0.0.1:8000/show_acl", requestOptions)
+    //   .then(response => response.text())
+    //   .then(result => console.log(result))
+    //   .catch(error => console.log('error', error));
     populateExtendedAclTable();
     populateAclApplyInterfaceTable();
 }
@@ -442,12 +475,12 @@ function handleSubmit(event) {
         },
         body: JSON.stringify(payload)
     };
-
     // Send POST request
     fetch('http://127.0.0.1:8000/interface', requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.error('Error:', error));
+
 }
 
 // Add event listener to the form
@@ -656,37 +689,31 @@ function populateOspfRouteTable() {
 }
 
 ospfForm.addEventListener("submit", function(event) {
-    event.preventDefault();
+    event.preventDefault(); // Prevent form submission
 
-    var areaInput = document.getElementById("area");
-    var networkInput = document.getElementById("network");
-    var wildcardInput = document.getElementById("wildcard");
+    const areaInput = document.getElementById('area');
+    const networkInput = document.getElementById('network');
+    const wildcardInput = document.getElementById('wildcard');
 
-    var area = areaInput.value;
-    var network = networkInput.value;
-    var wildcard = wildcardInput.value;
-
-    form.reset();
-
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-
-    var raw = JSON.stringify({
-        "ospf": [{
-            "network": network,
-            "wildcard": wildcard,
-            "area": area
+    const formData = {
+        device: routerName,
+        ospf: [{
+            area: areaInput.value,
+            network: networkInput.value,
+            wildcard: wildcardInput.value
         }]
-    });
+    };
+    console.log(formData);
 
-    var requestOptions = {
+    const requestOptions = {
         method: 'POST',
-        headers: myHeaders,
-        body: raw,
-        redirect: 'follow'
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
     };
 
-    fetch("127.0.0.1:8000/ospf/1", requestOptions)
+    fetch('http://127.0.0.1:8000/ospf/1', requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
@@ -794,6 +821,52 @@ function populateExtendedAclTable() {
         tableExtenedAcl.appendChild(row);
     });
 }
+console.log("ssss");
+// Handle form submit event
+aclForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // Get form values
+    const name = document.getElementById('aclname').value;
+    const action = document.getElementById('action').value;
+    const protocol = document.getElementById('protocol').value;
+    const ip = document.getElementById('aclsource').value;
+    const wildcard = document.getElementById('aclwildcardsource').value;
+    const eq = document.getElementById('acloperation').value;
+    const dst = document.getElementById('acldestination').value;
+    const network = document.getElementById('aclwildcardsestination').value;
+    const port = document.getElementById('aclportnumber').value;
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    // Create ACL object with form values
+    const acl = {
+        device: routerName,
+        name: name,
+        action: action,
+        protocol: protocol,
+        ip: ip,
+        wildcard: wildcard,
+        eq: eq,
+        dst: dst,
+        network: network,
+        port: port
+    };
+
+    // Log ACL object
+    console.log(acl);
+    var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: acl,
+        redirect: 'follow'
+    };
+
+    fetch("127.0.0.1:8000/acl", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+});
+
 var aclsourceInput = document.getElementById("aclsource");
 var aclsourceLabel = document.getElementById("aclsourceLabel");
 
