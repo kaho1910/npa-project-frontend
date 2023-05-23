@@ -671,14 +671,17 @@ function populateSwitchportTable() {
 
                 var swportmodeCell = document.createElement("td");
                 swportmodeCell.textContent = data.swportmode;
+                swportmodeCell.classList.add("border-2", "border-slate-600", "border-y-transparent", "border-x-primary");
                 row.appendChild(swportmodeCell);
 
                 var swportaccessCell = document.createElement("td");
                 swportaccessCell.textContent = data.swportaccess;
+                swportaccessCell.classList.add("border-2", "border-slate-600", "border-y-transparent", "border-x-primary");
                 row.appendChild(swportaccessCell);
 
                 var swporttrunknativeCell = document.createElement("td");
                 swporttrunknativeCell.textContent = data.swporttrunknative;
+                swporttrunknativeCell.classList.add("border-2", "border-slate-600", "border-y-transparent", "border-x-primary");
                 row.appendChild(swporttrunknativeCell);
 
                 var swportallowednativeCell = document.createElement("td");
