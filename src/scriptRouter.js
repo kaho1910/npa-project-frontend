@@ -474,10 +474,13 @@ function populateOspfRouteTable() {
 
         var networkCell = document.createElement("td");
         networkCell.textContent = data.network;
+        networkCell.classList.add("border-2", "border-slate-600", "border-y-transparent", "border-x-primary");
+
         row.appendChild(networkCell);
 
         var interfaceOspfCell = document.createElement("td");
         interfaceOspfCell.textContent = data.interface;
+        interfaceOspfCell.classList.add("border-2", "border-slate-600", "border-y-transparent", "border-x-primary");
         row.appendChild(interfaceOspfCell);
 
         var actionCell = document.createElement("td");
@@ -597,22 +600,27 @@ function populateExtendedAclTable() {
 
         var acesCell = document.createElement("td");
         acesCell.textContent = data.aces;
+        acesCell.classList.add("border-2", "border-slate-600", "border-y-transparent", "border-x-primary");
         row.appendChild(acesCell);
 
         var forwardCell = document.createElement("td");
         forwardCell.textContent = data.forward;
+        forwardCell.classList.add("border-2", "border-slate-600", "border-y-transparent", "border-x-primary");
         row.appendChild(forwardCell);
 
         var protocolCell = document.createElement("td");
         protocolCell.textContent = data.protocol;
+        protocolCell.classList.add("border-2", "border-slate-600", "border-y-transparent", "border-x-primary");
         row.appendChild(protocolCell);
 
         var sourceCell = document.createElement("td");
         sourceCell.textContent = data.source;
+        sourceCell.classList.add("border-2", "border-slate-600", "border-y-transparent", "border-x-primary");
         row.appendChild(sourceCell);
 
         var destinaionCell = document.createElement("td");
         destinaionCell.textContent = data.destination;
+        destinaionCell.classList.add("border-2", "border-slate-600", "border-y-transparent", "border-x-primary");
         row.appendChild(destinaionCell);
 
         var actionCell = document.createElement("td");
@@ -735,10 +743,12 @@ function populateAclApplyInterfaceTable() {
 
         var aclapplyinterfaceCell = document.createElement("td");
         aclapplyinterfaceCell.textContent = data.aclapplyinterface;
+        aclapplyinterfaceCell.classList.add("border-2", "border-slate-600", "border-y-transparent", "border-x-primary");
         row.appendChild(aclapplyinterfaceCell);
 
         var aclinoutCell = document.createElement("td");
         aclinoutCell.textContent = data.aclinout;
+        aclinoutCell.classList.add("border-2", "border-slate-600", "border-y-transparent", "border-x-primary");
         row.appendChild(aclinoutCell);
 
         var actionCell = document.createElement("td");
