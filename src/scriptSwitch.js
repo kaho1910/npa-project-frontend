@@ -286,6 +286,7 @@ function interfaceButtonSwitchClick(event) {
         // Input is invalid
         ipLabel.textContent = "*Invalid IP address format";
         ipLabel.classList.remove("text-success");
+        ipLabel.classList.remove("text-primary");
         ipLabel.classList.add("text-danger");
     }
 }
