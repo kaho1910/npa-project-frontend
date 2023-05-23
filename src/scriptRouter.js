@@ -356,6 +356,7 @@ function populateStaticRouteTable() {
         // row.appendChild(subnetCell);
 
         var nextHopCell = document.createElement("td");
+        nextHopCell.classList.add("border-2", "border-slate-600", "border-y-transparent", "border-x-primary");
         nextHopCell.textContent = data.nextHop;
         row.appendChild(nextHopCell);
 

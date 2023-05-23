@@ -204,25 +204,27 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- Static Route -->
                                     <div id="staticRouteForm" class="grid grid-cols-3 gap-4 h-125 max-h-125" style="display: none">
                                         <div class="... col-span-3">
-                                            <div class="mt-10">
+                                            <div class="mt-6">
                                                 <div class="grid grid-cols-3 gap-6">
-                                                    <div class="col-span-3 mt-6">
-                                                        <h1>Static Route</h1>
+                                                    <div class="col-span-3">
+                                                        <h1 class="px-6 text-4xl font-semibold text-black">Static Route</h1>
                                                         <form action="#" method="POST">
                                                             <div class="overflow-hidden shadow sm:rounded-md">
                                                                 <div class="px-4 py-5 bg-white">
                                                                     <div class="grid grid-cols-6 gap-6">
                                                                         <div class="col-span-2">
-                                                                            <label for="destination" class="block text-sm font-medium text-gray-700">Destination</label>
-                                                                            <input type="text" name="destination" id="destination" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
-                                                                            <label id="destinationLabel" class="text-sm"></label>
-
+                                                                            <label for="destination" class="block text-left mb-2 text-xl font-normal text-black" >
+                                                                                Destination <span><label id="destinationLabel" class="text-sm pl-1"></label></span>
+                                                                            </label>
+                                                                            <input type="text" name="destination" placeholder="Enter Destination Address" id="destination" class=" px-2 h-10 w-full block mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                                                                            
                                                                         </div>
                                                                         <div class="col-span-2">
-                                                                            <label for="staticsubnet" class="block text-sm font-medium text-gray-700">Subnet Mask</label>
-                                                                            <select name="staticsubnet" id="staticsubnet" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                                                            <label for="staticsubnet" class="block text-left mb-2 text-xl font-normal text-black">Subnet Mask</label>
+                                                                            <select name="staticsubnet" id="staticsubnet" class="block h-10 w-full mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                                                                 <option value="" selected>Choose a Subnet Mask
                                                                                 </option>
                                                                                 <option value="0.0.0.0">0.0.0.0/0</option>
@@ -262,10 +264,11 @@
                                                                             </select>
                                                                         </div>
                                                                         <div class="col-span-2">
-                                                                            <label for="Nexthop" class="block text-sm font-medium text-gray-700">Nexthop</label>
-                                                                            <input type="text" name="Nexthop" id="Nexthop" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
-                                                                            <label id="nexthopLabel" class="text-sm"></label>
-
+                                                                            <label for="Nexthop" class="block text-left mb-2 text-xl font-normal text-black" >
+                                                                                Next-hop <span><label id="nexthopLabel" class="text-sm pl-1"></label></span>
+                                                                            </label>
+                                                                            <input type="text" name="Nexthop" id="Nexthop" placeholder="Enter Next-hop Address" class="block px-2 h-10 w-full mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                                                                        
                                                                         </div>
                                                                         <div class="col-start-6 px-4 py-3 text-right bg-gray-50">
                                                                             <button type="submit" class="inline-block rounded bg-meta-8 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
@@ -274,26 +277,23 @@
 
                                                                         </div>
 
-                                                                        <div class="relative col-span-6 overflow-x-auto shadow-md">
-                                                                            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                                                                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                                                                    <tr>
-                                                                                        <th scope="col" class="px-6 py-3">
+                                                                        <div class="relative col-span-6 overflow-x-auto shadow-md rounded-md">
+                                                                            <table class="w-full text-left text-gray-500 dark:text-gray-400 ">
+                                                                                <thead class="text-center mb-2 text-lg font-semibold text-black uppercase bg-secondary dark:bg-gray-700 dark:text-gray-400">
+                                                                                    <tr >
+                                                                                        <th scope="col" class="px-6 py-3 border-2 border-slate-600 border-y-transparent border-x-primary">
                                                                                             Destination
                                                                                         </th>
-                                                                                        <!-- <th scope="col" class="px-6 py-3">
-                                                                                            Subnet
-                                                                                        </th> -->
-                                                                                        <th scope="col" class="px-6 py-3">
-                                                                                            Next Hop
+                                                                                        <th scope="col" class="px-6 py-3 border-2 border-slate-600 border-y-transparent border-x-primary">
+                                                                                            Next-Hop
                                                                                         </th>
-                                                                                        <th scope="col" class="px-6 py-3">
-                                                                                            <span class="sr-only">Action</span>
+                                                                                        <th scope="col" class="px-6 py-3 border-2 border-slate-600 border-y-transparent border-x-primary">
+                                                                                            Action<span class="sr-only">Action</span>
                                                                                         </th>
                                                                                     </tr>
                                                                                 </thead>
-                                                                                <tbody id="tableStaticRoute">
-                                                                                    <tr>
+                                                                                <tbody id="tableStaticRoute" class="w-full text-lg text-center text-strokedark font-normal border-2 border-slate-600  border-y-transparent border-x-primary">
+                                                                                    <tr class="px-4 py-2 border-2 border-slate-600  border-y-transparent border-x-primary">
 
                                                                                     </tr>
                                                                                 </tbody>
