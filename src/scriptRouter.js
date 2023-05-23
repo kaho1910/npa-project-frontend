@@ -9,6 +9,23 @@ const routerNameElement = document.getElementById('routerName');
 routerNameElement.textContent = routerName;
 
 var interfaces;
+// var rawInterfaceRouter = "{\n    \"device\": \"" + routerName + "\"\n}";
+// console.log(rawInterfaceRouter);
+// var requestOptions = {
+//     method: 'GET',
+//     body: rawInterfaceRouter,
+//     redirect: 'follow'
+// };
+
+// fetch("127.0.0.1:8000/show_ip", requestOptions)
+//     .then(response => response.text())
+//     .then(result => {
+//         console.log(result);
+//         interfaces = result.interface;
+//         createInterfaceButtons(result.interface);
+//     })
+//     .catch(error => console.log('error', error));
+
 fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/S-interfaces.json', {
         method: 'GET' // No need to specify the body for a GET request
     })
@@ -142,10 +159,46 @@ function showInterfaceRouterForm() {
     ospfForm.style.display = 'none';
     aclForm.style.display = 'none';
     // dhcpForm.style.display = 'none';
+    fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/S-interfaces.json', {
+            method: 'GET' // No need to specify the body for a GET request
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Handle the response data
+            interfaces = data.interface
+            createInterfaceButtons(data.interface);
+
+        })
+        .catch(error => {
+            // Handle any errors
+            console.log(error);
+        });
+    // var rawInterfaceRouter = "{\n    \"device\": \"" + routerName + "\"\n}";
+    // console.log(rawInterfaceRouter);
+    // var requestOptions = {
+    //     method: 'GET',
+    //     body: rawInterfaceRouter,
+    //     redirect: 'follow'
+    // };
+
+    // fetch("127.0.0.1:8000/show_ip", requestOptions)
+    //     .then(response => response.text())
+    //     .then(result => {
+    //         console.log(result);
+    //         interfaces = result.interface;
+    //         createInterfaceButtons(result.interface);
+    //     })
+    //     .catch(error => console.log('error', error));
     var interfaceButtonRouter = document.getElementsByClassName('interfaceButtonRouter');
     for (var i = 0; i < interfaceButtonRouter.length; i++) {
         interfaceButtonRouter[i].addEventListener('click', interfaceButtonRouterClick);
     }
+
 }
 
 function showStaticRouteForm() {
@@ -154,8 +207,37 @@ function showStaticRouteForm() {
     ospfForm.style.display = 'none';
     aclForm.style.display = 'none';
     // dhcpForm.style.display = 'none';
+    fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/R-routes.json', {
+            method: 'GET' // No need to specify the body for a GET request
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            staticRoutesInfo = data
+        })
+        .catch(error => {
+            // Handle any errors
+            console.log(error);
+        });
+    // var rawStaticRoute = "{\n    \"device\": \"" + routerName + "\"\n}";
+
+    // var requestOptions = {
+    //     method: 'GET',
+    //     body: rawStaticRoute,
+    //     redirect: 'follow'
+    // };
+
+    // fetch("127.0.0.1:8000/show_ip_route", requestOptions)
+    //     .then(response => response.text())
+    //     .then(result => console.log(result))
+    //     .catch(error => console.log('error', error));
     populateStaticRouteTable();
 }
+
 
 function showOpsfForm() {
     interfaceRouterForm.style.display = 'none';
@@ -222,26 +304,27 @@ methodIpSelect.addEventListener("change", function() {
 });
 var ipInput = document.getElementById("ip");
 var ipLabel = document.getElementById("ipLabel");
+var interfacenow;
 
 function interfaceButtonRouterClick(event) {
-    test = event.target.dataset.interface; // Get the interface value
+    interfacenow = event.target.dataset.interface; // Get the interface value
     // Get the corresponding interface details from the dictionary
 
 
     // Update the input fields with the interface details
-    document.getElementById('ip').value = interfaces[test].ip_address;
-    // document.getElementById('ipsubnet').value = interfaces[test].ipsubnet;
-    // document.getElementById('description').value = interfaces[test].description;
-    document.getElementById('methodip').value = interfaces[test].method;
-    document.getElementById('interfaceRouter').textContent = test;
+    document.getElementById('ip').value = interfaces[interfacenow].ip_address;
+    // document.getElementById('ipsubnet').value = interfaces[interfacenow].ipsubnet;
+    // document.getElementById('description').value = interfaces[interfacenow].description;
+    document.getElementById('methodip').value = interfaces[interfacenow].method;
+    document.getElementById('interfaceRouter').textContent = interfacenow;
 
     var checkbox = document.getElementById('statusRouter');
-    if (interfaces[test].status === "administratively down") {
+    if (interfaces[interfacenow].status === "administratively down") {
         checkbox.checked = false; // Set the checkbox to unchecked
     } else {
         checkbox.checked = true; // Set the checkbox to checked
     }
-    if (interfaces[test].method === "manual") {
+    if (interfaces[interfacenow].method === "manual") {
         ipInput.disabled = false;
         subnetInput.disabled = false;
     } else {
@@ -282,6 +365,7 @@ function interfaceButtonRouterClick(event) {
         // Input is invalid
         ipLabel.textContent = "*Invalid IP address format";
         ipLabel.classList.remove("text-success");
+        ipLabel.classList.remove("text-primary");
         ipLabel.classList.add("text-danger");
     }
 }
@@ -323,9 +407,52 @@ ipInput.addEventListener("input", function() {
         // Input is invalid
         ipLabel.textContent = "*Invalid IP address format";
         ipLabel.classList.remove("text-success");
+        ipLabel.classList.remove("text-primary");
         ipLabel.classList.add("text-danger");
     }
 });
+// Function to handle form submission
+function handleSubmit(event) {
+    event.preventDefault(); // Prevent form from submitting normally
+    console.log(interfacenow);
+    // Get form data
+    const form = event.target;
+    const device = routerName;
+    const interfaceName = interfacenow;
+    const description = form.querySelector('textarea[name="description"]').value;
+    const ip = form.querySelector('input[name="ip"]').value;
+    const subnet = form.querySelector('select[name="ipsubnet"]').value;
+    const status = form.querySelector('input[name="statusRouter"]').checked;
+
+    // Prepare payload
+    const payload = {
+        device,
+        interfaceName,
+        // description,
+        ip,
+        subnet,
+        status
+    };
+    console.log(payload);
+    // Prepare request options
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    };
+
+    // Send POST request
+    fetch('http://127.0.0.1:8000/interface', requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.error('Error:', error));
+}
+
+// Add event listener to the form
+
+interfaceRouterForm.addEventListener('submit', handleSubmit);
 
 
 function populateStaticRouteTable() {
@@ -370,6 +497,40 @@ function populateStaticRouteTable() {
         tableStaticRoute.appendChild(row);
     });
 }
+
+staticRouteForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+    // Get the form input values
+    var destination = document.getElementById('destination').value;
+    var staticsubnet = document.getElementById('staticsubnet').value;
+    var nexthop = document.getElementById('Nexthop').value;
+
+    // Create the request body object
+    var requestBody = {
+        device: routerName,
+        routes: [{
+            network: destination,
+            subnet: staticsubnet,
+            next_hop_ip: nexthop
+        }]
+    };
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: JSON.stringify(requestBody),
+        redirect: 'follow'
+    };
+
+    // Send the fetch request
+    fetch("http://127.0.0.1:8000/route", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+});
+
 var destinationInput = document.getElementById("destination");
 var destinationLabel = document.getElementById("destinationLabel");
 
