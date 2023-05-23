@@ -43,6 +43,18 @@ fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/
         // Handle any errors
         console.log(error);
     });
+//     var rawVlan = "{\n    \"device\": \"" + switchName + "\"\n}";
+
+// var requestOptions = {
+//   method: 'GET',
+//   body: rawVlan,
+//   redirect: 'follow'
+// };
+
+// fetch("127.0.0.1:8000/show_vlan", requestOptions)
+//   .then(response => response.text())
+//   .then(result => console.log(result))
+//   .catch(error => console.log('error', error));
 const interfaceContainer = document.getElementById('interfaceContainerSwitch');
 // Function to create and add buttons dynamically
 function createInterfaceButtons(interfaces) {
@@ -85,7 +97,18 @@ fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/
         // Handle any errors
         console.log(error);
     });
+//     var rawInterface = "{\n    \"device\": \"" + switchName + "\"\n}";
 
+// var requestOptions = {
+//   method: 'GET',
+//   body: rawInterface,
+//   redirect: 'follow'
+// };
+
+// fetch("127.0.0.1:8000/show_ip", requestOptions)
+//   .then(response => response.text())
+//   .then(result => console.log(result))
+//   .catch(error => console.log('error', error));
 function showInterSwitchForm() {
     console.log(1);
     interfaceSwitchForm.style.display = 'grid';
@@ -115,6 +138,18 @@ function showInterSwitchForm() {
             // Handle any errors
             console.log(error);
         });
+        //     var rawInterface = "{\n    \"device\": \"" + switchName + "\"\n}";
+
+// var requestOptions = {
+//   method: 'GET',
+//   body: rawInterface,
+//   redirect: 'follow'
+// };
+
+// fetch("127.0.0.1:8000/show_ip", requestOptions)
+//   .then(response => response.text())
+//   .then(result => console.log(result))
+//   .catch(error => console.log('error', error));
 }
 
 function showVlanForm() {
@@ -123,6 +158,18 @@ function showVlanForm() {
     stpForm.style.display = 'none';
     swportForm.style.display = 'none';
     aclForm.style.display = 'none';
+    //     var rawVlan = "{\n    \"device\": \"" + switchName + "\"\n}";
+
+// var requestOptions = {
+//   method: 'GET',
+//   body: rawVlan,
+//   redirect: 'follow'
+// };
+
+// fetch("127.0.0.1:8000/show_vlan", requestOptions)
+//   .then(response => response.text())
+//   .then(result => console.log(result))
+//   .catch(error => console.log('error', error));
     populateVlanTable();
 }
 
@@ -208,7 +255,7 @@ methodIpSelect.addEventListener("change", function() {
 });
 
 
-var test;
+var interfaceSwitchName;
 var methodIpSelect = document.getElementById("methodip");
 var ipInput = document.getElementById("ip");
 var subnetInput = document.getElementById("ipsubnet");
@@ -227,25 +274,25 @@ methodIpSelect.addEventListener("change", function() {
 });
 
 function interfaceButtonSwitchClick(event) {
-    test = event.target.dataset.interface; // Get the interface value
-    console.log(interfaces[test]);
+    interfaceSwitchName = event.target.dataset.interface; // Get the interface value
+    console.log(interfaces[interfaceSwitchName]);
     // Get the corresponding interface details from the dictionary
 
 
     // Update the input fields with the interface details
-    document.getElementById('ip').value = interfaces[test].ip_address;
-    // document.getElementById('ipsubnet').value = interfaces[test].ipsubnet;
-    // document.getElementById('description').value = interfaces[test].description;
-    document.getElementById('methodip').value = interfaces[test].method;
-    document.getElementById('interfaceSwitch').textContent = test;
+    document.getElementById('ip').value = interfaces[interfaceSwitchName].ip_address;
+    // document.getElementById('ipsubnet').value = interfaces[interfaceSwitchName].ipsubnet;
+    // document.getElementById('description').value = interfaces[interfaceSwitchName].description;
+    document.getElementById('methodip').value = interfaces[interfaceSwitchName].method;
+    document.getElementById('interfaceSwitch').textContent = interfaceSwitchName;
 
     var checkbox = document.getElementById('statusSwitch');
-    if (interfaces[test].status === "administratively down") {
+    if (interfaces[interfaceSwitchName].status === "administratively down") {
         checkbox.checked = false; // Set the checkbox to unchecked
     } else {
         checkbox.checked = true; // Set the checkbox to checked
     }
-    if (interfaces[test].method === "manual") {
+    if (interfaces[interfaceSwitchName].method === "manual") {
         ipInput.disabled = false;
         subnetInput.disabled = false;
     } else {
@@ -335,7 +382,44 @@ ipInput.addEventListener("input", function() {
     }
 });
 
+function handleSubmit(event) {
+    event.preventDefault(); // Prevent form from submitting normally
 
+    const form = event.target;
+    const device = switchName;
+    const interfaceName = interfaceSwitchName;
+    // const description = form.querySelector('textarea[name="description"]').value;
+    const ip = form.querySelector('input[name="ip"]').value;
+    const subnet = form.querySelector('select[name="ipsubnet"]').value;
+    const status = form.querySelector('input[name="statusSwitch"]').checked;
+  
+    // Prepare payload
+    const payload = {
+      device,
+      interfaceName,
+    //   description,
+      ip,
+      subnet,
+      status
+    };
+    console.log(payload);
+    // Prepare request options
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    };
+  
+    // Send POST request
+    fetch('http://127.0.0.1:8000/interface', requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.error('Error:', error));
+  }
+  
+  interfaceSwitchForm.addEventListener('submit', handleSubmit);
 
 function populateVlanTable() {
     var tableVlan = document.getElementById("tableVlan");

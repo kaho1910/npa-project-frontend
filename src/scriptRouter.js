@@ -58,6 +58,7 @@ fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/
 //     .then(response => response.text())
 //     .then(result => console.log(result))
 //     .catch(error => console.log('error', error));
+
 var ospfRouteInfo;
 fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/R-ospf.json', {
         method: 'GET' // No need to specify the body for a GET request
