@@ -13,7 +13,7 @@
       "ip_address": "unassigned",
       "method": "unset",
       "protocol": "down",
-      "status": "down"
+      "status": "administratively down"
     },
     "GigabitEthernet0/3": {
       "interface_is_ok": "YES",
@@ -27,7 +27,7 @@
       "ip_address": "unassigned",
       "method": "unset",
       "protocol": "down",
-      "status": "down"
+      "status": "administratively down"
     },
     "GigabitEthernet1/1": {
       "interface_is_ok": "YES",
