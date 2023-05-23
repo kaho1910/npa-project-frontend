@@ -364,7 +364,7 @@ function populateStaticRouteTable() {
         var removeLink = document.createElement("a");
         removeLink.href = "#";
         removeLink.textContent = "Remove";
-        removeLink.classList.add("text-blue-600", "dark:text-blue-500", "font-medium", "hover:underline");
+        removeLink.classList.add("text-blue-600", "dark:text-blue-500", "font-medium", "hover:underline", "top-0");
         actionCell.appendChild(removeLink);
         row.appendChild(actionCell);
         tableStaticRoute.appendChild(row);
