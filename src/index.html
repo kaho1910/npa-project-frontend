@@ -22,24 +22,24 @@
         <!-- ===== Sidebar End ===== -->
 
         <!-- ===== Content Area Start ===== -->
-        <div class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden ">
+        <div class="relative flex flex-col flex-1 overflow-x-hidden overflow-y-auto ">
             <!-- ===== Header Start ===== -->
             <!-- <include src="./partials/header.html" /> -->
             <!-- ===== Header End ===== -->
 
             <!-- ===== Main Content Start ===== -->
             <main>
-                <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10" id="app">
+                <div class="p-4 mx-auto max-w-screen-2xl md:p-6 2xl:p-10" id="app">
                     <!-- Inform Zone Start -->
                     <div class="rounded-sm sticky top-10 mb-5.5 border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
-                        <div class="border-b border-stroke py-4 px-7 dark:border-strokedark">
-                            <h3 class="text-black dark:text-white font-bold text-2xl">Device Information</h3>
+                        <div class="py-4 border-b border-stroke px-7 dark:border-strokedark">
+                            <h3 class="text-2xl font-bold text-black dark:text-white">Device Information</h3>
                         </div>
                         <div class="p-7 ">
-                            <form action="#" class="grid md:grid-cols-3 gap-2">
+                            <form action="#" class="grid gap-2 md:grid-cols-3">
                                 <div class="mb-5.5">
                                     <!-- ===== Select Type ===== -->
-                                    <label class="mb-3 block text-sm font-medium text-black dark:text-white" for="Username">Device Type</label>
+                                    <label class="block mb-3 text-sm font-medium text-black dark:text-white" for="Username">Device Type</label>
                                     <select class="relative z-20 w-full appearance-none rounded border border-stroke bg-gray py-3 px-4.5 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input" v-model="newText.type" required="">
                                         <option value="" disabled="" selected="" hidden="">Select Type</option>
                                         <option value="Router">Router</option>
@@ -48,19 +48,19 @@
                                 </div>
                                 <div class="mb-5.5">
                                     <!-- ===== Name Input ===== -->
-                                    <label class="mb-3 block text-sm font-medium text-black dark:text-white" for="Username">Device Name</label>
+                                    <label class="block mb-3 text-sm font-medium text-black dark:text-white" for="Username">Device Name</label>
                                     <input class="w-full rounded border border-stroke bg-gray py-3 px-4.5 font-medium text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary" type="text" v-model="newText.name"
                                         placeholder="Enter Device Name (eg. R1)" required>
                                 </div>
                                 <div class="mb-5.5">
                                     <!-- ===== IP Input ===== -->
-                                    <label class="mb-3 block text-sm font-medium text-black dark:text-white" for="Username">IP Address</label>
+                                    <label class="block mb-3 text-sm font-medium text-black dark:text-white" for="Username">IP Address</label>
                                     <input class="w-full rounded border border-stroke bg-gray py-3 px-4.5 font-medium text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary" type="text" v-model="newText.ip"
                                         placeholder="Monitor address (eg. 192.168.1.1)" required>
                                 </div>
                             </form>
-                            <div class="flex justify-center items-center">
-                                <button class="flex justify-center rounded bg-meta-3 py-2 px-6 font-medium text-gray hover:bg-opacity-90" type="submit" @click="createNewElement">+ Add Device</button>
+                            <div class="flex items-center justify-center">
+                                <button class="flex justify-center px-6 py-2 font-medium rounded bg-meta-3 text-gray hover:bg-opacity-90" type="submit" @click="createNewElement">+ Add Device</button>
                             </div>
                         </div>
                     </div>
@@ -86,24 +86,24 @@
             template: `
         <div class="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark">
             <div class="">
-                <div class="flex justify-between items-center py-2 mx-2 ">
-                    <div v-if="status" class="w-full bg-meta-3 rounded" >
+                <div class="flex items-center justify-between py-2 mx-2 ">
+                    <div v-if="status" class="w-full rounded bg-meta-3" >
                         <h2 class="text-xl font-bold text-center text-white" >- Online -</h2>
                     </div>
-                    <div v-else class="w-full bg-meta-1 rounded" >
+                    <div v-else class="w-full rounded bg-meta-1" >
                         <h2 class="text-xl font-bold text-center text-white">- Offline -</h2>
                     </div>
                 </div>
                 <div class="pt-2 mx-2">
                     <span class="text-sm font-bold">{{ type }}</span>
-                    <h1 class="truncate text-3xl font-bold text-black dark:text-white ">
+                    <h1 class="text-3xl font-bold text-black truncate dark:text-white ">
                         {{ name }}
                     </h1>
                     <h5 class="font-bold">{{ ip }}</h5><br>
                     </div>
                 </div>
-                <div class="flex justify-between items-center py-1">
-                    <button @click="configDevice" class="w-full flex mx-1 flex justify-center rounded-full bg-primary py-1 px-6 font-medium text-gray hover:bg-opacity-90" type="submit">
+                <div class="flex items-center justify-between py-1">
+                    <button @click="configDevice" class="flex justify-center w-full px-6 py-1 mx-1 font-medium rounded-full bg-primary text-gray hover:bg-opacity-90" type="submit">
                         Config 
                         <span>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -111,7 +111,7 @@
                             </svg>
                         </span>
                     </button>            
-                    <button @click="deleteElement" class="w-full flex mx-1 flex justify-center rounded-full bg-danger py-1 px-6 font-medium text-gray hover:bg-opacity-90" type="submit">
+                    <button @click="deleteElement" class="flex justify-center w-full px-6 py-1 mx-1 font-medium rounded-full bg-danger text-gray hover:bg-opacity-90" type="submit">
                         Remove 
                         <span>
                             <svg xmlns="http://www.w3.org/2000/svg" class="fill-current" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -159,12 +159,23 @@
                         this.texts = data.map(item => ({
                             name: item.hostname,
                             ip: item.ipaddress,
-                            type: item.type
+                            type: item.type,
+                            status: item.status
                         }));
+                        console.log(this.texts);
                     })
                     .catch(error => {
                         console.log(error);
                     });
+//                     var requestOptions = {
+//   method: 'GET',
+//   redirect: 'follow'
+// };
+
+// fetch("127.0.0.1:8000/devices", requestOptions)
+//   .then(response => response.text())
+//   .then(result => console.log(result))
+//   .catch(error => console.log('error', error));
             },
             methods: {
                 createNewElement() {
