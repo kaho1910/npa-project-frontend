@@ -367,10 +367,62 @@ function populateStaticRouteTable() {
         removeLink.href = "#";
         removeLink.textContent = "Remove";
         removeLink.classList.add("text-blue-600", "dark:text-blue-500", "font-medium", "hover:underline", "top-0");
+        var subnetMask = getSubnetMask(data.destination);
+        removeLink.addEventListener("click", function(event) {
+            event.preventDefault();
+            removeStaticRoute(data.destination.split("/")[0], data.nextHop, subnetMask);
+        });
         actionCell.appendChild(removeLink);
         row.appendChild(actionCell);
         tableStaticRoute.appendChild(row);
     });
+}
+function removeStaticRoute(destination, nextHop, subnetMask) {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+        "device": routerName,
+        "routes": [
+            {
+                "network": destination,
+                "subnet": subnetMask,
+                "next_hop_ip": nextHop
+            }
+        ]
+    });
+    console.log(raw);
+    var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+    };
+
+    fetch("http://127.0.0.1:8000/route", requestOptions)
+        .then(response => response.text())
+        .then(result => {
+            // Handle the result as needed
+            console.log(result);
+            // Optionally, you can update the UI or perform any other actions here
+        })
+        .catch(error => console.log('error', error));
+}
+function getSubnetMask(destination) {
+    var subnetPrefixLength = parseInt(destination.split('/')[1], 10);
+    var subnetMask = '';
+
+    for (var i = 0; i < 4; i++) {
+        var octetValue = Math.min(subnetPrefixLength, 8);
+        var octetMask = 256 - Math.pow(2, 8 - octetValue);
+        subnetMask += octetMask.toString();
+        subnetPrefixLength -= octetValue;
+        if (i < 3) {
+            subnetMask += '.';
+        }
+    }
+
+    return subnetMask;
 }
 var destinationInput = document.getElementById("destination");
 var destinationLabel = document.getElementById("destinationLabel");
@@ -529,11 +581,89 @@ function populateOspfRouteTable() {
         removeLink.href = "#";
         removeLink.textContent = "Remove";
         removeLink.classList.add("text-blue-600", "dark:text-blue-500", "font-medium", "hover:underline");
+        var subnetMask = getSubnetMask(data.network);
+        console.log(subnetMask);
+        var wildCard = getWildcard(subnetMask);
+        removeLink.addEventListener('click', function(event) {
+            event.preventDefault();
+            removeOspfRoute(data.network.split("/")[0], data.area, wildCard);
+          });
+      
         actionCell.appendChild(removeLink);
         row.appendChild(actionCell);
         tableOspfRoute.appendChild(row);
     });
 }
+function getWildcard(subnetMask) {
+    var staticMap = {
+      '0.0.0.0': '255.255.255.255',
+      '128.0.0.0': '127.255.255.255',
+      '192.0.0.0': '63.255.255.255',
+      '224.0.0.0': '31.255.255.255',
+      '240.0.0.0': '15.255.255.255',
+      '248.0.0.0': '7.255.255.255',
+      '252.0.0.0': '3.255.255.255',
+      '254.0.0.0': '1.255.255.255',
+      '255.0.0.0': '0.255.255.255',
+      '255.128.0.0': '0.127.255.255',
+      '255.192.0.0': '0.63.255.255',
+      '255.224.0.0': '0.31.255.255',
+      '255.240.0.0': '0.15.255.255',
+      '255.248.0.0': '0.7.255.255',
+      '255.252.0.0': '0.3.255.255',
+      '255.254.0.0': '0.1.255.255',
+      '255.255.0.0': '0.0.255.255',
+      '255.255.128.0': '0.0.127.255',
+      '255.255.192.0': '0.0.63.255',
+      '255.255.224.0': '0.0.31.255',
+      '255.255.240.0': '0.0.15.255',
+      '255.255.248.0': '0.0.7.255',
+      '255.255.252.0': '0.0.3.255',
+      '255.255.254.0': '0.0.1.255',
+      '255.255.255.0': '0.0.0.255',
+      '255.255.255.128': '0.0.0.127',
+      '255.255.255.192': '0.0.0.63',
+      '255.255.255.224': '0.0.0.31',
+      '255.255.255.240': '0.0.0.15',
+      '255.255.255.248': '0.0.0.7',
+      '255.255.255.252': '0.0.0.3',
+      '255.255.255.254': '0.0.0.1',
+      '255.255.255.255': '0.0.0.0'
+    };
+    console.log(subnetMask);
+    console.log(staticMap[subnetMask]);
+    return staticMap[subnetMask];
+  }
+  
+  
+
+function removeOspfRoute(network, area, wildCard) {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+  
+    var raw = JSON.stringify({
+      "device": routerName,
+      "ospf": [
+        {
+          "network": network,
+          "wildcard": wildCard,
+          "area": area
+        }
+      ]
+    });
+    console.log(raw);
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+  
+    fetch("127.0.0.1:8000/ospf_del/1", requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+  }
 
 ospfForm.addEventListener("submit", function(event) {
     event.preventDefault();
@@ -545,8 +675,6 @@ ospfForm.addEventListener("submit", function(event) {
     var area = areaInput.value;
     var network = networkInput.value;
     var wildcard = wildcardInput.value;
-
-    form.reset();
 
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");

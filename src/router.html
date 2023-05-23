@@ -57,8 +57,8 @@
                             class="overflow-hidden bg-white border rounded-sm border-stroke shadow-default dark:border-strokedark dark:bg-boxdark">
                             <div class="relative z-20 h-25">
                                 <img src="./images/cover/cover-01.png" alt="profile cover"
-                                    class=" object-cover object-center w-full h-full rounded-tl-sm rounded-tr-sm" />
-                                <div class="absolute z-10 bottom-0 right-1 xsm:bottom-2 xsm:right-4">
+                                    class="object-cover object-center w-full h-full rounded-tl-sm rounded-tr-sm " />
+                                <div class="absolute bottom-0 z-10 right-1 xsm:bottom-2 xsm:right-4">
                                     <label for="cover"
                                         class="flex items-center justify-center gap-2 px-2 py-1 text-sm font-medium text-white rounded cursor-pointer xsm:px-4">
                                         <button type="submit" class="inline-block rounded bg-danger px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
@@ -85,7 +85,7 @@
                             </div>
                             <div class="px-4 pb-6 text-center lg:pb-8 xl:pb-6">
                                 <div class="relative z-30 mx-auto -mt-22 h-30 w-full max-w-30 rounded-full bg-white/20 p-1 backdrop-blur sm:h-44 sm:max-w-44 sm:p-3
-                                    <div class=" relative drop-shadow-2">
+                                    <div class="relative drop-shadow-2">
                                     <img src="./images/devices/router.png" alt="profile" />
                                 </div>
                             </div>
@@ -122,19 +122,19 @@
                                                 <div class="grid grid-cols-3 gap-6">
                                                     <div class="col-span-3 mt-6">
                                                         <form action="#" method="POST">
-                                                            <div class="overflow-hidden shadow sm:rounded-md h-125 max-h-125 px-4 py-5 bg-white">
+                                                            <div class="px-4 py-5 overflow-hidden bg-white shadow sm:rounded-md h-125 max-h-125">
                                                                 <div class="grid grid-cols-4 gap-6 h-1/2">
-                                                                    <div class="col-span-4 flex px-2 mt-4">
-                                                                        <div class="w-2/3 flex text-4xl font-semibold text-black">
+                                                                    <div class="flex col-span-4 px-2 mt-4">
+                                                                        <div class="flex w-2/3 text-4xl font-semibold text-black">
                                                                             <!-- <div x-data="{ switcherToggle: false }" class="pt-1">
-                                                                                <label for="statusRouter" class="flex cursor-pointer select-none items-center">
+                                                                                <label for="statusRouter" class="flex items-center cursor-pointer select-none">
                                                                                   <div class="relative">
                                                                                     <input type="checkbox" id="statusRouter" class="sr-only" name="statusRouter" 
                                                                                       @change="switcherToggle = !switcherToggle" />
-                                                                                    <div :class="switcherToggle && '!bg-primary'" class="block h-8 w-14 rounded-full bg-black">
+                                                                                    <div :class="switcherToggle && '!bg-primary'" class="block h-8 bg-black rounded-full w-14">
                                                                                     </div>
                                                                                     <div :class="switcherToggle && '!right-1 !translate-x-full'"
-                                                                                      class="absolute left-1 top-1 flex h-6 w-6 items-center justify-center rounded-full bg-white transition">
+                                                                                      class="absolute flex items-center justify-center w-6 h-6 transition bg-white rounded-full left-1 top-1">
                                                                                     </div>
                                                                                   </div>
                                                                                 </label>
@@ -151,7 +151,7 @@
                                                                     </div>
                                                                     <div class="col-span-1">
                                                                         <div>
-                                                                            <label for="methodip" class="block text-left mb-2 text-xl font-normal text-black dark:text-white">
+                                                                            <label for="methodip" class="block mb-2 text-xl font-normal text-left text-black dark:text-white">
                                                                                     Select IP Method
                                                                                 </label>
                                                                             <select id="methodip" name="methodip" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -163,15 +163,15 @@
                                                                     </div>
 
                                                                     <div class="col-span-2">
-                                                                        <label for="ip" class="block text-left mb-2 text-xl font-normal text-black">
-                                                                            IP Address<span><label id="ipLabel" class="text-sm pl-1"></label></span>
+                                                                        <label for="ip" class="block mb-2 text-xl font-normal text-left text-black">
+                                                                            IP Address<span><label id="ipLabel" class="pl-1 text-sm"></label></span>
                                                                         </label>
-                                                                        <input type="text" name="ip" id="ip" placeholder="Enter Interface IP Address" class="block px-2 w-full h-10 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                                                                        <input type="text" name="ip" id="ip" placeholder="Enter Interface IP Address" class="block w-full h-10 px-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
 
                                                                 </div>
 
                                                                     <div class="col-span-1">
-                                                                        <label for="ipsubnet" class="block text-left mb-2 text-xl font-normal text-black">Subnet Mask</label>
+                                                                        <label for="ipsubnet" class="block mb-2 text-xl font-normal text-left text-black">Subnet Mask</label>
                                                                         <select name="ipsubnet" id="ipsubnet" class="block w-full h-10 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                                                                 <option value="" disabled selected>Choose a Subnet Mask</option>
                                                                                 <option value="0.0.0.0">0.0.0.0/0</option>
@@ -213,7 +213,7 @@
                                                                 </div>
                                                                 <div class="grid grid-cols-4 gap-6 h-1/2">
                                                                     <div class="col-span-6">
-                                                                        <label for="description" class="block text-left mb-2 text-xl font-normal text-black dark:text-white">
+                                                                        <label for="description" class="block mb-2 text-xl font-normal text-left text-black dark:text-white">
                                                                                 Description
                                                                             </label>
 
@@ -223,7 +223,7 @@
                                                                         placeholder="Write your description about device...">
                                                                             </textarea>
                                                                     </div>
-                                                                    <div class="col-span-6 px-4 py-3 text-right bg-gray-50 right-0">
+                                                                    <div class="right-0 col-span-6 px-4 py-3 text-right bg-gray-50">
                                                                         <button type="submit" class="inline-block rounded bg-meta-8 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]">
                                                                                 Apply
                                                                         </button>
@@ -248,15 +248,15 @@
                                                                 <div class="px-4 py-5 bg-white">
                                                                     <div class="grid grid-cols-6 gap-6">
                                                                         <div class="col-span-2">
-                                                                            <label for="destination" class="block text-left mb-2 text-xl font-normal text-black" >
-                                                                                Destination <span><label id="destinationLabel" class="text-sm pl-1"></label></span>
+                                                                            <label for="destination" class="block mb-2 text-xl font-normal text-left text-black" >
+                                                                                Destination <span><label id="destinationLabel" class="pl-1 text-sm"></label></span>
                                                                             </label>
-                                                                            <input type="text" name="destination" placeholder="Enter Destination Address" id="destination" class=" px-2 h-10 w-full block mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                                                                            <input type="text" name="destination" placeholder="Enter Destination Address" id="destination" class="block w-full h-10 px-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                                                                             
                                                                         </div>
                                                                         <div class="col-span-2">
-                                                                            <label for="staticsubnet" class="block text-left mb-2 text-xl font-normal text-black">Subnet Mask</label>
-                                                                            <select name="staticsubnet" id="staticsubnet" class="block h-10 w-full mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                                                            <label for="staticsubnet" class="block mb-2 text-xl font-normal text-left text-black">Subnet Mask</label>
+                                                                            <select name="staticsubnet" id="staticsubnet" class="block w-full h-10 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                                                                 <option value="" disabled selected>Choose a Subnet Mask</option>
                                                                                 <option value="0.0.0.0">0.0.0.0/0</option>
                                                                                 <option value="128.0.0.0">128.0.0.0/1</option>
@@ -295,10 +295,10 @@
                                                                             </select>
                                                                         </div>
                                                                         <div class="col-span-2">
-                                                                            <label for="Nexthop" class="block text-left mb-2 text-xl font-normal text-black" >
-                                                                                Next-hop <span><label id="nexthopLabel" class="text-sm pl-1"></label></span>
+                                                                            <label for="Nexthop" class="block mb-2 text-xl font-normal text-left text-black" >
+                                                                                Next-hop <span><label id="nexthopLabel" class="pl-1 text-sm"></label></span>
                                                                             </label>
-                                                                            <input type="text" name="Nexthop" id="Nexthop" placeholder="Enter Next-hop Address" class="block px-2 h-10 w-full mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                                                                            <input type="text" name="Nexthop" id="Nexthop" placeholder="Enter Next-hop Address" class="block w-full h-10 px-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                                                                         
                                                                         </div>
                                                                         <div class="col-start-6 px-4 py-3 text-right bg-gray-50">
@@ -308,14 +308,14 @@
 
                                                                     </div>
 
-                                                                        <div class="relative col-span-6 overflow-x-auto shadow-md rounded-md h-55">
+                                                                        <div class="relative col-span-6 overflow-x-auto rounded-md shadow-md h-55">
                                                                             <table class="w-full h-10 text-left text-gray-500 dark:text-gray-400 ">
-                                                                                <thead class="text-center mb-2 text-xl font-semibold text-black bg-secondary dark:bg-gray-700 dark:text-gray-400">
+                                                                                <thead class="mb-2 text-xl font-semibold text-center text-black bg-secondary dark:bg-gray-700 dark:text-gray-400">
                                                                                     <tr >
                                                                                         <th scope="col" class="px-6 py-3 ">
                                                                                             Destination
                                                                                         </th>
-                                                                                        <th scope="col" class="px-6 py-3 border-2 border-slate-600  border-y-transparent border-x-primary">
+                                                                                        <th scope="col" class="px-6 py-3 border-2 border-slate-600 border-y-transparent border-x-primary">
                                                                                             Next-Hop
                                                                                         </th>
                                                                                         <th scope="col" class="px-6 py-3 ">
@@ -323,7 +323,7 @@
                                                                                         </th>
                                                                                     </tr>
                                                                                 </thead>
-                                                                                <tbody id="tableStaticRoute" class="w-full text-center align-top text-lg text-strokedark font-normal">
+                                                                                <tbody id="tableStaticRoute" class="w-full text-lg font-normal text-center align-top text-strokedark">
                                                                                     <tr class="">
 
                                                                                     </tr>
@@ -350,18 +350,18 @@
                                                                 <div class="px-4 py-5 bg-white">
                                                                     <div class="grid grid-cols-6 gap-6">
                                                                         <div class="col-span-2">
-                                                                            <label for="area" class="block text-left mb-2 text-xl font-normal text-black">Area</label>
-                                                                            <input type="text" name="area" id="area" placeholder="Enter Area Number" class="px-2 h-10 w-full block mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                                                                            <label for="area" class="block mb-2 text-xl font-normal text-left text-black">Area</label>
+                                                                            <input type="text" name="area" id="area" placeholder="Enter Area Number" class="block w-full h-10 px-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                                                                         </div>
                                                                         <div class="col-span-2">
-                                                                            <label for="network" class="block text-left mb-2 text-xl font-normal text-black">Network <span><label id="networkLabel" class="text-sm text-red-500 pl-1"></label></span></label>
-                                                                            <input type="text" name="network" id="network" placeholder="Enter Network Address" class="block h-10 w-full px-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                                                                            <label for="network" class="block mb-2 text-xl font-normal text-left text-black">Network <span><label id="networkLabel" class="pl-1 text-sm text-red-500"></label></span></label>
+                                                                            <input type="text" name="network" id="network" placeholder="Enter Network Address" class="block w-full h-10 px-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                                                                         </div>
                                                                         <div class="col-span-2">
-                                                                            <label for="wildcard" class="block text-left mb-2 text-xl font-normal text-black">
+                                                                            <label for="wildcard" class="block mb-2 text-xl font-normal text-left text-black">
                                                                                 Wild-card
                                                                             </label>
-                                                                            <select id="wildcard" name="wildcard" class="block h-10 w-full mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                                                            <select id="wildcard" name="wildcard" class="block w-full h-10 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                                                                     <option value="" disabled selected>Choose a Wild Card Mask</option>
                                                                                     <option value="0.0.0.0">0.0.0.0</option>
                                                                                     <option value="127.255.255.255">127.255.255.255</option>
@@ -405,17 +405,17 @@
 
                                                                     </div>
 
-                                                                        <div class="relative col-span-6 overflow-x-auto shadow-md rounded-md h-55">
+                                                                        <div class="relative col-span-6 overflow-x-auto rounded-md shadow-md h-55">
                                                                             <table class="w-full h-10 text-left text-gray-500 dark:text-gray-400">
-                                                                                <thead class="text-center mb-2 text-xl font-semibold text-black bg-secondary dark:bg-gray-700 dark:text-gray-400">
+                                                                                <thead class="mb-2 text-xl font-semibold text-center text-black bg-secondary dark:bg-gray-700 dark:text-gray-400">
                                                                                     <tr>
                                                                                         <th scope="col" class="px-6 py-3">
                                                                                             Area
                                                                                         </th>
-                                                                                        <th scope="col" class="px-6 py-3 border-2 border-slate-600  border-y-transparent border-x-primary">
+                                                                                        <th scope="col" class="px-6 py-3 border-2 border-slate-600 border-y-transparent border-x-primary">
                                                                                             Network
                                                                                         </th>
-                                                                                        <th scope="col" class="px-6 py-3 border-2 border-slate-600  border-y-transparent border-x-primary">
+                                                                                        <th scope="col" class="px-6 py-3 border-2 border-slate-600 border-y-transparent border-x-primary">
                                                                                             Interface
                                                                                         </th>
                                                                                         <th scope="col" class="px-6 py-3">
@@ -424,7 +424,7 @@
                                                                                         </th>
                                                                                     </tr>
                                                                                 </thead>
-                                                                                <tbody id="tableOspfRoute" class="w-full text-center align-top text-lg text-strokedark font-normal">
+                                                                                <tbody id="tableOspfRoute" class="w-full text-lg font-normal text-center align-top text-strokedark">
                                                                                     <tr></tr>
                                                                                 </tbody>
                                                                             </table>
@@ -449,22 +449,22 @@
                                                                 <div class="px-4 py-5 bg-white">
                                                                     <div class="grid grid-cols-6 gap-6">
                                                                         <div class="col-span-2">
-                                                                            <label for="aclnumber" class="block text-left mb-2 text-xl font-normal text-black">
+                                                                            <label for="aclnumber" class="block mb-2 text-xl font-normal text-left text-black">
                                                                                 ACL Number
                                                                             </label>
-                                                                            <input type="text" name="aclnumber" placeholder="Enter ACL Number"  id="aclnumber" class="block h-10 w-full px-2 border mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                                                                            <input type="text" name="aclnumber" placeholder="Enter ACL Number"  id="aclnumber" class="block w-full h-10 px-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                                                                         </div>
                                                                         <div class="col-span-2">
-                                                                            <label for="aclpermission" class="block text-left mb-2 text-xl font-normal text-black">Permission</label>
-                                                                            <select id="aclpermission" name="aclpermission" class="block h-10 w-full px-2 border mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                                                            <label for="aclpermission" class="block mb-2 text-xl font-normal text-left text-black">Permission</label>
+                                                                            <select id="aclpermission" name="aclpermission" class="block w-full h-10 px-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                                                                 <option value="" disabled selected >Choose a Permission</option>
                                                                                 <option value="permit">Permit</option>
                                                                                 <option value="deny">Deny</option>
                                                                               </select>
                                                                         </div>
                                                                         <div class="col-span-2">
-                                                                            <label for="aclprotocol" class="block text-left mb-2 text-xl font-normal text-black">Protocol</label>
-                                                                            <select id="aclprotocol" name="aclprotocol" class="block h-10 w-full px-2 border mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                                                            <label for="aclprotocol" class="block mb-2 text-xl font-normal text-left text-black">Protocol</label>
+                                                                            <select id="aclprotocol" name="aclprotocol" class="block w-full h-10 px-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                                                                 <option value="" disabled selected >Choose a Protocol</option>
                                                                                 <option value="tcp">TCP</option>
                                                                                 <option value="udp">UDP</option>
@@ -472,18 +472,18 @@
                                                                               </select>
                                                                         </div>
                                                                         <div class="col-span-2">
-                                                                            <label for="aclsource" class="block text-left mb-2 text-xl font-normal text-black">
-                                                                                Source <span><label id="aclsourceLabel" class="text-sm px-2"></label></span>
+                                                                            <label for="aclsource" class="block mb-2 text-xl font-normal text-left text-black">
+                                                                                Source <span><label id="aclsourceLabel" class="px-2 text-sm"></label></span>
                                                                             </label>
-                                                                            <input type="text" name="aclsource" placeholder="Enter Source Address"  id="aclsource" class="block h-10 w-full px-2 border mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                                                                            <input type="text" name="aclsource" placeholder="Enter Source Address"  id="aclsource" class="block w-full h-10 px-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                                                                             
 
                                                                         </div>
                                                                         <div class="col-span-2">
-                                                                            <label for="aclwildcardsource" class="block text-left mb-2 text-xl font-normal text-black">
+                                                                            <label for="aclwildcardsource" class="block mb-2 text-xl font-normal text-left text-black">
                                                                                 Source Wild Card
                                                                             </label>
-                                                                            <select id="aclwildcardsource" name="aclwildcardsource" class="block h-10 w-full px-2 border mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                                                            <select id="aclwildcardsource" name="aclwildcardsource" class="block w-full h-10 px-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                                                                     <option value="" disabled selected>Choose a Wild Card Mask</option>
                                                                                     <option value="0.0.0.0">0.0.0.0</option>
                                                                                     <option value="127.255.255.255">127.255.255.255</option>
@@ -521,8 +521,8 @@
                                                                                 </select>
                                                                             </div>
                                                                         <div class="col-span-2">
-                                                                            <label for="acloperation" class="block text-left mb-2 text-xl font-normal text-black">Operation</label>
-                                                                            <select id="acloperation" name="acloperation" class="block h-10 w-full px-2 border mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                                                            <label for="acloperation" class="block mb-2 text-xl font-normal text-left text-black">Operation</label>
+                                                                            <select id="acloperation" name="acloperation" class="block w-full h-10 px-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                                                                 <option value="" disabled selected >Choose a Operation</option>
                                                                                 <option value="eq">Equal</option>
                                                                                 <option value="gt">Greater Than</option>
@@ -530,16 +530,16 @@
                                                                                 </select>
                                                                         </div>
                                                                             <div class="col-span-2">
-                                                                            <label for="acldestination" class="block text-left mb-2 text-xl font-normal text-black">
-                                                                                Destination <span><label id="acldestinationLabel" class="text-sm px-2"></label></span>
+                                                                            <label for="acldestination" class="block mb-2 text-xl font-normal text-left text-black">
+                                                                                Destination <span><label id="acldestinationLabel" class="px-2 text-sm"></label></span>
                                                                             </label>
-                                                                            <input type="text" name="acldestination" placeholder="Enter Destination Address" id="acldestination" class="block h-10 w-full px-2 border mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                                                                            <input type="text" name="acldestination" placeholder="Enter Destination Address" id="acldestination" class="block w-full h-10 px-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
 
                                                                         </div>
                                                                         <div class="col-span-2">
-                                                                            <label for="aclwildcardsestination" class="block text-left mb-2 text-xl font-normal text-black">
+                                                                            <label for="aclwildcardsestination" class="block mb-2 text-xl font-normal text-left text-black">
                                                                                 Destination Wild Card</label>
-                                                                            <select id="aclwildcardsestination" name="aclwildcardsestination" class="block h-10 w-full px-2 border mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                                                            <select id="aclwildcardsestination" name="aclwildcardsestination" class="block w-full h-10 px-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                                                                     <option value="" disabled selected>Choose a Wild Card Mask</option>
                                                                                     <option value="0.0.0.0">0.0.0.0</option>
                                                                                     <option value="127.255.255.255">127.255.255.255</option>
@@ -577,10 +577,10 @@
                                                                                   </select>
                                                                         </div>
                                                                         <div class="col-span-2">
-                                                                            <label for="aclportnumber" class="block text-left mb-2 text-xl font-normal text-black">
+                                                                            <label for="aclportnumber" class="block mb-2 text-xl font-normal text-left text-black">
                                                                                 Port Number
                                                                             </label>
-                                                                            <input type="text" name="aclportnumber" placeholder="Enter Port Number"  id="aclportnumber" class="block h-10 w-full px-2 border mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                                                                            <input type="text" name="aclportnumber" placeholder="Enter Port Number"  id="aclportnumber" class="block w-full h-10 px-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
 
                                                                     </div>
                                                                     <div
@@ -592,26 +592,26 @@
 
                                                                     </div>
 
-                                                                        <div class="relative col-span-6 overflow-x-auto shadow-md rounded-md">
+                                                                        <div class="relative col-span-6 overflow-x-auto rounded-md shadow-md">
                                                                             <table class="w-full h-10 text-left text-gray-500 dark:text-gray-400">
-                                                                                <thead class="text-center mb-2 text-xl font-semibold text-black bg-secondary dark:bg-gray-700 dark:text-gray-400">
+                                                                                <thead class="mb-2 text-xl font-semibold text-center text-black bg-secondary dark:bg-gray-700 dark:text-gray-400">
                                                                                     <tr>
                                                                                         <th scope="col" class="px-6 py-3">
                                                                                             ACL Name
                                                                                         </th>
-                                                                                        <th scope="col" class="px-6 py-3 border-2 border-slate-600  border-y-transparent border-x-primary">
+                                                                                        <th scope="col" class="px-6 py-3 border-2 border-slate-600 border-y-transparent border-x-primary">
                                                                                             Rule
                                                                                         </th>
-                                                                                        <th scope="col" class="px-6 py-3 border-2 border-slate-600  border-y-transparent border-x-primary">
+                                                                                        <th scope="col" class="px-6 py-3 border-2 border-slate-600 border-y-transparent border-x-primary">
                                                                                             Permission
                                                                                         </th>
-                                                                                        <th scope="col" class="px-6 py-3 border-2 border-slate-600  border-y-transparent border-x-primary">
+                                                                                        <th scope="col" class="px-6 py-3 border-2 border-slate-600 border-y-transparent border-x-primary">
                                                                                             Protocol
                                                                                         </th>
-                                                                                        <th scope="col" class="px-6 py-3 border-2 border-slate-600  border-y-transparent border-x-primary">
+                                                                                        <th scope="col" class="px-6 py-3 border-2 border-slate-600 border-y-transparent border-x-primary">
                                                                                             Source Network
                                                                                         </th>
-                                                                                        <th scope="col" class="px-6 py-3 border-2 border-slate-600  border-y-transparent border-x-primary">
+                                                                                        <th scope="col" class="px-6 py-3 border-2 border-slate-600 border-y-transparent border-x-primary">
                                                                                             Destination Network
                                                                                         </th>
                                                                                         <th scope="col" class="px-6 py-3">Action
@@ -619,7 +619,7 @@
                                                                                         </th>
                                                                                     </tr>
                                                                                 </thead>
-                                                                                <tbody id="tableExtenedAcl" class="w-full text-center align-top text-lg text-strokedark font-normal">
+                                                                                <tbody id="tableExtenedAcl" class="w-full text-lg font-normal text-center align-top text-strokedark">
                                                                                     <tr>
                                                                                     </tr>
                                                                                 </tbody>
@@ -643,18 +643,18 @@
                                                                 <div class="px-4 py-5 bg-white">
                                                                     <div class="grid grid-cols-6 gap-6">
                                                                         <div class="col-span-2">
-                                                                            <label for="aclpolicy" class="block text-left mb-2 text-xl font-normal text-black">
+                                                                            <label for="aclpolicy" class="block mb-2 text-xl font-normal text-left text-black">
                                                                                 ACL Policy
                                                                             </label>
-                                                                            <input type="text" name="aclpolicy" placeholder="Enter ACL Policy" id="aclpolicy" class="px-2 h-10 w-full block border mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                                                                            <input type="text" name="aclpolicy" placeholder="Enter ACL Policy" id="aclpolicy" class="block w-full h-10 px-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                                                                         </div>
                                                                         <div class="col-span-2">
-                                                                            <label for="aclapplyinterface" class="block text-left mb-2 text-xl font-normal text-black">Interface</label>
-                                                                            <input type="text" name="aclapplyinterface" placeholder="Enter ACL Interface" id="aclapplyinterface" class="block px-2 h-10 w-full border mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                                                                            <label for="aclapplyinterface" class="block mb-2 text-xl font-normal text-left text-black">Interface</label>
+                                                                            <input type="text" name="aclapplyinterface" placeholder="Enter ACL Interface" id="aclapplyinterface" class="block w-full h-10 px-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                                                                         </div>
                                                                         <div class="col-span-2">
-                                                                            <label for="aclinout" class="block text-left mb-2 text-xl font-normal text-black">In/Out</label>
-                                                                            <select id="aclinout" name="aclinout" class="block px-2 h-10 w-full border mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                                                            <label for="aclinout" class="block mb-2 text-xl font-normal text-left text-black">In/Out</label>
+                                                                            <select id="aclinout" name="aclinout" class="block w-full h-10 px-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                                                                 <option value="" selected >Choose a In/Out</option>
                                                                                 <option value="in">In</option>
                                                                                 <option value="out">Out</option>
@@ -670,17 +670,17 @@
 
                                                                     </div>
 
-                                                                        <div class="relative col-span-6 overflow-x-auto shadow-md rounded-md h-55">
+                                                                        <div class="relative col-span-6 overflow-x-auto rounded-md shadow-md h-55">
                                                                             <table class="w-full h-10 text-left text-gray-500 dark:text-gray-400">
-                                                                                <thead class="text-center mb-2 text-xl font-semibold text-black bg-secondary dark:bg-gray-700 dark:text-gray-400">
+                                                                                <thead class="mb-2 text-xl font-semibold text-center text-black bg-secondary dark:bg-gray-700 dark:text-gray-400">
                                                                                     <tr>
                                                                                         <th scope="col" class="px-6 py-3">
                                                                                             ACL Policy
                                                                                         </th>
-                                                                                        <th scope="col" class="px-6 py-3 border-2 border-slate-600  border-y-transparent border-x-primary">
+                                                                                        <th scope="col" class="px-6 py-3 border-2 border-slate-600 border-y-transparent border-x-primary">
                                                                                             Interface
                                                                                         </th>
-                                                                                        <th scope="col" class="px-6 py-3 border-2 border-slate-600  border-y-transparent border-x-primary">
+                                                                                        <th scope="col" class="px-6 py-3 border-2 border-slate-600 border-y-transparent border-x-primary">
                                                                                             In/Out
                                                                                         </th>
 
@@ -689,7 +689,7 @@
                                                                                         </th>
                                                                                     </tr>
                                                                                 </thead>
-                                                                                <tbody id="tableApplyPolicyAcl" class="w-full text-center align-top text-lg text-strokedark font-normal">
+                                                                                <tbody id="tableApplyPolicyAcl" class="w-full text-lg font-normal text-center align-top text-strokedark">
                                                                                     <tr>
                                                                                     </tr>
                                                                                 </tbody>
