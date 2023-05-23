@@ -262,25 +262,25 @@ function interfaceButtonRouterClick(event) {
         });
         if (isValid) {
             // Input is valid
-            ipLabel.textContent = "Valid IP address format";
+            ipLabel.textContent = "*Valid IP address format";
             ipLabel.classList.remove("text-danger");
             ipLabel.classList.remove("text-primary");
             ipLabel.classList.add("text-success");
         } else {
             // Input is invalid
-            ipLabel.textContent = "Invalid IP address format";
+            ipLabel.textContent = "*Invalid IP address format";
             ipLabel.classList.remove("text-success");
             ipLabel.classList.remove("text-primary");
             ipLabel.classList.add("text-danger");
         }
     } else if (ipInput.value == "unassigned") {
-        ipLabel.textContent = "Waiting for IP address...";
+        ipLabel.textContent = "*Waiting for IP address ...";
         ipLabel.classList.remove("text-danger");
         ipLabel.classList.remove("text-success");
         ipLabel.classList.add("text-primary");
     } else {
         // Input is invalid
-        ipLabel.textContent = "Invalid IP address format";
+        ipLabel.textContent = "*Invalid IP address format";
         ipLabel.classList.remove("text-success");
         ipLabel.classList.add("text-danger");
     }
@@ -303,7 +303,7 @@ ipInput.addEventListener("input", function() {
 
         if (isValid) {
             // Input is valid
-            ipLabel.textContent = "Valid IP address format";
+            ipLabel.textContent = "*Valid IP address format";
             ipLabel.classList.remove("text-danger");
             ipLabel.classList.remove("text-primary");
             ipLabel.classList.add("text-success");
@@ -314,14 +314,14 @@ ipInput.addEventListener("input", function() {
             ipLabel.classList.add("text-primary");
         } else {
             // Input is invalid
-            ipLabel.textContent = "Invalid IP address format";
+            ipLabel.textContent = "*Invalid IP address format";
             ipLabel.classList.remove("text-success");
             ipLabel.classList.remove("text-primary");
             ipLabel.classList.add("text-danger");
         }
     } else {
         // Input is invalid
-        ipLabel.textContent = "Invalid IP address format";
+        ipLabel.textContent = "*Invalid IP address format";
         ipLabel.classList.remove("text-success");
         ipLabel.classList.add("text-danger");
     }
@@ -389,18 +389,18 @@ destinationInput.addEventListener("input", function() {
 
         if (isValid) {
             // Input is valid
-            destinationLabel.textContent = "Valid IP address format";
+            destinationLabel.textContent = "*Valid IP address format";
             destinationLabel.classList.remove("text-danger");
             destinationLabel.classList.add("text-success");
         } else {
             // Input is invalid
-            destinationLabel.textContent = "Invalid IP address format";
+            destinationLabel.textContent = "*Invalid IP address format";
             destinationLabel.classList.remove("text-success");
             destinationLabel.classList.add("text-danger");
         }
     } else {
         // Input is invalid
-        destinationLabel.textContent = "Invalid IP address format";
+        destinationLabel.textContent = "*Invalid IP address format";
         destinationLabel.classList.remove("text-success");
         destinationLabel.classList.add("text-danger");
     }
@@ -425,18 +425,18 @@ nexthopInput.addEventListener("input", function() {
 
         if (isValid) {
             // Input is valid
-            nexthopLabel.textContent = "Valid IP address format";
+            nexthopLabel.textContent = "*Valid IP address format";
             nexthopLabel.classList.remove("text-danger");
             nexthopLabel.classList.add("text-success");
         } else {
             // Input is invalid
-            nexthopLabel.textContent = "Invalid IP address format";
+            nexthopLabel.textContent = "*Invalid IP address format";
             nexthopLabel.classList.remove("text-success");
             nexthopLabel.classList.add("text-danger");
         }
     } else {
         // Input is invalid
-        nexthopLabel.textContent = "Invalid IP address format";
+        nexthopLabel.textContent = "*Invalid IP address format";
         nexthopLabel.classList.remove("text-success");
         nexthopLabel.classList.add("text-danger");
     }
@@ -546,19 +546,19 @@ networkInput.addEventListener("input", function() {
 
         if (isValid) {
             // Input is valid
-            networkLabel.textContent = "Valid IP address format";
+            networkLabel.textContent = "*Valid IP address format";
             networkLabel.classList.remove("text-danger");
             networkLabel.classList.add("text-success");
         } else {
             // Input is invalid
 
-            networkLabel.textContent = "Invalid IP address format";
+            networkLabel.textContent = "*Invalid IP address format";
             networkLabel.classList.remove("text-success");
             networkLabel.classList.add("text-danger");
         }
     } else {
         // Input is invalid
-        networkLabel.textContent = "Invalid IP address format";
+        networkLabel.textContent = "*Invalid IP address format";
         networkLabel.classList.remove("text-success");
         networkLabel.classList.add("text-danger");
     }
@@ -644,18 +644,18 @@ aclsourceInput.addEventListener("input", function() {
 
         if (isValid) {
             // Input is valid
-            aclsourceLabel.textContent = "Valid IP address format";
+            aclsourceLabel.textContent = "*Valid IP address format";
             aclsourceLabel.classList.remove("text-danger");
             aclsourceLabel.classList.add("text-success");
         } else {
             // Input is invalid
-            aclsourceLabel.textContent = "Invalid IP address format";
+            aclsourceLabel.textContent = "*Invalid IP address format";
             aclsourceLabel.classList.remove("text-success");
             aclsourceLabel.classList.add("text-danger");
         }
     } else {
         // Input is invalid
-        aclsourceLabel.textContent = "Invalid IP address format";
+        aclsourceLabel.textContent = "*Invalid IP address format";
         aclsourceLabel.classList.remove("text-success");
         aclsourceLabel.classList.add("text-danger");
     }
@@ -680,18 +680,18 @@ acldestinationInput.addEventListener("input", function() {
 
         if (isValid) {
             // Input is valid
-            acldestinationLabel.textContent = "Valid IP address format";
+            acldestinationLabel.textContent = "*Valid IP address format";
             acldestinationLabel.classList.remove("text-danger");
             acldestinationLabel.classList.add("text-success");
         } else {
             // Input is invalid
-            acldestinationLabel.textContent = "Invalid IP address format";
+            acldestinationLabel.textContent = "*Invalid IP address format";
             acldestinationLabel.classList.remove("text-success");
             acldestinationLabel.classList.add("text-danger");
         }
     } else {
         // Input is invalid
-        acldestinationLabel.textContent = "Invalid IP address format";
+        acldestinationLabel.textContent = "*Invalid IP address format";
         acldestinationLabel.classList.remove("text-success");
         acldestinationLabel.classList.add("text-danger");
     }

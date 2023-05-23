@@ -82,8 +82,9 @@
                                             DHCP
                                         </button> -->
                                     </div>
+                                    <!-- Interface Router -->
                                     <div id="interfaceRouterForm" class="grid grid-cols-5 gap-4 h-125 max-h-125" style="display: none">
-                                        <div class="... block overflow-auto w-fit py-2 mt-6 border-2 border-x-meta-5 border-y-transparent" id="interfaceContainerRouter">
+                                        <div class="... block overflow-auto w-fit py-2 mt-6" id="interfaceContainerRouter">
 
                                         </div>
                                         <div class="... col-span-4">
@@ -91,24 +92,36 @@
                                                 <div class="grid grid-cols-3 gap-6">
                                                     <div class="col-span-3 mt-6">
                                                         <form action="#" method="POST">
-                                                            <div class="overflow-hidden shadow sm:rounded-md border-2 border-meta-5  h-125 max-h-125 px-4 py-5 bg-white">
+                                                            <div class="overflow-hidden shadow sm:rounded-md h-125 max-h-125 px-4 py-5 bg-white">
                                                                 <div class="grid grid-cols-4 gap-6 h-1/2">
                                                                     <div class="col-span-4 flex px-2 mt-4">
                                                                         <div class="w-2/3 flex text-4xl font-semibold text-black">
-                                                                            <h1 class="">Interface:&nbsp</h1>
+                                                                            <div x-data="{ switcherToggle: false }" class="pt-1">
+                                                                                <label for="statusRouter" class="flex cursor-pointer select-none items-center">
+                                                                                  <div class="relative">
+                                                                                    <input type="checkbox" id="statusRouter" class="sr-only" name="statusRouter" 
+                                                                                      @change="switcherToggle = !switcherToggle" />
+                                                                                    <div :class="switcherToggle && '!bg-primary'" class="block h-8 w-14 rounded-full bg-black">
+                                                                                    </div>
+                                                                                    <div :class="switcherToggle && '!right-1 !translate-x-full'"
+                                                                                      class="absolute left-1 top-1 flex h-6 w-6 items-center justify-center rounded-full bg-white transition">
+                                                                                    </div>
+                                                                                  </div>
+                                                                                </label>
+                                                                            </div>
+                                                                            <h1 class="">&nbspInterface:&nbsp</h1>
                                                                             <h1 id="interfaceRouter"></h1>
                                                                         </div>
-                                                                        <div class="w-1/3">
+                                                                        <!-- <div class="w-1/3">
                                                                             <label class="inline-block pl-[0.15rem] hover:cursor-pointer" for="statusRouter">Status Off</label>
                                                                             <input class="bg-neutral-300 after:bg-neutral-100 dark:bg-neutral-600 dark:after:bg-neutral-400 mr-2 mt-[0.3rem] h-3.5 w-8 appearance-none rounded-[0.4375rem] before:pointer-events-none before:absolute before:h-3.5 before:w-3.5 before:rounded-full before:bg-transparent before:content-[''] after:absolute after:z-[2] after:-mt-[0.1875rem] after:h-5 after:w-5 after:rounded-full after:border-none after:shadow-[0_0px_3px_0_rgb(0_0_0_/_7%),_0_2px_2px_0_rgb(0_0_0_/_4%)] after:transition-[background-color_0.2s,transform_0.2s] after:content-[''] checked:bg-primary checked:after:absolute checked:after:z-[2] checked:after:-mt-[3px] checked:after:ml-[1.0625rem] checked:after:h-5 checked:after:w-5 checked:after:rounded-full checked:after:border-none checked:after:bg-primary checked:after:shadow-[0_3px_1px_-2px_rgba(0,0,0,0.2),_0_2px_2px_0_rgba(0,0,0,0.14),_0_1px_5px_0_rgba(0,0,0,0.12)] checked:after:transition-[background-color_0.2s,transform_0.2s] checked:after:content-[''] hover:cursor-pointer focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[3px_-1px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-5 focus:after:w-5 focus:after:rounded-full focus:after:content-[''] checked:focus:border-primary checked:focus:bg-primary checked:focus:before:ml-[1.0625rem] checked:focus:before:scale-100 checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:checked:bg-primary dark:checked:after:bg-primary dark:focus:before:shadow-[3px_-1px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca]"
                                                                                 type="checkbox" role="switch" name="statusRouter" id="statusRouter" />
                                                                             <label class="inline-block pl-[0.15rem] hover:cursor-pointer" for="statusRouter">On</label>
-                                                                        </div>
+                                                                        </div> -->
                                                                     </div>
-
                                                                     <div class="col-span-1">
                                                                         <div>
-                                                                            <label for="methodip" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                                                            <label for="methodip" class="block text-left mb-2 text-xl font-normal text-black dark:text-white">
                                                                                     Select IP Method
                                                                                 </label>
                                                                             <select id="methodip" name="methodip" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -119,19 +132,18 @@
                                                                         </div>
                                                                     </div>
 
-                                                                    <div class="col-span-1">
-                                                                        <label for="ip" class="block text-sm font-medium text-gray-700">IP
-                                                                                Address</label>
-                                                                        <input type="text" name="ip" id="ip" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
-                                                                        <label id="ipLabel" class="text-"></label>
-
+                                                                    <div class="col-span-2">
+                                                                        <label for="ip" class="block text-left mb-2 text-xl font-normal text-black">
+                                                                            IP Address<span><label id="ipLabel" class="text-sm pl-1"></label></span>
+                                                                        </label>
+                                                                        <input type="text" name="ip" id="ip" placeholder="Enter Interface IP Address" class="block px-2 w-full h-10 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                                                                        
                                                                     </div>
 
-                                                                    <div class="col-span-2">
-                                                                        <label for="ipsubnet" class="block text-sm font-medium text-gray-700">Subnet</label>
-                                                                        <select name="ipsubnet" id="ipsubnet" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                                                                <option value="" disabled selected>Choose a Subnet Mask
-                                                                                </option>
+                                                                    <div class="col-span-1">
+                                                                        <label for="ipsubnet" class="block text-left mb-2 text-xl font-normal text-black">Subnet Mask</label>
+                                                                        <select name="ipsubnet" id="ipsubnet" class="block w-full h-10 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                                                                <option value="" disabled selected>Choose a Subnet Mask</option>
                                                                                 <option value="0.0.0.0">0.0.0.0/0</option>
                                                                                 <option value="128.0.0.0">128.0.0.0/1</option>
                                                                                 <option value="192.0.0.0">192.0.0.0/2</option>
