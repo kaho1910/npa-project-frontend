@@ -709,6 +709,7 @@ function populateSwitchportTable() {
 
                 var swportallowednativeCell = document.createElement("td");
                 swportallowednativeCell.textContent = data.swportallowednative;
+                swportallowednativeCell.classList.add("border-2", "border-slate-600", "border-y-transparent", "border-x-primary");
                 row.appendChild(swportallowednativeCell);
 
                 var actionCell = document.createElement("td");
