@@ -114,7 +114,7 @@ function showInterSwitchForm() {
     console.log(interfaceSwitchNames);
     interfaceSwitchForm.style.display = 'grid';
     vlanForm.style.display = 'none';
-    stpForm.style.display = 'none';
+    // stpForm.style.display = 'none';
     swportForm.style.display = 'none';
     aclForm.style.display = 'none';
     var interfaceButtonRouter = document.getElementsByClassName('interfaceButtonSwitch');
@@ -156,7 +156,7 @@ function showInterSwitchForm() {
 function showVlanForm() {
     interfaceSwitchForm.style.display = 'none';
     vlanForm.style.display = 'grid';
-    stpForm.style.display = 'none';
+    // stpForm.style.display = 'none';
     swportForm.style.display = 'none';
     aclForm.style.display = 'none';
     //     var rawVlan = "{\n    \"device\": \"" + switchName + "\"\n}";
@@ -174,19 +174,19 @@ function showVlanForm() {
     populateVlanTable();
 }
 
-function showStpForm() {
-    interfaceSwitchForm.style.display = 'none';
-    vlanForm.style.display = 'none';
-    stpForm.style.display = 'grid';
-    swportForm.style.display = 'none';
-    aclForm.style.display = 'none';
-    stpFormClick();
-}
+// function showStpForm() {
+//     interfaceSwitchForm.style.display = 'none';
+//     vlanForm.style.display = 'none';
+//     stpForm.style.display = 'grid';
+//     swportForm.style.display = 'none';
+//     aclForm.style.display = 'none';
+//     stpFormClick();
+// }
 
 function showSwportForm() {
     interfaceSwitchForm.style.display = 'none';
     vlanForm.style.display = 'none';
-    stpForm.style.display = 'none';
+    // stpForm.style.display = 'none';
     swportForm.style.display = 'grid';
     aclForm.style.display = 'none';
     var selectInput = document.getElementById('swportinterface');
@@ -207,7 +207,7 @@ function showSwportForm() {
 function showAclForm() {
     interfaceSwitchForm.style.display = 'none';
     vlanForm.style.display = 'none';
-    stpForm.style.display = 'none';
+    // stpForm.style.display = 'none';
     swportForm.style.display = 'none';
     aclForm.style.display = 'grid';
     fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/R-acl.json', {
@@ -227,15 +227,15 @@ function showAclForm() {
         console.log(error);
     });
     populateExtendedAclTable();
-    populateAclApplyInterfaceTable();
+    // populateAclApplyInterfaceTable();
 }
 
 var interfaceSwitchButton = document.getElementById('interfaceSwitchButton');
 var interfaceSwitchForm = document.getElementById('interfaceSwitchForm');
 var vlanButton = document.getElementById('vlanButton');
 var vlanForm = document.getElementById('vlanForm');
-var stpButton = document.getElementById('stpButton');
-var stpForm = document.getElementById('stpForm');
+// var stpButton = document.getElementById('stpButton');
+// var stpForm = document.getElementById('stpForm');
 var swportButton = document.getElementById('swportButton');
 var swportForm = document.getElementById('swportForm');
 var aclButton = document.getElementById('aclButton');
@@ -244,7 +244,7 @@ var aclForm = document.getElementById('aclForm');
 
 interfaceSwitchButton.addEventListener('click', showInterSwitchForm);
 vlanButton.addEventListener('click', showVlanForm);
-stpButton.addEventListener('click', showStpForm);
+// stpButton.addEventListener('click', showStpForm);
 swportButton.addEventListener('click', showSwportForm);
 aclButton.addEventListener('click', showAclForm);
 
@@ -480,7 +480,30 @@ function populateVlanTable() {
         row.appendChild(actionCell);
 
         tableVlan.appendChild(row);
+        removeLink.addEventListener("click", function() {
+            removeVlan(data.vlanid);
+        });
     });
+}
+function removeVlan(vlanId) {
+
+    var raw = JSON.stringify({
+        "switchName": switchName,
+        "vlanId": vlanId
+    });
+
+    var requestOptions = {
+        method: 'POST',
+        body: raw,
+        redirect: 'follow'
+    };
+    console.log(raw);
+    fetch("127.0.0.1:8000/vlan_del", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+    console.log("Removing VLAN with ID: " + vlanId);
+    // ...
 }
 var vlanipInput = document.getElementById("vlanip");
 var vlanipLabel = document.getElementById("vlaniplabel");
@@ -551,33 +574,33 @@ vlanForm.addEventListener("submit", function(event) {
 });
 
 
-var stpArray = [
-    { statusStp: "on", stpmode: "pvst", stppriority: "1", hellotime: "10", maxage: "30", forwardtime: "15", lpguard: "on" },
-];
+// var stpArray = [
+//     { statusStp: "on", stpmode: "pvst", stppriority: "1", hellotime: "10", maxage: "30", forwardtime: "15", lpguard: "on" },
+// ];
 
-function stpFormClick() {
-    stpArray.forEach(function(stpArray) {
-        document.getElementById('hellotime').value = stpArray.hellotime;
-        document.getElementById('maxage').value = stpArray.maxage;
-        document.getElementById('forwardtime').value = stpArray.forwardtime;
-        document.getElementById('stppriority').value = stpArray.stppriority;
-        document.getElementById('stpmode').value = stpArray.stpmode;
+// function stpFormClick() {
+//     stpArray.forEach(function(stpArray) {
+//         document.getElementById('hellotime').value = stpArray.hellotime;
+//         document.getElementById('maxage').value = stpArray.maxage;
+//         document.getElementById('forwardtime').value = stpArray.forwardtime;
+//         document.getElementById('stppriority').value = stpArray.stppriority;
+//         document.getElementById('stpmode').value = stpArray.stpmode;
 
 
-        var statusStp = document.getElementById('statusStp');
-        if (stpArray.statusStp === "on") {
-            statusStp.checked = true; // Set the checkbox to checked
-        } else {
-            statusStp.checked = false; // Set the checkbox to unchecked
-        }
-        var lpguard = document.getElementById('lpguard');
-        if (stpArray.lpguard === "on") {
-            lpguard.checked = true; // Set the checkbox to checked
-        } else {
-            lpguard.checked = false; // Set the checkbox to unchecked
-        }
-    });
-}
+//         var statusStp = document.getElementById('statusStp');
+//         if (stpArray.statusStp === "on") {
+//             statusStp.checked = true; // Set the checkbox to checked
+//         } else {
+//             statusStp.checked = false; // Set the checkbox to unchecked
+//         }
+//         var lpguard = document.getElementById('lpguard');
+//         if (stpArray.lpguard === "on") {
+//             lpguard.checked = true; // Set the checkbox to checked
+//         } else {
+//             lpguard.checked = false; // Set the checkbox to unchecked
+//         }
+//     });
+// }
 var vlanIdInput = document.getElementById("vlanid");
 var vlanRangeLabel = document.getElementById("vlanRange");
 
@@ -911,43 +934,43 @@ function handleFormSubmit(event) {
   aclForm.addEventListener('submit', handleFormSubmit);
   
 
-var applyAclArray = [
-    { aclpolicy: "99", aclapplyinterface: "G0/0", aclinout: "in" },
-    { aclpolicy: "100", aclapplyinterface: "G0/1", aclinout: "out" },
-    { aclpolicy: "101", aclapplyinterface: "G0/2", aclinout: "in" },
+// var applyAclArray = [
+//     { aclpolicy: "99", aclapplyinterface: "G0/0", aclinout: "in" },
+//     { aclpolicy: "100", aclapplyinterface: "G0/1", aclinout: "out" },
+//     { aclpolicy: "101", aclapplyinterface: "G0/2", aclinout: "in" },
 
-    // Add more objects as needed
-];
+//     // Add more objects as needed
+// ];
 
-function populateAclApplyInterfaceTable() {
-    var tableApplyPolicyAcl = document.getElementById("tableApplyPolicyAcl");
-    tableApplyPolicyAcl.innerHTML = ""; // Clear existing content
+// function populateAclApplyInterfaceTable() {
+//     var tableApplyPolicyAcl = document.getElementById("tableApplyPolicyAcl");
+//     tableApplyPolicyAcl.innerHTML = ""; // Clear existing content
 
-    applyAclArray.forEach(function(data) {
-        var row = document.createElement("tr");
+//     applyAclArray.forEach(function(data) {
+//         var row = document.createElement("tr");
 
-        var aclpolicyCell = document.createElement("td");
-        aclpolicyCell.textContent = data.aclpolicy;
-        row.appendChild(aclpolicyCell);
+//         var aclpolicyCell = document.createElement("td");
+//         aclpolicyCell.textContent = data.aclpolicy;
+//         row.appendChild(aclpolicyCell);
 
-        var aclapplyinterfaceCell = document.createElement("td");
-        aclapplyinterfaceCell.textContent = data.aclapplyinterface;
-        row.appendChild(aclapplyinterfaceCell);
+//         var aclapplyinterfaceCell = document.createElement("td");
+//         aclapplyinterfaceCell.textContent = data.aclapplyinterface;
+//         row.appendChild(aclapplyinterfaceCell);
 
-        var aclinoutCell = document.createElement("td");
-        aclinoutCell.textContent = data.aclinout;
-        row.appendChild(aclinoutCell);
+//         var aclinoutCell = document.createElement("td");
+//         aclinoutCell.textContent = data.aclinout;
+//         row.appendChild(aclinoutCell);
 
-        var actionCell = document.createElement("td");
-        var removeLink = document.createElement("a");
-        removeLink.href = "#";
-        removeLink.textContent = "Remove";
-        removeLink.classList.add("text-blue-600", "dark:text-blue-500", "font-medium", "hover:underline");
-        actionCell.appendChild(removeLink);
-        row.appendChild(actionCell);
-        tableApplyPolicyAcl.appendChild(row);
-    });
-}
+//         var actionCell = document.createElement("td");
+//         var removeLink = document.createElement("a");
+//         removeLink.href = "#";
+//         removeLink.textContent = "Remove";
+//         removeLink.classList.add("text-blue-600", "dark:text-blue-500", "font-medium", "hover:underline");
+//         actionCell.appendChild(removeLink);
+//         row.appendChild(actionCell);
+//         tableApplyPolicyAcl.appendChild(row);
+//     });
+// }
 var aclsourceInput = document.getElementById("aclsource");
 var aclsourceLabel = document.getElementById("aclsourceLabel");
 

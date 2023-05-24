@@ -36,11 +36,11 @@
                             <h3 class="text-2xl font-bold text-black dark:text-white">Device Information</h3>
                         </div>
                         <div class="p-7 ">
-                            <form action="#" class="grid gap-2 md:grid-cols-3">
+                            <form  id="addDeviceForm"  action="#" class="grid gap-2 md:grid-cols-3">
                                 <div class="mb-5.5">
                                     <!-- ===== Select Type ===== -->
                                     <label class="block mb-3 text-sm font-medium text-black dark:text-white" for="Username">Device Type</label>
-                                    <select class="relative z-20 w-full appearance-none rounded border border-stroke bg-gray py-3 px-4.5 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input" v-model="newText.type" required="">
+                                    <select name="deviceType" class="relative z-20 w-full appearance-none rounded border border-stroke bg-gray py-3 px-4.5 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input" v-model="newText.type" required="">
                                         <option value="" disabled="" selected="" hidden="">Select Type</option>
                                         <option value="Router">Router</option>
                                         <option value="Switch">Switch</option>
@@ -49,13 +49,13 @@
                                 <div class="mb-5.5">
                                     <!-- ===== Name Input ===== -->
                                     <label class="block mb-3 text-sm font-medium text-black dark:text-white" for="Username">Device Name</label>
-                                    <input class="w-full rounded border border-stroke bg-gray py-3 px-4.5 font-medium text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary" type="text" v-model="newText.name"
+                                    <input name="deviceName" class="w-full rounded border border-stroke bg-gray py-3 px-4.5 font-medium text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary" type="text" v-model="newText.name"
                                         placeholder="Enter Device Name (eg. R1)" required>
                                 </div>
                                 <div class="mb-5.5">
                                     <!-- ===== IP Input ===== -->
                                     <label class="block mb-3 text-sm font-medium text-black dark:text-white" for="Username">IP Address</label>
-                                    <input class="w-full rounded border border-stroke bg-gray py-3 px-4.5 font-medium text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary" type="text" v-model="newText.ip"
+                                    <input name="ipAddress" class="w-full rounded border border-stroke bg-gray py-3 px-4.5 font-medium text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary" type="text" v-model="newText.ip"
                                         placeholder="Monitor address (eg. 192.168.1.1)" required>
                                 </div>
                             </form>
@@ -68,7 +68,7 @@
 
                     <!-- Card Zone Start-->
                     <div id="device_deck" class="grid grid-cols-1 gap-4 md:grid-cols-4 md:gap-6 xl:grid-cols-4 2xl:gap-7.5 overflow-y-auto min-h-100">
-                        <card v-for="(text, index) in texts" :key="index" :index="index" :name="text.name" :ip="text.ip" :type="text.type" @delete="deleteElement"></card>
+                        <card v-for="(text, index) in texts" :key="index" :index="index" :name="text.name" :ip="text.ip" :type="text.type" :status="text.status" @delete="deleteElement"></card>
                     </div>
 
                     <!-- Card Zone End-->
@@ -82,7 +82,7 @@
 
     <script>
         Vue.component('card', {
-            props: ['index', 'name', 'ip', 'type'],
+            props: ['index', 'name', 'ip', 'type', 'status'],
             template: `
         <div class="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark">
             <div class="">
@@ -125,7 +125,29 @@
       `,
             methods: {
                 deleteElement() {
-                    this.$emit('delete', this.index);
+                    var requestBody = {
+    hostname: this.name
+  };
+
+  // Create the request options
+  var requestOptions = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(requestBody),
+    redirect: 'follow'
+  };
+  console.log(requestOptions);
+
+  fetch("http://127.0.0.1:8000/del_device", requestOptions)
+    .then(response => response.text())
+    .then(result => {
+      console.log(result);
+      // Emit the delete event
+      this.$emit('delete', this.name);
+    })
+    .catch(error => console.log('error', error));
                 },
                 configDevice() {
                     if (this.type === 'Router') {
@@ -178,11 +200,14 @@
 //   .catch(error => console.log('error', error));
             },
             methods: {
-                createNewElement() {
+                createNewElement(event) {
                     console.log('here', Object.keys(this.newText).length);
+                    event.preventDefault(); // Prevent the default form submission
+  addDevice();
                     if (Object.keys(this.newText).length == 3) {
                         this.texts.push(this.newText);
                         this.newText = {};
+
                     }
                 },
                 deleteElement(index) {
@@ -190,6 +215,39 @@
                 }
             }
         });
+        function addDevice() {
+  // Get form inputs
+  var deviceType = document.querySelector('#addDeviceForm select[name="deviceType"]').value;
+  var deviceName = document.querySelector('#addDeviceForm input[name="deviceName"]').value;
+  var ipAddress = document.querySelector('#addDeviceForm input[name="ipAddress"]').value;
+
+  // Create the request body
+  var requestBody = {
+    type_device: deviceType,
+    hostname: deviceName,
+    ip: ipAddress
+  };
+  console.log(requestBody);
+
+  // Create the request options
+  var requestOptions = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(requestBody),
+    redirect: 'follow'
+  };
+
+  // Send the API request
+  fetch("http://127.0.0.1:8000/add_device", requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+}
+
+
+
     </script>
 
 </body>
