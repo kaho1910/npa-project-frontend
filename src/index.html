@@ -132,8 +132,9 @@
   // Create the request options
   var requestOptions = {
     method: 'POST',
+    // mode: 'no-cors',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify(requestBody),
     redirect: 'follow'
@@ -169,10 +170,16 @@
                 texts: [],
             },
             mounted() {
-                fetch("127.0.0.1:8000/devices")
-                    .then(response => {
+                fetch("http://localhost:8000/devices", {
+                    method: 'GET',
+                    // mode: 'cors',
+                    headers: {
+                    'Content-Type': 'application/json',
+                    // 'Access-Control-Allow-Origin': "http://127.0.0.1:8000",
+                    },
+                }).then(response => {
                         if (!response.ok) {
-                            throw new Error('Network response was not ok');
+                            throw response
                         }
                         return response.json();
                     })
@@ -192,7 +199,9 @@
 //                     var requestOptions = {
 //   method: 'GET',
 //   redirect: 'follow'
-// };
+// mode: 'no-cors',
+// };,
+
 
 // fetch("127.0.0.1:8000/devices", requestOptions)
 //   .then(response => response.text())
@@ -232,8 +241,9 @@
   // Create the request options
   var requestOptions = {
     method: 'POST',
+    // mode: 'no-cors',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify(requestBody),
     redirect: 'follow'

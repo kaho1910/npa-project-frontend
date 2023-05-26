@@ -32,13 +32,16 @@ var interfaces;
 
 
 var requestOptions = {
-  method: 'GET',
+  method: 'POST',
+  headers: {
+        'Content-Type': 'application/json'
+      },
   body: rawInterfaceRouter,
   redirect: 'follow'
 };
 
-fetch("127.0.0.1:8000/show_ip", requestOptions)
-  .then(response => response.text())
+fetch("http://127.0.0.1:8000/show_ip", requestOptions)
+  .then(response => response.json())
   .then(data => {
     // Handle the response data
     interfaces = data.interface
@@ -67,15 +70,18 @@ var staticRoutesInfo;
 var rawStaticRoute = "{\n    \"device\": \"" + routerName + "\"\n}";
 
 var requestOptions = {
-    method: 'GET',
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+      },
     body: rawStaticRoute,
     redirect: 'follow'
 };
 
-fetch("127.0.0.1:8000/show_ip_route", requestOptions)
-    .then(response => response.text())
+fetch("http://127.0.0.1:8000/show_ip_route", requestOptions)
+    .then(response => response.json())
     .then(data => {
-                staticRoutesInfo = data
+                staticRoutesInfo = data;
             })
     .catch(error => console.log('error', error));
 
@@ -100,13 +106,16 @@ var ospfRouteInfo;
 var rawOspfRoute = "{\n    \"device\": \"" + routerName + "\"\n}";
 
 var requestOptions = {
-    method: 'GET',
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+      },
     body: rawOspfRoute,
     redirect: 'follow'
 };
 
-fetch("127.0.0.1:8000/show_ip_route", requestOptions)
-    .then(response => response.text())
+fetch("http://127.0.0.1:8000/show_ip_route", requestOptions)
+    .then(response => response.json())
     .then(data => {
         ospfRouteInfo = data
     })
@@ -134,13 +143,16 @@ var extendAclInfo;
 
 
     var requestOptions = {
-      method: 'GET',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: rawExtenedAcl,
       redirect: 'follow'
     };
     
-    fetch("127.0.0.1:8000/show_acl", requestOptions)
-      .then(response => response.text())
+    fetch("http://127.0.0.1:8000/show_acl", requestOptions)
+      .then(response => response.json())
       .then(data => {
         extendAclInfo = data
     })
@@ -374,12 +386,20 @@ function populateStaticRouteTable() {
     var routes = staticRoutesInfo.vrf.default.address_family.ipv4.routes;
     for (var route in routes) {
         if (routes.hasOwnProperty(route)) {
-            var data = {
-                destination: route,
-                // subnet: routes[route].route,
-                nextHop: routes[route].next_hop.next_hop_list["1"].next_hop
-            };
-            staticRouteArray.push(data);
+            for (var i in routes[route]["next_hop"]) {
+                for (var j in routes[route]["next_hop"][i]){
+                    if (routes[route]["next_hop"][i][j].outgoing_interface === undefined) {
+                        var hop = routes[route]["next_hop"][i][j].next_hop
+                    } else {
+                        var hop = routes[route]["next_hop"][i][j].outgoing_interface
+                    }
+                    var data = {
+                        destination: route,
+                        nextHop: hop
+                    };
+                    staticRouteArray.push(data);
+                }
+            }
         }
     }
 
@@ -437,7 +457,7 @@ function removeStaticRoute(destination, nextHop, subnetMask) {
     };
 
     fetch("http://127.0.0.1:8000/route", requestOptions)
-        .then(response => response.text())
+        .then(response => response.json())
         .then(result => {
             // Handle the result as needed
             console.log(result);
@@ -566,7 +586,7 @@ function handleSubmit(event) {
   
     // Send POST request
     fetch('http://127.0.0.1:8000/interface', requestOptions)
-      .then(response => response.text())
+      .then(response => response.json())
       .then(result => console.log(result))
       .catch(error => console.error('Error:', error));
   }
@@ -696,8 +716,8 @@ function removeOspfRoute(network, area, wildCard) {
       redirect: 'follow'
     };
   
-    fetch("127.0.0.1:8000/ospf_del/1", requestOptions)
-      .then(response => response.text())
+    fetch("http://127.0.0.1:8000/ospf_del/1", requestOptions)
+      .then(response => response.json())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
   }
@@ -717,6 +737,8 @@ ospfForm.addEventListener("submit", function(event) {
     myHeaders.append("Content-Type", "application/json");
 
     var raw = JSON.stringify({
+        "device": routerName,
+        "process": 1,
         "ospf": [{
             "network": network,
             "wildcard": wildcard,
@@ -731,8 +753,8 @@ ospfForm.addEventListener("submit", function(event) {
         redirect: 'follow'
     };
 
-    fetch("127.0.0.1:8000/ospf/1", requestOptions)
-        .then(response => response.text())
+    fetch("http://127.0.0.1:8000/ospf", requestOptions)
+        .then(response => response.json())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
 });
@@ -861,7 +883,7 @@ var requestOptions = {
 };
 console.log(raw);
 fetch("http://127.0.0.1:8000/acl_del", requestOptions)
-  .then(response => response.text())
+  .then(response => response.json())
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
   }
@@ -903,8 +925,8 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-fetch("127.0.0.1:8000/acl", requestOptions)
-  .then(response => response.text())
+fetch("http://127.0.0.1:8000/acl", requestOptions)
+  .then(response => response.json())
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
  
