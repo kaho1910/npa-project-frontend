@@ -9,105 +9,142 @@ const routerNameElement = document.getElementById('routerName');
 routerNameElement.textContent = routerName;
 
 var interfaces;
-fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/S-interfaces.json', {
-        method: 'GET' // No need to specify the body for a GET request
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => {
-        // Handle the response data
-        interfaces = data.interface
-        createInterfaceButtons(data.interface);
+// fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/S-interfaces.json', {
+//         method: 'GET' // No need to specify the body for a GET request
+//     })
+//     .then(response => {
+//         if (!response.ok) {
+//             throw new Error('Network response was not ok');
+//         }
+//         return response.json();
+//     })
+//     .then(data => {
+//         // Handle the response data
+//         interfaces = data.interface
+//         createInterfaceButtons(data.interface);
 
-    })
-    .catch(error => {
-        // Handle any errors
-        console.log(error);
-    });
+//     })
+//     .catch(error => {
+//         // Handle any errors
+//         console.log(error);
+//     });
+    var rawInterfaceRouter = "{\n    \"device\": \"" + routerName + "\"\n}";
+
+
+var requestOptions = {
+  method: 'GET',
+  body: rawInterfaceRouter,
+  redirect: 'follow'
+};
+
+fetch("127.0.0.1:8000/show_ip", requestOptions)
+  .then(response => response.text())
+  .then(data => {
+    // Handle the response data
+    interfaces = data.interface
+    createInterfaceButtons(data.interface);
+
+})
+  .catch(error => console.log('error', error));
 var staticRoutesInfo;
-fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/R-routes.json', {
-        method: 'GET' // No need to specify the body for a GET request
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
+// fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/R-routes.json', {
+//         method: 'GET' // No need to specify the body for a GET request
+//     })
+//     .then(response => {
+//         if (!response.ok) {
+//             throw new Error('Network response was not ok');
+//         }
+//         return response.json();
+//     })
+//     .then(data => {
+//         staticRoutesInfo = data
+//     })
+//     .catch(error => {
+//         // Handle any errors
+//         console.log(error);
+//     });
+
+var rawStaticRoute = "{\n    \"device\": \"" + routerName + "\"\n}";
+
+var requestOptions = {
+    method: 'GET',
+    body: rawStaticRoute,
+    redirect: 'follow'
+};
+
+fetch("127.0.0.1:8000/show_ip_route", requestOptions)
+    .then(response => response.text())
     .then(data => {
-        staticRoutesInfo = data
-    })
-    .catch(error => {
-        // Handle any errors
-        console.log(error);
-    });
-
-// var rawStaticRoute = "{\n    \"device\": \"" + routerName + "\"\n}";
-
-// var requestOptions = {
-//     method: 'GET',
-//     body: rawStaticRoute,
-//     redirect: 'follow'
-// };
-
-// fetch("127.0.0.1:8000/show_ip_route", requestOptions)
-//     .then(response => response.text())
-//     .then(result => console.log(result))
-//     .catch(error => console.log('error', error));
+                staticRoutesInfo = data
+            })
+    .catch(error => console.log('error', error));
 
 var ospfRouteInfo;
-fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/R-ospf.json', {
-        method: 'GET' // No need to specify the body for a GET request
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
+// fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/R-ospf.json', {
+//         method: 'GET' // No need to specify the body for a GET request
+//     })
+//     .then(response => {
+//         if (!response.ok) {
+//             throw new Error('Network response was not ok');
+//         }
+//         return response.json();
+//     })
+//     .then(data => {
+//         ospfRouteInfo = data
+//     })
+//     .catch(error => {
+//         // Handle any errors
+//         console.log(error);
+//     });
+
+var rawOspfRoute = "{\n    \"device\": \"" + routerName + "\"\n}";
+
+var requestOptions = {
+    method: 'GET',
+    body: rawOspfRoute,
+    redirect: 'follow'
+};
+
+fetch("127.0.0.1:8000/show_ip_route", requestOptions)
+    .then(response => response.text())
     .then(data => {
         ospfRouteInfo = data
     })
-    .catch(error => {
-        // Handle any errors
-        console.log(error);
-    });
-
-// var rawOspfRoute = "{\n    \"device\": \"" + routerName + "\"\n}";
-
-// var requestOptions = {
-//     method: 'GET',
-//     body: rawOspfRoute,
-//     redirect: 'follow'
-// };
-
-// fetch("127.0.0.1:8000/show_ip_route", requestOptions)
-//     .then(response => response.text())
-//     .then(result => console.log(result))
-//     .catch(error => console.log('error', error));
+    .catch(error => console.log('error', error));
 
 
 var extendAclInfo;
-fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/R-acl.json', {
-        method: 'GET' // No need to specify the body for a GET request
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => {
+// fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/R-acl.json', {
+//         method: 'GET' // No need to specify the body for a GET request
+//     })
+//     .then(response => {
+//         if (!response.ok) {
+//             throw new Error('Network response was not ok');
+//         }
+//         return response.json();
+//     })
+//     .then(data => {
+//         extendAclInfo = data
+//     })
+//     .catch(error => {
+//         // Handle any errors
+//         console.log(error);
+//     });
+    var rawExtenedAcl = "{\n    \"device\": \"" + routerName + "\"\n}";
+
+
+    var requestOptions = {
+      method: 'GET',
+      body: rawExtenedAcl,
+      redirect: 'follow'
+    };
+    
+    fetch("127.0.0.1:8000/show_acl", requestOptions)
+      .then(response => response.text())
+      .then(data => {
         extendAclInfo = data
     })
-    .catch(error => {
-        // Handle any errors
-        console.log(error);
-    });
+      .catch(error => console.log('error', error));
 
 // Router Interfaces Button
 const interfaceContainer = document.getElementById('interfaceContainerRouter');

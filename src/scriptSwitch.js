@@ -10,51 +10,69 @@ const switchNameElement = document.getElementById('switchName');
 switchNameElement.textContent = switchName;
 
 var extendAclInfo;
-fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/R-acl.json', {
-        method: 'GET' // No need to specify the body for a GET request
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => {
+// fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/R-acl.json', {
+//         method: 'GET' // No need to specify the body for a GET request
+//     })
+//     .then(response => {
+//         if (!response.ok) {
+//             throw new Error('Network response was not ok');
+//         }
+//         return response.json();
+//     })
+//     .then(data => {
+//         extendAclInfo = data
+//     })
+//     .catch(error => {
+//         // Handle any errors
+//         console.log(error);
+//     });
+    var rawExtenedAcl = "{\n    \"device\": \"" + switchName + "\"\n}";
+
+
+    var requestOptions = {
+      method: 'GET',
+      body: rawExtenedAcl,
+      redirect: 'follow'
+    };
+    
+    fetch("127.0.0.1:8000/show_acl", requestOptions)
+      .then(response => response.text())
+      .then(data => {
         extendAclInfo = data
     })
-    .catch(error => {
-        // Handle any errors
-        console.log(error);
-    });
+      .catch(error => console.log('error', error));
+
 var vlanInfo;
-fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/S-vlan.json', {
-        method: 'GET' // No need to specify the body for a GET request
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => {
-        vlanInfo = data
-    })
-    .catch(error => {
-        // Handle any errors
-        console.log(error);
-    });
-//     var rawVlan = "{\n    \"device\": \"" + switchName + "\"\n}";
+// fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/S-vlan.json', {
+//         method: 'GET' // No need to specify the body for a GET request
+//     })
+//     .then(response => {
+//         if (!response.ok) {
+//             throw new Error('Network response was not ok');
+//         }
+//         return response.json();
+//     })
+//     .then(data => {
+//         vlanInfo = data
+//     })
+//     .catch(error => {
+//         // Handle any errors
+//         console.log(error);
+//     });
+    var rawVlan = "{\n    \"device\": \"" + switchName + "\"\n}";
 
-// var requestOptions = {
-//   method: 'GET',
-//   body: rawVlan,
-//   redirect: 'follow'
-// };
+var requestOptions = {
+  method: 'GET',
+  body: rawVlan,
+  redirect: 'follow'
+};
 
-// fetch("127.0.0.1:8000/show_vlan", requestOptions)
-//   .then(response => response.text())
-//   .then(result => console.log(result))
-//   .catch(error => console.log('error', error));
+fetch("127.0.0.1:8000/show_vlan", requestOptions)
+  .then(response => response.text())
+  .then(data => {
+            vlanInfo = data
+        })
+  .catch(error => console.log('error', error));
 const interfaceContainer = document.getElementById('interfaceContainerSwitch');
 // Function to create and add buttons dynamically
 function createInterfaceButtons(interfaces) {
@@ -81,35 +99,35 @@ function createInterfaceButtons(interfaces) {
 }
 
 var interfaces;
-fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/S-interfaces.json', {
-        method: 'GET' // No need to specify the body for a GET request
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => {
-        interfaces = data.interface
-        createInterfaceButtons(data.interface);
-    })
-    .catch(error => {
-        // Handle any errors
-        console.log(error);
-    });
-//     var rawInterface = "{\n    \"device\": \"" + switchName + "\"\n}";
+// fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/S-interfaces.json', {
+//         method: 'GET' // No need to specify the body for a GET request
+//     })
+//     .then(response => {
+//         if (!response.ok) {
+//             throw new Error('Network response was not ok');
+//         }
+//         return response.json();
+//     })
+//     .then(data => {
+//         interfaces = data.interface
+//         createInterfaceButtons(data.interface);
+//     })
+//     .catch(error => {
+//         // Handle any errors
+//         console.log(error);
+//     });
+    var rawInterface = "{\n    \"device\": \"" + switchName + "\"\n}";
 
-// var requestOptions = {
-//   method: 'GET',
-//   body: rawInterface,
-//   redirect: 'follow'
-// };
+var requestOptions = {
+  method: 'GET',
+  body: rawInterface,
+  redirect: 'follow'
+};
 
-// fetch("127.0.0.1:8000/show_ip", requestOptions)
-//   .then(response => response.text())
-//   .then(result => console.log(result))
-//   .catch(error => console.log('error', error));
+fetch("127.0.0.1:8000/show_ip", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
 function showInterSwitchForm() {
     console.log(interfaceSwitchNames);
     interfaceSwitchForm.style.display = 'grid';
@@ -122,35 +140,35 @@ function showInterSwitchForm() {
         interfaceButtonRouter[i].addEventListener('click', interfaceButtonSwitchClick);
     }
 
-    fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/S-interfaces.json', {
-            method: 'GET' // No need to specify the body for a GET request
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            interfaces = data.interface
-            createInterfaceButtons(data.interface);
-        })
-        .catch(error => {
-            // Handle any errors
-            console.log(error);
-        });
-        //     var rawInterface = "{\n    \"device\": \"" + switchName + "\"\n}";
+    // fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/S-interfaces.json', {
+    //         method: 'GET' // No need to specify the body for a GET request
+    //     })
+    //     .then(response => {
+    //         if (!response.ok) {
+    //             throw new Error('Network response was not ok');
+    //         }
+    //         return response.json();
+    //     })
+    //     .then(data => {
+    //         interfaces = data.interface
+    //         createInterfaceButtons(data.interface);
+    //     })
+    //     .catch(error => {
+    //         // Handle any errors
+    //         console.log(error);
+    //     });
+            var rawInterface = "{\n    \"device\": \"" + switchName + "\"\n}";
 
-// var requestOptions = {
-//   method: 'GET',
-//   body: rawInterface,
-//   redirect: 'follow'
-// };
+var requestOptions = {
+  method: 'GET',
+  body: rawInterface,
+  redirect: 'follow'
+};
 
-// fetch("127.0.0.1:8000/show_ip", requestOptions)
-//   .then(response => response.text())
-//   .then(result => console.log(result))
-//   .catch(error => console.log('error', error));
+fetch("127.0.0.1:8000/show_ip", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
 }
 
 function showVlanForm() {
@@ -159,18 +177,18 @@ function showVlanForm() {
     // stpForm.style.display = 'none';
     swportForm.style.display = 'none';
     aclForm.style.display = 'none';
-    //     var rawVlan = "{\n    \"device\": \"" + switchName + "\"\n}";
+        var rawVlan = "{\n    \"device\": \"" + switchName + "\"\n}";
 
-// var requestOptions = {
-//   method: 'GET',
-//   body: rawVlan,
-//   redirect: 'follow'
-// };
+var requestOptions = {
+  method: 'GET',
+  body: rawVlan,
+  redirect: 'follow'
+};
 
-// fetch("127.0.0.1:8000/show_vlan", requestOptions)
-//   .then(response => response.text())
-//   .then(result => console.log(result))
-//   .catch(error => console.log('error', error));
+fetch("127.0.0.1:8000/show_vlan", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
     populateVlanTable();
 }
 
@@ -210,22 +228,37 @@ function showAclForm() {
     // stpForm.style.display = 'none';
     swportForm.style.display = 'none';
     aclForm.style.display = 'grid';
-    fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/R-acl.json', {
-        method: 'GET' // No need to specify the body for a GET request
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => {
+    // fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/R-acl.json', {
+    //     method: 'GET' // No need to specify the body for a GET request
+    // })
+    // .then(response => {
+    //     if (!response.ok) {
+    //         throw new Error('Network response was not ok');
+    //     }
+    //     return response.json();
+    // })
+    // .then(data => {
+    //     extendAclInfo = data
+    // })
+    // .catch(error => {
+    //     // Handle any errors
+    //     console.log(error);
+    // });
+    var rawExtenedAcl = "{\n    \"device\": \"" + switchName + "\"\n}";
+
+
+    var requestOptions = {
+      method: 'GET',
+      body: rawExtenedAcl,
+      redirect: 'follow'
+    };
+    
+    fetch("127.0.0.1:8000/show_acl", requestOptions)
+      .then(response => response.text())
+      .then(data => {
         extendAclInfo = data
     })
-    .catch(error => {
-        // Handle any errors
-        console.log(error);
-    });
+      .catch(error => console.log('error', error));
     populateExtendedAclTable();
     // populateAclApplyInterfaceTable();
 }
@@ -652,38 +685,47 @@ function populateSwitchportTable() {
     var tableSwitchport = document.getElementById("tableSwitchport");
     tableSwitchport.innerHTML = ""; // Clear existing content
 
-    fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/S-switchport.json', {
-            method: 'GET'
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            var switchportArray = Object.keys(data).map(function(key) {
-                var portData = data[key];
-                return {
-                    swportinterface: key,
-                    swportmode: portData.switchport_mode,
-                    swportaccess: portData.access_vlan,
-                    swporttrunknative: portData.encapsulation.native_vlan,
-                    swportallowednative: portData.pruning_vlans
-                };
-            });
+    // fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/S-switchport.json', {
+    //         method: 'GET'
+    //     })
+    //     .then(response => {
+    //         if (!response.ok) {
+    //             throw new Error('Network response was not ok');
+    //         }
+    //         return response.json();
+    //     })
+    //     .then(data => {
+    //         var switchportArray = Object.keys(data).map(function(key) {
+    //             var portData = data[key];
+    //             return {
+    //                 swportinterface: key,
+    //                 swportmode: portData.switchport_mode,
+    //                 swportaccess: portData.access_vlan,
+    //                 swporttrunknative: portData.encapsulation.native_vlan,
+    //                 swportallowednative: portData.pruning_vlans
+    //             };
+    //         });
 
-//     var rawInterface = "{\n    \"device\": \"" + switchName + "\"\n}";
-// var requestOptions = {
-//   method: 'GET',
-//   body: rawInterface,
-//   redirect: 'follow'
-// };
+    var rawInterface = "{\n    \"device\": \"" + switchName + "\"\n}";
+var requestOptions = {
+  method: 'GET',
+  body: rawInterface,
+  redirect: 'follow'
+};
 
-// fetch("127.0.0.1:8000/show_swp", requestOptions)
-//   .then(response => response.text())
-//   .then(result => console.log(result))
-//   .catch(error => console.log('error', error));
+fetch("127.0.0.1:8000/show_swp", requestOptions)
+  .then(response => response.text())
+  .then(data => {
+    var switchportArray = Object.keys(data).map(function(key) {
+        var portData = data[key];
+        return {
+            swportinterface: key,
+            swportmode: portData.switchport_mode,
+            swportaccess: portData.access_vlan,
+            swporttrunknative: portData.encapsulation.native_vlan,
+            swportallowednative: portData.pruning_vlans
+        };
+    });
 
             switchportArray.forEach(function(data) {
                 var row = document.createElement("tr");
@@ -709,7 +751,6 @@ function populateSwitchportTable() {
 
                 var swportallowednativeCell = document.createElement("td");
                 swportallowednativeCell.textContent = data.swportallowednative;
-                swportallowednativeCell.classList.add("border-2", "border-slate-600", "border-y-transparent", "border-x-primary");
                 row.appendChild(swportallowednativeCell);
 
                 var actionCell = document.createElement("td");
