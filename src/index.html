@@ -169,7 +169,7 @@
                 texts: [],
             },
             mounted() {
-                fetch('https://raw.githubusercontent.com/kaho1910/npa-project-frontend/main/src/example-data/device.json')
+                fetch("127.0.0.1:8000/devices")
                     .then(response => {
                         if (!response.ok) {
                             throw new Error('Network response was not ok');
